@@ -17,7 +17,7 @@ proc get_util {rpt pattern} {
     return "NA"
 }
 
-# ---------- 메인 ----------
+# ---------- main ----------
 set pb pblock_1;
 set rpt [report_utilization -pblocks $pb -return_string]
 
