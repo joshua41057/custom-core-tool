@@ -153,34 +153,39 @@ def main() -> None:
     ap.add_argument("--emit-tcl", action="store_true")
     args = ap.parse_args()
 
-    groups = json.loads(Path(args.input_json).read_text())
+    groups_sorted = sorted(
+        json.loads(Path(args.input_json).read_text()),
+        key=lambda g: g.get("rank", 0)
+    )
     rows: List[Tuple] = []
 
-    for g in groups:
+    rows: List[Tuple] = []
+    for idx, g in enumerate(groups_sorted):
         depth, stg, ffs, dsp_cnt = analyse(g, args.max_comb)
         g.update({"latency_cycles": depth,
                   "stage_count":    stg,
                   "ff_boundaries":  ffs,
                   "dsp_usage":      dsp_cnt})
-        rows.append((g.get("rank", -1), g.get("execution_count", 0),
-                     depth, stg, len(ffs), dsp_cnt))
-        print(f"[rank={g['rank']}] Lat={depth} cyc  stage={stg}  FFs={ffs}")
+        rows.append((idx, stg, g.get("execution_count", 0),
+                     depth, len(ffs), dsp_cnt))
+        print(f"[idx={idx:02d} rank={g.get('rank','?')}] "
+              f"Lat={depth} cyc  stage={stg}  FFs={ffs}")
 
     # augmented JSON / summary CSV
-    Path(f"{args.out}_augmented.json").write_text(json.dumps(groups, indent=2))
+    Path(f"{args.out}_augmented.json").write_text(
+        json.dumps(groups_sorted, indent=2))
     with Path(f"{args.out}_summary.csv").open("w", newline="") as f:
         csv.writer(f).writerows(
-            [("rank", "exec_cnt", "lat", "stages", "n_ff", "DSP")] + rows)
+            [("idx", "stage", "exec_cnt", "lat", "n_ff", "DSP")] + rows)
 
     # optional Vivado TCL
     if args.emit_tcl:
         tcl = Path(args.tcl_dir) / "pipe_stages.tcl"
         tcl.parent.mkdir(parents=True, exist_ok=True)
         with tcl.open("w") as f:
-            for r in rows:
-                rank, _, _, stg, _, _ = r
+            for idx, stg, *_ in rows:
                 f.write(f"set_property PIPE_STAGES {stg} "
-                        f"[get_cells glen[{rank-1}].blk_i]\n")
+                        f"[get_cells glen[{idx}].blk_i]\n")
         print(f"✓ {tcl}")
 
 if __name__ == "__main__":

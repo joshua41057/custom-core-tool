@@ -14,14 +14,14 @@ import argparse, sys, textwrap
 from pathlib import Path
 from math import ceil
 
-# -------- column tables -------------------------------------------------
-# Columns in CLOCKREGION_X1Y14 (left → right, high col numbers are left-most)
+# -------- column tables in CLOCKREGION_X1Y14 + CLOCKREGION_X1Y13 --------------------
+# Columns (left → right, high col numbers are left-most)
 SLICE_COLS = (                  # 22 Slice columns, expand if needed
     list(range(54, 47, -1)) +
     list(range(46, 33, -1)) +
     list(range(32, 30, -1))
 )
-DSP_COLS_ALL = [7, 6, 5]        # 3 DSP columns aligned with the Slice range
+DSP_COLS_ALL = [7, 6, 5]   # 3 DSP columns aligned with the Slice range
 
 # -------- row constants -------------------------------------------------
 Y_S_HI, ROW_SLICE   = 899, 60   # top CR, rows per CR
@@ -42,32 +42,40 @@ def build(rows: int, cols: int) -> None:
     slice_rect = f"SLICE_X{x_lo}Y{y_lo}:SLICE_X{x_hi}Y{Y_S_HI}"
 
     # ---- DSP rectangle --------------------------------------------------
-    slice_cnt  = rows * cols
-    dsp_need   = ceil(slice_cnt / 120)                 # ≈ 1 DSP / 120 Slice
-    dsp_rows   = ceil(rows * ROW_DSP / ROW_SLICE)
-    dsp_cols   = DSP_COLS_ALL[:ceil(dsp_need / dsp_rows)]
-    dx_lo, dx_hi = dsp_cols[-1], dsp_cols[0]
-    y_d_lo     = Y_D_HI - dsp_rows + 1
-    dsp_rect   = f"DSP48E2_X{dx_lo}Y{y_d_lo}:DSP48E2_X{dx_hi}Y{Y_D_HI}"
+    dsp_rows   = ceil(rows * ROW_DSP / ROW_SLICE)     # 60→24,120→48
 
+    max_cols_per_dsp = len(SLICE_COLS) / len(DSP_COLS_ALL)   
+    keep_cnt  = ceil(cols / max_cols_per_dsp)         
+    dsp_cols  = DSP_COLS_ALL[-keep_cnt:]              
+    dx_lo, dx_hi = dsp_cols[-1], dsp_cols[0]
+    y_d_lo    = Y_D_HI - dsp_rows + 1
+    dsp_rect  = f"DSP48E2_X{dx_lo}Y{y_d_lo}:DSP48E2_X{dx_hi}Y{Y_D_HI}"
+    dsp_cnt   = dsp_rows * len(dsp_cols)    
+    
     # ---- TCL output -----------------------------------------------------
     auto_tcl = textwrap.dedent(f"""\
         # auto_pblock.tcl (generated)
-        if {{![llength [get_pblocks {PBLOCK_ID}]]}} {{ create_pblock {PBLOCK_ID} }}
+        if {{![llength [get_pblocks {PBLOCK_ID}]]}} {{
+            create_pblock {PBLOCK_ID}
+        }}
         resize_pblock [get_pblocks {PBLOCK_ID}] -add {{{slice_rect}}}
         resize_pblock [get_pblocks {PBLOCK_ID}] -add {{{dsp_rect}}}
 
         set inst [get_cells -hier -filter {{NAME =~ "{CELL_GLOB}"}}]
-        foreach pb [get_pblocks -of_objects $inst] {{ remove_cells_from_pblock $pb $inst }}
+        foreach pb [get_pblocks -of_objects $inst] {{
+            remove_cells_from_pblock $pb $inst
+        }}
         add_cells_to_pblock [get_pblocks {PBLOCK_ID}] $inst -clear_locs
         set_property CONTAIN_ROUTING true [get_pblocks {PBLOCK_ID}]
     """)
-    out = Path(__file__).resolve().parent.parent / "constraints" / "auto_pblock.tcl"
-    out.parent.mkdir(exist_ok=True)
+
+    out = (Path(__file__).resolve().parents[1] /
+           "constraints" / "auto_pblock.tcl")
+    out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(auto_tcl, "utf-8")
 
     # ---- console summary ------------------------------------------------
-    dsp_cnt = dsp_rows * len(dsp_cols)
+    slice_cnt = rows * cols
     print("✓ auto_pblock.tcl written")
     print(f"  Slice rect : {slice_rect}  (Slices {slice_cnt})")
     print(f"  DSP   rect : {dsp_rect}    (DSPs  {dsp_cnt})")
