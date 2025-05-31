@@ -1,14 +1,30 @@
-# Vivado
-/vivado_tmp/
+# ───── Vivado scratch / cache ─────
+vivado_tmp/
+.Xil/
 *.jou
+*.backup.jou
 *.log
-*.str
+*.backup.log
 *.dcp
-*/.Xil/
-# Python cache
+*.str                      # STR database
+
+# ───── auto tcl ─────
+constraints/auto_pblock.tcl
+constraints/pipe_stages.tcl   
+
+# ───── auto RTL ─────
+rtl/len_table_pkg.sv          # gen_len_table.py used
+
+
+reports/
+build.log
+utilization_*.rpt
+hd_visual/                    # device-view tcls
+
+examples/alu_only.json
+examples/blocks/
+examples/result_*.json
+examples/result_*.csv
+
 __pycache__/
 *.pyc
-# Reports / build artefacts
-/reports/
-build.log
-examples/blocks/

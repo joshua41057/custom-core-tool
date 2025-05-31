@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-pipeline_staging_estimator.py  fully_alu.json [-o result] [--max-comb 4] [--emit_tcl]
+python tools/pipeline_staging_estimator.py examples/alu_only.json -o examples/result --emit_tcl --tcl-dir constraints
 """
+
 from __future__ import annotations
 import argparse, csv, json, re
 from math import ceil
@@ -146,9 +147,10 @@ def analyse(g: dict, max_comb: int = 4
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("input_json")
-    ap.add_argument("-o", "--out", default="result")
+    ap.add_argument("-o", "--out", default="examples/result")
+    ap.add_argument("--tcl-dir", default="constraints", help="directory to drop pipe_stages.tcl")
     ap.add_argument("--max-comb", type=int, default=4)
-    ap.add_argument("--emit_tcl", action="store_true")
+    ap.add_argument("--emit-tcl", action="store_true")
     args = ap.parse_args()
 
     groups = json.loads(Path(args.input_json).read_text())
@@ -172,12 +174,14 @@ def main() -> None:
 
     # optional Vivado TCL
     if args.emit_tcl:
-        with Path(f"{args.out}_vivado.tcl").open("w") as t:
+        tcl = Path(args.tcl_dir) / "pipe_stages.tcl"
+        tcl.parent.mkdir(parents=True, exist_ok=True)
+        with tcl.open("w") as f:
             for r in rows:
                 rank, _, _, stg, _, _ = r
-                t.write(
-                    f"set_property PIPE_STAGES {stg} "
-                    f"[get_cells glen[{rank-1}].blk_i]\n")
+                f.write(f"set_property PIPE_STAGES {stg} "
+                        f"[get_cells glen[{rank-1}].blk_i]\n")
+        print(f"✓ {tcl}")
 
 if __name__ == "__main__":
     main()

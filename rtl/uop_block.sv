@@ -1,6 +1,5 @@
 `include "uop_pkg.sv"
 
-(* PIPELINE_STAGES = PIPE_STAGES *)
 module uop_block #(
     parameter int             LEN          = 4,
     parameter int             PIPE_STAGES  = 1,

@@ -1,3 +1,7 @@
+"""
+python tools/split_block.py  examples/result_augmented.json
+"""
+
 import json, pathlib, re, sys
 src  = pathlib.Path(sys.argv[1]).resolve()
 out  = src.parent / "blocks"; out.mkdir(exist_ok=True)
