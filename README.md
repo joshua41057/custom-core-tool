@@ -10,10 +10,14 @@ Tested: Vivado 2020.1 ~ 2024.1, Alveo U200 (xcu200-fsgd2104-2-e)
 ```bash
 
 # 1) JSON → ALU-only
-python3 tools/scan_alu_only.py <ROOT_DIR> [-o out.json] [--min-len N]
+python3 tools/scan_alu_only.py input_original.json [-o alu_only.json] [--min-len N]
 
 # 2) stage / FF estimate  (+ pipe_stages.tcl)
-python3 tools/pipeline_staging_estimator.py out.json -o examples/result --emit_tcl --tcl-dir constraints
+python3 tools/pipeline_staging_estimator.py \
+    examples/alu_only.json \
+    -o examples/result \
+    --emit-tcl \
+    --tcl-dir constraints
 
 # 3) split blocks
 python3 tools/split_block.py examples/result_augmented.json
