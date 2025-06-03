@@ -10,25 +10,26 @@ Tested: Vivado 2020.1 ~ 2024.1, Alveo U200 (xcu200-fsgd2104-2-e)
 ```bash
 
 # 1) JSON → ALU-only
-python3 tools/scan_alu_only.py input_original.json [-o alu_only.json] [--min-len N]
+python3 tools/scan_alu_only.py input_original.json [-o examples/alu_only.json] [--min-len N]
 
-# 2) stage / FF estimate  (+ pipe_stages.tcl)
-python3 tools/pipeline_staging_estimator.py \
-    examples/alu_only.json \
-    -o examples/result \
-    --emit-tcl \
-    --tcl-dir constraints
+# 2) stage / FF estimate  (+ pipe_stages.tcl) -> examples/alu_only_result_*.json
+python3 tools/pipeline_staging_estimator.py examples/alu_only.json --emit-tcl
 
-# 3) split blocks
-python3 tools/split_block.py examples/result_augmented.json
+# 3) explode into per-block JSON files -> examples/blocks/
+python3 tools/split_block.py examples/alu_only_result_augmented.json
 
-# 4) RTL LUT package
-python3 tools/gen_len_table.py examples/blocks/
+# 4) (optional) pick a subset of blocks  ->  examples/selected_blocks.json
+python3 tools/chose_block.py examples/blocks 0 3 5 11
 
-# 5) auto pblock (rows 60, cols 20 → adjust as needed)
+# 5) generate RTL lookup tables  - > rtl/len_table_pkg.sv
+python3 tools/gen_len_table.py examples/selected_blocks.json
+or
+python3 tools/gen_len_table.py examples/blocks
+
+# 6) auto pblock (rows 60, cols 20 → adjust as needed) constraints/auto_pblock.tcl
 python3 tools/make_pblock.py 60 20
 
-# 6) build
+# 7) build
 vivado -mode batch -source run_vivado.tcl | tee build.log
 ````
 
