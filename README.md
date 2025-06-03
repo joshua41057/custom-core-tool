@@ -22,7 +22,7 @@ python3 tools/split_block.py examples/alu_only_result_augmented.json
 python3 tools/chose_block.py examples/blocks 0 3 5 11
 
 # 5) generate RTL lookup tables  - > rtl/len_table_pkg.sv
-python3 tools/gen_len_table.py examples/selected_blocks.json
+python3 tools/gen_len_table.py examples/selected_blocks_result_augmented.json
 or
 python3 tools/gen_len_table.py examples/blocks
 
