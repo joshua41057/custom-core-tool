@@ -21,6 +21,7 @@ module uop_block_wrap #(
         shamt_q <= shamt_i;
     end
 
+    logic [W-1:0] dst_int;
     uop_block #(
         .LEN        (LEN),
         .PIPE_STAGES(PIPE_STAGES),
@@ -33,6 +34,7 @@ module uop_block_wrap #(
         .clk   (clk),
         .src   (src_q),
         .shamt (shamt_q),
-        .dst   (dst_o)
+        .dst   (dst_int)
     );
+    always_ff @(posedge clk) dst_o <= dst_int;
 endmodule

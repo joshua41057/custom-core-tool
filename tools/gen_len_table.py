@@ -15,10 +15,11 @@ OPS_MAP = {
   "MUL":"OP_MUL","IMUL":"OP_IMUL","DIV":"OP_DIV","IDIV":"OP_IDIV",
 }
 
-def bits(msk):          # FF list → bitmask
+def bits(msk, width):         # FF list → bitmask
     v=0
     for i in msk: v |= 1<<i
-    return f"32'h{v:08x}"
+    hex_w = (width+3)//4
+    return f"{{{width}'h{v:0{hex_w}x}}}"
 
 def hex32(tok):         # imm → 32-bit hex
     v = int(tok,0) if isinstance(tok,str) else int(tok)
@@ -53,6 +54,7 @@ def make_pkg(blocks) -> str:
     o(f"  localparam int N_CASE = {n};")
 
     # LEN / STAGE
+    o(f"  localparam int MAX_LEN = {max_len};")
     o("  localparam int LEN_LUT [N_CASE] = '{")
     o(",\n".join(f"    {len(b['instructions'])}" for b in blocks))
     o("  };")
@@ -61,11 +63,10 @@ def make_pkg(blocks) -> str:
     o("  };")
 
     # FF mask
-    o("  localparam logic [31:0] FF_MASK_LUT [N_CASE] = '{")
-    o(",\n".join(f"    {bits(b['ff_boundaries'])}" for b in blocks))
+    o("  /* variable-width FF mask */")
+    o("  localparam logic [MAX_LEN-1:0] FF_MASK_LUT [N_CASE] = '{")
+    o(",\n".join(f"    {bits(b['ff_boundaries'], len(b['instructions']))}" for b in blocks))
     o("  };")
-
-    o(f"  localparam int MAX_LEN = {max_len};")
 
     # OPS
     o("  localparam op_t OPS_LUT [N_CASE][MAX_LEN] = '{")
