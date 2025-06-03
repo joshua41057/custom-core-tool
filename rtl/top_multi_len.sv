@@ -14,25 +14,25 @@ module top_multi_len #(
 
     generate
       for (genvar i = 0; i < N_CASE; i++) begin : glen
-          localparam int             THIS_LEN   = LEN_LUT[i];
-          localparam int             THIS_STAGE = STAGE_LUT[i];
-          localparam logic [31:0]    THIS_MASK  = FF_MASK_LUT[i];
-
-          uop_block_wrap #(
-              .LEN         (THIS_LEN),
-              .PIPE_STAGES (THIS_STAGE),
-              .FF_MASK     (THIS_MASK),
-              .OPS         (OPS_LUT   [i][0:THIS_LEN-1]),
-              .IMM         (IMM_LUT   [i][0:THIS_LEN-1]),
-              .USE_IMM     (USE_IMM_LUT[i][0:THIS_LEN-1]),
-              .W           (W)
-          ) blk_i (
-            .clk    (clk),
-            .src_i  (src_val),
-            .shamt_i(shamt),
-            .dst_o  (y[i])
-          );
-      end
+            localparam int             THIS_LEN   = LEN_LUT[i];
+            localparam int             THIS_STAGE = STAGE_LUT[i];
+            localparam logic [31:0]    THIS_MASK  = FF_MASK_LUT[i];
+            (* keep_hierarchy = "yes",  dont_touch = "true" *)
+            uop_block_wrap #(
+                .LEN         (THIS_LEN),
+                .PIPE_STAGES (THIS_STAGE),
+                .FF_MASK     (THIS_MASK),
+                .OPS         (OPS_LUT   [i][0:THIS_LEN-1]),
+                .IMM         (IMM_LUT   [i][0:THIS_LEN-1]),
+                .USE_IMM     (USE_IMM_LUT[i][0:THIS_LEN-1]),
+                .W           (W)
+            ) blk_i (
+                .clk    (clk),
+                .src_i  (src_val),
+                .shamt_i(shamt),
+                .dst_o  (y[i])
+            );
+        end
     endgenerate
 
     logic [W-1:0] res_r;

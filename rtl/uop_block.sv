@@ -29,7 +29,7 @@ module uop_block #(
                 .y(alu_out)
             );
 
-            if (FF_MASK[i]) begin
+            if (i < 32 && FF_MASK[i]) begin
                 always_ff @(posedge clk) stage[i+1] <= alu_out;
             end else begin
                 assign stage[i+1] = alu_out;

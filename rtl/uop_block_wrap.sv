@@ -4,6 +4,7 @@ module uop_block_wrap #(
     parameter int             LEN         = 1,
     parameter int             PIPE_STAGES = 1,
     parameter logic [31:0]    FF_MASK     = 32'h0,
+    parameter bit             OUT_FF      = 1'b1,
     parameter uop_pkg::op_t   OPS   [LEN] ,
     parameter logic [31:0]    IMM   [LEN] = '{default:32'h0},   
     parameter logic           USE_IMM[LEN]= '{default:1'b0},    
@@ -36,5 +37,9 @@ module uop_block_wrap #(
         .shamt (shamt_q),
         .dst   (dst_int)
     );
-    always_ff @(posedge clk) dst_o <= dst_int;
+    if (OUT_FF) begin : g_out_ff
+        always_ff @(posedge clk) dst_o <= dst_int;
+    end else begin
+        assign dst_o = dst_int;
+    end
 endmodule

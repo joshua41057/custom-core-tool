@@ -238,11 +238,12 @@ def schedule_group(
     while ready:
         ready.sort(key=lambda i: (node[i].lat, node[i].dsp, node[i].succ), reverse=True)
         used_comb = used_dsp = used_lut = net_cong = 0
+        MAX_DSP_STAGE = max_dsp
         this_stage = []
         i = 0
         while i < len(ready):
             u = node[ready[i]]
-            if used_comb + u.lat <= max_comb and used_dsp + u.dsp <= max_dsp:
+            if used_comb + u.lat <= max_comb and used_dsp + u.dsp <= MAX_DSP_STAGE:
                 this_stage.append(ready.pop(i))
                 used_comb += u.lat
                 used_dsp += u.dsp
@@ -318,8 +319,8 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("input_json")
     ap.add_argument("-o", "--out", default=None)
-    ap.add_argument("--max-comb", type=int, default=4)
-    ap.add_argument("--max-dsp", type=int, default=8)
+    ap.add_argument("--max-comb", type=int, default=2)
+    ap.add_argument("--max-dsp", type=int, default=2)
     ap.add_argument("--tcl-dir", default="constraints")
     ap.add_argument("--emit-tcl", action="store_true")
     ap.add_argument("--trace", action="store_true")
@@ -332,8 +333,9 @@ def main() -> None:
     stats_list: list[dict] = []
     for idx, g in enumerate(groups):
         analyse(g, args.max_comb, args.max_dsp, args.trace, stats_list)
-        print(f"[{idx:02d}] stage={g['stage_count']} "
-              f"critσ={g['crit_path_sigma']:.2f}")
+        print(
+            f"[{idx:02d}] stage={g['stage_count']} " f"critσ={g['crit_path_sigma']:.2f}"
+        )
 
     if args.out:
         out_base = Path(args.out)
@@ -344,16 +346,18 @@ def main() -> None:
         out_base = in_p.with_name(in_p.stem + "_result")
 
     out_base.parent.mkdir(parents=True, exist_ok=True)
-    
+
     aug_json = out_base.parent / f"{out_base.name}_augmented.json"
-    csv_out  = out_base.parent / f"{out_base.name}_summary.csv"
+    csv_out = out_base.parent / f"{out_base.name}_summary.csv"
 
     aug_json.write_text(json.dumps(groups, indent=2))
     with csv_out.open("w", newline="") as f:
         csv.writer(f).writerows(
-            [("idx", "stage", "lat", "critσ")] +
-            [(i, g["stage_count"], g["latency_cycles"], g["crit_path_sigma"])
-             for i, g in enumerate(groups)]
+            [("idx", "stage", "lat", "critσ")]
+            + [
+                (i, g["stage_count"], g["latency_cycles"], g["crit_path_sigma"])
+                for i, g in enumerate(groups)
+            ]
         )
 
     if args.emit_tcl:
@@ -362,8 +366,8 @@ def main() -> None:
         with tcl.open("w") as f:
             for idx, g in enumerate(groups):
                 f.write(
-                    f"set_property PIPE_STAGES {g['stage_count']} "
-                    f"[get_cells glen[{idx}].blk_i]\n"
+                    f'set_property PIPE_STAGES {g["stage_count"]} '
+                    f'[get_cells -hier -filter {{NAME =~ "*glen[{idx}].blk_i"}}]\n'
                 )
         print(f"✓ {tcl}")
 

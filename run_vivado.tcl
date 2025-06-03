@@ -35,7 +35,7 @@ if {[file exists constraints/clocks.xdc]} {
 }
 
 # 3. Synthesis 
-synth_design -top $TOP_MODULE
+synth_design -top $TOP_MODULE -part $PART -flatten_hierarchy none
 update_timing  
 
 # 4. design-time Tcl constraints
@@ -59,6 +59,12 @@ write_checkpoint -force $RPT_DIR/post_route.dcp
 report_utilization    -file $RPT_DIR/post_route_util.rpt
 report_timing_summary -file $RPT_DIR/post_route_timing.rpt
 report_power          -file $RPT_DIR/post_route_power.rpt
+
+set pb_list [get_pblocks pblock_*]
+foreach pb $pb_list {
+    set rpt_name [format "$RPT_DIR/utilization_%s.rpt" $pb]
+    report_utilization -quiet -pblocks $pb -file $rpt_name
+}
 
 foreach s {speeds.tcl usage.tcl} {
     set f [file join constraints $s]
