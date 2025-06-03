@@ -10,7 +10,7 @@ Tested: Vivado 2020.1 ~ 2024.1, Alveo U200 (xcu200-fsgd2104-2-e)
 ```bash
 
 # 1) JSON → ALU-only
-python3 tools/scan_alu_only.py input_original.json [-o examples/alu_only.json] [--min-len N]
+python3 tools/scan_alu_only.py input_original.json -o examples/alu_only.json --min-len 2
 
 # 2) stage / FF estimate  (+ pipe_stages.tcl) -> examples/alu_only_result_*.json
 python3 tools/pipeline_staging_estimator.py examples/alu_only.json --emit-tcl
@@ -31,6 +31,9 @@ python3 tools/make_pblock.py 60 20
 
 # 7) build
 vivado -mode batch -source run_vivado.tcl | tee build.log
+
+# 8) summarise timing / utilisation  →  reports/impl_summary_<tag>.{json,csv}
+python3 tools/collect_results.py my-run-tag
 ````
 
 After routing:
@@ -38,6 +41,7 @@ After routing:
 * `reports/post_route_timing.rpt` – WNS
 * `reports/post_route_util.rpt` – LUT / DSP usage
 * `reports/post_route_power.rpt` – dynamic + static power
+* `reports/utilization_pblock_1.rpt` – pblock CLB/DSP usage
 
 Open the DCP later:
 
