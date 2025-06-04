@@ -39,35 +39,26 @@ def _first_float(line: str) -> float | None:
     return float(m.group()) if m else None
 
 
+CLK_TARGET_MHZ = 300.0
+TARGET_T_NS = 1000.0 / CLK_TARGET_MHZ
+
+WNS_ROW_RE = re.compile(r"Design Timing Summary.*?\n\s*([-+]?\d+\.\d+)", re.S | re.I)
+
+
 def parse_timing() -> tuple[float | None, float | None]:
     txt = text(TIMING_RPT)
     if not txt:
         return None, None
 
-    wns = None
+    m = WNS_ROW_RE.search(txt)
+    wns = float(m.group(1)) if m else None
+
+    # ② Fmax = 1 / (목표 period – WNS)
     fmax = None
-    period = None
-
-    grab_wns = False
-    for ln in txt.splitlines():
-        if "Design Timing Summary" in ln:
-            grab_wns = True
-            continue
-        if grab_wns:
-            cand = _first_float(ln.strip())
-            if cand is not None:
-                wns = cand
-                grab_wns = False
-        if ln.startswith("host_clk"):
-            cols = ln.split()
-            if cols[-1].replace(".", "").isdigit():
-                fmax = float(cols[-1])
-            if cols[-2].replace(".", "").isdigit():
-                period = float(cols[-2])
-
-    if fmax is None and period:
-        fmax = 1000.0 / period  # MHz
-
+    if wns is not None:
+        eff_period = TARGET_T_NS - wns           # ns
+        if eff_period > 0:
+            fmax = 1000.0 / eff_period          # MHz
     return wns, fmax
 
 
