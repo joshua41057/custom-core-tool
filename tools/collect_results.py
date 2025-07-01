@@ -33,7 +33,7 @@ def grab(regex: str, src: str, idx: int = 1, cast=float, default=None):
     return cast(m.group(idx)) if m else default
 
 
-# ─────────────────────────── timing report ────────────────────────────────
+# timing report 
 def _first_float(line: str) -> float | None:
     m = re.search(r"[-+]?\d+\.\d+", line)
     return float(m.group()) if m else None
@@ -62,7 +62,7 @@ def parse_timing() -> tuple[float | None, float | None]:
     return wns, fmax
 
 
-# ─────────────────────────── util report ──────────────────────────────────
+#  util report 
 RE_ROW = r"\|\s*{tag}\s*\|[^|]*\|\s*[^|]*\|\s*[^|]*\|\s*([^|]+)\|\s*[^|]*\|\s*([^|]+)\|"
 
 
@@ -80,7 +80,7 @@ def parse_util(rpt: Path) -> dict[str, Any]:
     }
 
 
-# ─────────────────────────── stage / μ-op info ────────────────────────────
+#  stage / μ-op info
 def parse_len_pkg() -> tuple[str, str]:
     src = text(LEN_PKG)
 
@@ -105,7 +105,7 @@ def parse_len_pkg() -> tuple[str, str]:
     return stage_expr, muops
 
 
-# ─────────────────────────── collect all data ─────────────────────────────
+#  collect all data
 def collect(tag: str) -> List[Dict[str, Any]]:
     wns, fmax = parse_timing()
     stage_expr, muops = parse_len_pkg()

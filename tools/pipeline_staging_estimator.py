@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from statistics import pstdev
 
 
-# ─────────────── base latency table  ───────────────
+# base latency table
 class LatencyDB:
     BASE: Dict[str, int] = {
         "ADD": 1,
@@ -131,7 +131,7 @@ class Uop:
     succ: int = 0  # will fill later
 
 
-# ─────────────── dependency graph builder ───────────────
+#  dependency graph builder
 def _add_edge(edges: set[tuple[int, int]], a: int, b: int):
     edges.add((a, b))
 
@@ -217,7 +217,7 @@ def topo_sort(n: int, edges: set[tuple[int, int]]) -> Tuple[List[int], List[List
     return order, succ
 
 
-# ─────────────── main analysis ───────────────
+# main analysis 
 def schedule_group(
     group: dict, max_comb: int, max_dsp: int, trace: bool = False
 ) -> Tuple[List[int], List[int], dict]:

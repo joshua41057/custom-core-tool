@@ -70,7 +70,7 @@ def load_blocks(path: str):
         return obj if isinstance(obj, list) else [obj]
 
 
-# ───────────────── make_pkg ─────────────────
+# make_pkg 
 def make_pkg(blocks) -> str:
     n = len(blocks)
     max_len = max(len(b["instructions"]) for b in blocks)
@@ -141,8 +141,6 @@ def make_pkg(blocks) -> str:
     o("endpackage")
     return "\n".join(out) + "\n"
 
-
-# ────────────────────────────────────────────
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         sys.exit("usage: gen_len_table.py <json|dir|->")

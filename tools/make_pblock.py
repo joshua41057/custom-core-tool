@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 make_pblock.py  ROWS COLS
-───────────────────────────────────────────────────────────────
+
 Generate constraints/auto_pblock.tcl that
  - creates (if missing) a single Pblock 'pblock_1'
  - locks all custom-core blocks   (glen[*].blk_i)
