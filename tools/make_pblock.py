@@ -15,7 +15,7 @@ from pathlib import Path
 from math import ceil
 
 # -------- column tables in CLOCKREGION_X1Y14 + CLOCKREGION_X1Y13 --------------------
-# Columns (left → right, high col numbers are left-most)
+# Columns (left -> right, high col numbers are left-most)
 SLICE_COLS = (  # 22 Slice columns, expand if needed
     list(range(54, 47, -1)) + list(range(46, 33, -1)) + list(range(32, 30, -1))
 )
@@ -41,7 +41,7 @@ def build(rows: int, cols: int) -> None:
     slice_rect = f"SLICE_X{x_lo}Y{y_lo}:SLICE_X{x_hi}Y{Y_S_HI}"
 
     # ---- DSP rectangle --------------------------------------------------
-    dsp_rows = ceil(rows * ROW_DSP / ROW_SLICE)  # 60→24,120→48
+    dsp_rows = ceil(rows * ROW_DSP / ROW_SLICE)  # 60->24,120->48
 
     max_cols_per_dsp = len(SLICE_COLS) / len(DSP_COLS_ALL)
     keep_cnt = ceil(cols / max_cols_per_dsp)
@@ -76,7 +76,7 @@ def build(rows: int, cols: int) -> None:
 
     # ---- console summary ------------------------------------------------
     slice_cnt = rows * cols
-    print("✓ auto_pblock.tcl written")
+    print("Done, auto_pblock.tcl written")
     print(f"  Slice rect : {slice_rect}  (Slices {slice_cnt})")
     print(f"  DSP   rect : {dsp_rect}    (DSPs  {dsp_cnt})")
 

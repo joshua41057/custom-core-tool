@@ -150,4 +150,4 @@ if __name__ == "__main__":
     out = Path("rtl/len_table_pkg.sv")
     out.parent.mkdir(exist_ok=True)
     out.write_text(pkg, encoding="utf-8", newline="\n")
-    print(f"✓ {out}  (N_CASE={len(blocks)})")
+    print(f"Done, {out}  (N_CASE={len(blocks)})")

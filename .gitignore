@@ -1,4 +1,4 @@
-# ───── Vivado scratch / cache ─────
+#  Vivado scratch / cache
 vivado_tmp/
 .Xil/
 *.jou
@@ -8,14 +8,13 @@ vivado_tmp/
 *.dcp
 *.str                      # STR database
 
-# ───── auto tcl ─────
+#  auto tcl 
 constraints/auto_pblock.tcl
 constraints/pipe_stages.tcl   
 
-# ───── auto RTL ─────
+#  auto RTL 
 rtl/len_table_pkg.sv
 
-reports/*
 build.log
 utilization_*.rpt
 hd_visual/
@@ -35,3 +34,6 @@ examples/selected_blocks.json
 
 __pycache__/
 *.pyc
+
+# Vivado reports
+reports/*.rpt

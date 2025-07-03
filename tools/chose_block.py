@@ -43,7 +43,7 @@ def main() -> None:
     out_path = Path(args.out) if args.out else blk_dir.parent / "selected_blocks.json"
     blocks = [json.loads(p.read_text()) for p in chosen]
     out_path.write_text(json.dumps(blocks, indent=2))
-    print(f"✓ {len(blocks)} blocks → {out_path}")
+    print(f"Done, {len(blocks)} blocks → {out_path}")
 
     print(">> re-estimating stages / FF …")
     try:

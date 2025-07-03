@@ -13,13 +13,22 @@ out.mkdir(parents=True)
 
 safe = lambda s: re.sub(r"[^A-Za-z0-9\-]", "", s)[:30] or "BLK"
 
-
 groups = json.loads(src.read_text())
 
-for idx, g in enumerate(groups):
-    rank = g.get("rank", 0)
-    sig = "-".join(i["opcode"].upper() for i in g["instructions"])
-    blk = f"blk{idx:03d}_r{rank:03d}_{safe(sig)}.json"
-    (out / blk).write_text(json.dumps(g, indent=2))
+seen_pc = set()
+kept = 0
 
-print("✓", len(groups), "blocks →", out)
+for idx, g in enumerate(groups):
+    pc = g["instructions"][0]["address"]   
+    if pc in seen_pc:                      
+        continue
+    seen_pc.add(pc)
+    g["pc"] = pc
+
+    rank = g.get("rank", 0)
+    sig  = "-".join(i["opcode"].upper() for i in g["instructions"])
+    blk  = f"blk{idx:03d}_r{rank:03d}_{safe(sig)}.json"
+    (out / blk).write_text(json.dumps(g, indent=2))
+    kept += 1
+
+print("Done, ", kept, "unique blocks ->", out)

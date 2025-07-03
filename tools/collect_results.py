@@ -5,7 +5,8 @@ python3 tools/collect_results.py <run-tag>
 from __future__ import annotations
 import argparse, csv, datetime as dt, json, re, sys
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
+import glob, re
 
 ROOT = Path(__file__).resolve().parents[1]
 RPT_DIR = ROOT / "reports"
@@ -53,7 +54,7 @@ def parse_timing() -> tuple[float | None, float | None]:
     m = WNS_ROW_RE.search(txt)
     wns = float(m.group(1)) if m else None
 
-    # ② Fmax = 1 / (목표 period – WNS)
+    # Fmax = 1 / (목표 period - WNS)
     fmax = None
     if wns is not None:
         eff_period = TARGET_T_NS - wns           # ns
@@ -65,22 +66,25 @@ def parse_timing() -> tuple[float | None, float | None]:
 #  util report 
 RE_ROW = r"\|\s*{tag}\s*\|[^|]*\|\s*[^|]*\|\s*[^|]*\|\s*([^|]+)\|\s*[^|]*\|\s*([^|]+)\|"
 
+def _first_number(line: str) -> int | None:
+    m = re.search(r"[-+]?\d[\d,]*", line)
+    return int(m.group().replace(",", "")) if m else None
 
 def parse_util(rpt: Path) -> dict[str, Any]:
     u = text(rpt)
-    clb = grab(RE_ROW.format(tag="CLB "), u, 2)
-    dsp = grab(RE_ROW.format(tag="DSPs"), u, 2)
+    clb = _first_number(re.search(r"\|\s*CLB LUTs[^\n]*", u).group()) if "CLB LUTs" in u else None
+    dsp = _first_number(re.search(r"\|\s*DSPs[^\n]*",     u).group()) if "DSPs"    in u else None
     slice_pct = grab(UTIL_RE.format(tag="CLB "), u)
     dsp_pct = grab(UTIL_RE.format(tag="DSPs"), u)
     return {
         "pblock_slice%": float(slice_pct) if slice_pct else None,
         "pblock_dsp%": float(dsp_pct) if dsp_pct else None,
-        "slice_total": int(clb) if clb else None,
-        "dsp_total": int(dsp) if dsp else None,
+        "slice_total": clb,
+        "dsp_total": dsp,
     }
 
 
-#  stage / μ-op info
+#  stage / u-op info
 def parse_len_pkg() -> tuple[str, str]:
     src = text(LEN_PKG)
 
@@ -106,14 +110,43 @@ def parse_len_pkg() -> tuple[str, str]:
 
 
 #  collect all data
-def collect(tag: str) -> List[Dict[str, Any]]:
+def collect(tag: str) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
     wns, fmax = parse_timing()
     stage_expr, muops = parse_len_pkg()
+    sniper_rows : List[Dict[str, Any]] = []
+    pcs_all     : list[str] = []
+    lats_all    : list[str] = []
+
+    CANDIDATE_JSON = [
+        ROOT / "examples/selected_blocks_result_augmented.json",
+        ROOT / "examples/alu_only_result_augmented.json",
+    ]
+    blk_groups: List[dict] = []
+    for fp in CANDIDATE_JSON:
+        if fp.is_file():
+            blk_groups = json.loads(fp.read_text())
+            break
+    if not blk_groups:           
+        blk_groups = [
+            json.loads(p.read_text())
+            for p in (ROOT / "examples/blocks").glob("blk*.json")
+        ]
+
+    for g in blk_groups:
+        pc  = g.get("pc", "0x0")
+        path_ns   = TARGET_T_NS - (wns or 0.0)
+        lat_cycle = str(int((path_ns + TARGET_T_NS - 1e-3) // TARGET_T_NS)) 
+        lat = lat_cycle
+        
+        sniper_rows.append({"pc": pc, "latency": lat})
+        pcs_all.append(pc)
+        lats_all.append(lat)
 
     rows: List[Dict[str, Any]] = []
+
     for util_rpt in sorted(RPT_DIR.glob("utilization_pblock_*.rpt")):
-        pb_name = util_rpt.stem.replace("utilization_", "")
-        util = parse_util(util_rpt)
+        pb_name  = util_rpt.stem.replace("utilization_", "")
+        util     = parse_util(util_rpt)
         rows.append(
             {
                 "run_tag": tag,
@@ -124,12 +157,15 @@ def collect(tag: str) -> List[Dict[str, Any]]:
                 "wns_ns": round(wns, 3) if wns else None,
                 "stage_count": stage_expr,
                 "muops": muops,
+                "pcs":       ",".join(pcs_all),
+                "latencies": ",".join(lats_all),
             }
         )
-    return rows
+        
+    return rows, sniper_rows
 
 
-def dump(rows: List[Dict[str, Any]], tag: str) -> None:
+def dump(rows: List[Dict[str, Any]], sniper_rows: List[Dict[str, Any]], tag: str) -> None:
     base = RPT_DIR / f"impl_summary_{tag}"
     base.with_suffix(".json").write_text(json.dumps(rows, indent=2))
     with base.with_suffix(".csv").open("w", newline="") as f:
@@ -145,8 +181,16 @@ def dump(rows: List[Dict[str, Any]], tag: str) -> None:
             w.writeheader()
         w.writerows(rows)
 
-    print(f"✔  {base.name}.json / .csv written")
-    print(f"✔  all_runs.csv updated")
+    print(f"Done,  {base.name}.json / .csv written")
+    print(f"Done,  all_runs.csv updated")
+
+    if sniper_rows:
+        sfile = RPT_DIR / f"sniper_{tag}.csv"
+        with sfile.open("w", newline="") as f:
+            w = csv.DictWriter(f, ["pc", "latency"])
+            w.writeheader()
+            w.writerows(sniper_rows)
+        print(f"Done,  {sfile.name}  (for Sniper cfg)")
 
 
 if __name__ == "__main__":
@@ -157,7 +201,7 @@ if __name__ == "__main__":
     if not TIMING_RPT.exists():
         sys.exit("ERROR: post_route_timing.rpt missing")
 
-    rows = collect(args.run_tag)
+    rows, sniper_rows = collect(args.run_tag)
     if not rows:
         sys.exit("ERROR: no utilization_pblock_*.rpt found")
-    dump(rows, args.run_tag)
+    dump(rows, sniper_rows, args.run_tag)

@@ -369,7 +369,7 @@ def main() -> None:
                     f'set_property PIPE_STAGES {g["stage_count"]} '
                     f'[get_cells -hier -filter {{NAME =~ "*glen[{idx}].blk_i"}}]\n'
                 )
-        print(f"✓ {tcl}")
+        print(f"Done, {tcl}")
 
     if args.json_stats:
         args.json_stats.write_text(json.dumps(stats_list, indent=2))

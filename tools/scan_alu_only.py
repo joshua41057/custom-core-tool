@@ -80,7 +80,7 @@ def main():
 
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
     Path(args.out).write_text(json.dumps(filtered, indent=2))
-    print(f"✓ {len(filtered)} ALU-only groups → {args.out}")
+    print(f"✓ {len(filtered)} ALU-only groups -> {args.out}")
 
 
 if __name__ == "__main__":
