@@ -291,7 +291,7 @@ def analyse(
     trace: bool,
     stats_out: Optional[List[dict]] = None,
 ) -> None:
-    order, ff, stats, depth = schedule_group(group, max_comb, max_dsp, trace)
+    order, ff, stats, _ = schedule_group(group, max_comb, max_dsp, trace)
     g = group
     g["instructions"] = [g["instructions"][i] for i in order]
     g.update(
@@ -299,7 +299,7 @@ def analyse(
             "order_map": order,
             "ff_boundaries": ff,
             "stage_count": len(ff) + 1,
-            "latency_cycles": depth,
+            "latency_cycles": len(ff) + 1,
             "ff_mask": sum(1 << p for p in ff) & ((1 << len(order)) - 1),
             "crit_path_sigma": stats["crit_path_std"],
         }

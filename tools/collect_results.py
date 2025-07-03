@@ -134,10 +134,7 @@ def collect(tag: str) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
 
     for g in blk_groups:
         pc  = g.get("pc", "0x0")
-        path_ns   = TARGET_T_NS - (wns or 0.0)
-        lat_cycle = str(int((path_ns + TARGET_T_NS - 1e-3) // TARGET_T_NS)) 
-        lat = lat_cycle
-        
+        lat = str(g.get("latency_cycles", g.get("stage_count", 1)))
         sniper_rows.append({"pc": pc, "latency": lat})
         pcs_all.append(pc)
         lats_all.append(lat)
