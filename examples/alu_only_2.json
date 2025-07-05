@@ -1,0 +1,5851 @@
+[
+  {
+    "rank": 57,
+    "group_index": 1,
+    "execution_count": 689909,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x621bfa94a098",
+        "opcode": "cmp",
+        "raw_operands": [
+          "edx",
+          "0x1"
+        ],
+        "in_operands": [
+          "edx",
+          "0x1"
+        ],
+        "out_operands": [
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x621bfa94a09b",
+        "opcode": "sbb",
+        "raw_operands": [
+          "esi",
+          "esi"
+        ],
+        "in_operands": [
+          "esi",
+          "esi",
+          "flag"
+        ],
+        "out_operands": [
+          "esi",
+          "flag"
+        ]
+      },
+      {
+        "index": 2,
+        "address": "0x621bfa94a09d",
+        "opcode": "inc",
+        "raw_operands": [
+          "esi"
+        ],
+        "in_operands": [
+          "esi"
+        ],
+        "out_operands": [
+          "esi",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "flag"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "flag"
+        },
+        "condition": "flag vs flag"
+      },
+      {
+        "from": {
+          "instr_index": 1,
+          "operand": "esi"
+        },
+        "to": {
+          "instr_index": 2,
+          "operand": "esi"
+        },
+        "condition": "reg vs reg: esi"
+      }
+    ],
+    "bench": "500.perlbench_r",
+    "src": "super_hot_regions:85"
+  },
+  {
+    "rank": 57,
+    "group_index": 2,
+    "execution_count": 689909,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x621bfa94a09f",
+        "opcode": "cmp",
+        "raw_operands": [
+          "edx",
+          "0x1"
+        ],
+        "in_operands": [
+          "edx",
+          "0x1"
+        ],
+        "out_operands": [
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x621bfa94a0a2",
+        "opcode": "sbb",
+        "raw_operands": [
+          "ebx",
+          "ebx"
+        ],
+        "in_operands": [
+          "ebx",
+          "ebx",
+          "flag"
+        ],
+        "out_operands": [
+          "ebx",
+          "flag"
+        ]
+      },
+      {
+        "index": 2,
+        "address": "0x621bfa94a0a4",
+        "opcode": "add",
+        "raw_operands": [
+          "ebx",
+          "0x401"
+        ],
+        "in_operands": [
+          "ebx",
+          "0x401"
+        ],
+        "out_operands": [
+          "ebx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "flag"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "flag"
+        },
+        "condition": "flag vs flag"
+      },
+      {
+        "from": {
+          "instr_index": 1,
+          "operand": "ebx"
+        },
+        "to": {
+          "instr_index": 2,
+          "operand": "ebx"
+        },
+        "condition": "reg vs reg: ebx"
+      }
+    ],
+    "bench": "500.perlbench_r",
+    "src": "super_hot_regions:86"
+  },
+  {
+    "rank": 52,
+    "group_index": 1,
+    "execution_count": 404298,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5b35c687f6da",
+        "opcode": "add",
+        "raw_operands": [
+          "ebx",
+          "0x3f"
+        ],
+        "in_operands": [
+          "ebx",
+          "0x3f"
+        ],
+        "out_operands": [
+          "ebx",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5b35c687f6dd",
+        "opcode": "and",
+        "raw_operands": [
+          "ebx",
+          "0xffffffc0"
+        ],
+        "in_operands": [
+          "ebx",
+          "0xffffffc0"
+        ],
+        "out_operands": [
+          "ebx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "ebx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "ebx"
+        },
+        "condition": "reg vs reg: ebx"
+      }
+    ],
+    "bench": "502.gcc_r",
+    "src": "super_hot_regions:61"
+  },
+  {
+    "rank": 24,
+    "group_index": 1,
+    "execution_count": 1416076,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x7f44ac6c394e",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0x7f"
+        ],
+        "in_operands": [
+          "edx",
+          "0x7f"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x7f44ac6c3a13",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0x7ff"
+        ],
+        "in_operands": [
+          "edx",
+          "0x7ff"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx"
+        },
+        "condition": "reg vs reg: edx"
+      }
+    ],
+    "bench": "503.bwaves_r",
+    "src": "super_hot_regions:40"
+  },
+  {
+    "rank": 65,
+    "group_index": 2,
+    "execution_count": 446981,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5e2ee9740eeb",
+        "opcode": "idiv",
+        "raw_operands": [
+          "dword ptr [rbp-0xa4]"
+        ],
+        "in_operands": [
+          "[rbp-0xa4]",
+          "edx:eax"
+        ],
+        "out_operands": [
+          "edx:eax"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5e2ee9741197",
+        "opcode": "idiv",
+        "raw_operands": [
+          "dword ptr [rbp-0xa4]"
+        ],
+        "in_operands": [
+          "[rbp-0xa4]",
+          "edx:eax"
+        ],
+        "out_operands": [
+          "edx:eax"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx:eax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx:eax"
+        },
+        "condition": "reg vs reg: edx:eax"
+      }
+    ],
+    "bench": "503.bwaves_r",
+    "src": "super_hot_regions:104"
+  },
+  {
+    "rank": 86,
+    "group_index": 3,
+    "execution_count": 33106,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5e2ee973ecf3",
+        "opcode": "inc",
+        "raw_operands": [
+          "rsi"
+        ],
+        "in_operands": [
+          "rsi"
+        ],
+        "out_operands": [
+          "rsi",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5e2ee973ecfd",
+        "opcode": "shl",
+        "raw_operands": [
+          "rsi",
+          "0x5"
+        ],
+        "in_operands": [
+          "rsi",
+          "0x5"
+        ],
+        "out_operands": [
+          "rsi",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rsi"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rsi"
+        },
+        "condition": "reg vs reg: rsi"
+      }
+    ],
+    "bench": "503.bwaves_r",
+    "src": "super_hot_regions:178"
+  },
+  {
+    "rank": 100,
+    "group_index": 3,
+    "execution_count": 21221,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5e2ee973e7e0",
+        "opcode": "inc",
+        "raw_operands": [
+          "rsi"
+        ],
+        "in_operands": [
+          "rsi"
+        ],
+        "out_operands": [
+          "rsi",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5e2ee973e7ea",
+        "opcode": "shl",
+        "raw_operands": [
+          "rsi",
+          "0x5"
+        ],
+        "in_operands": [
+          "rsi",
+          "0x5"
+        ],
+        "out_operands": [
+          "rsi",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rsi"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rsi"
+        },
+        "condition": "reg vs reg: rsi"
+      }
+    ],
+    "bench": "503.bwaves_r",
+    "src": "super_hot_regions:208"
+  },
+  {
+    "rank": 20,
+    "group_index": 1,
+    "execution_count": 1974709,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x7fb85bb0594e",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0x7f"
+        ],
+        "in_operands": [
+          "edx",
+          "0x7f"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x7fb85bb05a13",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0x7ff"
+        ],
+        "in_operands": [
+          "edx",
+          "0x7ff"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx"
+        },
+        "condition": "reg vs reg: edx"
+      }
+    ],
+    "bench": "503.bwaves_r",
+    "src": "super_hot_regions:36"
+  },
+  {
+    "rank": 54,
+    "group_index": 2,
+    "execution_count": 639286,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x64944a58aeeb",
+        "opcode": "idiv",
+        "raw_operands": [
+          "dword ptr [rbp-0xa4]"
+        ],
+        "in_operands": [
+          "[rbp-0xa4]",
+          "edx:eax"
+        ],
+        "out_operands": [
+          "edx:eax"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x64944a58b197",
+        "opcode": "idiv",
+        "raw_operands": [
+          "dword ptr [rbp-0xa4]"
+        ],
+        "in_operands": [
+          "[rbp-0xa4]",
+          "edx:eax"
+        ],
+        "out_operands": [
+          "edx:eax"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx:eax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx:eax"
+        },
+        "condition": "reg vs reg: edx:eax"
+      }
+    ],
+    "bench": "503.bwaves_r",
+    "src": "super_hot_regions:87"
+  },
+  {
+    "rank": 86,
+    "group_index": 3,
+    "execution_count": 32643,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x64944a588cf3",
+        "opcode": "inc",
+        "raw_operands": [
+          "rsi"
+        ],
+        "in_operands": [
+          "rsi"
+        ],
+        "out_operands": [
+          "rsi",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x64944a588cfd",
+        "opcode": "shl",
+        "raw_operands": [
+          "rsi",
+          "0x5"
+        ],
+        "in_operands": [
+          "rsi",
+          "0x5"
+        ],
+        "out_operands": [
+          "rsi",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rsi"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rsi"
+        },
+        "condition": "reg vs reg: rsi"
+      }
+    ],
+    "bench": "503.bwaves_r",
+    "src": "super_hot_regions:178"
+  },
+  {
+    "rank": 97,
+    "group_index": 1,
+    "execution_count": 20949,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x64944a589225",
+        "opcode": "inc",
+        "raw_operands": [
+          "r8"
+        ],
+        "in_operands": [
+          "r8"
+        ],
+        "out_operands": [
+          "r8",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x64944a589240",
+        "opcode": "shl",
+        "raw_operands": [
+          "r8",
+          "0x5"
+        ],
+        "in_operands": [
+          "r8",
+          "0x5"
+        ],
+        "out_operands": [
+          "r8",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r8"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r8"
+        },
+        "condition": "reg vs reg: r8"
+      }
+    ],
+    "bench": "503.bwaves_r",
+    "src": "super_hot_regions:199"
+  },
+  {
+    "rank": 15,
+    "group_index": 1,
+    "execution_count": 2203912,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x7f367c4cd94e",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0x7f"
+        ],
+        "in_operands": [
+          "edx",
+          "0x7f"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x7f367c4cda13",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0x7ff"
+        ],
+        "in_operands": [
+          "edx",
+          "0x7ff"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx"
+        },
+        "condition": "reg vs reg: edx"
+      }
+    ],
+    "bench": "503.bwaves_r",
+    "src": "super_hot_regions:23"
+  },
+  {
+    "rank": 58,
+    "group_index": 2,
+    "execution_count": 592993,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5eb154a48eeb",
+        "opcode": "idiv",
+        "raw_operands": [
+          "dword ptr [rbp-0xa4]"
+        ],
+        "in_operands": [
+          "[rbp-0xa4]",
+          "edx:eax"
+        ],
+        "out_operands": [
+          "edx:eax"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5eb154a49197",
+        "opcode": "idiv",
+        "raw_operands": [
+          "dword ptr [rbp-0xa4]"
+        ],
+        "in_operands": [
+          "[rbp-0xa4]",
+          "edx:eax"
+        ],
+        "out_operands": [
+          "edx:eax"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx:eax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx:eax"
+        },
+        "condition": "reg vs reg: edx:eax"
+      }
+    ],
+    "bench": "503.bwaves_r",
+    "src": "super_hot_regions:92"
+  },
+  {
+    "rank": 84,
+    "group_index": 3,
+    "execution_count": 45269,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5eb154a46cf3",
+        "opcode": "inc",
+        "raw_operands": [
+          "rsi"
+        ],
+        "in_operands": [
+          "rsi"
+        ],
+        "out_operands": [
+          "rsi",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5eb154a46cfd",
+        "opcode": "shl",
+        "raw_operands": [
+          "rsi",
+          "0x5"
+        ],
+        "in_operands": [
+          "rsi",
+          "0x5"
+        ],
+        "out_operands": [
+          "rsi",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rsi"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rsi"
+        },
+        "condition": "reg vs reg: rsi"
+      }
+    ],
+    "bench": "503.bwaves_r",
+    "src": "super_hot_regions:170"
+  },
+  {
+    "rank": 92,
+    "group_index": 1,
+    "execution_count": 36992,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5eb154a47225",
+        "opcode": "inc",
+        "raw_operands": [
+          "r8"
+        ],
+        "in_operands": [
+          "r8"
+        ],
+        "out_operands": [
+          "r8",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5eb154a47240",
+        "opcode": "shl",
+        "raw_operands": [
+          "r8",
+          "0x5"
+        ],
+        "in_operands": [
+          "r8",
+          "0x5"
+        ],
+        "out_operands": [
+          "r8",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r8"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r8"
+        },
+        "condition": "reg vs reg: r8"
+      }
+    ],
+    "bench": "503.bwaves_r",
+    "src": "super_hot_regions:190"
+  },
+  {
+    "rank": 100,
+    "group_index": 3,
+    "execution_count": 23089,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5eb154a467e0",
+        "opcode": "inc",
+        "raw_operands": [
+          "rsi"
+        ],
+        "in_operands": [
+          "rsi"
+        ],
+        "out_operands": [
+          "rsi",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5eb154a467ea",
+        "opcode": "shl",
+        "raw_operands": [
+          "rsi",
+          "0x5"
+        ],
+        "in_operands": [
+          "rsi",
+          "0x5"
+        ],
+        "out_operands": [
+          "rsi",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rsi"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rsi"
+        },
+        "condition": "reg vs reg: rsi"
+      }
+    ],
+    "bench": "503.bwaves_r",
+    "src": "super_hot_regions:206"
+  },
+  {
+    "rank": 31,
+    "group_index": 1,
+    "execution_count": 1347241,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x73a5fce4d94e",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0x7f"
+        ],
+        "in_operands": [
+          "edx",
+          "0x7f"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x73a5fce4da13",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0x7ff"
+        ],
+        "in_operands": [
+          "edx",
+          "0x7ff"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx"
+        },
+        "condition": "reg vs reg: edx"
+      }
+    ],
+    "bench": "503.bwaves_r",
+    "src": "super_hot_regions:51"
+  },
+  {
+    "rank": 48,
+    "group_index": 2,
+    "execution_count": 648279,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5693fc676eeb",
+        "opcode": "idiv",
+        "raw_operands": [
+          "dword ptr [rbp-0xa4]"
+        ],
+        "in_operands": [
+          "[rbp-0xa4]",
+          "edx:eax"
+        ],
+        "out_operands": [
+          "edx:eax"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5693fc677197",
+        "opcode": "idiv",
+        "raw_operands": [
+          "dword ptr [rbp-0xa4]"
+        ],
+        "in_operands": [
+          "[rbp-0xa4]",
+          "edx:eax"
+        ],
+        "out_operands": [
+          "edx:eax"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx:eax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx:eax"
+        },
+        "condition": "reg vs reg: edx:eax"
+      }
+    ],
+    "bench": "503.bwaves_r",
+    "src": "super_hot_regions:79"
+  },
+  {
+    "rank": 98,
+    "group_index": 3,
+    "execution_count": 17880,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5693fc674cf3",
+        "opcode": "inc",
+        "raw_operands": [
+          "rsi"
+        ],
+        "in_operands": [
+          "rsi"
+        ],
+        "out_operands": [
+          "rsi",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5693fc674cfd",
+        "opcode": "shl",
+        "raw_operands": [
+          "rsi",
+          "0x5"
+        ],
+        "in_operands": [
+          "rsi",
+          "0x5"
+        ],
+        "out_operands": [
+          "rsi",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rsi"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rsi"
+        },
+        "condition": "reg vs reg: rsi"
+      }
+    ],
+    "bench": "503.bwaves_r",
+    "src": "super_hot_regions:197"
+  },
+  {
+    "rank": 29,
+    "group_index": 1,
+    "execution_count": 4079936,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x61d4948ec990",
+        "opcode": "imul",
+        "raw_operands": [
+          "rdx",
+          "rsi"
+        ],
+        "in_operands": [
+          "rdx",
+          "rsi"
+        ],
+        "out_operands": [
+          "rdx"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x61d4948ec994",
+        "opcode": "add",
+        "raw_operands": [
+          "rax",
+          "rdx"
+        ],
+        "in_operands": [
+          "rax",
+          "rdx"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rdx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rdx"
+        },
+        "condition": "reg vs reg: rdx"
+      }
+    ],
+    "bench": "505.mcf_r",
+    "src": "super_hot_regions:38"
+  },
+  {
+    "rank": 5,
+    "group_index": 1,
+    "execution_count": 6261866,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x61ec7a61b01b",
+        "opcode": "imul",
+        "raw_operands": [
+          "edi",
+          "dword ptr [rdx+r10*4]"
+        ],
+        "in_operands": [
+          "edi",
+          "[rdx+r10*4]"
+        ],
+        "out_operands": [
+          "edi"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x61ec7a61b027",
+        "opcode": "add",
+        "raw_operands": [
+          "r12d",
+          "edi"
+        ],
+        "in_operands": [
+          "r12d",
+          "edi"
+        ],
+        "out_operands": [
+          "r12d",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edi"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edi"
+        },
+        "condition": "reg vs reg: edi"
+      }
+    ],
+    "bench": "507.cactuBSSN_r",
+    "src": "super_hot_regions:7"
+  },
+  {
+    "rank": 7,
+    "group_index": 1,
+    "execution_count": 5672465,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x61ec7a5ec613",
+        "opcode": "imul",
+        "raw_operands": [
+          "edx",
+          "dword ptr [rcx+r10*4]"
+        ],
+        "in_operands": [
+          "edx",
+          "[rcx+r10*4]"
+        ],
+        "out_operands": [
+          "edx"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x61ec7a5ec61f",
+        "opcode": "add",
+        "raw_operands": [
+          "r12d",
+          "edx"
+        ],
+        "in_operands": [
+          "r12d",
+          "edx"
+        ],
+        "out_operands": [
+          "r12d",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx"
+        },
+        "condition": "reg vs reg: edx"
+      }
+    ],
+    "bench": "507.cactuBSSN_r",
+    "src": "super_hot_regions:10"
+  },
+  {
+    "rank": 66,
+    "group_index": 1,
+    "execution_count": 340315,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x75705f2f194e",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0x7f"
+        ],
+        "in_operands": [
+          "edx",
+          "0x7f"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x75705f2f1a13",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0x7ff"
+        ],
+        "in_operands": [
+          "edx",
+          "0x7ff"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx"
+        },
+        "condition": "reg vs reg: edx"
+      }
+    ],
+    "bench": "507.cactuBSSN_r",
+    "src": "super_hot_regions:118"
+  },
+  {
+    "rank": 81,
+    "group_index": 1,
+    "execution_count": 261072,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x61ec7a49525d",
+        "opcode": "xor",
+        "raw_operands": [
+          "r12d",
+          "r12d"
+        ],
+        "in_operands": [
+          "r12d",
+          "r12d"
+        ],
+        "out_operands": [
+          "r12d",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x61ec7a49529e",
+        "opcode": "inc",
+        "raw_operands": [
+          "r12d"
+        ],
+        "in_operands": [
+          "r12d"
+        ],
+        "out_operands": [
+          "r12d",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r12d"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r12d"
+        },
+        "condition": "reg vs reg: r12d"
+      }
+    ],
+    "bench": "507.cactuBSSN_r",
+    "src": "super_hot_regions:155"
+  },
+  {
+    "rank": 75,
+    "group_index": 4,
+    "execution_count": 345465,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x715def1921d8",
+        "opcode": "xor",
+        "raw_operands": [
+          "eax",
+          "eax"
+        ],
+        "in_operands": [
+          "eax",
+          "eax"
+        ],
+        "out_operands": [
+          "eax",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x715def1921ed",
+        "opcode": "and",
+        "raw_operands": [
+          "eax",
+          "0x7fffffff"
+        ],
+        "in_operands": [
+          "eax",
+          "0x7fffffff"
+        ],
+        "out_operands": [
+          "eax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "eax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "eax"
+        },
+        "condition": "reg vs reg: eax"
+      }
+    ],
+    "bench": "508.namd_r",
+    "src": "super_hot_regions:292"
+  },
+  {
+    "rank": 19,
+    "group_index": 1,
+    "execution_count": 2129843,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x61e49ab37bd0",
+        "opcode": "dec",
+        "raw_operands": [
+          "ecx"
+        ],
+        "in_operands": [
+          "ecx"
+        ],
+        "out_operands": [
+          "ecx",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x61e49ab37bd6",
+        "opcode": "sub",
+        "raw_operands": [
+          "ecx",
+          "esi"
+        ],
+        "in_operands": [
+          "ecx",
+          "esi"
+        ],
+        "out_operands": [
+          "ecx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "ecx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "ecx"
+        },
+        "condition": "reg vs reg: ecx"
+      }
+    ],
+    "bench": "510.parest_r",
+    "src": "super_hot_regions:34"
+  },
+  {
+    "rank": 38,
+    "group_index": 1,
+    "execution_count": 1251364,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x61e49ab37b91",
+        "opcode": "sub",
+        "raw_operands": [
+          "rax",
+          "rdi"
+        ],
+        "in_operands": [
+          "rax",
+          "rdi"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x61e49ab37b94",
+        "opcode": "sar",
+        "raw_operands": [
+          "rax",
+          "0x2"
+        ],
+        "in_operands": [
+          "rax",
+          "0x2"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rax"
+        },
+        "condition": "reg vs reg: rax"
+      }
+    ],
+    "bench": "510.parest_r",
+    "src": "super_hot_regions:61"
+  },
+  {
+    "rank": 36,
+    "group_index": 1,
+    "execution_count": 2930212,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x622355b2facd",
+        "opcode": "imul",
+        "raw_operands": [
+          "rax",
+          "rax",
+          "0xc8"
+        ],
+        "in_operands": [
+          "rax",
+          "0xc8"
+        ],
+        "out_operands": [
+          "rax"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x622355b2fad4",
+        "opcode": "add",
+        "raw_operands": [
+          "rax",
+          "qword ptr [rbp+0x8]"
+        ],
+        "in_operands": [
+          "rax",
+          "[rbp+0x8]"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rax"
+        },
+        "condition": "reg vs reg: rax"
+      }
+    ],
+    "bench": "511.povray_r",
+    "src": "super_hot_regions:47"
+  },
+  {
+    "rank": 75,
+    "group_index": 1,
+    "execution_count": 1014759,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x622355aa69ea",
+        "opcode": "shl",
+        "raw_operands": [
+          "rax",
+          "0x4"
+        ],
+        "in_operands": [
+          "rax",
+          "0x4"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x622355aa69ee",
+        "opcode": "add",
+        "raw_operands": [
+          "rax",
+          "r8"
+        ],
+        "in_operands": [
+          "rax",
+          "r8"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rax"
+        },
+        "condition": "reg vs reg: rax"
+      }
+    ],
+    "bench": "511.povray_r",
+    "src": "super_hot_regions:103"
+  },
+  {
+    "rank": 95,
+    "group_index": 1,
+    "execution_count": 8,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x583214d051db",
+        "opcode": "add",
+        "raw_operands": [
+          "rsp",
+          "0x10"
+        ],
+        "in_operands": [
+          "rsp",
+          "0x10"
+        ],
+        "out_operands": [
+          "rsp",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x583214d051df",
+        "opcode": "sub",
+        "raw_operands": [
+          "rsp",
+          "0x8"
+        ],
+        "in_operands": [
+          "rsp",
+          "0x8"
+        ],
+        "out_operands": [
+          "rsp",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rsp"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rsp"
+        },
+        "condition": "reg vs reg: rsp"
+      }
+    ],
+    "bench": "519.lbm_r",
+    "src": "super_hot_regions:167"
+  },
+  {
+    "rank": 31,
+    "group_index": 1,
+    "execution_count": 1857465,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x57a6e2b7df2a",
+        "opcode": "sub",
+        "raw_operands": [
+          "rax",
+          "rdi"
+        ],
+        "in_operands": [
+          "rax",
+          "rdi"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x57a6e2b7df2d",
+        "opcode": "sar",
+        "raw_operands": [
+          "rax",
+          "0x1"
+        ],
+        "in_operands": [
+          "rax",
+          "0x1"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rax"
+        },
+        "condition": "reg vs reg: rax"
+      }
+    ],
+    "bench": "523.xalancbmk_r",
+    "src": "super_hot_regions:33"
+  },
+  {
+    "rank": 56,
+    "group_index": 1,
+    "execution_count": 1857463,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x57a6e2b7deaa",
+        "opcode": "sub",
+        "raw_operands": [
+          "rax",
+          "rsi"
+        ],
+        "in_operands": [
+          "rax",
+          "rsi"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x57a6e2b7dead",
+        "opcode": "sar",
+        "raw_operands": [
+          "rax",
+          "0x1"
+        ],
+        "in_operands": [
+          "rax",
+          "0x1"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rax"
+        },
+        "condition": "reg vs reg: rax"
+      }
+    ],
+    "bench": "523.xalancbmk_r",
+    "src": "super_hot_regions:64"
+  },
+  {
+    "rank": 84,
+    "group_index": 1,
+    "execution_count": 587264,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x57a6e2bbe50c",
+        "opcode": "xor",
+        "raw_operands": [
+          "r8d",
+          "r8d"
+        ],
+        "in_operands": [
+          "r8d",
+          "r8d"
+        ],
+        "out_operands": [
+          "r8d",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x57a6e2bbe50f",
+        "opcode": "or",
+        "raw_operands": [
+          "r8d",
+          "edi"
+        ],
+        "in_operands": [
+          "r8d",
+          "edi"
+        ],
+        "out_operands": [
+          "r8d",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r8d"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r8d"
+        },
+        "condition": "reg vs reg: r8d"
+      }
+    ],
+    "bench": "523.xalancbmk_r",
+    "src": "super_hot_regions:95"
+  },
+  {
+    "rank": 28,
+    "group_index": 3,
+    "execution_count": 431152,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x560e964811f1",
+        "opcode": "inc",
+        "raw_operands": [
+          "r9"
+        ],
+        "in_operands": [
+          "r9"
+        ],
+        "out_operands": [
+          "r9",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x560e96481200",
+        "opcode": "shl",
+        "raw_operands": [
+          "r9",
+          "0x5"
+        ],
+        "in_operands": [
+          "r9",
+          "0x5"
+        ],
+        "out_operands": [
+          "r9",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r9"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r9"
+        },
+        "condition": "reg vs reg: r9"
+      }
+    ],
+    "bench": "525.x264_r",
+    "src": "super_hot_regions:65"
+  },
+  {
+    "rank": 32,
+    "group_index": 3,
+    "execution_count": 411455,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x56c92ffea1f1",
+        "opcode": "inc",
+        "raw_operands": [
+          "r9"
+        ],
+        "in_operands": [
+          "r9"
+        ],
+        "out_operands": [
+          "r9",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x56c92ffea200",
+        "opcode": "shl",
+        "raw_operands": [
+          "r9",
+          "0x5"
+        ],
+        "in_operands": [
+          "r9",
+          "0x5"
+        ],
+        "out_operands": [
+          "r9",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r9"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r9"
+        },
+        "condition": "reg vs reg: r9"
+      }
+    ],
+    "bench": "525.x264_r",
+    "src": "super_hot_regions:60"
+  },
+  {
+    "rank": 44,
+    "group_index": 9,
+    "execution_count": 314605,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x56c92ffe4478",
+        "opcode": "inc",
+        "raw_operands": [
+          "r12"
+        ],
+        "in_operands": [
+          "r12"
+        ],
+        "out_operands": [
+          "r12",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x56c92ffe44b4",
+        "opcode": "shl",
+        "raw_operands": [
+          "r12",
+          "0x5"
+        ],
+        "in_operands": [
+          "r12",
+          "0x5"
+        ],
+        "out_operands": [
+          "r12",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r12"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r12"
+        },
+        "condition": "reg vs reg: r12"
+      }
+    ],
+    "bench": "525.x264_r",
+    "src": "super_hot_regions:88"
+  },
+  {
+    "rank": 64,
+    "group_index": 1,
+    "execution_count": 195728,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x56c92fff4ff7",
+        "opcode": "add",
+        "raw_operands": [
+          "r12d",
+          "dword ptr [rsp+0x24]"
+        ],
+        "in_operands": [
+          "r12d",
+          "[rsp+0x24]"
+        ],
+        "out_operands": [
+          "r12d",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x56c92fff5002",
+        "opcode": "add",
+        "raw_operands": [
+          "eax",
+          "r13d"
+        ],
+        "in_operands": [
+          "eax",
+          "r13d"
+        ],
+        "out_operands": [
+          "eax",
+          "flag"
+        ]
+      },
+      {
+        "index": 2,
+        "address": "0x56c92fff5005",
+        "opcode": "add",
+        "raw_operands": [
+          "eax",
+          "r12d"
+        ],
+        "in_operands": [
+          "eax",
+          "r12d"
+        ],
+        "out_operands": [
+          "eax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 1,
+          "operand": "eax"
+        },
+        "to": {
+          "instr_index": 2,
+          "operand": "eax"
+        },
+        "condition": "reg vs reg: eax"
+      },
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r12d"
+        },
+        "to": {
+          "instr_index": 2,
+          "operand": "r12d"
+        },
+        "condition": "reg vs reg: r12d"
+      }
+    ],
+    "bench": "525.x264_r",
+    "src": "super_hot_regions:129"
+  },
+  {
+    "rank": 24,
+    "group_index": 3,
+    "execution_count": 494131,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x56c83e9b11f1",
+        "opcode": "inc",
+        "raw_operands": [
+          "r9"
+        ],
+        "in_operands": [
+          "r9"
+        ],
+        "out_operands": [
+          "r9",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x56c83e9b1200",
+        "opcode": "shl",
+        "raw_operands": [
+          "r9",
+          "0x5"
+        ],
+        "in_operands": [
+          "r9",
+          "0x5"
+        ],
+        "out_operands": [
+          "r9",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r9"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r9"
+        },
+        "condition": "reg vs reg: r9"
+      }
+    ],
+    "bench": "525.x264_r",
+    "src": "super_hot_regions:50"
+  },
+  {
+    "rank": 48,
+    "group_index": 9,
+    "execution_count": 235692,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x56c83e9ab478",
+        "opcode": "inc",
+        "raw_operands": [
+          "r12"
+        ],
+        "in_operands": [
+          "r12"
+        ],
+        "out_operands": [
+          "r12",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x56c83e9ab4b4",
+        "opcode": "shl",
+        "raw_operands": [
+          "r12",
+          "0x5"
+        ],
+        "in_operands": [
+          "r12",
+          "0x5"
+        ],
+        "out_operands": [
+          "r12",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r12"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r12"
+        },
+        "condition": "reg vs reg: r12"
+      }
+    ],
+    "bench": "525.x264_r",
+    "src": "super_hot_regions:91"
+  },
+  {
+    "rank": 78,
+    "group_index": 1,
+    "execution_count": 121340,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x56c83e9bbff7",
+        "opcode": "add",
+        "raw_operands": [
+          "r12d",
+          "dword ptr [rsp+0x24]"
+        ],
+        "in_operands": [
+          "r12d",
+          "[rsp+0x24]"
+        ],
+        "out_operands": [
+          "r12d",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x56c83e9bc002",
+        "opcode": "add",
+        "raw_operands": [
+          "eax",
+          "r13d"
+        ],
+        "in_operands": [
+          "eax",
+          "r13d"
+        ],
+        "out_operands": [
+          "eax",
+          "flag"
+        ]
+      },
+      {
+        "index": 2,
+        "address": "0x56c83e9bc005",
+        "opcode": "add",
+        "raw_operands": [
+          "eax",
+          "r12d"
+        ],
+        "in_operands": [
+          "eax",
+          "r12d"
+        ],
+        "out_operands": [
+          "eax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 1,
+          "operand": "eax"
+        },
+        "to": {
+          "instr_index": 2,
+          "operand": "eax"
+        },
+        "condition": "reg vs reg: eax"
+      },
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r12d"
+        },
+        "to": {
+          "instr_index": 2,
+          "operand": "r12d"
+        },
+        "condition": "reg vs reg: r12d"
+      }
+    ],
+    "bench": "525.x264_r",
+    "src": "super_hot_regions:159"
+  },
+  {
+    "rank": 54,
+    "group_index": 2,
+    "execution_count": 1066727,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x56d60d484d93",
+        "opcode": "xor",
+        "raw_operands": [
+          "eax",
+          "eax"
+        ],
+        "in_operands": [
+          "eax",
+          "eax"
+        ],
+        "out_operands": [
+          "eax",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x56d60d484d9c",
+        "opcode": "add",
+        "raw_operands": [
+          "eax",
+          "eax"
+        ],
+        "in_operands": [
+          "eax",
+          "eax"
+        ],
+        "out_operands": [
+          "eax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "eax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "eax"
+        },
+        "condition": "reg vs reg: eax"
+      },
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "eax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "eax"
+        },
+        "condition": "reg vs reg: eax"
+      }
+    ],
+    "bench": "526.blender_r",
+    "src": "super_hot_regions:67"
+  },
+  {
+    "rank": 63,
+    "group_index": 1,
+    "execution_count": 984508,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x56d60d489904",
+        "opcode": "and",
+        "raw_operands": [
+          "r10d",
+          "r11d"
+        ],
+        "in_operands": [
+          "r10d",
+          "r11d"
+        ],
+        "out_operands": [
+          "r10d",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x56d60d489907",
+        "opcode": "and",
+        "raw_operands": [
+          "r10d",
+          "eax"
+        ],
+        "in_operands": [
+          "r10d",
+          "eax"
+        ],
+        "out_operands": [
+          "r10d",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r10d"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r10d"
+        },
+        "condition": "reg vs reg: r10d"
+      }
+    ],
+    "bench": "526.blender_r",
+    "src": "super_hot_regions:82"
+  },
+  {
+    "rank": 38,
+    "group_index": 1,
+    "execution_count": 918484,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x6224487b94e9",
+        "opcode": "sar",
+        "raw_operands": [
+          "edx",
+          "0x13"
+        ],
+        "in_operands": [
+          "edx",
+          "0x13"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x6224487b94ec",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0xf"
+        ],
+        "in_operands": [
+          "edx",
+          "0xf"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx"
+        },
+        "condition": "reg vs reg: edx"
+      }
+    ],
+    "bench": "531.deepsjeng_r",
+    "src": "super_hot_regions:74"
+  },
+  {
+    "rank": 84,
+    "group_index": 1,
+    "execution_count": 561234,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x6224487c29f6",
+        "opcode": "and",
+        "raw_operands": [
+          "rax",
+          "qword ptr [rsp]"
+        ],
+        "in_operands": [
+          "rax",
+          "[rsp]"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x6224487c2a04",
+        "opcode": "or",
+        "raw_operands": [
+          "rbx",
+          "rax"
+        ],
+        "in_operands": [
+          "rbx",
+          "rax"
+        ],
+        "out_operands": [
+          "rbx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rax"
+        },
+        "condition": "reg vs reg: rax"
+      }
+    ],
+    "bench": "531.deepsjeng_r",
+    "src": "super_hot_regions:149"
+  },
+  {
+    "rank": 87,
+    "group_index": 1,
+    "execution_count": 545516,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x6224487ba16b",
+        "opcode": "sub",
+        "raw_operands": [
+          "r14d",
+          "eax"
+        ],
+        "in_operands": [
+          "r14d",
+          "eax"
+        ],
+        "out_operands": [
+          "r14d",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x6224487ba16e",
+        "opcode": "sub",
+        "raw_operands": [
+          "ebx",
+          "r14d"
+        ],
+        "in_operands": [
+          "ebx",
+          "r14d"
+        ],
+        "out_operands": [
+          "ebx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r14d"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r14d"
+        },
+        "condition": "reg vs reg: r14d"
+      }
+    ],
+    "bench": "531.deepsjeng_r",
+    "src": "super_hot_regions:152"
+  },
+  {
+    "rank": 34,
+    "group_index": 1,
+    "execution_count": 1395983,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x633a6b2e0c1c",
+        "opcode": "dec",
+        "raw_operands": [
+          "rax"
+        ],
+        "in_operands": [
+          "rax"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x633a6b2e0c1f",
+        "opcode": "imul",
+        "raw_operands": [
+          "rax",
+          "rcx"
+        ],
+        "in_operands": [
+          "rax",
+          "rcx"
+        ],
+        "out_operands": [
+          "rax"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rax"
+        },
+        "condition": "reg vs reg: rax"
+      }
+    ],
+    "bench": "538.imagick_r",
+    "src": "super_hot_regions:45"
+  },
+  {
+    "rank": 84,
+    "group_index": 2,
+    "execution_count": 589072,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x60cba88e9600",
+        "opcode": "xor",
+        "raw_operands": [
+          "esi",
+          "esi"
+        ],
+        "in_operands": [
+          "esi",
+          "esi"
+        ],
+        "out_operands": [
+          "esi",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x60cba88e960b",
+        "opcode": "add",
+        "raw_operands": [
+          "ecx",
+          "esi"
+        ],
+        "in_operands": [
+          "ecx",
+          "esi"
+        ],
+        "out_operands": [
+          "ecx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "esi"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "esi"
+        },
+        "condition": "reg vs reg: esi"
+      }
+    ],
+    "bench": "548.exchange2_r",
+    "src": "super_hot_regions:110"
+  },
+  {
+    "rank": 85,
+    "group_index": 2,
+    "execution_count": 588720,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x60cba88ea5b0",
+        "opcode": "xor",
+        "raw_operands": [
+          "r8d",
+          "r8d"
+        ],
+        "in_operands": [
+          "r8d",
+          "r8d"
+        ],
+        "out_operands": [
+          "r8d",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x60cba88ea5bc",
+        "opcode": "add",
+        "raw_operands": [
+          "eax",
+          "r8d"
+        ],
+        "in_operands": [
+          "eax",
+          "r8d"
+        ],
+        "out_operands": [
+          "eax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r8d"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r8d"
+        },
+        "condition": "reg vs reg: r8d"
+      }
+    ],
+    "bench": "548.exchange2_r",
+    "src": "super_hot_regions:113"
+  },
+  {
+    "rank": 91,
+    "group_index": 1,
+    "execution_count": 474381,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x60cba88e8f93",
+        "opcode": "cmp",
+        "raw_operands": [
+          "dword ptr [rdx]",
+          "0x1"
+        ],
+        "in_operands": [
+          "[rdx]",
+          "0x1"
+        ],
+        "out_operands": [
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x60cba88e8f9a",
+        "opcode": "sbb",
+        "raw_operands": [
+          "ecx",
+          "0xffffffff"
+        ],
+        "in_operands": [
+          "ecx",
+          "0xffffffff",
+          "flag"
+        ],
+        "out_operands": [
+          "ecx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "flag"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "flag"
+        },
+        "condition": "flag vs flag"
+      }
+    ],
+    "bench": "548.exchange2_r",
+    "src": "super_hot_regions:120"
+  },
+  {
+    "rank": 22,
+    "group_index": 3,
+    "execution_count": 503804,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5dbd09c139a1",
+        "opcode": "add",
+        "raw_operands": [
+          "rax",
+          "qword ptr [rsp+0x758]"
+        ],
+        "in_operands": [
+          "rax",
+          "[rsp+0x758]"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5dbd09c139a9",
+        "opcode": "add",
+        "raw_operands": [
+          "rax",
+          "r14"
+        ],
+        "in_operands": [
+          "rax",
+          "r14"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rax"
+        },
+        "condition": "reg vs reg: rax"
+      }
+    ],
+    "bench": "549.fotonik3d_r",
+    "src": "super_hot_regions:89"
+  },
+  {
+    "rank": 76,
+    "group_index": 1,
+    "execution_count": 29023,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5dbd09bcbb9d",
+        "opcode": "xor",
+        "raw_operands": [
+          "r10d",
+          "r10d"
+        ],
+        "in_operands": [
+          "r10d",
+          "r10d"
+        ],
+        "out_operands": [
+          "r10d",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5dbd09bcbc01",
+        "opcode": "xor",
+        "raw_operands": [
+          "r10d",
+          "r10d"
+        ],
+        "in_operands": [
+          "r10d",
+          "r10d"
+        ],
+        "out_operands": [
+          "r10d",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r10d"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r10d"
+        },
+        "condition": "reg vs reg: r10d"
+      },
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r10d"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r10d"
+        },
+        "condition": "reg vs reg: r10d"
+      }
+    ],
+    "bench": "549.fotonik3d_r",
+    "src": "super_hot_regions:338"
+  },
+  {
+    "rank": 71,
+    "group_index": 1,
+    "execution_count": 844795,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x7e3586c9394e",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0x7f"
+        ],
+        "in_operands": [
+          "edx",
+          "0x7f"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x7e3586c93a13",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0x7ff"
+        ],
+        "in_operands": [
+          "edx",
+          "0x7ff"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx"
+        },
+        "condition": "reg vs reg: edx"
+      }
+    ],
+    "bench": "554.roms_r",
+    "src": "super_hot_regions:131"
+  },
+  {
+    "rank": 32,
+    "group_index": 1,
+    "execution_count": 4056762,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5c92f1c9514d",
+        "opcode": "not",
+        "raw_operands": [
+          "r8"
+        ],
+        "in_operands": [
+          "r8"
+        ],
+        "out_operands": [
+          "r8"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5c92f1c95150",
+        "opcode": "add",
+        "raw_operands": [
+          "r8",
+          "r15"
+        ],
+        "in_operands": [
+          "r8",
+          "r15"
+        ],
+        "out_operands": [
+          "r8",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r8"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r8"
+        },
+        "condition": "reg vs reg: r8"
+      }
+    ],
+    "bench": "557.xz_r",
+    "src": "super_hot_regions:48"
+  },
+  {
+    "rank": 49,
+    "group_index": 1,
+    "execution_count": 1427322,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5c92f1c90b5a",
+        "opcode": "sub",
+        "raw_operands": [
+          "rax",
+          "r12"
+        ],
+        "in_operands": [
+          "rax",
+          "r12"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5c92f1c90b5f",
+        "opcode": "sar",
+        "raw_operands": [
+          "rax",
+          "0x3"
+        ],
+        "in_operands": [
+          "rax",
+          "0x3"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rax"
+        },
+        "condition": "reg vs reg: rax"
+      }
+    ],
+    "bench": "557.xz_r",
+    "src": "super_hot_regions:85"
+  },
+  {
+    "rank": 82,
+    "group_index": 1,
+    "execution_count": 898613,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5c92f1c94d74",
+        "opcode": "xor",
+        "raw_operands": [
+          "ebx",
+          "0x7f"
+        ],
+        "in_operands": [
+          "ebx",
+          "0x7f"
+        ],
+        "out_operands": [
+          "ebx",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5c92f1c94d77",
+        "opcode": "and",
+        "raw_operands": [
+          "ebx",
+          "0xfff"
+        ],
+        "in_operands": [
+          "ebx",
+          "0xfff"
+        ],
+        "out_operands": [
+          "ebx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "ebx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "ebx"
+        },
+        "condition": "reg vs reg: ebx"
+      }
+    ],
+    "bench": "557.xz_r",
+    "src": "super_hot_regions:146"
+  },
+  {
+    "rank": 44,
+    "group_index": 1,
+    "execution_count": 362594,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5c02260f214d",
+        "opcode": "not",
+        "raw_operands": [
+          "r8"
+        ],
+        "in_operands": [
+          "r8"
+        ],
+        "out_operands": [
+          "r8"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5c02260f2150",
+        "opcode": "add",
+        "raw_operands": [
+          "r8",
+          "r15"
+        ],
+        "in_operands": [
+          "r8",
+          "r15"
+        ],
+        "out_operands": [
+          "r8",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r8"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r8"
+        },
+        "condition": "reg vs reg: r8"
+      }
+    ],
+    "bench": "557.xz_r",
+    "src": "super_hot_regions:67"
+  },
+  {
+    "rank": 53,
+    "group_index": 1,
+    "execution_count": 360527,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5c02260edb5a",
+        "opcode": "sub",
+        "raw_operands": [
+          "rax",
+          "r12"
+        ],
+        "in_operands": [
+          "rax",
+          "r12"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5c02260edb5f",
+        "opcode": "sar",
+        "raw_operands": [
+          "rax",
+          "0x3"
+        ],
+        "in_operands": [
+          "rax",
+          "0x3"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rax"
+        },
+        "condition": "reg vs reg: rax"
+      }
+    ],
+    "bench": "557.xz_r",
+    "src": "super_hot_regions:82"
+  },
+  {
+    "rank": 84,
+    "group_index": 1,
+    "execution_count": 278776,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5c02260f2420",
+        "opcode": "xor",
+        "raw_operands": [
+          "ebx",
+          "0x7f"
+        ],
+        "in_operands": [
+          "ebx",
+          "0x7f"
+        ],
+        "out_operands": [
+          "ebx",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5c02260f2423",
+        "opcode": "and",
+        "raw_operands": [
+          "ebx",
+          "0xfff"
+        ],
+        "in_operands": [
+          "ebx",
+          "0xfff"
+        ],
+        "out_operands": [
+          "ebx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "ebx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "ebx"
+        },
+        "condition": "reg vs reg: ebx"
+      }
+    ],
+    "bench": "557.xz_r",
+    "src": "super_hot_regions:141"
+  },
+  {
+    "rank": 37,
+    "group_index": 1,
+    "execution_count": 1429617,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5b74f5e7814d",
+        "opcode": "not",
+        "raw_operands": [
+          "r8"
+        ],
+        "in_operands": [
+          "r8"
+        ],
+        "out_operands": [
+          "r8"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5b74f5e78150",
+        "opcode": "add",
+        "raw_operands": [
+          "r8",
+          "r15"
+        ],
+        "in_operands": [
+          "r8",
+          "r15"
+        ],
+        "out_operands": [
+          "r8",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r8"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r8"
+        },
+        "condition": "reg vs reg: r8"
+      }
+    ],
+    "bench": "557.xz_r",
+    "src": "super_hot_regions:56"
+  },
+  {
+    "rank": 60,
+    "group_index": 1,
+    "execution_count": 880049,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5b74f5e73b5a",
+        "opcode": "sub",
+        "raw_operands": [
+          "rax",
+          "r12"
+        ],
+        "in_operands": [
+          "rax",
+          "r12"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5b74f5e73b5f",
+        "opcode": "sar",
+        "raw_operands": [
+          "rax",
+          "0x3"
+        ],
+        "in_operands": [
+          "rax",
+          "0x3"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rax"
+        },
+        "condition": "reg vs reg: rax"
+      }
+    ],
+    "bench": "557.xz_r",
+    "src": "super_hot_regions:96"
+  },
+  {
+    "rank": 83,
+    "group_index": 1,
+    "execution_count": 615565,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5b74f5e78420",
+        "opcode": "xor",
+        "raw_operands": [
+          "ebx",
+          "0x7f"
+        ],
+        "in_operands": [
+          "ebx",
+          "0x7f"
+        ],
+        "out_operands": [
+          "ebx",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5b74f5e78423",
+        "opcode": "and",
+        "raw_operands": [
+          "ebx",
+          "0xfff"
+        ],
+        "in_operands": [
+          "ebx",
+          "0xfff"
+        ],
+        "out_operands": [
+          "ebx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "ebx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "ebx"
+        },
+        "condition": "reg vs reg: ebx"
+      }
+    ],
+    "bench": "557.xz_r",
+    "src": "super_hot_regions:141"
+  },
+  {
+    "rank": 87,
+    "group_index": 1,
+    "execution_count": 392474,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5ad33670b098",
+        "opcode": "cmp",
+        "raw_operands": [
+          "edx",
+          "0x1"
+        ],
+        "in_operands": [
+          "edx",
+          "0x1"
+        ],
+        "out_operands": [
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5ad33670b09b",
+        "opcode": "sbb",
+        "raw_operands": [
+          "esi",
+          "esi"
+        ],
+        "in_operands": [
+          "esi",
+          "esi",
+          "flag"
+        ],
+        "out_operands": [
+          "esi",
+          "flag"
+        ]
+      },
+      {
+        "index": 2,
+        "address": "0x5ad33670b09d",
+        "opcode": "inc",
+        "raw_operands": [
+          "esi"
+        ],
+        "in_operands": [
+          "esi"
+        ],
+        "out_operands": [
+          "esi",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "flag"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "flag"
+        },
+        "condition": "flag vs flag"
+      },
+      {
+        "from": {
+          "instr_index": 1,
+          "operand": "esi"
+        },
+        "to": {
+          "instr_index": 2,
+          "operand": "esi"
+        },
+        "condition": "reg vs reg: esi"
+      }
+    ],
+    "bench": "600.perlbench_s",
+    "src": "super_hot_regions:130"
+  },
+  {
+    "rank": 87,
+    "group_index": 2,
+    "execution_count": 392474,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5ad33670b09f",
+        "opcode": "cmp",
+        "raw_operands": [
+          "edx",
+          "0x1"
+        ],
+        "in_operands": [
+          "edx",
+          "0x1"
+        ],
+        "out_operands": [
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5ad33670b0a2",
+        "opcode": "sbb",
+        "raw_operands": [
+          "ebx",
+          "ebx"
+        ],
+        "in_operands": [
+          "ebx",
+          "ebx",
+          "flag"
+        ],
+        "out_operands": [
+          "ebx",
+          "flag"
+        ]
+      },
+      {
+        "index": 2,
+        "address": "0x5ad33670b0a4",
+        "opcode": "add",
+        "raw_operands": [
+          "ebx",
+          "0x401"
+        ],
+        "in_operands": [
+          "ebx",
+          "0x401"
+        ],
+        "out_operands": [
+          "ebx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "flag"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "flag"
+        },
+        "condition": "flag vs flag"
+      },
+      {
+        "from": {
+          "instr_index": 1,
+          "operand": "ebx"
+        },
+        "to": {
+          "instr_index": 2,
+          "operand": "ebx"
+        },
+        "condition": "reg vs reg: ebx"
+      }
+    ],
+    "bench": "600.perlbench_s",
+    "src": "super_hot_regions:131"
+  },
+  {
+    "rank": 55,
+    "group_index": 1,
+    "execution_count": 451171,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x71cc30a6c94e",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0x7f"
+        ],
+        "in_operands": [
+          "edx",
+          "0x7f"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x71cc30a6ca13",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0x7ff"
+        ],
+        "in_operands": [
+          "edx",
+          "0x7ff"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx"
+        },
+        "condition": "reg vs reg: edx"
+      }
+    ],
+    "bench": "603.bwaves_s",
+    "src": "super_hot_regions:96"
+  },
+  {
+    "rank": 69,
+    "group_index": 2,
+    "execution_count": 225350,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5a7ed4f22eeb",
+        "opcode": "idiv",
+        "raw_operands": [
+          "dword ptr [rbp-0xa4]"
+        ],
+        "in_operands": [
+          "[rbp-0xa4]",
+          "edx:eax"
+        ],
+        "out_operands": [
+          "edx:eax"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5a7ed4f23197",
+        "opcode": "idiv",
+        "raw_operands": [
+          "dword ptr [rbp-0xa4]"
+        ],
+        "in_operands": [
+          "[rbp-0xa4]",
+          "edx:eax"
+        ],
+        "out_operands": [
+          "edx:eax"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx:eax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx:eax"
+        },
+        "condition": "reg vs reg: edx:eax"
+      }
+    ],
+    "bench": "603.bwaves_s",
+    "src": "super_hot_regions:129"
+  },
+  {
+    "rank": 81,
+    "group_index": 1,
+    "execution_count": 58519,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5a7ed4f21225",
+        "opcode": "inc",
+        "raw_operands": [
+          "r8"
+        ],
+        "in_operands": [
+          "r8"
+        ],
+        "out_operands": [
+          "r8",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5a7ed4f21240",
+        "opcode": "shl",
+        "raw_operands": [
+          "r8",
+          "0x5"
+        ],
+        "in_operands": [
+          "r8",
+          "0x5"
+        ],
+        "out_operands": [
+          "r8",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r8"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r8"
+        },
+        "condition": "reg vs reg: r8"
+      }
+    ],
+    "bench": "603.bwaves_s",
+    "src": "super_hot_regions:162"
+  },
+  {
+    "rank": 94,
+    "group_index": 3,
+    "execution_count": 17813,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5a7ed4f207e0",
+        "opcode": "inc",
+        "raw_operands": [
+          "rsi"
+        ],
+        "in_operands": [
+          "rsi"
+        ],
+        "out_operands": [
+          "rsi",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5a7ed4f207ea",
+        "opcode": "shl",
+        "raw_operands": [
+          "rsi",
+          "0x5"
+        ],
+        "in_operands": [
+          "rsi",
+          "0x5"
+        ],
+        "out_operands": [
+          "rsi",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rsi"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rsi"
+        },
+        "condition": "reg vs reg: rsi"
+      }
+    ],
+    "bench": "603.bwaves_s",
+    "src": "super_hot_regions:190"
+  },
+  {
+    "rank": 97,
+    "group_index": 3,
+    "execution_count": 16017,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5a7ed4f202a3",
+        "opcode": "inc",
+        "raw_operands": [
+          "rsi"
+        ],
+        "in_operands": [
+          "rsi"
+        ],
+        "out_operands": [
+          "rsi",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5a7ed4f202ad",
+        "opcode": "shl",
+        "raw_operands": [
+          "rsi",
+          "0x5"
+        ],
+        "in_operands": [
+          "rsi",
+          "0x5"
+        ],
+        "out_operands": [
+          "rsi",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rsi"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rsi"
+        },
+        "condition": "reg vs reg: rsi"
+      }
+    ],
+    "bench": "603.bwaves_s",
+    "src": "super_hot_regions:198"
+  },
+  {
+    "rank": 58,
+    "group_index": 1,
+    "execution_count": 590898,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x7c1a1df8f94e",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0x7f"
+        ],
+        "in_operands": [
+          "edx",
+          "0x7f"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x7c1a1df8fa13",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0x7ff"
+        ],
+        "in_operands": [
+          "edx",
+          "0x7ff"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx"
+        },
+        "condition": "reg vs reg: edx"
+      }
+    ],
+    "bench": "603.bwaves_s",
+    "src": "super_hot_regions:85"
+  },
+  {
+    "rank": 67,
+    "group_index": 2,
+    "execution_count": 236339,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x55c2daaafeeb",
+        "opcode": "idiv",
+        "raw_operands": [
+          "dword ptr [rbp-0xa4]"
+        ],
+        "in_operands": [
+          "[rbp-0xa4]",
+          "edx:eax"
+        ],
+        "out_operands": [
+          "edx:eax"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x55c2daab0197",
+        "opcode": "idiv",
+        "raw_operands": [
+          "dword ptr [rbp-0xa4]"
+        ],
+        "in_operands": [
+          "[rbp-0xa4]",
+          "edx:eax"
+        ],
+        "out_operands": [
+          "edx:eax"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx:eax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx:eax"
+        },
+        "condition": "reg vs reg: edx:eax"
+      }
+    ],
+    "bench": "603.bwaves_s",
+    "src": "super_hot_regions:121"
+  },
+  {
+    "rank": 84,
+    "group_index": 3,
+    "execution_count": 45333,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x55c2daaad2a3",
+        "opcode": "inc",
+        "raw_operands": [
+          "rsi"
+        ],
+        "in_operands": [
+          "rsi"
+        ],
+        "out_operands": [
+          "rsi",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x55c2daaad2ad",
+        "opcode": "shl",
+        "raw_operands": [
+          "rsi",
+          "0x5"
+        ],
+        "in_operands": [
+          "rsi",
+          "0x5"
+        ],
+        "out_operands": [
+          "rsi",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rsi"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rsi"
+        },
+        "condition": "reg vs reg: rsi"
+      }
+    ],
+    "bench": "603.bwaves_s",
+    "src": "super_hot_regions:167"
+  },
+  {
+    "rank": 87,
+    "group_index": 3,
+    "execution_count": 31949,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x55c2daaad7e0",
+        "opcode": "inc",
+        "raw_operands": [
+          "rsi"
+        ],
+        "in_operands": [
+          "rsi"
+        ],
+        "out_operands": [
+          "rsi",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x55c2daaad7ea",
+        "opcode": "shl",
+        "raw_operands": [
+          "rsi",
+          "0x5"
+        ],
+        "in_operands": [
+          "rsi",
+          "0x5"
+        ],
+        "out_operands": [
+          "rsi",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rsi"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rsi"
+        },
+        "condition": "reg vs reg: rsi"
+      }
+    ],
+    "bench": "603.bwaves_s",
+    "src": "super_hot_regions:175"
+  },
+  {
+    "rank": 96,
+    "group_index": 1,
+    "execution_count": 15987,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x55c2daaae225",
+        "opcode": "inc",
+        "raw_operands": [
+          "r8"
+        ],
+        "in_operands": [
+          "r8"
+        ],
+        "out_operands": [
+          "r8",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x55c2daaae240",
+        "opcode": "shl",
+        "raw_operands": [
+          "r8",
+          "0x5"
+        ],
+        "in_operands": [
+          "r8",
+          "0x5"
+        ],
+        "out_operands": [
+          "r8",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r8"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r8"
+        },
+        "condition": "reg vs reg: r8"
+      }
+    ],
+    "bench": "603.bwaves_s",
+    "src": "super_hot_regions:192"
+  },
+  {
+    "rank": 99,
+    "group_index": 3,
+    "execution_count": 12171,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x55c2daaadcf3",
+        "opcode": "inc",
+        "raw_operands": [
+          "rsi"
+        ],
+        "in_operands": [
+          "rsi"
+        ],
+        "out_operands": [
+          "rsi",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x55c2daaadcfd",
+        "opcode": "shl",
+        "raw_operands": [
+          "rsi",
+          "0x5"
+        ],
+        "in_operands": [
+          "rsi",
+          "0x5"
+        ],
+        "out_operands": [
+          "rsi",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rsi"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rsi"
+        },
+        "condition": "reg vs reg: rsi"
+      }
+    ],
+    "bench": "603.bwaves_s",
+    "src": "super_hot_regions:199"
+  },
+  {
+    "rank": 51,
+    "group_index": 1,
+    "execution_count": 1356031,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5a81905e3990",
+        "opcode": "imul",
+        "raw_operands": [
+          "rdx",
+          "rsi"
+        ],
+        "in_operands": [
+          "rdx",
+          "rsi"
+        ],
+        "out_operands": [
+          "rdx"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5a81905e3994",
+        "opcode": "add",
+        "raw_operands": [
+          "rax",
+          "rdx"
+        ],
+        "in_operands": [
+          "rax",
+          "rdx"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rdx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rdx"
+        },
+        "condition": "reg vs reg: rdx"
+      }
+    ],
+    "bench": "605.mcf_s",
+    "src": "super_hot_regions:77"
+  },
+  {
+    "rank": 8,
+    "group_index": 1,
+    "execution_count": 4667322,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x626fc4377613",
+        "opcode": "imul",
+        "raw_operands": [
+          "edx",
+          "dword ptr [rcx+r10*4]"
+        ],
+        "in_operands": [
+          "edx",
+          "[rcx+r10*4]"
+        ],
+        "out_operands": [
+          "edx"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x626fc437761f",
+        "opcode": "add",
+        "raw_operands": [
+          "r12d",
+          "edx"
+        ],
+        "in_operands": [
+          "r12d",
+          "edx"
+        ],
+        "out_operands": [
+          "r12d",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx"
+        },
+        "condition": "reg vs reg: edx"
+      }
+    ],
+    "bench": "607.cactuBSSN_s",
+    "src": "super_hot_regions:20"
+  },
+  {
+    "rank": 16,
+    "group_index": 1,
+    "execution_count": 2364577,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x626fc43a601b",
+        "opcode": "imul",
+        "raw_operands": [
+          "edi",
+          "dword ptr [rdx+r10*4]"
+        ],
+        "in_operands": [
+          "edi",
+          "[rdx+r10*4]"
+        ],
+        "out_operands": [
+          "edi"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x626fc43a6027",
+        "opcode": "add",
+        "raw_operands": [
+          "r12d",
+          "edi"
+        ],
+        "in_operands": [
+          "r12d",
+          "edi"
+        ],
+        "out_operands": [
+          "r12d",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edi"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edi"
+        },
+        "condition": "reg vs reg: edi"
+      }
+    ],
+    "bench": "607.cactuBSSN_s",
+    "src": "super_hot_regions:46"
+  },
+  {
+    "rank": 60,
+    "group_index": 1,
+    "execution_count": 279692,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x72c8dcb2f94e",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0x7f"
+        ],
+        "in_operands": [
+          "edx",
+          "0x7f"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x72c8dcb2fa13",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0x7ff"
+        ],
+        "in_operands": [
+          "edx",
+          "0x7ff"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx"
+        },
+        "condition": "reg vs reg: edx"
+      }
+    ],
+    "bench": "607.cactuBSSN_s",
+    "src": "super_hot_regions:135"
+  },
+  {
+    "rank": 42,
+    "group_index": 1,
+    "execution_count": 998802,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x57e58499cf2a",
+        "opcode": "sub",
+        "raw_operands": [
+          "rax",
+          "rdi"
+        ],
+        "in_operands": [
+          "rax",
+          "rdi"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x57e58499cf2d",
+        "opcode": "sar",
+        "raw_operands": [
+          "rax",
+          "0x1"
+        ],
+        "in_operands": [
+          "rax",
+          "0x1"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rax"
+        },
+        "condition": "reg vs reg: rax"
+      }
+    ],
+    "bench": "623.xalancbmk_s",
+    "src": "super_hot_regions:44"
+  },
+  {
+    "rank": 45,
+    "group_index": 1,
+    "execution_count": 998802,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x57e58499ceaa",
+        "opcode": "sub",
+        "raw_operands": [
+          "rax",
+          "rsi"
+        ],
+        "in_operands": [
+          "rax",
+          "rsi"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x57e58499cead",
+        "opcode": "sar",
+        "raw_operands": [
+          "rax",
+          "0x1"
+        ],
+        "in_operands": [
+          "rax",
+          "0x1"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rax"
+        },
+        "condition": "reg vs reg: rax"
+      }
+    ],
+    "bench": "623.xalancbmk_s",
+    "src": "super_hot_regions:48"
+  },
+  {
+    "rank": 26,
+    "group_index": 3,
+    "execution_count": 568643,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5b5b15ecd1f1",
+        "opcode": "inc",
+        "raw_operands": [
+          "r9"
+        ],
+        "in_operands": [
+          "r9"
+        ],
+        "out_operands": [
+          "r9",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5b5b15ecd200",
+        "opcode": "shl",
+        "raw_operands": [
+          "r9",
+          "0x5"
+        ],
+        "in_operands": [
+          "r9",
+          "0x5"
+        ],
+        "out_operands": [
+          "r9",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r9"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r9"
+        },
+        "condition": "reg vs reg: r9"
+      }
+    ],
+    "bench": "625.x264_s",
+    "src": "super_hot_regions:63"
+  },
+  {
+    "rank": 32,
+    "group_index": 3,
+    "execution_count": 411455,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x577f79d8e1f1",
+        "opcode": "inc",
+        "raw_operands": [
+          "r9"
+        ],
+        "in_operands": [
+          "r9"
+        ],
+        "out_operands": [
+          "r9",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x577f79d8e200",
+        "opcode": "shl",
+        "raw_operands": [
+          "r9",
+          "0x5"
+        ],
+        "in_operands": [
+          "r9",
+          "0x5"
+        ],
+        "out_operands": [
+          "r9",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r9"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r9"
+        },
+        "condition": "reg vs reg: r9"
+      }
+    ],
+    "bench": "625.x264_s",
+    "src": "super_hot_regions:60"
+  },
+  {
+    "rank": 44,
+    "group_index": 9,
+    "execution_count": 314605,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x577f79d88478",
+        "opcode": "inc",
+        "raw_operands": [
+          "r12"
+        ],
+        "in_operands": [
+          "r12"
+        ],
+        "out_operands": [
+          "r12",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x577f79d884b4",
+        "opcode": "shl",
+        "raw_operands": [
+          "r12",
+          "0x5"
+        ],
+        "in_operands": [
+          "r12",
+          "0x5"
+        ],
+        "out_operands": [
+          "r12",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r12"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r12"
+        },
+        "condition": "reg vs reg: r12"
+      }
+    ],
+    "bench": "625.x264_s",
+    "src": "super_hot_regions:88"
+  },
+  {
+    "rank": 64,
+    "group_index": 1,
+    "execution_count": 195728,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x577f79d98ff7",
+        "opcode": "add",
+        "raw_operands": [
+          "r12d",
+          "dword ptr [rsp+0x24]"
+        ],
+        "in_operands": [
+          "r12d",
+          "[rsp+0x24]"
+        ],
+        "out_operands": [
+          "r12d",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x577f79d99002",
+        "opcode": "add",
+        "raw_operands": [
+          "eax",
+          "r13d"
+        ],
+        "in_operands": [
+          "eax",
+          "r13d"
+        ],
+        "out_operands": [
+          "eax",
+          "flag"
+        ]
+      },
+      {
+        "index": 2,
+        "address": "0x577f79d99005",
+        "opcode": "add",
+        "raw_operands": [
+          "eax",
+          "r12d"
+        ],
+        "in_operands": [
+          "eax",
+          "r12d"
+        ],
+        "out_operands": [
+          "eax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 1,
+          "operand": "eax"
+        },
+        "to": {
+          "instr_index": 2,
+          "operand": "eax"
+        },
+        "condition": "reg vs reg: eax"
+      },
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r12d"
+        },
+        "to": {
+          "instr_index": 2,
+          "operand": "r12d"
+        },
+        "condition": "reg vs reg: r12d"
+      }
+    ],
+    "bench": "625.x264_s",
+    "src": "super_hot_regions:129"
+  },
+  {
+    "rank": 24,
+    "group_index": 3,
+    "execution_count": 494131,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x63b8bf9fa1f1",
+        "opcode": "inc",
+        "raw_operands": [
+          "r9"
+        ],
+        "in_operands": [
+          "r9"
+        ],
+        "out_operands": [
+          "r9",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x63b8bf9fa200",
+        "opcode": "shl",
+        "raw_operands": [
+          "r9",
+          "0x5"
+        ],
+        "in_operands": [
+          "r9",
+          "0x5"
+        ],
+        "out_operands": [
+          "r9",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r9"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r9"
+        },
+        "condition": "reg vs reg: r9"
+      }
+    ],
+    "bench": "625.x264_s",
+    "src": "super_hot_regions:50"
+  },
+  {
+    "rank": 48,
+    "group_index": 9,
+    "execution_count": 235693,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x63b8bf9f4478",
+        "opcode": "inc",
+        "raw_operands": [
+          "r12"
+        ],
+        "in_operands": [
+          "r12"
+        ],
+        "out_operands": [
+          "r12",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x63b8bf9f44b4",
+        "opcode": "shl",
+        "raw_operands": [
+          "r12",
+          "0x5"
+        ],
+        "in_operands": [
+          "r12",
+          "0x5"
+        ],
+        "out_operands": [
+          "r12",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r12"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r12"
+        },
+        "condition": "reg vs reg: r12"
+      }
+    ],
+    "bench": "625.x264_s",
+    "src": "super_hot_regions:91"
+  },
+  {
+    "rank": 78,
+    "group_index": 1,
+    "execution_count": 121340,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x63b8bfa04ff7",
+        "opcode": "add",
+        "raw_operands": [
+          "r12d",
+          "dword ptr [rsp+0x24]"
+        ],
+        "in_operands": [
+          "r12d",
+          "[rsp+0x24]"
+        ],
+        "out_operands": [
+          "r12d",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x63b8bfa05002",
+        "opcode": "add",
+        "raw_operands": [
+          "eax",
+          "r13d"
+        ],
+        "in_operands": [
+          "eax",
+          "r13d"
+        ],
+        "out_operands": [
+          "eax",
+          "flag"
+        ]
+      },
+      {
+        "index": 2,
+        "address": "0x63b8bfa05005",
+        "opcode": "add",
+        "raw_operands": [
+          "eax",
+          "r12d"
+        ],
+        "in_operands": [
+          "eax",
+          "r12d"
+        ],
+        "out_operands": [
+          "eax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 1,
+          "operand": "eax"
+        },
+        "to": {
+          "instr_index": 2,
+          "operand": "eax"
+        },
+        "condition": "reg vs reg: eax"
+      },
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r12d"
+        },
+        "to": {
+          "instr_index": 2,
+          "operand": "r12d"
+        },
+        "condition": "reg vs reg: r12d"
+      }
+    ],
+    "bench": "625.x264_s",
+    "src": "super_hot_regions:159"
+  },
+  {
+    "rank": 40,
+    "group_index": 1,
+    "execution_count": 893609,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x7935f452494e",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0x7f"
+        ],
+        "in_operands": [
+          "edx",
+          "0x7f"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x7935f4524a13",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0x7ff"
+        ],
+        "in_operands": [
+          "edx",
+          "0x7ff"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx"
+        },
+        "condition": "reg vs reg: edx"
+      }
+    ],
+    "bench": "627.cam4_s",
+    "src": "super_hot_regions:53"
+  },
+  {
+    "rank": 29,
+    "group_index": 1,
+    "execution_count": 1535055,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5dd06d856617",
+        "opcode": "imul",
+        "raw_operands": [
+          "rcx",
+          "qword ptr [rbp-0x48]"
+        ],
+        "in_operands": [
+          "rcx",
+          "[rbp-0x48]"
+        ],
+        "out_operands": [
+          "rcx"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5dd06d85661c",
+        "opcode": "imul",
+        "raw_operands": [
+          "rdi",
+          "qword ptr [rbp-0x50]"
+        ],
+        "in_operands": [
+          "rdi",
+          "[rbp-0x50]"
+        ],
+        "out_operands": [
+          "rdi"
+        ]
+      },
+      {
+        "index": 2,
+        "address": "0x5dd06d856628",
+        "opcode": "imul",
+        "raw_operands": [
+          "r8",
+          "qword ptr [rbp-0x70]"
+        ],
+        "in_operands": [
+          "r8",
+          "[rbp-0x70]"
+        ],
+        "out_operands": [
+          "r8"
+        ]
+      },
+      {
+        "index": 3,
+        "address": "0x5dd06d856633",
+        "opcode": "add",
+        "raw_operands": [
+          "rcx",
+          "qword ptr [rbp-0xc0]"
+        ],
+        "in_operands": [
+          "rcx",
+          "[rbp-0xc0]"
+        ],
+        "out_operands": [
+          "rcx",
+          "flag"
+        ]
+      },
+      {
+        "index": 4,
+        "address": "0x5dd06d856640",
+        "opcode": "add",
+        "raw_operands": [
+          "rcx",
+          "rdi"
+        ],
+        "in_operands": [
+          "rcx",
+          "rdi"
+        ],
+        "out_operands": [
+          "rcx",
+          "flag"
+        ]
+      },
+      {
+        "index": 5,
+        "address": "0x5dd06d856643",
+        "opcode": "add",
+        "raw_operands": [
+          "rcx",
+          "r8"
+        ],
+        "in_operands": [
+          "rcx",
+          "r8"
+        ],
+        "out_operands": [
+          "rcx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rcx"
+        },
+        "to": {
+          "instr_index": 3,
+          "operand": "rcx"
+        },
+        "condition": "reg vs reg: rcx"
+      },
+      {
+        "from": {
+          "instr_index": 3,
+          "operand": "rcx"
+        },
+        "to": {
+          "instr_index": 4,
+          "operand": "rcx"
+        },
+        "condition": "reg vs reg: rcx"
+      },
+      {
+        "from": {
+          "instr_index": 1,
+          "operand": "rdi"
+        },
+        "to": {
+          "instr_index": 4,
+          "operand": "rdi"
+        },
+        "condition": "reg vs reg: rdi"
+      },
+      {
+        "from": {
+          "instr_index": 4,
+          "operand": "rcx"
+        },
+        "to": {
+          "instr_index": 5,
+          "operand": "rcx"
+        },
+        "condition": "reg vs reg: rcx"
+      },
+      {
+        "from": {
+          "instr_index": 2,
+          "operand": "r8"
+        },
+        "to": {
+          "instr_index": 5,
+          "operand": "r8"
+        },
+        "condition": "reg vs reg: r8"
+      }
+    ],
+    "bench": "628.pop2_s",
+    "src": "super_hot_regions:46"
+  },
+  {
+    "rank": 55,
+    "group_index": 1,
+    "execution_count": 176846,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x57ee1502e4e9",
+        "opcode": "sar",
+        "raw_operands": [
+          "edx",
+          "0x13"
+        ],
+        "in_operands": [
+          "edx",
+          "0x13"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x57ee1502e4ec",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0xf"
+        ],
+        "in_operands": [
+          "edx",
+          "0xf"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx"
+        },
+        "condition": "reg vs reg: edx"
+      }
+    ],
+    "bench": "631.deepsjeng_s",
+    "src": "super_hot_regions:108"
+  },
+  {
+    "rank": 79,
+    "group_index": 1,
+    "execution_count": 121789,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x57ee150379f6",
+        "opcode": "and",
+        "raw_operands": [
+          "rax",
+          "qword ptr [rsp]"
+        ],
+        "in_operands": [
+          "rax",
+          "[rsp]"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x57ee15037a04",
+        "opcode": "or",
+        "raw_operands": [
+          "rbx",
+          "rax"
+        ],
+        "in_operands": [
+          "rbx",
+          "rax"
+        ],
+        "out_operands": [
+          "rbx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rax"
+        },
+        "condition": "reg vs reg: rax"
+      }
+    ],
+    "bench": "631.deepsjeng_s",
+    "src": "super_hot_regions:142"
+  },
+  {
+    "rank": 87,
+    "group_index": 2,
+    "execution_count": 599696,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x63beba662600",
+        "opcode": "xor",
+        "raw_operands": [
+          "esi",
+          "esi"
+        ],
+        "in_operands": [
+          "esi",
+          "esi"
+        ],
+        "out_operands": [
+          "esi",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x63beba66260b",
+        "opcode": "add",
+        "raw_operands": [
+          "ecx",
+          "esi"
+        ],
+        "in_operands": [
+          "ecx",
+          "esi"
+        ],
+        "out_operands": [
+          "ecx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "esi"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "esi"
+        },
+        "condition": "reg vs reg: esi"
+      }
+    ],
+    "bench": "648.exchange2_s",
+    "src": "super_hot_regions:113"
+  },
+  {
+    "rank": 88,
+    "group_index": 2,
+    "execution_count": 597560,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x63beba6635b0",
+        "opcode": "xor",
+        "raw_operands": [
+          "r8d",
+          "r8d"
+        ],
+        "in_operands": [
+          "r8d",
+          "r8d"
+        ],
+        "out_operands": [
+          "r8d",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x63beba6635bc",
+        "opcode": "add",
+        "raw_operands": [
+          "eax",
+          "r8d"
+        ],
+        "in_operands": [
+          "eax",
+          "r8d"
+        ],
+        "out_operands": [
+          "eax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r8d"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r8d"
+        },
+        "condition": "reg vs reg: r8d"
+      }
+    ],
+    "bench": "648.exchange2_s",
+    "src": "super_hot_regions:116"
+  },
+  {
+    "rank": 93,
+    "group_index": 1,
+    "execution_count": 476757,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x63beba661f93",
+        "opcode": "cmp",
+        "raw_operands": [
+          "dword ptr [rdx]",
+          "0x1"
+        ],
+        "in_operands": [
+          "[rdx]",
+          "0x1"
+        ],
+        "out_operands": [
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x63beba661f9a",
+        "opcode": "sbb",
+        "raw_operands": [
+          "ecx",
+          "0xffffffff"
+        ],
+        "in_operands": [
+          "ecx",
+          "0xffffffff",
+          "flag"
+        ],
+        "out_operands": [
+          "ecx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "flag"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "flag"
+        },
+        "condition": "flag vs flag"
+      }
+    ],
+    "bench": "648.exchange2_s",
+    "src": "super_hot_regions:122"
+  },
+  {
+    "rank": 30,
+    "group_index": 3,
+    "execution_count": 308380,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x566cf36b39a1",
+        "opcode": "add",
+        "raw_operands": [
+          "rax",
+          "qword ptr [rsp+0x758]"
+        ],
+        "in_operands": [
+          "rax",
+          "[rsp+0x758]"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x566cf36b39a9",
+        "opcode": "add",
+        "raw_operands": [
+          "rax",
+          "r14"
+        ],
+        "in_operands": [
+          "rax",
+          "r14"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rax"
+        },
+        "condition": "reg vs reg: rax"
+      }
+    ],
+    "bench": "649.fotonik3d_s",
+    "src": "super_hot_regions:122"
+  },
+  {
+    "rank": 45,
+    "group_index": 1,
+    "execution_count": 1358759,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x77ba1252d94e",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0x7f"
+        ],
+        "in_operands": [
+          "edx",
+          "0x7f"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x77ba1252da13",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0x7ff"
+        ],
+        "in_operands": [
+          "edx",
+          "0x7ff"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx"
+        },
+        "condition": "reg vs reg: edx"
+      }
+    ],
+    "bench": "654.roms_s",
+    "src": "super_hot_regions:76"
+  },
+  {
+    "rank": 50,
+    "group_index": 1,
+    "execution_count": 131215,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x609e9ee3014d",
+        "opcode": "not",
+        "raw_operands": [
+          "r8"
+        ],
+        "in_operands": [
+          "r8"
+        ],
+        "out_operands": [
+          "r8"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x609e9ee30150",
+        "opcode": "add",
+        "raw_operands": [
+          "r8",
+          "r15"
+        ],
+        "in_operands": [
+          "r8",
+          "r15"
+        ],
+        "out_operands": [
+          "r8",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r8"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r8"
+        },
+        "condition": "reg vs reg: r8"
+      }
+    ],
+    "bench": "657.xz_s",
+    "src": "super_hot_regions:100"
+  },
+  {
+    "rank": 71,
+    "group_index": 1,
+    "execution_count": 93870,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x609e9ee2bb5a",
+        "opcode": "sub",
+        "raw_operands": [
+          "rax",
+          "r12"
+        ],
+        "in_operands": [
+          "rax",
+          "r12"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x609e9ee2bb5f",
+        "opcode": "sar",
+        "raw_operands": [
+          "rax",
+          "0x3"
+        ],
+        "in_operands": [
+          "rax",
+          "0x3"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rax"
+        },
+        "condition": "reg vs reg: rax"
+      }
+    ],
+    "bench": "657.xz_s",
+    "src": "super_hot_regions:139"
+  },
+  {
+    "rank": 28,
+    "group_index": 1,
+    "execution_count": 1263398,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x58fa710af14d",
+        "opcode": "not",
+        "raw_operands": [
+          "r8"
+        ],
+        "in_operands": [
+          "r8"
+        ],
+        "out_operands": [
+          "r8"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x58fa710af150",
+        "opcode": "add",
+        "raw_operands": [
+          "r8",
+          "r15"
+        ],
+        "in_operands": [
+          "r8",
+          "r15"
+        ],
+        "out_operands": [
+          "r8",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r8"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r8"
+        },
+        "condition": "reg vs reg: r8"
+      }
+    ],
+    "bench": "657.xz_s",
+    "src": "super_hot_regions:45"
+  },
+  {
+    "rank": 58,
+    "group_index": 1,
+    "execution_count": 394237,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x58fa710aab5a",
+        "opcode": "sub",
+        "raw_operands": [
+          "rax",
+          "r12"
+        ],
+        "in_operands": [
+          "rax",
+          "r12"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x58fa710aab5f",
+        "opcode": "sar",
+        "raw_operands": [
+          "rax",
+          "0x3"
+        ],
+        "in_operands": [
+          "rax",
+          "0x3"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rax"
+        },
+        "condition": "reg vs reg: rax"
+      }
+    ],
+    "bench": "657.xz_s",
+    "src": "super_hot_regions:98"
+  }
+]

@@ -110,10 +110,12 @@ def parse_len_pkg() -> tuple[str, str]:
 
 
 #  collect all data
-def collect(tag: str) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+def collect(tag: str) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]], List[Dict[str, Any]]]:
     wns, fmax = parse_timing()
     stage_expr, muops = parse_len_pkg()
+    rows        : List[Dict[str, Any]] = [] 
     sniper_rows : List[Dict[str, Any]] = []
+    block_rows  : List[Dict[str, Any]] = []
     pcs_all     : list[str] = []
     lats_all    : list[str] = []
 
@@ -133,13 +135,30 @@ def collect(tag: str) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
         ]
 
     for g in blk_groups:
-        pc  = g.get("pc", "0x0")
-        lat = str(g.get("latency_cycles", g.get("stage_count", 1)))
-        sniper_rows.append({"pc": pc, "latency": lat})
-        pcs_all.append(pc)
-        lats_all.append(lat)
+        bench = g.get("bench", "?")
+        src   = g.get("src",   "?" )
+        pcs = [ins["address"] for ins in g.get("instructions", [])]
+        if not pcs:
+            continue
+        lat_first = str(g.get("latency_cycles", g.get("stage_count", 1)))
+        sniper_rows += [
+            {"bench": bench, "src": src, "pc": pcs[0], "latency": lat_first},
+            *({"bench": bench, "src": src, "pc": p, "latency": "0"} for p in pcs[1:])
+        ]
+        lat_list = [lat_first] + ["0"]*(len(pcs)-1)
+        pcs_all  += pcs
+        lats_all += lat_list
 
-    rows: List[Dict[str, Any]] = []
+        block_rows.append({
+            "bench": bench,
+            "src":   src,                         
+            "pcs":       ",".join(pcs),
+            "latencies": ",".join(lat_list),
+            "stage_count": g.get("stage_count", 1),
+            "muops": "-".join(op["opcode"].upper() for op in g["instructions"]),
+            "bench": bench,
+            "src":   src,
+        })
 
     for util_rpt in sorted(RPT_DIR.glob("utilization_pblock_*.rpt")):
         pb_name  = util_rpt.stem.replace("utilization_", "")
@@ -159,10 +178,10 @@ def collect(tag: str) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
             }
         )
         
-    return rows, sniper_rows
+    return rows, block_rows, sniper_rows
 
 
-def dump(rows: List[Dict[str, Any]], sniper_rows: List[Dict[str, Any]], tag: str) -> None:
+def dump(rows, block_rows, sniper_rows, tag):
     base = RPT_DIR / f"impl_summary_{tag}"
     base.with_suffix(".json").write_text(json.dumps(rows, indent=2))
     with base.with_suffix(".csv").open("w", newline="") as f:
@@ -182,12 +201,26 @@ def dump(rows: List[Dict[str, Any]], sniper_rows: List[Dict[str, Any]], tag: str
     print(f"Done,  all_runs.csv updated")
 
     if sniper_rows:
+        uniq, seen = [], set()
+        for r in sniper_rows:
+            key = (r["bench"], r["src"], r["pc"])
+            if key not in seen:
+                seen.add(key);  uniq.append(r)
         sfile = RPT_DIR / f"sniper_{tag}.csv"
         with sfile.open("w", newline="") as f:
-            w = csv.DictWriter(f, ["pc", "latency"])
+            w = csv.DictWriter(f, ["bench", "src", "pc", "latency"])
             w.writeheader()
-            w.writerows(sniper_rows)
+            w.writerows(uniq)
         print(f"Done,  {sfile.name}  (for Sniper cfg)")
+
+    if block_rows:
+        bfile = RPT_DIR / f"block_summary_{tag}.json"
+        bfile.write_text(json.dumps(block_rows, indent=2))
+        with bfile.with_suffix(".csv").open("w", newline="") as f:
+            w = csv.DictWriter(f, block_rows[0].keys())
+            w.writeheader()
+            w.writerows(block_rows)
+        print(f"Done, {bfile.name} / .csv written")
 
 
 if __name__ == "__main__":
@@ -198,7 +231,7 @@ if __name__ == "__main__":
     if not TIMING_RPT.exists():
         sys.exit("ERROR: post_route_timing.rpt missing")
 
-    rows, sniper_rows = collect(args.run_tag)
+    rows, block_rows, sniper_rows = collect(args.run_tag)
     if not rows:
         sys.exit("ERROR: no utilization_pblock_*.rpt found")
-    dump(rows, sniper_rows, args.run_tag)
+    dump(rows, block_rows, sniper_rows, args.run_tag)

@@ -43,12 +43,17 @@ def process_json(jpath: Path, min_len: int) -> list[dict]:
         meta = json.load(f)
 
     out = []
-    for g in meta:
+    bench_id   = jpath.parents[1].name        
+    json_tag   = jpath.stem                   
+    for idx, g in enumerate(meta):
         inst = g.get("instructions", [])
         if len(inst) < min_len:
             continue
         if all(i.get("opcode", "").upper() in ALU_INSTRUCTIONS for i in inst):
-            out.append(g)
+            gg          = g.copy()            
+            gg["bench"] = bench_id            
+            gg["src"]   = f"{json_tag}:{idx}"
+            out.append(gg)
     return out
 
 
