@@ -43,8 +43,10 @@ def process_json(jpath: Path, min_len: int) -> list[dict]:
         meta = json.load(f)
 
     out = []
-    bench_id   = jpath.parents[1].name        
-    json_tag   = jpath.stem                   
+    bench_root = jpath.parents[1].name        
+    subdir     = jpath.parent.name            
+    bench_id   = f"{bench_root}/{subdir}" 
+    json_tag   = jpath.stem              
     for idx, g in enumerate(meta):
         inst = g.get("instructions", [])
         if len(inst) < min_len:
@@ -52,7 +54,7 @@ def process_json(jpath: Path, min_len: int) -> list[dict]:
         if all(i.get("opcode", "").upper() in ALU_INSTRUCTIONS for i in inst):
             gg          = g.copy()            
             gg["bench"] = bench_id            
-            gg["src"]   = f"{json_tag}:{idx}"
+            gg["src"]   = f"{subdir}/{json_tag}:{idx}"
             out.append(gg)
     return out
 
