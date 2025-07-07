@@ -23,6 +23,7 @@ module uop_block #(
             logic [W-1:0] alu_out;
 
             microop_unit #(.OP(OPS[i]), .W(W)) alu_i (
+                .clk  (clk),
                 .a(stage[i]),
                 .b(USE_IMM[i] ? IMM[i] : stage[i]),
                 .shamt(shamt),

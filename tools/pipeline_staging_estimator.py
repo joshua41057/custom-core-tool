@@ -38,10 +38,18 @@ class LatencyDB:
         "RCR": 2,
         "SHLD": 3,
         "SHRD": 3,
-        "MUL": 2,
-        "IMUL": 2,
+        "MUL": 3,
+        "IMUL": 3,
         "DIV": 4,
         "IDIV": 4,
+        "SUBSS":        4, 
+        "VADDSD":       4,
+        "VSUBSD":       4,
+        "VMULSD":       4,
+        "VFMADD132SD":  5, 
+        "VCOMISD":      3, 
+        "VCVTSI2SD":    4, 
+        "VXORPD":       1,
     }
     DSP_ALU_W = 48
     DSP_MUL_W = 18
@@ -49,30 +57,11 @@ class LatencyDB:
     FANOUT_THRESH = 5
 
     FLAG_WR = {
-        "ADD",
-        "SUB",
-        "SBB",
-        "ADC",
-        "INC",
-        "DEC",
-        "CMP",
-        "NEG",
-        "AND",
-        "OR",
-        "XOR",
-        "TEST",
-        "SHL",
-        "SAL",
-        "SHR",
-        "SAR",
-        "ROL",
-        "ROR",
-        "RCL",
-        "RCR",
-        "SHLD",
-        "SHRD",
+        "ADD","SUB","SBB","ADC","INC","DEC","CMP","NEG",
+        "AND","OR","XOR","TEST","SHL","SAR","SBB","IMUL",
+        "VCOMISD",
     }
-    FLAG_RD = FLAG_WR | {"SBB", "ADC", "RCL", "RCR"}
+    FLAG_RD = FLAG_WR 
 
     @staticmethod
     def bitwidth(tokens: List[str]) -> int:
@@ -109,10 +98,12 @@ class LatencyDB:
     @classmethod
     def dsp_need(cls, op: str, bw: int) -> int:
         opu = op.upper()
-        if opu in {"MUL", "IMUL"} and bw > cls.DSP_MUL_W:
-            return 1
-        if opu in {"ADD", "SUB"} and bw > cls.DSP_ALU_W:
-            return 1
+        if opu == "IMUL":
+            return (bw + 23) // 24
+        if opu in {"VADDSD", "VSUBSD", "SUBSS", "VMULSD"}:
+            return 2                          
+        if opu == "VFMADD132SD":
+            return 4                          
         return 0
 
     @staticmethod
@@ -300,6 +291,7 @@ def analyse(
             "ff_boundaries": ff,
             "stage_count": len(ff) + 1,
             "latency_cycles": len(ff) + 1,
+            "real_latency"   : None,
             "ff_mask": sum(1 << p for p in ff) & ((1 << len(order)) - 1),
             "crit_path_sigma": stats["crit_path_std"],
         }

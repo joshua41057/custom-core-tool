@@ -36,6 +36,14 @@ OPS_MAP = {
     "IMUL": "OP_IMUL",
     "DIV": "OP_DIV",
     "IDIV": "OP_IDIV",
+    "SUBSS":       "OP_FSUB",
+    "VADDSD":      "OP_FADD",
+    "VSUBSD":      "OP_FSUB",
+    "VMULSD":      "OP_FMUL",
+    "VFMADD132SD": "OP_FMA",
+    "VCOMISD":     "OP_FCMP",
+    "VCVTSI2SD":   "OP_ICONV",
+    "VXORPD":      "OP_XOR",
 }
 
 
@@ -89,6 +97,7 @@ def make_pkg(blocks) -> str:
     o("  localparam int STAGE_LUT [N_CASE] = '{")
     o(",\n".join(f"    {b['stage_count']}" for b in blocks))
     o("  };")
+
 
     # FF mask
     o("  /* variable-width FF mask */")

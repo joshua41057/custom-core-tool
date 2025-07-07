@@ -2,93 +2,139 @@
 """
 scan_alu_only.py <DIR|FILE> [-o out.json] [--min-len N]
 """
-import json
-import argparse
+from __future__ import annotations
+import argparse, json, re, sys
 from pathlib import Path
+from typing import List, Dict
 
-ALU_INSTRUCTIONS = {
-    "ADD",
-    "ADC",
-    "SUB",
-    "SBB",
-    "INC",
-    "DEC",
-    "NEG",
-    "CMP",
-    "AND",
-    "OR",
-    "XOR",
-    "NOT",
-    "TEST",
-    "SHL",
-    "SAL",
-    "SHR",
-    "SAR",
-    "ROL",
-    "ROR",
-    "RCL",
-    "RCR",
-    "SHLD",
-    "SHRD",
-    "MUL",
-    "IMUL",
-    "DIV",
-    "IDIV",
+
+try:
+    import op_alias
+except ModuleNotFoundError:
+    op_alias = None 
+
+ALLOW_SET = {
+    #  ALU BIT COUNT
+    "adc","add","and","andn","blsi","blsr","bt","bzhi","cmp","dec","div",
+    "idiv","imul","inc","mul","neg","not","or","rorx","sar","sarx","sbb",
+    "shl","shlx","shr","shrx","sub","test","tzcnt","xor",
+    # SIMD INT
+    "pxor","punpcklqdq","vpackusdw","vpackuswb","vpaddd","vpaddq","vpaddw",
+    "vpand","vpandn","vpavgb","vpblendd","vpblendvb","vpblendw",
+    "vpbroadcastb","vpbroadcastd","vpbroadcastw","vpcmpeqb","vpcmpeqd",
+    "vpcmpgtd","vpcmpgtw","vpmaxsd","vpminub","vpmovmskb","vpmovsxwd",
+    "vpmovzxbw","vpmovzxwd","vpmulld","vpor","vpsadbw","vpshufb","vpshufd",
+    "vpslld","vpsllq","vpsllw","vpsrad","vpsraw","vpsrld","vpsrldq","vpsrlq",
+    "vpsubd","vpsubw","vptest","vpunpckhqdq","vpunpckldq","vpunpcklqdq",
+    "vpunpcklwd","vpxor",
+    # SIMD FP / FMA
+    "addss","divss","mulss","subss","ucomisd","vaddpd","vaddps","vaddsd",
+    "vaddss","vandpd","vandps","vblendpd","vblendvpd","vbroadcastsd",
+    "vbroadcastss","vcmppd","vcmpsd","vcomisd","vcomiss","vcvtsd2ss",
+    "vcvtsi2sd","vcvtsi2ss","vcvtss2sd","vcvttsd2si","vcvttss2si",
+    "vdivpd","vdivps","vdivsd","vdivss","vfmadd132pd","vfmadd132ps",
+    "vfmadd132sd","vfmadd132ss","vfmadd213pd","vfmadd213sd","vfmadd213ss",
+    "vfmadd231pd","vfmadd231ps","vfmadd231sd","vfmadd231ss","vfmsub132pd",
+    "vfmsub132ps","vfmsub132sd","vfmsub132ss","vfmsub213pd","vfmsub213ss",
+    "vfmsub231pd","vfmsub231sd","vfmsub231ss","vfnmadd132pd","vfnmadd132ps",
+    "vfnmadd132sd","vfnmadd213pd","vfnmadd213ps","vfnmadd213sd",
+    "vfnmadd213ss","vfnmadd231pd","vfnmadd231sd","vfnmadd231ss",
+    "vfnmsub132pd","vfnmsub132sd","vfnmsub231sd","vmaxpd","vmaxsd","vmaxss",
+    "vminpd","vminsd","vminss","vmulpd","vmulps","vmulsd","vmulss","vorpd",
+    "vroundsd","vshufpd","vshufps","vsqrtpd","vsqrtsd","vsqrtss","vsubpd",
+    "vsubps","vsubsd","vsubss","vucomisd","vucomiss","vxorpd","vxorps",
 }
 
+def supported_opcode(mnem: str) -> bool:
+    m = mnem.lower()
+    if op_alias is not None:
+        try:
+            return op_alias.rtl_op(m) != "OP_NOP"
+        except KeyError:
+            return False
+    return m in ALLOW_SET
 
-def process_json(jpath: Path, min_len: int) -> list[dict]:
-    """Return ALU-only groups in the JSON file."""
-    with jpath.open() as f:
+REG_RX = re.compile(
+    r"""^(r(1?[0-5])?[a-z]*|e?[abcd]x|[sb]p|[sd]i|
+          [abcd][lh]|
+          [xyz]mm\d+|k\d+|
+          flag|imm\d+)$""", re.X | re.I) 
+
+IMM_RX = re.compile(r"^[-+]?(0x[0-9a-f]+|\d+)$", re.I)
+
+def is_mem_operand(tok: str) -> bool:
+    """True if operand definitely refers to memory."""
+    t = tok.strip().lower()
+    if '[' in t or 'ptr' in t:
+        return True
+    if REG_RX.fullmatch(t) or IMM_RX.fullmatch(t):
+        return False
+    return t.startswith(('m', 'rel'))
+
+def pure_alu_instruction(ins: Dict) -> bool:
+    if not supported_opcode(ins.get("opcode", "")):
+        return False
+    return not any(is_mem_operand(tok) for tok in ins.get("raw_operands", []))
+
+def process_json(jpath: Path, min_len: int) -> tuple[List[Dict], List[Dict]]:
+    """return (passed, rejected) tuple for this JSON file"""
+    with jpath.open(encoding="utf-8") as f:
         meta = json.load(f)
 
-    out = []
-    bench_root = jpath.parents[1].name        
-    subdir     = jpath.parent.name            
-    bench_id   = f"{bench_root}/{subdir}" 
-    json_tag   = jpath.stem              
+    passed:  List[Dict] = []
+    rejected: List[Dict] = []
+    bench_root = jpath.parents[1].name
+    subdir     = jpath.parent.name
+    bench_id   = f"{bench_root}/{subdir}"
+    json_tag   = jpath.stem
+
     for idx, g in enumerate(meta):
         inst = g.get("instructions", [])
-        if len(inst) < min_len:
-            continue
-        if all(i.get("opcode", "").upper() in ALU_INSTRUCTIONS for i in inst):
-            gg          = g.copy()            
-            gg["bench"] = bench_id            
+        if len(inst) < min_len or not all(pure_alu_instruction(i) for i in inst):
+            rejected.append(g)
+        else:
+            gg          = g.copy()
+            gg["bench"] = bench_id
             gg["src"]   = f"{subdir}/{json_tag}:{idx}"
-            out.append(gg)
-    return out
+            passed.append(gg)
+    return passed, rejected
 
 
-def main():
+def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("root", help="directory or JSON file")
     ap.add_argument(
-        "-o",
-        "--out",
-        default=str(Path(__file__).resolve().parents[1] / "examples" / "alu_only.json"),
+        "-o", "--out",
+        default=str(Path(__file__).resolve().parents[1] /
+                    "examples" / "alu_only.json"),
     )
-    ap.add_argument("--min-len", type=int, default=1, help="minimum uops per group")
+    ap.add_argument("--min-len", type=int, default=1,
+                    help="minimum uops per group")
+    ap.add_argument("--dump-reject", type=str, default=None,
+                    help="(debug) save rejected groups here")
     args = ap.parse_args()
 
     root = Path(args.root)
-    json_files = []
-    if root.is_file():
-        json_files = [root]
-    else:
-        json_files = list(root.glob("**/super_hot_regions.json"))
+    json_files = [root] if root.is_file() else list(
+        root.glob("**/super_hot_regions.json"))
 
     if not json_files:
-        print("No JSON files found.")
-        return
+        sys.exit("No JSON files found.")
 
-    filtered = []
+    filtered, rejected = [], []
     for p in json_files:
-        filtered.extend(process_json(p, args.min_len))
+        ok, bad = process_json(p, args.min_len)
+        filtered.extend(ok)
+        rejected.extend(bad)
 
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
     Path(args.out).write_text(json.dumps(filtered, indent=2))
-    print(f"✓ {len(filtered)} ALU-only groups -> {args.out}")
+    print(f"Done, {len(filtered)} pure-ALU groups → {args.out}")
 
+    if args.dump_reject:
+        Path(args.dump_reject).parent.mkdir(parents=True, exist_ok=True)
+        Path(args.dump_reject).write_text(json.dumps(rejected, indent=2))
+        print(f"Filtered, {len(rejected)} groups rejected → {args.dump_reject}")
 
 if __name__ == "__main__":
     main()
