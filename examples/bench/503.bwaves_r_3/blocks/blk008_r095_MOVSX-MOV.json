@@ -1,0 +1,69 @@
+{
+  "rank": 95,
+  "group_index": 3,
+  "execution_count": 27264,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5eb154bed723",
+      "opcode": "movsx",
+      "raw_operands": [
+        "eax",
+        "al"
+      ],
+      "in_operands": [
+        "al"
+      ],
+      "out_operands": [
+        "eax"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5eb154bed726",
+      "opcode": "mov",
+      "raw_operands": [
+        "edi",
+        "eax"
+      ],
+      "in_operands": [
+        "eax"
+      ],
+      "out_operands": [
+        "edi"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    }
+  ],
+  "bench": "503.bwaves_r/3",
+  "src": "3/super_hot_regions:197",
+  "order_map": [
+    0,
+    1
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "pcs": [
+    "0x5eb154bed723",
+    "0x5eb154bed726"
+  ],
+  "latencies": [
+    1,
+    1
+  ],
+  "pc": "0x5eb154bed723"
+}

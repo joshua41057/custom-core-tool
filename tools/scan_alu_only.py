@@ -14,6 +14,7 @@ except ModuleNotFoundError:
     op_alias = None 
 
 ALLOW_SET = {
+
     #  ALU BIT COUNT
     "adc","add","and","andn","blsi","blsr","bt","bzhi","cmp","dec","div",
     "idiv","imul","inc","mul","neg","not","or","rorx","sar","sarx","sbb",
@@ -43,6 +44,14 @@ ALLOW_SET = {
     "vminpd","vminsd","vminss","vmulpd","vmulps","vmulsd","vmulss","vorpd",
     "vroundsd","vshufpd","vshufps","vsqrtpd","vsqrtsd","vsqrtss","vsubpd",
     "vsubps","vsubsd","vsubss","vucomisd","vucomiss","vxorpd","vxorps",
+
+    "mov","movapd","movaps","movd","movdqa","movdqu","movq","movsd","movss",
+    "movsx","movsxd","movzx",
+    "vmovapd","vmovaps","vmovd","vmovddup","vmovdqa","vmovdqu","vmovhpd",
+    "vmovhps","vmovlhps","vmovlpd","vmovlps","vmovmskps","vmovntdq","vmovq",
+    "vmovsd","vmovshdup","vmovsldup","vmovss","vmovupd","vmovups",
+    "cmovb","cmovbe","cmovl","cmovle","cmovnb","cmovnbe","cmovnle",
+    "cmovnz","cmovs","cmovz",
 }
 
 def supported_opcode(mnem: str) -> bool:
@@ -58,12 +67,11 @@ REG_RX = re.compile(
     r"""^(r(1?[0-5])?[a-z]*|e?[abcd]x|[sb]p|[sd]i|
           [abcd][lh]|
           [xyz]mm\d+|k\d+|
-          flag|imm\d+)$""", re.X | re.I) 
+          flag|imm\d+)$""", re.X | re.I)
 
 IMM_RX = re.compile(r"^[-+]?(0x[0-9a-f]+|\d+)$", re.I)
 
 def is_mem_operand(tok: str) -> bool:
-    """True if operand definitely refers to memory."""
     t = tok.strip().lower()
     if '[' in t or 'ptr' in t:
         return True
@@ -75,6 +83,17 @@ def pure_alu_instruction(ins: Dict) -> bool:
     if not supported_opcode(ins.get("opcode", "")):
         return False
     return not any(is_mem_operand(tok) for tok in ins.get("raw_operands", []))
+
+def pure_block(group: Dict) -> bool:
+
+    insts = group.get("instructions", [])
+    if not all(pure_alu_instruction(i) for i in insts):
+        return False
+    for me in group.get("merge_edges", []):
+        cond = me.get("condition", "")
+        if not cond.startswith("reg vs reg"):
+            return False
+    return True
 
 def process_json(jpath: Path, min_len: int) -> tuple[List[Dict], List[Dict]]:
     """return (passed, rejected) tuple for this JSON file"""
@@ -89,8 +108,8 @@ def process_json(jpath: Path, min_len: int) -> tuple[List[Dict], List[Dict]]:
     json_tag   = jpath.stem
 
     for idx, g in enumerate(meta):
-        inst = g.get("instructions", [])
-        if len(inst) < min_len or not all(pure_alu_instruction(i) for i in inst):
+        insts = g.get("instructions", [])
+        if len(insts) < min_len or not pure_block(g):
             rejected.append(g)
         else:
             gg          = g.copy()
@@ -127,14 +146,16 @@ def main() -> None:
         filtered.extend(ok)
         rejected.extend(bad)
 
-    Path(args.out).parent.mkdir(parents=True, exist_ok=True)
-    Path(args.out).write_text(json.dumps(filtered, indent=2))
-    print(f"Done, {len(filtered)} pure-ALU groups → {args.out}")
+    out_path = Path(args.out)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps(filtered, indent=2))
+    print(f"Done, {len(filtered)} pure-ALU groups -> {args.out}")
 
     if args.dump_reject:
-        Path(args.dump_reject).parent.mkdir(parents=True, exist_ok=True)
-        Path(args.dump_reject).write_text(json.dumps(rejected, indent=2))
-        print(f"Filtered, {len(rejected)} groups rejected → {args.dump_reject}")
+        rej_path = Path(args.dump_reject)
+        rej_path.parent.mkdir(parents=True, exist_ok=True)
+        rej_path.write_text(json.dumps(rejected, indent=2))
+        print(f"Filtered, {len(rejected)} groups rejected -> {args.dump_reject}")
 
 if __name__ == "__main__":
     main()

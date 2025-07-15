@@ -1,0 +1,568 @@
+[
+  {
+    "rank": 17,
+    "group_index": 1,
+    "execution_count": 930060,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5deaaf286c78",
+        "opcode": "mov",
+        "raw_operands": [
+          "r8d",
+          "esi"
+        ],
+        "in_operands": [
+          "esi"
+        ],
+        "out_operands": [
+          "r8d"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5deaaf286c7b",
+        "opcode": "shr",
+        "raw_operands": [
+          "r8d",
+          "0x7"
+        ],
+        "in_operands": [
+          "r8d",
+          "0x7"
+        ],
+        "out_operands": [
+          "r8d",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r8d"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r8d"
+        },
+        "condition": "reg vs reg: r8d"
+      }
+    ],
+    "bench": "502.gcc_r/2",
+    "src": "2/super_hot_regions:23"
+  },
+  {
+    "rank": 19,
+    "group_index": 1,
+    "execution_count": 915744,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5deaaf286966",
+        "opcode": "mov",
+        "raw_operands": [
+          "edx",
+          "esi"
+        ],
+        "in_operands": [
+          "esi"
+        ],
+        "out_operands": [
+          "edx"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5deaaf286968",
+        "opcode": "shr",
+        "raw_operands": [
+          "edx",
+          "0x6"
+        ],
+        "in_operands": [
+          "edx",
+          "0x6"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      },
+      {
+        "index": 2,
+        "address": "0x5deaaf28696d",
+        "opcode": "and",
+        "raw_operands": [
+          "edx",
+          "0x1"
+        ],
+        "in_operands": [
+          "edx",
+          "0x1"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      },
+      {
+        "index": 3,
+        "address": "0x5deaaf286970",
+        "opcode": "mov",
+        "raw_operands": [
+          "r13d",
+          "edx"
+        ],
+        "in_operands": [
+          "edx"
+        ],
+        "out_operands": [
+          "r13d"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx"
+        },
+        "condition": "reg vs reg: edx"
+      },
+      {
+        "from": {
+          "instr_index": 1,
+          "operand": "edx"
+        },
+        "to": {
+          "instr_index": 2,
+          "operand": "edx"
+        },
+        "condition": "reg vs reg: edx"
+      },
+      {
+        "from": {
+          "instr_index": 2,
+          "operand": "edx"
+        },
+        "to": {
+          "instr_index": 3,
+          "operand": "edx"
+        },
+        "condition": "reg vs reg: edx"
+      }
+    ],
+    "bench": "502.gcc_r/2",
+    "src": "2/super_hot_regions:26"
+  },
+  {
+    "rank": 19,
+    "group_index": 2,
+    "execution_count": 915744,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5deaaf286985",
+        "opcode": "mov",
+        "raw_operands": [
+          "ebx",
+          "esi"
+        ],
+        "in_operands": [
+          "esi"
+        ],
+        "out_operands": [
+          "ebx"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5deaaf286987",
+        "opcode": "shr",
+        "raw_operands": [
+          "ebx",
+          "0x7"
+        ],
+        "in_operands": [
+          "ebx",
+          "0x7"
+        ],
+        "out_operands": [
+          "ebx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "ebx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "ebx"
+        },
+        "condition": "reg vs reg: ebx"
+      }
+    ],
+    "bench": "502.gcc_r/2",
+    "src": "2/super_hot_regions:27"
+  },
+  {
+    "rank": 28,
+    "group_index": 2,
+    "execution_count": 766214,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5deaaf286ccf",
+        "opcode": "mov",
+        "raw_operands": [
+          "eax",
+          "esi"
+        ],
+        "in_operands": [
+          "esi"
+        ],
+        "out_operands": [
+          "eax"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5deaaf286cd1",
+        "opcode": "shr",
+        "raw_operands": [
+          "eax",
+          "0x6"
+        ],
+        "in_operands": [
+          "eax",
+          "0x6"
+        ],
+        "out_operands": [
+          "eax",
+          "flag"
+        ]
+      },
+      {
+        "index": 2,
+        "address": "0x5deaaf286cd4",
+        "opcode": "and",
+        "raw_operands": [
+          "eax",
+          "0x1"
+        ],
+        "in_operands": [
+          "eax",
+          "0x1"
+        ],
+        "out_operands": [
+          "eax",
+          "flag"
+        ]
+      },
+      {
+        "index": 3,
+        "address": "0x5deaaf286ce1",
+        "opcode": "and",
+        "raw_operands": [
+          "eax",
+          "0x1"
+        ],
+        "in_operands": [
+          "eax",
+          "0x1"
+        ],
+        "out_operands": [
+          "eax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "eax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "eax"
+        },
+        "condition": "reg vs reg: eax"
+      },
+      {
+        "from": {
+          "instr_index": 1,
+          "operand": "eax"
+        },
+        "to": {
+          "instr_index": 2,
+          "operand": "eax"
+        },
+        "condition": "reg vs reg: eax"
+      },
+      {
+        "from": {
+          "instr_index": 2,
+          "operand": "eax"
+        },
+        "to": {
+          "instr_index": 3,
+          "operand": "eax"
+        },
+        "condition": "reg vs reg: eax"
+      }
+    ],
+    "bench": "502.gcc_r/2",
+    "src": "2/super_hot_regions:40"
+  },
+  {
+    "rank": 30,
+    "group_index": 1,
+    "execution_count": 731903,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5deaaf2867c8",
+        "opcode": "mov",
+        "raw_operands": [
+          "ecx",
+          "esi"
+        ],
+        "in_operands": [
+          "esi"
+        ],
+        "out_operands": [
+          "ecx"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5deaaf2867ca",
+        "opcode": "shr",
+        "raw_operands": [
+          "ecx",
+          "0x7"
+        ],
+        "in_operands": [
+          "ecx",
+          "0x7"
+        ],
+        "out_operands": [
+          "ecx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "ecx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "ecx"
+        },
+        "condition": "reg vs reg: ecx"
+      }
+    ],
+    "bench": "502.gcc_r/2",
+    "src": "2/super_hot_regions:42"
+  },
+  {
+    "rank": 34,
+    "group_index": 1,
+    "execution_count": 683435,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5deaaf286822",
+        "opcode": "mov",
+        "raw_operands": [
+          "ecx",
+          "esi"
+        ],
+        "in_operands": [
+          "esi"
+        ],
+        "out_operands": [
+          "ecx"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5deaaf286824",
+        "opcode": "shr",
+        "raw_operands": [
+          "ecx",
+          "0x6"
+        ],
+        "in_operands": [
+          "ecx",
+          "0x6"
+        ],
+        "out_operands": [
+          "ecx",
+          "flag"
+        ]
+      },
+      {
+        "index": 2,
+        "address": "0x5deaaf286827",
+        "opcode": "and",
+        "raw_operands": [
+          "ecx",
+          "0x1"
+        ],
+        "in_operands": [
+          "ecx",
+          "0x1"
+        ],
+        "out_operands": [
+          "ecx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "ecx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "ecx"
+        },
+        "condition": "reg vs reg: ecx"
+      },
+      {
+        "from": {
+          "instr_index": 1,
+          "operand": "ecx"
+        },
+        "to": {
+          "instr_index": 2,
+          "operand": "ecx"
+        },
+        "condition": "reg vs reg: ecx"
+      }
+    ],
+    "bench": "502.gcc_r/2",
+    "src": "2/super_hot_regions:47"
+  },
+  {
+    "rank": 40,
+    "group_index": 1,
+    "execution_count": 589923,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5deaaf515d87",
+        "opcode": "mov",
+        "raw_operands": [
+          "r12",
+          "rax"
+        ],
+        "in_operands": [
+          "rax"
+        ],
+        "out_operands": [
+          "r12"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5deaaf515d8d",
+        "opcode": "mov",
+        "raw_operands": [
+          "rbx",
+          "r12"
+        ],
+        "in_operands": [
+          "r12"
+        ],
+        "out_operands": [
+          "rbx"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r12"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r12"
+        },
+        "condition": "reg vs reg: r12"
+      }
+    ],
+    "bench": "502.gcc_r/2",
+    "src": "2/super_hot_regions:56"
+  },
+  {
+    "rank": 43,
+    "group_index": 2,
+    "execution_count": 578759,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5deaaf27def6",
+        "opcode": "mov",
+        "raw_operands": [
+          "r15",
+          "rdi"
+        ],
+        "in_operands": [
+          "rdi"
+        ],
+        "out_operands": [
+          "r15"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5deaaf27df21",
+        "opcode": "mov",
+        "raw_operands": [
+          "rdi",
+          "r15"
+        ],
+        "in_operands": [
+          "r15"
+        ],
+        "out_operands": [
+          "rdi"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r15"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r15"
+        },
+        "condition": "reg vs reg: r15"
+      }
+    ],
+    "bench": "502.gcc_r/2",
+    "src": "2/super_hot_regions:61"
+  }
+]

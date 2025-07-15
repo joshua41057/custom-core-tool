@@ -1,0 +1,402 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version     : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
+| Date             : Fri Jul 11 09:14:24 2025
+| Host             : Jason_X1_Laptop running 64-bit major release  (build 9200)
+| Command          : report_power -file C:/Users/joshu/AppData/Roaming/Xilinx/reports/post_route_power.rpt
+| Design           : top_multi_len
+| Device           : xcu200-fsgd2104-2-e
+| Design State     : routed
+| Grade            : extended
+| Process          : typical
+| Characterization : Production
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+Power Report
+
+Table of Contents
+-----------------
+1. Summary
+1.1 On-Chip Components
+1.2 Power Supply Summary
+1.3 Confidence Level
+2. Settings
+2.1 Environment
+2.2 Clock Constraints
+3. Detailed Reports
+3.1 By Hierarchy
+
+1. Summary
+----------
+
++--------------------------+--------------+
+| Total On-Chip Power (W)  | 6.594        |
+| Design Power Budget (W)  | Unspecified* |
+| Power Budget Margin (W)  | NA           |
+| Dynamic (W)              | 4.068        |
+| Device Static (W)        | 2.525        |
+| Effective TJA (C/W)      | 0.5          |
+| Max Ambient (C)          | 96.6         |
+| Junction Temperature (C) | 28.4         |
+| Confidence Level         | Low          |
+| Setting File             | ---          |
+| Simulation Activity File | ---          |
+| Design Nets Matched      | NA           |
++--------------------------+--------------+
+* Specify Design Power Budget using, set_operating_conditions -design_power_budget <value in Watts>
+
+
+1.1 On-Chip Components
+----------------------
+
++-------------------------+-----------+----------+-----------+-----------------+
+| On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
++-------------------------+-----------+----------+-----------+-----------------+
+| Clocks                  |     1.789 |        3 |       --- |             --- |
+| CLB Logic               |     0.584 |   603704 |       --- |             --- |
+|   LUT as Logic          |     0.284 |   160097 |   1182240 |           13.54 |
+|   LUT as Shift Register |     0.218 |    31200 |    591840 |            5.27 |
+|   Register              |     0.073 |   314428 |   2364480 |           13.30 |
+|   CARRY8                |     0.009 |     7776 |    147780 |            5.26 |
+|   Others                |     0.000 |    45799 |       --- |             --- |
+|   F7/F8 Muxes           |     0.000 |     1713 |   1182240 |            0.14 |
+| Signals                 |     0.782 |   407579 |       --- |             --- |
+| DSPs                    |     0.697 |     1035 |      6840 |           15.13 |
+| I/O                     |     0.216 |      135 |       676 |           19.97 |
+| Static Power            |     2.525 |          |           |                 |
+| Total                   |     6.594 |          |           |                 |
++-------------------------+-----------+----------+-----------+-----------------+
+
+
+1.2 Power Supply Summary
+------------------------
+
++------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
+| Source     | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
++------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
+| Vccint     |       0.850 |     5.412 |       4.532 |      0.880 |       NA    | Unspecified | NA         |
+| Vccint_io  |       0.850 |     0.275 |       0.010 |      0.265 |       NA    | Unspecified | NA         |
+| Vccbram    |       0.850 |     0.016 |       0.000 |      0.016 |       NA    | Unspecified | NA         |
+| Vccaux     |       1.800 |     0.646 |       0.000 |      0.646 |       NA    | Unspecified | NA         |
+| Vccaux_io  |       1.800 |     0.218 |       0.033 |      0.185 |       NA    | Unspecified | NA         |
+| Vcco33     |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco25     |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco18     |       1.800 |     0.082 |       0.082 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco15     |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco135    |       1.350 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco12     |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco10     |       1.000 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vccadc     |       1.800 |     0.024 |       0.000 |      0.024 |       NA    | Unspecified | NA         |
+| MGTYAVcc   |       0.900 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| MGTYAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| MGTYVccaux |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
++------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
+
+
+1.3 Confidence Level
+--------------------
+
++-----------------------------+------------+--------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| User Input Data             | Confidence | Details                                                | Action                                                                                                     |
++-----------------------------+------------+--------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| Design implementation state | High       | Design is routed                                       |                                                                                                            |
+| Clock nodes activity        | High       | User specified more than 95% of clocks                 |                                                                                                            |
+| I/O nodes activity          | Low        | More than 75% of inputs are missing user specification | Provide missing input activity with simulation results or by editing the "By Resource Type -> I/Os" view   |
+| Internal nodes activity     | Medium     | User specified less than 25% of internal nodes         | Provide missing internal nodes activity with simulation results or by editing the "By Resource Type" views |
+| Device models               | High       | Device models are Production                           |                                                                                                            |
+|                             |            |                                                        |                                                                                                            |
+| Overall confidence level    | Low        |                                                        |                                                                                                            |
++-----------------------------+------------+--------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+
+
+2. Settings
+-----------
+
+2.1 Environment
+---------------
+
++-----------------------+--------------------------+
+| Ambient Temp (C)      | 25.0                     |
+| ThetaJA (C/W)         | 0.5                      |
+| Airflow (LFM)         | 250                      |
+| Heat Sink             | medium (Medium Profile)  |
+| ThetaSA (C/W)         | 0.7                      |
+| Board Selection       | medium (10"x10")         |
+| # of Board Layers     | 12to15 (12 to 15 Layers) |
+| Board Temperature (C) | 25.0                     |
++-----------------------+--------------------------+
+
+
+2.2 Clock Constraints
+---------------------
+
++----------+--------+-----------------+
+| Clock    | Domain | Constraint (ns) |
++----------+--------+-----------------+
+| host_clk | clk    |             3.3 |
++----------+--------+-----------------+
+
+
+3. Detailed Reports
+-------------------
+
+3.1 By Hierarchy
+----------------
+
++------------------+-----------+
+| Name             | Power (W) |
++------------------+-----------+
+| top_multi_len    |     4.068 |
+|   glen[0].blk_i  |     0.140 |
+|     core         |     0.139 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.007 |
+|       g[2].alu_i |     0.052 |
+|       g[3].alu_i |     0.008 |
+|       g[4].alu_i |     0.027 |
+|       g[5].alu_i |     0.026 |
+|       g[6].alu_i |     0.009 |
+|   glen[10].blk_i |     0.126 |
+|     core         |     0.124 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.047 |
+|       g[2].alu_i |     0.008 |
+|       g[3].alu_i |     0.007 |
+|       g[4].alu_i |     0.027 |
+|       g[5].alu_i |     0.026 |
+|   glen[11].blk_i |     0.105 |
+|     core         |     0.103 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.007 |
+|       g[2].alu_i |     0.027 |
+|       g[3].alu_i |     0.026 |
+|       g[4].alu_i |     0.007 |
+|       g[5].alu_i |     0.027 |
+|   glen[12].blk_i |     0.144 |
+|     core         |     0.143 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.007 |
+|       g[2].alu_i |     0.056 |
+|       g[3].alu_i |     0.008 |
+|       g[4].alu_i |     0.027 |
+|       g[5].alu_i |     0.026 |
+|       g[6].alu_i |     0.010 |
+|   glen[13].blk_i |     0.105 |
+|     core         |     0.103 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.026 |
+|       g[2].alu_i |     0.007 |
+|       g[3].alu_i |     0.027 |
+|       g[4].alu_i |     0.007 |
+|       g[5].alu_i |     0.027 |
+|   glen[14].blk_i |     0.143 |
+|     core         |     0.141 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.007 |
+|       g[2].alu_i |     0.053 |
+|       g[3].alu_i |     0.008 |
+|       g[4].alu_i |     0.027 |
+|       g[5].alu_i |     0.026 |
+|       g[6].alu_i |     0.012 |
+|   glen[15].blk_i |     0.130 |
+|     core         |     0.128 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.050 |
+|       g[2].alu_i |     0.008 |
+|       g[3].alu_i |     0.027 |
+|       g[4].alu_i |     0.007 |
+|       g[5].alu_i |     0.027 |
+|   glen[16].blk_i |     0.136 |
+|     core         |     0.135 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.007 |
+|       g[2].alu_i |     0.047 |
+|       g[3].alu_i |     0.008 |
+|       g[4].alu_i |     0.027 |
+|       g[5].alu_i |     0.026 |
+|       g[6].alu_i |     0.011 |
+|   glen[17].blk_i |     0.133 |
+|     core         |     0.131 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.007 |
+|       g[2].alu_i |     0.053 |
+|       g[3].alu_i |     0.008 |
+|       g[4].alu_i |     0.027 |
+|       g[5].alu_i |     0.027 |
+|   glen[18].blk_i |     0.134 |
+|     core         |     0.132 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.007 |
+|       g[2].alu_i |     0.046 |
+|       g[3].alu_i |     0.008 |
+|       g[4].alu_i |     0.026 |
+|       g[5].alu_i |     0.026 |
+|       g[6].alu_i |     0.010 |
+|   glen[19].blk_i |     0.129 |
+|     core         |     0.127 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.048 |
+|       g[2].alu_i |     0.008 |
+|       g[3].alu_i |     0.028 |
+|       g[4].alu_i |     0.007 |
+|       g[5].alu_i |     0.028 |
+|   glen[1].blk_i  |     0.143 |
+|     core         |     0.142 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.007 |
+|       g[2].alu_i |     0.052 |
+|       g[3].alu_i |     0.008 |
+|       g[4].alu_i |     0.027 |
+|       g[5].alu_i |     0.026 |
+|       g[6].alu_i |     0.012 |
+|   glen[20].blk_i |     0.141 |
+|     core         |     0.140 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.007 |
+|       g[2].alu_i |     0.052 |
+|       g[3].alu_i |     0.008 |
+|       g[4].alu_i |     0.027 |
+|       g[5].alu_i |     0.026 |
+|       g[6].alu_i |     0.011 |
+|   glen[21].blk_i |     0.134 |
+|     core         |     0.132 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.053 |
+|       g[2].alu_i |     0.008 |
+|       g[3].alu_i |     0.027 |
+|       g[4].alu_i |     0.007 |
+|       g[5].alu_i |     0.027 |
+|   glen[22].blk_i |     0.139 |
+|     core         |     0.138 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.007 |
+|       g[2].alu_i |     0.052 |
+|       g[3].alu_i |     0.008 |
+|       g[4].alu_i |     0.027 |
+|       g[5].alu_i |     0.026 |
+|       g[6].alu_i |     0.009 |
+|   glen[23].blk_i |     0.133 |
+|     core         |     0.131 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.053 |
+|       g[2].alu_i |     0.008 |
+|       g[3].alu_i |     0.027 |
+|       g[4].alu_i |     0.007 |
+|       g[5].alu_i |     0.027 |
+|   glen[24].blk_i |     0.139 |
+|     core         |     0.137 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.007 |
+|       g[2].alu_i |     0.050 |
+|       g[3].alu_i |     0.008 |
+|       g[4].alu_i |     0.028 |
+|       g[5].alu_i |     0.026 |
+|       g[6].alu_i |     0.009 |
+|   glen[25].blk_i |     0.132 |
+|     core         |     0.130 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.052 |
+|       g[2].alu_i |     0.008 |
+|       g[3].alu_i |     0.027 |
+|       g[4].alu_i |     0.007 |
+|       g[5].alu_i |     0.027 |
+|   glen[26].blk_i |     0.105 |
+|     core         |     0.103 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.025 |
+|       g[2].alu_i |     0.007 |
+|       g[3].alu_i |     0.027 |
+|       g[4].alu_i |     0.007 |
+|       g[5].alu_i |     0.027 |
+|   glen[27].blk_i |     0.105 |
+|     core         |     0.103 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.025 |
+|       g[2].alu_i |     0.007 |
+|       g[3].alu_i |     0.027 |
+|       g[4].alu_i |     0.007 |
+|       g[5].alu_i |     0.027 |
+|   glen[28].blk_i |     0.104 |
+|     core         |     0.102 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.025 |
+|       g[2].alu_i |     0.007 |
+|       g[3].alu_i |     0.027 |
+|       g[4].alu_i |     0.007 |
+|       g[5].alu_i |     0.027 |
+|   glen[29].blk_i |     0.007 |
+|     core         |     0.004 |
+|       g[1].alu_i |     0.004 |
+|   glen[2].blk_i  |     0.135 |
+|     core         |     0.133 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.054 |
+|       g[2].alu_i |     0.008 |
+|       g[3].alu_i |     0.027 |
+|       g[4].alu_i |     0.007 |
+|       g[5].alu_i |     0.027 |
+|   glen[3].blk_i  |     0.141 |
+|     core         |     0.139 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.007 |
+|       g[2].alu_i |     0.049 |
+|       g[3].alu_i |     0.008 |
+|       g[4].alu_i |     0.027 |
+|       g[5].alu_i |     0.026 |
+|       g[6].alu_i |     0.013 |
+|   glen[4].blk_i  |     0.137 |
+|     core         |     0.136 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.007 |
+|       g[2].alu_i |     0.047 |
+|       g[3].alu_i |     0.008 |
+|       g[4].alu_i |     0.027 |
+|       g[5].alu_i |     0.026 |
+|       g[6].alu_i |     0.012 |
+|   glen[5].blk_i  |     0.142 |
+|     core         |     0.140 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.007 |
+|       g[2].alu_i |     0.052 |
+|       g[3].alu_i |     0.008 |
+|       g[4].alu_i |     0.027 |
+|       g[5].alu_i |     0.026 |
+|       g[6].alu_i |     0.011 |
+|   glen[6].blk_i  |     0.143 |
+|     core         |     0.141 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.007 |
+|       g[2].alu_i |     0.054 |
+|       g[3].alu_i |     0.008 |
+|       g[4].alu_i |     0.027 |
+|       g[5].alu_i |     0.026 |
+|       g[6].alu_i |     0.011 |
+|   glen[7].blk_i  |     0.141 |
+|     core         |     0.139 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.007 |
+|       g[2].alu_i |     0.050 |
+|       g[3].alu_i |     0.008 |
+|       g[4].alu_i |     0.027 |
+|       g[5].alu_i |     0.026 |
+|       g[6].alu_i |     0.012 |
+|   glen[8].blk_i  |     0.127 |
+|     core         |     0.125 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.048 |
+|       g[2].alu_i |     0.008 |
+|       g[3].alu_i |     0.007 |
+|       g[4].alu_i |     0.027 |
+|       g[5].alu_i |     0.026 |
+|   glen[9].blk_i  |     0.144 |
+|     core         |     0.142 |
+|       g[0].alu_i |     0.008 |
+|       g[1].alu_i |     0.007 |
+|       g[2].alu_i |     0.054 |
+|       g[3].alu_i |     0.008 |
+|       g[4].alu_i |     0.027 |
+|       g[5].alu_i |     0.026 |
+|       g[6].alu_i |     0.011 |
++------------------+-----------+
+
+

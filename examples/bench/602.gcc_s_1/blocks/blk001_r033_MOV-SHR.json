@@ -1,0 +1,71 @@
+{
+  "rank": 33,
+  "group_index": 1,
+  "execution_count": 1205811,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5a98574d5c78",
+      "opcode": "mov",
+      "raw_operands": [
+        "r8d",
+        "esi"
+      ],
+      "in_operands": [
+        "esi"
+      ],
+      "out_operands": [
+        "r8d"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5a98574d5c7b",
+      "opcode": "shr",
+      "raw_operands": [
+        "r8d",
+        "0x7"
+      ],
+      "in_operands": [
+        "r8d",
+        "0x7"
+      ],
+      "out_operands": [
+        "r8d",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "r8d"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "r8d"
+      },
+      "condition": "reg vs reg: r8d"
+    }
+  ],
+  "bench": "602.gcc_s/1",
+  "src": "1/super_hot_regions:39",
+  "order_map": [
+    0,
+    1
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "pcs": [
+    "0x5a98574d5c78",
+    "0x5a98574d5c7b"
+  ],
+  "latencies": [
+    1,
+    1
+  ],
+  "pc": "0x5a98574d5c78"
+}

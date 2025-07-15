@@ -1,0 +1,71 @@
+{
+  "rank": 80,
+  "group_index": 3,
+  "execution_count": 267525,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x61ec7a495340",
+      "opcode": "xor",
+      "raw_operands": [
+        "ebp",
+        "ebp"
+      ],
+      "in_operands": [
+        "ebp",
+        "ebp"
+      ],
+      "out_operands": [
+        "ebp",
+        "flag"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x61ec7a495359",
+      "opcode": "mov",
+      "raw_operands": [
+        "ebx",
+        "ebp"
+      ],
+      "in_operands": [
+        "ebp"
+      ],
+      "out_operands": [
+        "ebx"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "ebp"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "ebp"
+      },
+      "condition": "reg vs reg: ebp"
+    }
+  ],
+  "bench": "507.cactuBSSN_r/1",
+  "src": "1/super_hot_regions:152",
+  "order_map": [
+    0,
+    1
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "pcs": [
+    "0x61ec7a495340",
+    "0x61ec7a495359"
+  ],
+  "latencies": [
+    1,
+    1
+  ],
+  "pc": "0x61ec7a495340"
+}

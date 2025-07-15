@@ -1,0 +1,133 @@
+{
+  "rank": 86,
+  "group_index": 1,
+  "execution_count": 829628,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5c92f1c97060",
+      "opcode": "mov",
+      "raw_operands": [
+        "ecx",
+        "0x800"
+      ],
+      "in_operands": [
+        "0x800"
+      ],
+      "out_operands": [
+        "ecx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5c92f1c97065",
+      "opcode": "sub",
+      "raw_operands": [
+        "ecx",
+        "r11d"
+      ],
+      "in_operands": [
+        "ecx",
+        "r11d"
+      ],
+      "out_operands": [
+        "ecx",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5c92f1c97068",
+      "opcode": "shr",
+      "raw_operands": [
+        "ecx",
+        "0x5"
+      ],
+      "in_operands": [
+        "ecx",
+        "0x5"
+      ],
+      "out_operands": [
+        "ecx",
+        "flag"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x5c92f1c9706b",
+      "opcode": "add",
+      "raw_operands": [
+        "ecx",
+        "r11d"
+      ],
+      "in_operands": [
+        "ecx",
+        "r11d"
+      ],
+      "out_operands": [
+        "ecx",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "ecx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "ecx"
+      },
+      "condition": "reg vs reg: ecx"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "ecx"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "ecx"
+      },
+      "condition": "reg vs reg: ecx"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "ecx"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "ecx"
+      },
+      "condition": "reg vs reg: ecx"
+    }
+  ],
+  "bench": "557.xz_r/1",
+  "src": "1/super_hot_regions:157",
+  "order_map": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "pcs": [
+    "0x5c92f1c97060",
+    "0x5c92f1c97065",
+    "0x5c92f1c97068",
+    "0x5c92f1c9706b"
+  ],
+  "latencies": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5c92f1c97060"
+}

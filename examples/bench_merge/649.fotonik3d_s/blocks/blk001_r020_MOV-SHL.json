@@ -1,0 +1,71 @@
+{
+  "rank": 20,
+  "group_index": 1,
+  "execution_count": 558990,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x566cf3690c10",
+      "opcode": "mov",
+      "raw_operands": [
+        "rdx",
+        "rax"
+      ],
+      "in_operands": [
+        "rax"
+      ],
+      "out_operands": [
+        "rdx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x566cf3690c13",
+      "opcode": "shl",
+      "raw_operands": [
+        "rdx",
+        "0x5"
+      ],
+      "in_operands": [
+        "rdx",
+        "0x5"
+      ],
+      "out_operands": [
+        "rdx",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rdx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rdx"
+      },
+      "condition": "reg vs reg: rdx"
+    }
+  ],
+  "bench": "649.fotonik3d_s/1",
+  "src": "1/super_hot_regions:61",
+  "order_map": [
+    0,
+    1
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "pcs": [
+    "0x566cf3690c10",
+    "0x566cf3690c13"
+  ],
+  "latencies": [
+    1,
+    1
+  ],
+  "pc": "0x566cf3690c10"
+}

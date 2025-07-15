@@ -49,7 +49,7 @@ def main() -> None:
     try:
         subprocess.check_call(
             ["python3", str(ESTIM), str(out_path),
-             "--emit-tcl", "--tcl-dir", args.tcl_dir]
+            "--emit_tcl", "--tcl_dir", args.tcl_dir]
         )
     except subprocess.CalledProcessError as e:
         sys.exit(f"[choose_blocks] pipeline_staging_estimator failed (exit {e.returncode})")

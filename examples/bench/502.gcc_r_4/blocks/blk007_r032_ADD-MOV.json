@@ -1,0 +1,71 @@
+{
+  "rank": 32,
+  "group_index": 2,
+  "execution_count": 827665,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x55f1c74ffe98",
+      "opcode": "add",
+      "raw_operands": [
+        "r15",
+        "r13"
+      ],
+      "in_operands": [
+        "r15",
+        "r13"
+      ],
+      "out_operands": [
+        "r15",
+        "flag"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x55f1c74ffe9e",
+      "opcode": "mov",
+      "raw_operands": [
+        "rdi",
+        "r15"
+      ],
+      "in_operands": [
+        "r15"
+      ],
+      "out_operands": [
+        "rdi"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "r15"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "r15"
+      },
+      "condition": "reg vs reg: r15"
+    }
+  ],
+  "bench": "502.gcc_r/4",
+  "src": "4/super_hot_regions:40",
+  "order_map": [
+    0,
+    1
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "pcs": [
+    "0x55f1c74ffe98",
+    "0x55f1c74ffe9e"
+  ],
+  "latencies": [
+    1,
+    1
+  ],
+  "pc": "0x55f1c74ffe98"
+}

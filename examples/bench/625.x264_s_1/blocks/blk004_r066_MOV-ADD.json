@@ -1,0 +1,71 @@
+{
+  "rank": 66,
+  "group_index": 1,
+  "execution_count": 203064,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5b5b15ecfaeb",
+      "opcode": "mov",
+      "raw_operands": [
+        "rdi",
+        "rax"
+      ],
+      "in_operands": [
+        "rax"
+      ],
+      "out_operands": [
+        "rdi"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5b5b15ecfaf4",
+      "opcode": "add",
+      "raw_operands": [
+        "rdi",
+        "r13"
+      ],
+      "in_operands": [
+        "rdi",
+        "r13"
+      ],
+      "out_operands": [
+        "rdi",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rdi"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rdi"
+      },
+      "condition": "reg vs reg: rdi"
+    }
+  ],
+  "bench": "625.x264_s/1",
+  "src": "1/super_hot_regions:133",
+  "order_map": [
+    0,
+    1
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "pcs": [
+    "0x5b5b15ecfaeb",
+    "0x5b5b15ecfaf4"
+  ],
+  "latencies": [
+    1,
+    1
+  ],
+  "pc": "0x5b5b15ecfaeb"
+}

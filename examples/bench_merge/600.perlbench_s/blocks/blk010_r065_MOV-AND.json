@@ -1,0 +1,71 @@
+{
+  "rank": 65,
+  "group_index": 1,
+  "execution_count": 1378743,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x65462c68ceaf",
+      "opcode": "mov",
+      "raw_operands": [
+        "edx",
+        "eax"
+      ],
+      "in_operands": [
+        "eax"
+      ],
+      "out_operands": [
+        "edx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x65462c68ceb4",
+      "opcode": "and",
+      "raw_operands": [
+        "edx",
+        "0x1f"
+      ],
+      "in_operands": [
+        "edx",
+        "0x1f"
+      ],
+      "out_operands": [
+        "edx",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "edx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "edx"
+      },
+      "condition": "reg vs reg: edx"
+    }
+  ],
+  "bench": "600.perlbench_s/1",
+  "src": "1/super_hot_regions:94",
+  "order_map": [
+    0,
+    1
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "pcs": [
+    "0x65462c68ceaf",
+    "0x65462c68ceb4"
+  ],
+  "latencies": [
+    1,
+    1
+  ],
+  "pc": "0x65462c68ceaf"
+}

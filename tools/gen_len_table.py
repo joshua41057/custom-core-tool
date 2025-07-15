@@ -7,8 +7,10 @@ from __future__ import annotations
 import json
 import sys
 from pathlib import Path
+import argparse
 
 OPS_MAP = {
+    "NOP": "OP_NOP",
     "ADD": "OP_ADD",
     "ADC": "OP_ADC",
     "SUB": "OP_SUB",
@@ -18,7 +20,7 @@ OPS_MAP = {
     "NEG": "OP_NEG",
     "CMP": "OP_CMP",
     "AND": "OP_AND",
-    "OR": "OP_OR",
+    "OR":  "OP_OR",
     "XOR": "OP_XOR",
     "NOT": "OP_NOT",
     "TEST": "OP_TEST",
@@ -30,20 +32,50 @@ OPS_MAP = {
     "ROR": "OP_ROR",
     "RCL": "OP_RCL",
     "RCR": "OP_RCR",
+    "RORX": "OP_RORX",
+    "SHRX": "OP_SHRX",
     "SHLD": "OP_SHLD",
     "SHRD": "OP_SHRD",
     "MUL": "OP_MUL",
     "IMUL": "OP_IMUL",
     "DIV": "OP_DIV",
     "IDIV": "OP_IDIV",
-    "SUBSS":       "OP_FSUB",
-    "VADDSD":      "OP_FADD",
-    "VSUBSD":      "OP_FSUB",
-    "VMULSD":      "OP_FMUL",
-    "VFMADD132SD": "OP_FMA",
-    "VCOMISD":     "OP_FCMP",
-    "VCVTSI2SD":   "OP_ICONV",
-    "VXORPD":      "OP_XOR",
+    "MOV": "OP_MOV",
+    "MOVSX": "OP_MOVSX",
+    "MOVSXD": "OP_MOVSXD",
+    "MOVZX": "OP_MOVZX",
+
+    "FADD": "OP_FADD",
+    "FSUB": "OP_FSUB",
+    "FMUL": "OP_FMUL",
+    "FMA":  "OP_FMA",
+    "FCMP": "OP_FCMP",
+    "ICONV": "OP_ICONV",
+
+    "SUBSS":       "OP_SUBSS",
+    "VADDSD":      "OP_VADDSD",
+    "VSUBSD":      "OP_VSUBSD",
+    "VCOMISD":     "OP_VCOMISD",
+    "VCVTSI2SD":   "OP_VCVTSI2SD",
+    "VDIVSD":      "OP_VDIVSD",
+    "VFMADD132SD": "OP_VFMADD132SD",
+    "VFNMADD132SD":"OP_VFNMADD132SD",
+    "VMAXSD":      "OP_VMAXSD",
+    "VMINSD":      "OP_VMINSD",
+    "VMOVD":       "OP_VMOVD",
+    "VMOVQ":       "OP_VMOVQ",
+    "VMOVSD":      "OP_VMOVSD",
+    "VMOVSLDUP":   "OP_VMOVSLDUP",
+    "VMULSD":      "OP_VMULSD",
+    "VPBROADCASTB":"OP_VPBROADCASTB",
+    "VPBROADCASTW":"OP_VPBROADCASTW",
+    "VPSHUFD":     "OP_VPSHUFD",
+    "VXORPD":      "OP_VXORPD",
+
+    "VADDSD256":        "OP_VADDSD256",
+    "VSUBSD256":        "OP_VSUBSD256",
+    "VPBROADCASTB256":  "OP_VPBROADCASTB256",
+    "VPBROADCASTW256":  "OP_VPBROADCASTW256"
 }
 
 
@@ -151,12 +183,15 @@ def make_pkg(blocks) -> str:
     return "\n".join(out) + "\n"
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        sys.exit("usage: gen_len_table.py <json|dir|->")
-    blocks = load_blocks(sys.argv[1])
+    ap = argparse.ArgumentParser()
+    ap.add_argument("src", help="json file | dir | -")
+    ap.add_argument("-o","--out", default="rtl/len_table_pkg.sv")
+    args = ap.parse_args()
+
+    blocks = load_blocks(args.src)
     pkg = make_pkg(blocks)
 
-    out = Path("rtl/len_table_pkg.sv")
+    out = Path(args.out)
     out.parent.mkdir(exist_ok=True)
     out.write_text(pkg, encoding="utf-8", newline="\n")
     print(f"Done, {out}  (N_CASE={len(blocks)})")

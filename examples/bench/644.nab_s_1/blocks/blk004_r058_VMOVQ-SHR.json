@@ -1,0 +1,71 @@
+{
+  "rank": 58,
+  "group_index": 1,
+  "execution_count": 880557,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x77c3ab813474",
+      "opcode": "vmovq",
+      "raw_operands": [
+        "rdx",
+        "xmm0"
+      ],
+      "in_operands": [
+        "xmm0"
+      ],
+      "out_operands": [
+        "rdx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x77c3ab81347e",
+      "opcode": "shr",
+      "raw_operands": [
+        "rdx",
+        "0x34"
+      ],
+      "in_operands": [
+        "rdx",
+        "0x34"
+      ],
+      "out_operands": [
+        "rdx",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rdx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rdx"
+      },
+      "condition": "reg vs reg: rdx"
+    }
+  ],
+  "bench": "644.nab_s/1",
+  "src": "1/super_hot_regions:83",
+  "order_map": [
+    0,
+    1
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "pcs": [
+    "0x77c3ab813474",
+    "0x77c3ab81347e"
+  ],
+  "latencies": [
+    1,
+    1
+  ],
+  "pc": "0x77c3ab813474"
+}

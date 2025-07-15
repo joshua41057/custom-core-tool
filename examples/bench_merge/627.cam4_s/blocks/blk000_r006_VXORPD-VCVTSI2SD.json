@@ -1,0 +1,73 @@
+{
+  "rank": 6,
+  "group_index": 1,
+  "execution_count": 3094128,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x60348ed86b25",
+      "opcode": "vxorpd",
+      "raw_operands": [
+        "xmm1",
+        "xmm1",
+        "xmm1"
+      ],
+      "in_operands": [
+        "xmm1",
+        "xmm1"
+      ],
+      "out_operands": [
+        "xmm1"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x60348ed86b29",
+      "opcode": "vcvtsi2sd",
+      "raw_operands": [
+        "xmm0",
+        "xmm1",
+        "eax"
+      ],
+      "in_operands": [
+        "xmm1",
+        "eax"
+      ],
+      "out_operands": [
+        "xmm0"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm1"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "xmm1"
+      },
+      "condition": "reg vs reg: xmm1"
+    }
+  ],
+  "bench": "627.cam4_s/1",
+  "src": "1/super_hot_regions:7",
+  "order_map": [
+    0,
+    1
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.5,
+  "pcs": [
+    "0x60348ed86b25",
+    "0x60348ed86b29"
+  ],
+  "latencies": [
+    1,
+    4
+  ],
+  "pc": "0x60348ed86b25"
+}

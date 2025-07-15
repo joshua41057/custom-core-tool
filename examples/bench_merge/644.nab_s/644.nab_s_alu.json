@@ -1,0 +1,549 @@
+[
+  {
+    "rank": 5,
+    "group_index": 1,
+    "execution_count": 5028290,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5fac5e140d22",
+        "opcode": "inc",
+        "raw_operands": [
+          "edx"
+        ],
+        "in_operands": [
+          "edx"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5fac5e140d24",
+        "opcode": "movsxd",
+        "raw_operands": [
+          "rsi",
+          "edx"
+        ],
+        "in_operands": [
+          "edx"
+        ],
+        "out_operands": [
+          "rsi"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx"
+        },
+        "condition": "reg vs reg: edx"
+      }
+    ],
+    "bench": "644.nab_s/1",
+    "src": "1/super_hot_regions:5"
+  },
+  {
+    "rank": 27,
+    "group_index": 1,
+    "execution_count": 2458458,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5fac5e13a744",
+        "opcode": "mov",
+        "raw_operands": [
+          "edx",
+          "eax"
+        ],
+        "in_operands": [
+          "eax"
+        ],
+        "out_operands": [
+          "edx"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5fac5e13a746",
+        "opcode": "imul",
+        "raw_operands": [
+          "edx",
+          "ecx"
+        ],
+        "in_operands": [
+          "edx",
+          "ecx"
+        ],
+        "out_operands": [
+          "edx"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx"
+        },
+        "condition": "reg vs reg: edx"
+      }
+    ],
+    "bench": "644.nab_s/1",
+    "src": "1/super_hot_regions:34"
+  },
+  {
+    "rank": 39,
+    "group_index": 1,
+    "execution_count": 2010615,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5fac5e1409c4",
+        "opcode": "movsxd",
+        "raw_operands": [
+          "rdx",
+          "ecx"
+        ],
+        "in_operands": [
+          "ecx"
+        ],
+        "out_operands": [
+          "rdx"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5fac5e1409c9",
+        "opcode": "mov",
+        "raw_operands": [
+          "r15",
+          "rdx"
+        ],
+        "in_operands": [
+          "rdx"
+        ],
+        "out_operands": [
+          "r15"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rdx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rdx"
+        },
+        "condition": "reg vs reg: rdx"
+      }
+    ],
+    "bench": "644.nab_s/1",
+    "src": "1/super_hot_regions:52"
+  },
+  {
+    "rank": 55,
+    "group_index": 1,
+    "execution_count": 1293834,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5fac5e13fda8",
+        "opcode": "inc",
+        "raw_operands": [
+          "eax"
+        ],
+        "in_operands": [
+          "eax"
+        ],
+        "out_operands": [
+          "eax",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5fac5e13fdaa",
+        "opcode": "movsxd",
+        "raw_operands": [
+          "rdx",
+          "eax"
+        ],
+        "in_operands": [
+          "eax"
+        ],
+        "out_operands": [
+          "rdx"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "eax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "eax"
+        },
+        "condition": "reg vs reg: eax"
+      }
+    ],
+    "bench": "644.nab_s/1",
+    "src": "1/super_hot_regions:78"
+  },
+  {
+    "rank": 58,
+    "group_index": 1,
+    "execution_count": 880557,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x77c3ab813474",
+        "opcode": "vmovq",
+        "raw_operands": [
+          "rdx",
+          "xmm0"
+        ],
+        "in_operands": [
+          "xmm0"
+        ],
+        "out_operands": [
+          "rdx"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x77c3ab81347e",
+        "opcode": "shr",
+        "raw_operands": [
+          "rdx",
+          "0x34"
+        ],
+        "in_operands": [
+          "rdx",
+          "0x34"
+        ],
+        "out_operands": [
+          "rdx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rdx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rdx"
+        },
+        "condition": "reg vs reg: rdx"
+      }
+    ],
+    "bench": "644.nab_s/1",
+    "src": "1/super_hot_regions:83"
+  },
+  {
+    "rank": 62,
+    "group_index": 1,
+    "execution_count": 859423,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x77c3ab813669",
+        "opcode": "vmovq",
+        "raw_operands": [
+          "rcx",
+          "xmm0"
+        ],
+        "in_operands": [
+          "xmm0"
+        ],
+        "out_operands": [
+          "rcx"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x77c3ab813685",
+        "opcode": "shr",
+        "raw_operands": [
+          "rcx",
+          "0x30"
+        ],
+        "in_operands": [
+          "rcx",
+          "0x30"
+        ],
+        "out_operands": [
+          "rcx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rcx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rcx"
+        },
+        "condition": "reg vs reg: rcx"
+      }
+    ],
+    "bench": "644.nab_s/1",
+    "src": "1/super_hot_regions:88"
+  },
+  {
+    "rank": 81,
+    "group_index": 1,
+    "execution_count": 600585,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5fac5e13ccbc",
+        "opcode": "vmulsd",
+        "raw_operands": [
+          "xmm1",
+          "xmm4",
+          "xmm0"
+        ],
+        "in_operands": [
+          "xmm4",
+          "xmm0"
+        ],
+        "out_operands": [
+          "xmm1"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5fac5e13ccc0",
+        "opcode": "vaddsd",
+        "raw_operands": [
+          "xmm11",
+          "xmm11",
+          "xmm1"
+        ],
+        "in_operands": [
+          "xmm11",
+          "xmm1"
+        ],
+        "out_operands": [
+          "xmm11"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "xmm1"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "xmm1"
+        },
+        "condition": "reg vs reg: xmm1"
+      }
+    ],
+    "bench": "644.nab_s/1",
+    "src": "1/super_hot_regions:138"
+  },
+  {
+    "rank": 81,
+    "group_index": 2,
+    "execution_count": 600585,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5fac5e13ccc4",
+        "opcode": "vmulsd",
+        "raw_operands": [
+          "xmm1",
+          "xmm3",
+          "xmm0"
+        ],
+        "in_operands": [
+          "xmm3",
+          "xmm0"
+        ],
+        "out_operands": [
+          "xmm1"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5fac5e13ccc8",
+        "opcode": "vaddsd",
+        "raw_operands": [
+          "xmm10",
+          "xmm10",
+          "xmm1"
+        ],
+        "in_operands": [
+          "xmm10",
+          "xmm1"
+        ],
+        "out_operands": [
+          "xmm10"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "xmm1"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "xmm1"
+        },
+        "condition": "reg vs reg: xmm1"
+      }
+    ],
+    "bench": "644.nab_s/1",
+    "src": "1/super_hot_regions:139"
+  },
+  {
+    "rank": 87,
+    "group_index": 1,
+    "execution_count": 460698,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5fac5e140cb6",
+        "opcode": "inc",
+        "raw_operands": [
+          "edx"
+        ],
+        "in_operands": [
+          "edx"
+        ],
+        "out_operands": [
+          "edx",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5fac5e140cb8",
+        "opcode": "movsxd",
+        "raw_operands": [
+          "rdi",
+          "edx"
+        ],
+        "in_operands": [
+          "edx"
+        ],
+        "out_operands": [
+          "rdi"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "edx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "edx"
+        },
+        "condition": "reg vs reg: edx"
+      }
+    ],
+    "bench": "644.nab_s/1",
+    "src": "1/super_hot_regions:147"
+  },
+  {
+    "rank": 94,
+    "group_index": 1,
+    "execution_count": 440045,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x77c3ab813521",
+        "opcode": "vmovq",
+        "raw_operands": [
+          "xmm0",
+          "rax"
+        ],
+        "in_operands": [
+          "rax"
+        ],
+        "out_operands": [
+          "xmm0"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x77c3ab813526",
+        "opcode": "vfmadd132sd",
+        "raw_operands": [
+          "xmm0",
+          "xmm0",
+          "xmm1"
+        ],
+        "in_operands": [
+          "xmm0",
+          "xmm0",
+          "xmm1"
+        ],
+        "out_operands": [
+          "xmm0"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "xmm0"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "xmm0"
+        },
+        "condition": "reg vs reg: xmm0"
+      },
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "xmm0"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "xmm0"
+        },
+        "condition": "reg vs reg: xmm0"
+      }
+    ],
+    "bench": "644.nab_s/1",
+    "src": "1/super_hot_regions:160"
+  }
+]

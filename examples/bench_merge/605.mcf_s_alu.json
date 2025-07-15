@@ -1,0 +1,745 @@
+[
+  {
+    "rank": 8,
+    "group_index": 1,
+    "execution_count": 14751239,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5a81905e5097",
+        "opcode": "inc",
+        "raw_operands": [
+          "r12"
+        ],
+        "in_operands": [
+          "r12"
+        ],
+        "out_operands": [
+          "r12",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5a81905e50ad",
+        "opcode": "mov",
+        "raw_operands": [
+          "r13",
+          "r12"
+        ],
+        "in_operands": [
+          "r12"
+        ],
+        "out_operands": [
+          "r13"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r12"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r12"
+        },
+        "condition": "reg vs reg: r12"
+      }
+    ],
+    "bench": "605.mcf_s/1",
+    "src": "1/super_hot_regions:8"
+  },
+  {
+    "rank": 39,
+    "group_index": 1,
+    "execution_count": 2208775,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5a81905e55f8",
+        "opcode": "mov",
+        "raw_operands": [
+          "rcx",
+          "rdx"
+        ],
+        "in_operands": [
+          "rdx"
+        ],
+        "out_operands": [
+          "rcx"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5a81905e55fb",
+        "opcode": "shr",
+        "raw_operands": [
+          "rdx",
+          "0x3f"
+        ],
+        "in_operands": [
+          "rdx",
+          "0x3f"
+        ],
+        "out_operands": [
+          "rdx",
+          "flag"
+        ]
+      },
+      {
+        "index": 2,
+        "address": "0x5a81905e55ff",
+        "opcode": "add",
+        "raw_operands": [
+          "rdx",
+          "rcx"
+        ],
+        "in_operands": [
+          "rdx",
+          "rcx"
+        ],
+        "out_operands": [
+          "rdx",
+          "flag"
+        ]
+      },
+      {
+        "index": 3,
+        "address": "0x5a81905e5602",
+        "opcode": "sar",
+        "raw_operands": [
+          "rdx",
+          "0x1"
+        ],
+        "in_operands": [
+          "rdx",
+          "0x1"
+        ],
+        "out_operands": [
+          "rdx",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 1,
+          "operand": "rdx"
+        },
+        "to": {
+          "instr_index": 2,
+          "operand": "rdx"
+        },
+        "condition": "reg vs reg: rdx"
+      },
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rcx"
+        },
+        "to": {
+          "instr_index": 2,
+          "operand": "rcx"
+        },
+        "condition": "reg vs reg: rcx"
+      },
+      {
+        "from": {
+          "instr_index": 2,
+          "operand": "rdx"
+        },
+        "to": {
+          "instr_index": 3,
+          "operand": "rdx"
+        },
+        "condition": "reg vs reg: rdx"
+      }
+    ],
+    "bench": "605.mcf_s/1",
+    "src": "1/super_hot_regions:51"
+  },
+  {
+    "rank": 45,
+    "group_index": 1,
+    "execution_count": 1583221,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5a81905e8c83",
+        "opcode": "mov",
+        "raw_operands": [
+          "r13",
+          "r15"
+        ],
+        "in_operands": [
+          "r15"
+        ],
+        "out_operands": [
+          "r13"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5a81905e8c91",
+        "opcode": "mov",
+        "raw_operands": [
+          "rsi",
+          "r13"
+        ],
+        "in_operands": [
+          "r13"
+        ],
+        "out_operands": [
+          "rsi"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r13"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r13"
+        },
+        "condition": "reg vs reg: r13"
+      }
+    ],
+    "bench": "605.mcf_s/1",
+    "src": "1/super_hot_regions:61"
+  },
+  {
+    "rank": 45,
+    "group_index": 2,
+    "execution_count": 1583221,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5a81905e8c8e",
+        "opcode": "add",
+        "raw_operands": [
+          "r15",
+          "r12"
+        ],
+        "in_operands": [
+          "r15",
+          "r12"
+        ],
+        "out_operands": [
+          "r15",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5a81905e8c94",
+        "opcode": "mov",
+        "raw_operands": [
+          "rdi",
+          "r15"
+        ],
+        "in_operands": [
+          "r15"
+        ],
+        "out_operands": [
+          "rdi"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r15"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r15"
+        },
+        "condition": "reg vs reg: r15"
+      }
+    ],
+    "bench": "605.mcf_s/1",
+    "src": "1/super_hot_regions:62"
+  },
+  {
+    "rank": 51,
+    "group_index": 1,
+    "execution_count": 1356031,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5a81905e3990",
+        "opcode": "imul",
+        "raw_operands": [
+          "rdx",
+          "rsi"
+        ],
+        "in_operands": [
+          "rdx",
+          "rsi"
+        ],
+        "out_operands": [
+          "rdx"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5a81905e3994",
+        "opcode": "add",
+        "raw_operands": [
+          "rax",
+          "rdx"
+        ],
+        "in_operands": [
+          "rax",
+          "rdx"
+        ],
+        "out_operands": [
+          "rax",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rdx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rdx"
+        },
+        "condition": "reg vs reg: rdx"
+      }
+    ],
+    "bench": "605.mcf_s/1",
+    "src": "1/super_hot_regions:77"
+  },
+  {
+    "rank": 56,
+    "group_index": 1,
+    "execution_count": 1140300,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5a81905e806d",
+        "opcode": "mov",
+        "raw_operands": [
+          "r14",
+          "r15"
+        ],
+        "in_operands": [
+          "r15"
+        ],
+        "out_operands": [
+          "r14"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5a81905e807b",
+        "opcode": "mov",
+        "raw_operands": [
+          "rsi",
+          "r14"
+        ],
+        "in_operands": [
+          "r14"
+        ],
+        "out_operands": [
+          "rsi"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r14"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r14"
+        },
+        "condition": "reg vs reg: r14"
+      }
+    ],
+    "bench": "605.mcf_s/1",
+    "src": "1/super_hot_regions:82"
+  },
+  {
+    "rank": 56,
+    "group_index": 2,
+    "execution_count": 1140300,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5a81905e8078",
+        "opcode": "add",
+        "raw_operands": [
+          "r15",
+          "r13"
+        ],
+        "in_operands": [
+          "r15",
+          "r13"
+        ],
+        "out_operands": [
+          "r15",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5a81905e807e",
+        "opcode": "mov",
+        "raw_operands": [
+          "rdi",
+          "r15"
+        ],
+        "in_operands": [
+          "r15"
+        ],
+        "out_operands": [
+          "rdi"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r15"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r15"
+        },
+        "condition": "reg vs reg: r15"
+      }
+    ],
+    "bench": "605.mcf_s/1",
+    "src": "1/super_hot_regions:83"
+  },
+  {
+    "rank": 63,
+    "group_index": 1,
+    "execution_count": 878261,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5a81905e8c54",
+        "opcode": "mov",
+        "raw_operands": [
+          "r12",
+          "rbx"
+        ],
+        "in_operands": [
+          "rbx"
+        ],
+        "out_operands": [
+          "r12"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5a81905e8c5a",
+        "opcode": "neg",
+        "raw_operands": [
+          "r12"
+        ],
+        "in_operands": [
+          "r12"
+        ],
+        "out_operands": [
+          "r12",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r12"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r12"
+        },
+        "condition": "reg vs reg: r12"
+      }
+    ],
+    "bench": "605.mcf_s/1",
+    "src": "1/super_hot_regions:98"
+  },
+  {
+    "rank": 63,
+    "group_index": 2,
+    "execution_count": 878261,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5a81905e8c51",
+        "opcode": "mov",
+        "raw_operands": [
+          "r14",
+          "rax"
+        ],
+        "in_operands": [
+          "rax"
+        ],
+        "out_operands": [
+          "r14"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5a81905e8c5d",
+        "opcode": "mov",
+        "raw_operands": [
+          "r15",
+          "r14"
+        ],
+        "in_operands": [
+          "r14"
+        ],
+        "out_operands": [
+          "r15"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r14"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r14"
+        },
+        "condition": "reg vs reg: r14"
+      }
+    ],
+    "bench": "605.mcf_s/1",
+    "src": "1/super_hot_regions:99"
+  },
+  {
+    "rank": 73,
+    "group_index": 1,
+    "execution_count": 403288,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5a81905e767f",
+        "opcode": "neg",
+        "raw_operands": [
+          "rcx"
+        ],
+        "in_operands": [
+          "rcx"
+        ],
+        "out_operands": [
+          "rcx",
+          "flag"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5a81905e7688",
+        "opcode": "mov",
+        "raw_operands": [
+          "r12",
+          "rcx"
+        ],
+        "in_operands": [
+          "rcx"
+        ],
+        "out_operands": [
+          "r12"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rcx"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rcx"
+        },
+        "condition": "reg vs reg: rcx"
+      }
+    ],
+    "bench": "605.mcf_s/1",
+    "src": "1/super_hot_regions:116"
+  },
+  {
+    "rank": 75,
+    "group_index": 1,
+    "execution_count": 403286,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5a81905e7a23",
+        "opcode": "mov",
+        "raw_operands": [
+          "rax",
+          "r13"
+        ],
+        "in_operands": [
+          "r13"
+        ],
+        "out_operands": [
+          "rax"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5a81905e7a29",
+        "opcode": "mov",
+        "raw_operands": [
+          "r15",
+          "rax"
+        ],
+        "in_operands": [
+          "rax"
+        ],
+        "out_operands": [
+          "r15"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "rax"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "rax"
+        },
+        "condition": "reg vs reg: rax"
+      }
+    ],
+    "bench": "605.mcf_s/1",
+    "src": "1/super_hot_regions:120"
+  },
+  {
+    "rank": 77,
+    "group_index": 1,
+    "execution_count": 371439,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5a81905e8040",
+        "opcode": "mov",
+        "raw_operands": [
+          "r13",
+          "rbx"
+        ],
+        "in_operands": [
+          "rbx"
+        ],
+        "out_operands": [
+          "r13"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5a81905e8043",
+        "opcode": "neg",
+        "raw_operands": [
+          "r13"
+        ],
+        "in_operands": [
+          "r13"
+        ],
+        "out_operands": [
+          "r13",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r13"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r13"
+        },
+        "condition": "reg vs reg: r13"
+      }
+    ],
+    "bench": "605.mcf_s/1",
+    "src": "1/super_hot_regions:123"
+  },
+  {
+    "rank": 88,
+    "group_index": 1,
+    "execution_count": 361596,
+    "instructions": [
+      {
+        "index": 0,
+        "address": "0x5a81905e7aba",
+        "opcode": "mov",
+        "raw_operands": [
+          "r14",
+          "r12"
+        ],
+        "in_operands": [
+          "r12"
+        ],
+        "out_operands": [
+          "r14"
+        ]
+      },
+      {
+        "index": 1,
+        "address": "0x5a81905e7abd",
+        "opcode": "sub",
+        "raw_operands": [
+          "r14",
+          "rbx"
+        ],
+        "in_operands": [
+          "r14",
+          "rbx"
+        ],
+        "out_operands": [
+          "r14",
+          "flag"
+        ]
+      }
+    ],
+    "merge_edges": [
+      {
+        "from": {
+          "instr_index": 0,
+          "operand": "r14"
+        },
+        "to": {
+          "instr_index": 1,
+          "operand": "r14"
+        },
+        "condition": "reg vs reg: r14"
+      }
+    ],
+    "bench": "605.mcf_s/1",
+    "src": "1/super_hot_regions:138"
+  }
+]

@@ -1,0 +1,4 @@
+set_property PIPE_STAGES 5 [get_cells -hier -filter {NAME =~ "*glen[0].blk_i"}]
+set_property PIPE_STAGES 1 [get_cells -hier -filter {NAME =~ "*glen[1].blk_i"}]
+set_property PIPE_STAGES 1 [get_cells -hier -filter {NAME =~ "*glen[2].blk_i"}]
+set_property PIPE_STAGES 1 [get_cells -hier -filter {NAME =~ "*glen[3].blk_i"}]

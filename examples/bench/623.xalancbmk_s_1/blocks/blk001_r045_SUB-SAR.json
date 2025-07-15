@@ -1,0 +1,73 @@
+{
+  "rank": 45,
+  "group_index": 1,
+  "execution_count": 998802,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x57e58499ceaa",
+      "opcode": "sub",
+      "raw_operands": [
+        "rax",
+        "rsi"
+      ],
+      "in_operands": [
+        "rax",
+        "rsi"
+      ],
+      "out_operands": [
+        "rax",
+        "flag"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x57e58499cead",
+      "opcode": "sar",
+      "raw_operands": [
+        "rax",
+        "0x1"
+      ],
+      "in_operands": [
+        "rax",
+        "0x1"
+      ],
+      "out_operands": [
+        "rax",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rax"
+      },
+      "condition": "reg vs reg: rax"
+    }
+  ],
+  "bench": "623.xalancbmk_s/1",
+  "src": "1/super_hot_regions:48",
+  "order_map": [
+    0,
+    1
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "pcs": [
+    "0x57e58499ceaa",
+    "0x57e58499cead"
+  ],
+  "latencies": [
+    1,
+    1
+  ],
+  "pc": "0x57e58499ceaa"
+}

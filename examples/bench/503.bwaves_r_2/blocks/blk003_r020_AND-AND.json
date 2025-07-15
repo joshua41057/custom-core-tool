@@ -1,0 +1,73 @@
+{
+  "rank": 20,
+  "group_index": 1,
+  "execution_count": 1974709,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x7fb85bb0594e",
+      "opcode": "and",
+      "raw_operands": [
+        "edx",
+        "0x7f"
+      ],
+      "in_operands": [
+        "edx",
+        "0x7f"
+      ],
+      "out_operands": [
+        "edx",
+        "flag"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x7fb85bb05a13",
+      "opcode": "and",
+      "raw_operands": [
+        "edx",
+        "0x7ff"
+      ],
+      "in_operands": [
+        "edx",
+        "0x7ff"
+      ],
+      "out_operands": [
+        "edx",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "edx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "edx"
+      },
+      "condition": "reg vs reg: edx"
+    }
+  ],
+  "bench": "503.bwaves_r/2",
+  "src": "2/super_hot_regions:36",
+  "order_map": [
+    0,
+    1
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "pcs": [
+    "0x7fb85bb0594e",
+    "0x7fb85bb05a13"
+  ],
+  "latencies": [
+    1,
+    1
+  ],
+  "pc": "0x7fb85bb0594e"
+}

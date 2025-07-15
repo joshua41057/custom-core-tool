@@ -1,0 +1,71 @@
+{
+  "rank": 6,
+  "group_index": 1,
+  "execution_count": 1727389,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x583214c2f28d",
+      "opcode": "vmovq",
+      "raw_operands": [
+        "xmm13",
+        "rcx"
+      ],
+      "in_operands": [
+        "rcx"
+      ],
+      "out_operands": [
+        "xmm13"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x583214c2f292",
+      "opcode": "vaddsd",
+      "raw_operands": [
+        "xmm3",
+        "xmm13",
+        "xmm9"
+      ],
+      "in_operands": [
+        "xmm13",
+        "xmm9"
+      ],
+      "out_operands": [
+        "xmm3"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm13"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "xmm13"
+      },
+      "condition": "reg vs reg: xmm13"
+    }
+  ],
+  "bench": "519.lbm_r/1",
+  "src": "1/super_hot_regions:8",
+  "order_map": [
+    0,
+    1
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.5,
+  "pcs": [
+    "0x583214c2f28d",
+    "0x583214c2f292"
+  ],
+  "latencies": [
+    1,
+    15
+  ],
+  "pc": "0x583214c2f28d"
+}

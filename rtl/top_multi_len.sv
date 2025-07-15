@@ -9,14 +9,13 @@ module top_multi_len #(
     output logic [W-1:0]             result
 );
     import len_table_pkg::*;
-
     logic [W-1:0] y [N_CASE];
 
     generate
       for (genvar i = 0; i < N_CASE; i++) begin : glen
             localparam int             THIS_LEN   = LEN_LUT[i];
             localparam int             THIS_STAGE = STAGE_LUT[i];
-            localparam logic [31:0]    THIS_MASK  = FF_MASK_LUT[i];
+            localparam bit [31:0]   THIS_MASK  = FF_MASK_LUT[i];
             (* keep_hierarchy = "yes",  dont_touch = "true" *)
             uop_block_wrap #(
                 .LEN         (THIS_LEN),
@@ -30,6 +29,7 @@ module top_multi_len #(
                 .clk    (clk),
                 .src_i  (src_val),
                 .shamt_i(shamt),
+                .c_i     ({W{1'b0}}),
                 .dst_o  (y[i])
             );
         end

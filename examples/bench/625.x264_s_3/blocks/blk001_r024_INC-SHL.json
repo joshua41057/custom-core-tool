@@ -1,0 +1,71 @@
+{
+  "rank": 24,
+  "group_index": 3,
+  "execution_count": 494131,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x63b8bf9fa1f1",
+      "opcode": "inc",
+      "raw_operands": [
+        "r9"
+      ],
+      "in_operands": [
+        "r9"
+      ],
+      "out_operands": [
+        "r9",
+        "flag"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x63b8bf9fa200",
+      "opcode": "shl",
+      "raw_operands": [
+        "r9",
+        "0x5"
+      ],
+      "in_operands": [
+        "r9",
+        "0x5"
+      ],
+      "out_operands": [
+        "r9",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "r9"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "r9"
+      },
+      "condition": "reg vs reg: r9"
+    }
+  ],
+  "bench": "625.x264_s/3",
+  "src": "3/super_hot_regions:50",
+  "order_map": [
+    0,
+    1
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "pcs": [
+    "0x63b8bf9fa1f1",
+    "0x63b8bf9fa200"
+  ],
+  "latencies": [
+    1,
+    1
+  ],
+  "pc": "0x63b8bf9fa1f1"
+}

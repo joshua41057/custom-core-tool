@@ -1,0 +1,102 @@
+{
+  "rank": 34,
+  "group_index": 1,
+  "execution_count": 683435,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5deaaf286822",
+      "opcode": "mov",
+      "raw_operands": [
+        "ecx",
+        "esi"
+      ],
+      "in_operands": [
+        "esi"
+      ],
+      "out_operands": [
+        "ecx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5deaaf286824",
+      "opcode": "shr",
+      "raw_operands": [
+        "ecx",
+        "0x6"
+      ],
+      "in_operands": [
+        "ecx",
+        "0x6"
+      ],
+      "out_operands": [
+        "ecx",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5deaaf286827",
+      "opcode": "and",
+      "raw_operands": [
+        "ecx",
+        "0x1"
+      ],
+      "in_operands": [
+        "ecx",
+        "0x1"
+      ],
+      "out_operands": [
+        "ecx",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "ecx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "ecx"
+      },
+      "condition": "reg vs reg: ecx"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "ecx"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "ecx"
+      },
+      "condition": "reg vs reg: ecx"
+    }
+  ],
+  "bench": "502.gcc_r/2",
+  "src": "2/super_hot_regions:47",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "pcs": [
+    "0x5deaaf286822",
+    "0x5deaaf286824",
+    "0x5deaaf286827"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5deaaf286822"
+}

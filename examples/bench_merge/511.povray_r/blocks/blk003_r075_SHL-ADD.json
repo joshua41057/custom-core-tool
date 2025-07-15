@@ -1,0 +1,73 @@
+{
+  "rank": 75,
+  "group_index": 1,
+  "execution_count": 1014759,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x622355aa69ea",
+      "opcode": "shl",
+      "raw_operands": [
+        "rax",
+        "0x4"
+      ],
+      "in_operands": [
+        "rax",
+        "0x4"
+      ],
+      "out_operands": [
+        "rax",
+        "flag"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x622355aa69ee",
+      "opcode": "add",
+      "raw_operands": [
+        "rax",
+        "r8"
+      ],
+      "in_operands": [
+        "rax",
+        "r8"
+      ],
+      "out_operands": [
+        "rax",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rax"
+      },
+      "condition": "reg vs reg: rax"
+    }
+  ],
+  "bench": "511.povray_r/1",
+  "src": "1/super_hot_regions:103",
+  "order_map": [
+    0,
+    1
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "pcs": [
+    "0x622355aa69ea",
+    "0x622355aa69ee"
+  ],
+  "latencies": [
+    1,
+    1
+  ],
+  "pc": "0x622355aa69ea"
+}

@@ -21,6 +21,26 @@ if {[file exists vivado_tmp]}    { file delete -force vivado_tmp }
 
 create_project -force $PROJ_NAME ./vivado_tmp -part $PART
 
+# 0. SET IP
+set IP_REPO_DIR  [file join [pwd] "ip_repo"]
+file mkdir $IP_REPO_DIR
+set_property ip_repo_paths $IP_REPO_DIR [current_project]
+
+if {[llength [glob -nocomplain "$IP_REPO_DIR/*/*.xci"]] == 0} {
+    puts "Info: No local XCI found – running core_ip.tcl to generate IPs"
+    source [file join [pwd] "core_ip.tcl"]
+}
+
+update_ip_catalog
+set ip_xci [glob -nocomplain "$IP_REPO_DIR/*/*.xci"]
+add_files -fileset sources_1 -norecurse $ip_xci
+
+upgrade_ip -quiet [get_ips]
+set_property generate_synth_checkpoint true [get_ips]
+generate_target all [get_ips]
+
+update_compile_order -fileset sources_1
+
 # 1. RTL sources
 set RTL_DIR  [file join [pwd] rtl]
 set rtl_files [glob -nocomplain "$RTL_DIR/*.sv"]

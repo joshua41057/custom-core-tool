@@ -1,0 +1,69 @@
+{
+  "rank": 48,
+  "group_index": 7,
+  "execution_count": 235693,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x63b8bf9f446e",
+      "opcode": "vmovd",
+      "raw_operands": [
+        "xmm9",
+        "r8d"
+      ],
+      "in_operands": [
+        "r8d"
+      ],
+      "out_operands": [
+        "xmm9"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x63b8bf9f44aa",
+      "opcode": "vpbroadcastw",
+      "raw_operands": [
+        "ymm9",
+        "xmm9"
+      ],
+      "in_operands": [
+        "xmm9"
+      ],
+      "out_operands": [
+        "ymm9"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm9"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "xmm9"
+      },
+      "condition": "reg vs reg: xmm9"
+    }
+  ],
+  "bench": "625.x264_s/3",
+  "src": "3/super_hot_regions:89",
+  "order_map": [
+    0,
+    1
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "pcs": [
+    "0x63b8bf9f446e",
+    "0x63b8bf9f44aa"
+  ],
+  "latencies": [
+    1,
+    1
+  ],
+  "pc": "0x63b8bf9f446e"
+}
