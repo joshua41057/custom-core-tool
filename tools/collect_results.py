@@ -19,7 +19,7 @@ from typing import Any, Dict, List, Tuple
 
 ap0 = argparse.ArgumentParser(add_help=False)
 ap0.add_argument("-d", "--dir", default=".",
-                 help="벤치마크 디렉터리 (default: 현재 폴더)")
+                 help="bench dir (default: cur dir)")
 args0, _rest = ap0.parse_known_args()
 
 WORKDIR    = Path(args0.dir).resolve()

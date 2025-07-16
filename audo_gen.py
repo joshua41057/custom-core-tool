@@ -8,28 +8,26 @@ import subprocess, sys
 root = Path(sys.argv[1]).resolve()
 TOOLS  = Path(__file__).resolve().parent / "tools" 
 
-# 루트에 JSON이 쌓여 있으면 그것부터, 아니면 기존 방식(폴더)
 json_files = list(root.glob("*_alu.json"))
-if json_files:                               # “파일 모드”
+if json_files:                               
     todo = json_files
-else:                                        # “폴더 모드” (예전과 동일)
+else:                                    
     todo = sorted(root.iterdir())
 
 for target in todo:
-    if target.is_file():                     # ← JSON 한 장
+    if target.is_file():                    
         alu_json = target
         tag      = alu_json.stem.replace("_alu","")
-        bench    = root / tag                # 새 작업 폴더
+        bench    = root / tag               
         bench.mkdir(exist_ok=True)
         (bench/"constraints").mkdir(exist_ok=True)
         (bench/"rtl").mkdir(exist_ok=True)
         (bench/"blocks").mkdir(exist_ok=True)
-        # 이미 같은 곳에 있지 않으면 복사/링크
         if alu_json.parent != bench:
             alu_json_dst = bench/alu_json.name
             alu_json_dst.write_bytes(alu_json.read_bytes())
             alu_json = alu_json_dst
-    else:                                    # ← 예전 폴더 구조
+    else:                                    
         bench    = target
         alu_list = list(bench.glob("*_alu.json"))
         if not alu_list:

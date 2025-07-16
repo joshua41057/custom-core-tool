@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 import pandas as pd, json, glob, pathlib, re
 
 CPU_FREQ_GHZ = {
@@ -13,7 +10,7 @@ CPU_FREQ_GHZ = {
 
 CLB_BOARD = 147_780
 DSP_BOARD =   6_840
-CLB_DENS  =     320          # CLB/mm² (보드 밀도)
+CLB_DENS  =     320          # CLB/mm2 (board density)
 
 sim_db = {}
 
@@ -31,21 +28,15 @@ for csv in glob.glob("sim_results_*.csv"):
         "fpga_custom_ipc",
     ]
 
-    # ------------------------------------------------------------------
-    # CSV 로드 → benchmark NULL 제거 → cycle_reduction_% == 0.00 제거
-    # ------------------------------------------------------------------
     df = (
         pd.read_csv(csv, skip_blank_lines=True)
           .dropna(subset=["benchmark"])
     )
 
-    # --- NEW: 0 % cycle reduction row 제거 (컬럼 존재할 때만) -------------
     if "cycle_reduction_%" in df.columns:
         cr = pd.to_numeric(df["cycle_reduction_%"], errors="coerce").fillna(0.0)
         df = df[cr.ne(0.0)]
-    # ------------------------------------------------------------------
 
-    # 필수 수치 컬럼을 float/Int64 로 통일
     df[num_cols] = df[num_cols].apply(pd.to_numeric, errors="coerce")
     df = df.dropna(subset=num_cols)
 
@@ -82,12 +73,10 @@ for js in glob.glob("**/impl_summary_*.json", recursive=True):
         delta_cycles = sim["cpu_cycles"] - sim["fpga_cycles"]
         delta_pct    = delta_cycles / sim["cpu_cycles"] * 100.0
 
-        # 시간(ns) 환산
         saved_cpu_ns = delta_cycles / sim["cpu_freq"] * 1e9
         fpga_hz      = meta["fmax_mhz"] * 1e6
         fpga_time_ns = delta_cycles / fpga_hz * 1e9
 
-        # 면적·전력
         area_mm2 = meta["pblock_clb_used"] / CLB_DENS
 
         rows.append(dict(
