@@ -1,0 +1,158 @@
+{
+  "rank": 75,
+  "group_index": 1,
+  "execution_count": 661972,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x57e5849fcd26",
+      "opcode": "lea",
+      "raw_operands": [
+        "rsi",
+        "ptr [rip+0x203e5f]"
+      ],
+      "in_operands": [
+        "ptr [rip+0x203e5f]"
+      ],
+      "out_operands": [
+        "rsi"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x57e5849fcd2d",
+      "opcode": "movsxd",
+      "raw_operands": [
+        "rax",
+        "dword ptr [rsi+rax*4]"
+      ],
+      "in_operands": [
+        "[rsi+rax*4]"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x57e5849fcd31",
+      "opcode": "add",
+      "raw_operands": [
+        "rax",
+        "rsi"
+      ],
+      "in_operands": [
+        "rax",
+        "rsi"
+      ],
+      "out_operands": [
+        "rax",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rsi"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "[rsi+rax*4]"
+      },
+      "condition": "reg vs mem: rsi"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "rax"
+      },
+      "condition": "reg vs reg: rax"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rsi"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "rsi"
+      },
+      "condition": "reg vs reg: rsi"
+    }
+  ],
+  "bench": "623.xalancbmk_s/1",
+  "src": "1/super_hot_regions:86",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_of_uop": [
+    0,
+    1,
+    2
+  ],
+  "stage_count_full": 3,
+  "stage_count_fpga": 3,
+  "latency_cycles": 3,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 437.49999999999994,
+  "stage_max_delay_ns": [
+    0.6,
+    0.6,
+    1.6
+  ],
+  "crit_path_sigma": 0.47140452079103173,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x57e5849fcd26",
+    "0x57e5849fcd2d",
+    "0x57e5849fcd31"
+  ],
+  "opcats": [
+    "move",
+    "move",
+    "add"
+  ],
+  "op_mem_kind": [
+    "load",
+    "load",
+    null
+  ],
+  "op_delay_ns": [
+    0.6,
+    0.6,
+    1.6
+  ],
+  "op_dsp": [
+    0,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    2,
+    2,
+    2
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x57e5849fcd26"
+}

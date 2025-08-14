@@ -1,0 +1,107 @@
+{
+  "rank": 48,
+  "group_index": 6,
+  "execution_count": 235693,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x63b8bf9f4469",
+      "opcode": "vmovd",
+      "raw_operands": [
+        "xmm10",
+        "r10d"
+      ],
+      "in_operands": [
+        "r10d"
+      ],
+      "out_operands": [
+        "xmm10"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x63b8bf9f44a5",
+      "opcode": "vpbroadcastw",
+      "raw_operands": [
+        "ymm10",
+        "xmm10"
+      ],
+      "in_operands": [
+        "xmm10"
+      ],
+      "out_operands": [
+        "ymm10"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm10"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "xmm10"
+      },
+      "condition": "reg vs reg: xmm10"
+    }
+  ],
+  "bench": "625.x264_s/3",
+  "src": "3/super_hot_regions:88",
+  "order_map": [
+    0,
+    1
+  ],
+  "ff_boundaries": [
+    0
+  ],
+  "stage_of_uop": [
+    0,
+    1
+  ],
+  "stage_count_full": 2,
+  "stage_count_fpga": 2,
+  "latency_cycles": 2,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 250.0,
+  "stage_max_delay_ns": [
+    1.4,
+    2.8
+  ],
+  "crit_path_sigma": 0.7,
+  "serial_mem_effective": false,
+  "pcs": [
+    "0x63b8bf9f4469",
+    "0x63b8bf9f44a5"
+  ],
+  "opcats": [
+    "alu",
+    "alu"
+  ],
+  "op_mem_kind": [
+    null,
+    null
+  ],
+  "op_delay_ns": [
+    1.4,
+    2.8
+  ],
+  "op_dsp": [
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    4,
+    8
+  ],
+  "op_need_mpipe": [
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1
+  ],
+  "pc": "0x63b8bf9f4469"
+}

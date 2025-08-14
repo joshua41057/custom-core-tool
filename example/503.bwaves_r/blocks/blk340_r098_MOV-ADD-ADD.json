@@ -1,0 +1,149 @@
+{
+  "rank": 98,
+  "group_index": 1,
+  "execution_count": 26329,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5e2ee973f0cc",
+      "opcode": "mov",
+      "raw_operands": [
+        "rsi",
+        "qword ptr [rbp-0x280]"
+      ],
+      "in_operands": [
+        "[rbp-0x280]"
+      ],
+      "out_operands": [
+        "rsi"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5e2ee973f0d3",
+      "opcode": "add",
+      "raw_operands": [
+        "qword ptr [rbp-0x2b8]",
+        "rsi"
+      ],
+      "in_operands": [
+        "[rbp-0x2b8]",
+        "rsi"
+      ],
+      "out_operands": [
+        "[rbp-0x2b8]",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5e2ee973f0e0",
+      "opcode": "add",
+      "raw_operands": [
+        "qword ptr [rbp-0x2c0]",
+        "rsi"
+      ],
+      "in_operands": [
+        "[rbp-0x2c0]",
+        "rsi"
+      ],
+      "out_operands": [
+        "[rbp-0x2c0]",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rsi"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rsi"
+      },
+      "condition": "reg vs reg: rsi"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rsi"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "rsi"
+      },
+      "condition": "reg vs reg: rsi"
+    }
+  ],
+  "bench": "503.bwaves_r/1",
+  "src": "1/super_hot_regions:203",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_of_uop": [
+    0,
+    1,
+    2
+  ],
+  "stage_count_full": 3,
+  "stage_count_fpga": 3,
+  "latency_cycles": 3,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 1166.6666666666665,
+  "stage_max_delay_ns": [
+    0.6,
+    0.6,
+    0.6
+  ],
+  "crit_path_sigma": 0.0,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x5e2ee973f0cc",
+    "0x5e2ee973f0d3",
+    "0x5e2ee973f0e0"
+  ],
+  "opcats": [
+    "move",
+    "add",
+    "add"
+  ],
+  "op_mem_kind": [
+    "load",
+    "rwm",
+    "rwm"
+  ],
+  "op_delay_ns": [
+    0.6,
+    0.6,
+    0.6
+  ],
+  "op_dsp": [
+    0,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    2,
+    2,
+    2
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5e2ee973f0cc"
+}

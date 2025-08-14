@@ -1,0 +1,259 @@
+{
+  "rank": 71,
+  "group_index": 6,
+  "execution_count": 382066,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5826d155227c",
+      "opcode": "shl",
+      "raw_operands": [
+        "rax",
+        "0x5"
+      ],
+      "in_operands": [
+        "rax",
+        "0x5"
+      ],
+      "out_operands": [
+        "rax",
+        "flag"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5826d1552280",
+      "opcode": "add",
+      "raw_operands": [
+        "rax",
+        "r13"
+      ],
+      "in_operands": [
+        "rax",
+        "r13"
+      ],
+      "out_operands": [
+        "rax",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5826d15522a1",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "xmm2",
+        "qword ptr [rax]"
+      ],
+      "in_operands": [
+        "[rax]"
+      ],
+      "out_operands": [
+        "xmm2"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x5826d15522ba",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "qword ptr [rsp+0x260]",
+        "xmm2"
+      ],
+      "in_operands": [
+        "xmm2"
+      ],
+      "out_operands": [
+        "[rsp+0x260]"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x5826d1552327",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "xmm12",
+        "qword ptr [rax+0x8]"
+      ],
+      "in_operands": [
+        "[rax+0x8]"
+      ],
+      "out_operands": [
+        "xmm12"
+      ]
+    },
+    {
+      "index": 5,
+      "address": "0x5826d155232c",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "xmm9",
+        "qword ptr [rax+0x10]"
+      ],
+      "in_operands": [
+        "[rax+0x10]"
+      ],
+      "out_operands": [
+        "xmm9"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rax"
+      },
+      "condition": "reg vs reg: rax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "[rax]"
+      },
+      "condition": "reg vs mem: rax"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "xmm2"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "xmm2"
+      },
+      "condition": "reg vs reg: xmm2"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "[rax+0x8]"
+      },
+      "condition": "reg vs mem: rax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "[rax+0x10]"
+      },
+      "condition": "reg vs mem: rax"
+    }
+  ],
+  "bench": "508.namd_r/1",
+  "src": "1/super_hot_regions:255",
+  "order_map": [
+    0,
+    2,
+    3,
+    1,
+    4,
+    5
+  ],
+  "ff_boundaries": [
+    2,
+    1,
+    4
+  ],
+  "stage_of_uop": [
+    0,
+    1,
+    0,
+    1,
+    2,
+    3
+  ],
+  "stage_count_full": 4,
+  "stage_count_fpga": 4,
+  "latency_cycles": 4,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 411.76470588235287,
+  "stage_max_delay_ns": [
+    1.7,
+    1.6,
+    0.6,
+    0.6
+  ],
+  "crit_path_sigma": 0.5261891294962298,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x5826d155227c",
+    "0x5826d1552280",
+    "0x5826d15522a1",
+    "0x5826d15522ba",
+    "0x5826d1552327",
+    "0x5826d155232c"
+  ],
+  "opcats": [
+    "shift",
+    "add",
+    "alu",
+    "alu",
+    "alu",
+    "alu"
+  ],
+  "op_mem_kind": [
+    null,
+    null,
+    "load",
+    "store",
+    "load",
+    "load"
+  ],
+  "op_delay_ns": [
+    1.7,
+    1.6,
+    0.6,
+    0.6,
+    0.6,
+    0.6
+  ],
+  "op_dsp": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    2,
+    2,
+    4,
+    4,
+    4,
+    4
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5826d155227c"
+}

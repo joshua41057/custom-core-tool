@@ -1,0 +1,145 @@
+{
+  "rank": 60,
+  "group_index": 12,
+  "execution_count": 537626,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x64944a58ec54",
+      "opcode": "lea",
+      "raw_operands": [
+        "rax",
+        "ptr [rax+rax*4]"
+      ],
+      "in_operands": [
+        "ptr [rax+rax*4]"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x64944a58ec58",
+      "opcode": "mov",
+      "raw_operands": [
+        "qword ptr [rbp-0x338]",
+        "rax"
+      ],
+      "in_operands": [
+        "rax"
+      ],
+      "out_operands": [
+        "[rbp-0x338]"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x64944a58f05c",
+      "opcode": "mov",
+      "raw_operands": [
+        "r9",
+        "qword ptr [rbp-0x338]"
+      ],
+      "in_operands": [
+        "[rbp-0x338]"
+      ],
+      "out_operands": [
+        "r9"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rax"
+      },
+      "condition": "reg vs reg: rax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "[rbp-0x338]"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "[rbp-0x338]"
+      },
+      "condition": "mem vs mem: [rbp-0x338]"
+    }
+  ],
+  "bench": "503.bwaves_r/2",
+  "src": "2/super_hot_regions:108",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_of_uop": [
+    0,
+    1,
+    2
+  ],
+  "stage_count_full": 3,
+  "stage_count_fpga": 3,
+  "latency_cycles": 3,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 1166.6666666666665,
+  "stage_max_delay_ns": [
+    0.6,
+    0.6,
+    0.6
+  ],
+  "crit_path_sigma": 0.0,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x64944a58ec54",
+    "0x64944a58ec58",
+    "0x64944a58f05c"
+  ],
+  "opcats": [
+    "move",
+    "move",
+    "move"
+  ],
+  "op_mem_kind": [
+    "load",
+    "store",
+    "load"
+  ],
+  "op_delay_ns": [
+    0.6,
+    0.6,
+    0.6
+  ],
+  "op_dsp": [
+    0,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    2,
+    2,
+    2
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x64944a58ec54"
+}

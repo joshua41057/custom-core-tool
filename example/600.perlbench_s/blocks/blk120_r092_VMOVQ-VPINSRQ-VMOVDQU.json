@@ -1,0 +1,144 @@
+{
+  "rank": 92,
+  "group_index": 1,
+  "execution_count": 645163,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x65462c6917ad",
+      "opcode": "vmovq",
+      "raw_operands": [
+        "xmm2",
+        "rax"
+      ],
+      "in_operands": [
+        "rax"
+      ],
+      "out_operands": [
+        "xmm2"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x65462c6917b9",
+      "opcode": "vpinsrq",
+      "raw_operands": [
+        "xmm0",
+        "xmm2",
+        "r15",
+        "0x1"
+      ],
+      "in_operands": [
+        "xmm2",
+        "r15",
+        "0x1"
+      ],
+      "out_operands": [
+        "xmm0"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x65462c6917eb",
+      "opcode": "vmovdqu",
+      "raw_operands": [
+        "xmmword ptr [rbx+0x30]",
+        "xmm0"
+      ],
+      "in_operands": [
+        "xmm0"
+      ],
+      "out_operands": [
+        "xmmword ptr [rbx+0x30]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm2"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "xmm2"
+      },
+      "condition": "reg vs reg: xmm2"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "xmm0"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "xmm0"
+      },
+      "condition": "reg vs reg: xmm0"
+    }
+  ],
+  "bench": "600.perlbench_s/1",
+  "src": "1/super_hot_regions:127",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [],
+  "stage_of_uop": [
+    0,
+    0,
+    0
+  ],
+  "stage_count_full": 1,
+  "stage_count_fpga": 1,
+  "latency_cycles": 1,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 205.88235294117644,
+  "stage_max_delay_ns": [
+    3.4
+  ],
+  "crit_path_sigma": 0.0,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x65462c6917ad",
+    "0x65462c6917b9",
+    "0x65462c6917eb"
+  ],
+  "opcats": [
+    "alu",
+    "alu",
+    "alu"
+  ],
+  "op_mem_kind": [
+    null,
+    null,
+    "store"
+  ],
+  "op_delay_ns": [
+    1.4,
+    1.4,
+    0.6
+  ],
+  "op_dsp": [
+    0,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    4,
+    4,
+    4
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x65462c6917ad"
+}

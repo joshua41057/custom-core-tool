@@ -1,0 +1,252 @@
+{
+  "rank": 82,
+  "group_index": 1,
+  "execution_count": 464346,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x650201468dc4",
+      "opcode": "mov",
+      "raw_operands": [
+        "eax",
+        "dword ptr [rdi+0x34]"
+      ],
+      "in_operands": [
+        "[rdi+0x34]"
+      ],
+      "out_operands": [
+        "eax"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x650201468dcb",
+      "opcode": "dec",
+      "raw_operands": [
+        "eax"
+      ],
+      "in_operands": [
+        "eax"
+      ],
+      "out_operands": [
+        "eax",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x650201468dd5",
+      "opcode": "mov",
+      "raw_operands": [
+        "dword ptr [rdi+0x34]",
+        "eax"
+      ],
+      "in_operands": [
+        "eax"
+      ],
+      "out_operands": [
+        "[rdi+0x34]"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x650201468dd8",
+      "opcode": "cdqe",
+      "raw_operands": [],
+      "in_operands": [
+        "eax"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x650201468dda",
+      "opcode": "mov",
+      "raw_operands": [
+        "rax",
+        "qword ptr [rcx+rax*8]"
+      ],
+      "in_operands": [
+        "[rcx+rax*8]"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 5,
+      "address": "0x650201468dde",
+      "opcode": "mov",
+      "raw_operands": [
+        "qword ptr [rcx+rsi*8]",
+        "rax"
+      ],
+      "in_operands": [
+        "rax"
+      ],
+      "out_operands": [
+        "[rcx+rsi*8]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 3,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "[rcx+rax*8]"
+      },
+      "condition": "reg vs mem: rax"
+    },
+    {
+      "from": {
+        "instr_index": 4,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "rax"
+      },
+      "condition": "reg vs reg: rax"
+    }
+  ],
+  "bench": "520.omnetpp_r/1",
+  "src": "1/super_hot_regions:110",
+  "order_map": [
+    0,
+    1,
+    3,
+    2,
+    4,
+    5
+  ],
+  "ff_boundaries": [
+    0,
+    2,
+    4
+  ],
+  "stage_of_uop": [
+    0,
+    1,
+    1,
+    1,
+    2,
+    3
+  ],
+  "stage_count_full": 4,
+  "stage_count_fpga": 4,
+  "latency_cycles": 4,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 304.34782608695656,
+  "stage_max_delay_ns": [
+    0.6,
+    2.3,
+    0.6,
+    0.6
+  ],
+  "crit_path_sigma": 0.7361215932167727,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x650201468dc4",
+    "0x650201468dcb",
+    "0x650201468dd5",
+    "0x650201468dd8",
+    "0x650201468dda",
+    "0x650201468dde"
+  ],
+  "opcats": [
+    "move",
+    "add",
+    "move",
+    "alu",
+    "move",
+    "move"
+  ],
+  "op_mem_kind": [
+    "load",
+    null,
+    "store",
+    null,
+    "load",
+    "store"
+  ],
+  "op_delay_ns": [
+    0.6,
+    1.6,
+    0.6,
+    0.7,
+    0.6,
+    0.6
+  ],
+  "op_dsp": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x650201468dc4"
+}

@@ -1,0 +1,145 @@
+{
+  "rank": 50,
+  "group_index": 3,
+  "execution_count": 1323,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5ad2ea1712db",
+      "opcode": "mov",
+      "raw_operands": [
+        "eax",
+        "dword ptr [rip+0x2a1f3]"
+      ],
+      "in_operands": [
+        "[rip+0x2a1f3]"
+      ],
+      "out_operands": [
+        "eax"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5ad2ea1712e1",
+      "opcode": "add",
+      "raw_operands": [
+        "eax",
+        "0x1"
+      ],
+      "in_operands": [
+        "eax",
+        "0x1"
+      ],
+      "out_operands": [
+        "eax",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5ad2ea1712e4",
+      "opcode": "mov",
+      "raw_operands": [
+        "dword ptr [rip+0x2a1ea]",
+        "eax"
+      ],
+      "in_operands": [
+        "eax"
+      ],
+      "out_operands": [
+        "[rip+0x2a1ea]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    }
+  ],
+  "bench": "619.lbm_s/1",
+  "src": "1/super_hot_regions:106",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0
+  ],
+  "stage_of_uop": [
+    0,
+    1,
+    1
+  ],
+  "stage_count_full": 2,
+  "stage_count_fpga": 2,
+  "latency_cycles": 2,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 318.18181818181813,
+  "stage_max_delay_ns": [
+    0.6,
+    2.2
+  ],
+  "crit_path_sigma": 0.8,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x5ad2ea1712db",
+    "0x5ad2ea1712e1",
+    "0x5ad2ea1712e4"
+  ],
+  "opcats": [
+    "move",
+    "add",
+    "move"
+  ],
+  "op_mem_kind": [
+    "load",
+    null,
+    "store"
+  ],
+  "op_delay_ns": [
+    0.6,
+    1.6,
+    0.6
+  ],
+  "op_dsp": [
+    0,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    2,
+    2,
+    2
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5ad2ea1712db"
+}

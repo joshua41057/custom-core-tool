@@ -1,0 +1,257 @@
+{
+  "rank": 41,
+  "group_index": 1,
+  "execution_count": 918479,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x6224487b8e08",
+      "opcode": "mov",
+      "raw_operands": [
+        "ebx",
+        "dword ptr [r11+0x4]"
+      ],
+      "in_operands": [
+        "[r11+0x4]"
+      ],
+      "out_operands": [
+        "ebx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x6224487b8e17",
+      "opcode": "mov",
+      "raw_operands": [
+        "dword ptr [rax+rsi*4+0x4]",
+        "ebx"
+      ],
+      "in_operands": [
+        "ebx"
+      ],
+      "out_operands": [
+        "[rax+rsi*4+0x4]"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x6224487b8e36",
+      "opcode": "movsxd",
+      "raw_operands": [
+        "r11",
+        "ebx"
+      ],
+      "in_operands": [
+        "ebx"
+      ],
+      "out_operands": [
+        "r11"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x6224487b8e3f",
+      "opcode": "mov",
+      "raw_operands": [
+        "rdi",
+        "r11"
+      ],
+      "in_operands": [
+        "r11"
+      ],
+      "out_operands": [
+        "rdi"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x6224487b8e42",
+      "opcode": "shl",
+      "raw_operands": [
+        "rdi",
+        "0x6"
+      ],
+      "in_operands": [
+        "rdi",
+        "0x6"
+      ],
+      "out_operands": [
+        "rdi",
+        "flag"
+      ]
+    },
+    {
+      "index": 5,
+      "address": "0x6224487b8e46",
+      "opcode": "add",
+      "raw_operands": [
+        "rdi",
+        "r9"
+      ],
+      "in_operands": [
+        "rdi",
+        "r9"
+      ],
+      "out_operands": [
+        "rdi",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "ebx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "ebx"
+      },
+      "condition": "reg vs reg: ebx"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "ebx"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "ebx"
+      },
+      "condition": "reg vs reg: ebx"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "r11"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "r11"
+      },
+      "condition": "reg vs reg: r11"
+    },
+    {
+      "from": {
+        "instr_index": 3,
+        "operand": "rdi"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "rdi"
+      },
+      "condition": "reg vs reg: rdi"
+    },
+    {
+      "from": {
+        "instr_index": 4,
+        "operand": "rdi"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "rdi"
+      },
+      "condition": "reg vs reg: rdi"
+    }
+  ],
+  "bench": "531.deepsjeng_r/1",
+  "src": "1/super_hot_regions:78",
+  "order_map": [
+    0,
+    2,
+    3,
+    4,
+    5,
+    1
+  ],
+  "ff_boundaries": [
+    0,
+    4
+  ],
+  "stage_of_uop": [
+    0,
+    2,
+    1,
+    1,
+    1,
+    2
+  ],
+  "stage_count_full": 3,
+  "stage_count_fpga": 3,
+  "latency_cycles": 3,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 225.80645161290326,
+  "stage_max_delay_ns": [
+    0.6,
+    3.1,
+    1.6
+  ],
+  "crit_path_sigma": 1.0274023338281626,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x6224487b8e08",
+    "0x6224487b8e17",
+    "0x6224487b8e36",
+    "0x6224487b8e3f",
+    "0x6224487b8e42",
+    "0x6224487b8e46"
+  ],
+  "opcats": [
+    "move",
+    "move",
+    "move",
+    "move",
+    "shift",
+    "add"
+  ],
+  "op_mem_kind": [
+    "load",
+    "store",
+    null,
+    null,
+    null,
+    null
+  ],
+  "op_delay_ns": [
+    0.6,
+    0.6,
+    0.7,
+    0.7,
+    1.7,
+    1.6
+  ],
+  "op_dsp": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x6224487b8e08"
+}

@@ -1,0 +1,147 @@
+{
+  "rank": 48,
+  "group_index": 1,
+  "execution_count": 176853,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x57ee1502df2d",
+      "opcode": "mov",
+      "raw_operands": [
+        "rdx",
+        "qword ptr [rsp-0x48]"
+      ],
+      "in_operands": [
+        "[rsp-0x48]"
+      ],
+      "out_operands": [
+        "rdx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x57ee1502df32",
+      "opcode": "or",
+      "raw_operands": [
+        "rdx",
+        "qword ptr [rsp-0x50]"
+      ],
+      "in_operands": [
+        "rdx",
+        "[rsp-0x50]"
+      ],
+      "out_operands": [
+        "rdx",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x57ee1502df3f",
+      "opcode": "mov",
+      "raw_operands": [
+        "qword ptr [rax+0x108]",
+        "rdx"
+      ],
+      "in_operands": [
+        "rdx"
+      ],
+      "out_operands": [
+        "[rax+0x108]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rdx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rdx"
+      },
+      "condition": "reg vs reg: rdx"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "rdx"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "rdx"
+      },
+      "condition": "reg vs reg: rdx"
+    }
+  ],
+  "bench": "631.deepsjeng_s/1",
+  "src": "1/super_hot_regions:99",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_of_uop": [
+    0,
+    1,
+    2
+  ],
+  "stage_count_full": 3,
+  "stage_count_fpga": 3,
+  "latency_cycles": 3,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 1166.6666666666665,
+  "stage_max_delay_ns": [
+    0.6,
+    0.6,
+    0.6
+  ],
+  "crit_path_sigma": 0.0,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x57ee1502df2d",
+    "0x57ee1502df32",
+    "0x57ee1502df3f"
+  ],
+  "opcats": [
+    "move",
+    "logic",
+    "move"
+  ],
+  "op_mem_kind": [
+    "load",
+    "load",
+    "store"
+  ],
+  "op_delay_ns": [
+    0.6,
+    0.6,
+    0.6
+  ],
+  "op_dsp": [
+    0,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    2,
+    2,
+    2
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x57ee1502df2d"
+}

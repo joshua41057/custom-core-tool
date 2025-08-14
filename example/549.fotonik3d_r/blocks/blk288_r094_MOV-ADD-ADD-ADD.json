@@ -1,0 +1,189 @@
+{
+  "rank": 94,
+  "group_index": 5,
+  "execution_count": 27424,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5dbd09c48bd4",
+      "opcode": "mov",
+      "raw_operands": [
+        "rdi",
+        "qword ptr [rsp+0x330]"
+      ],
+      "in_operands": [
+        "[rsp+0x330]"
+      ],
+      "out_operands": [
+        "rdi"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5dbd09c48be4",
+      "opcode": "add",
+      "raw_operands": [
+        "qword ptr [rsp+0x520]",
+        "rdi"
+      ],
+      "in_operands": [
+        "[rsp+0x520]",
+        "rdi"
+      ],
+      "out_operands": [
+        "[rsp+0x520]",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5dbd09c48bec",
+      "opcode": "add",
+      "raw_operands": [
+        "qword ptr [rsp+0x888]",
+        "rdi"
+      ],
+      "in_operands": [
+        "[rsp+0x888]",
+        "rdi"
+      ],
+      "out_operands": [
+        "[rsp+0x888]",
+        "flag"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x5dbd09c48bfc",
+      "opcode": "add",
+      "raw_operands": [
+        "qword ptr [rsp+0x890]",
+        "rdi"
+      ],
+      "in_operands": [
+        "[rsp+0x890]",
+        "rdi"
+      ],
+      "out_operands": [
+        "[rsp+0x890]",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rdi"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rdi"
+      },
+      "condition": "reg vs reg: rdi"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rdi"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "rdi"
+      },
+      "condition": "reg vs reg: rdi"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rdi"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "rdi"
+      },
+      "condition": "reg vs reg: rdi"
+    }
+  ],
+  "bench": "549.fotonik3d_r/1",
+  "src": "1/super_hot_regions:404",
+  "order_map": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "ff_boundaries": [
+    0,
+    1,
+    2
+  ],
+  "stage_of_uop": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "stage_count_full": 4,
+  "stage_count_fpga": 4,
+  "latency_cycles": 4,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 1166.6666666666665,
+  "stage_max_delay_ns": [
+    0.6,
+    0.6,
+    0.6,
+    0.6
+  ],
+  "crit_path_sigma": 0.0,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x5dbd09c48bd4",
+    "0x5dbd09c48be4",
+    "0x5dbd09c48bec",
+    "0x5dbd09c48bfc"
+  ],
+  "opcats": [
+    "move",
+    "add",
+    "add",
+    "add"
+  ],
+  "op_mem_kind": [
+    "load",
+    "rwm",
+    "rwm",
+    "rwm"
+  ],
+  "op_delay_ns": [
+    0.6,
+    0.6,
+    0.6,
+    0.6
+  ],
+  "op_dsp": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    2,
+    2,
+    2,
+    2
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5dbd09c48bd4"
+}

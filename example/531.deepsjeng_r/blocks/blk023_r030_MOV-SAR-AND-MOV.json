@@ -1,0 +1,183 @@
+{
+  "rank": 30,
+  "group_index": 1,
+  "execution_count": 918620,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x6224487b8b36",
+      "opcode": "mov",
+      "raw_operands": [
+        "edx",
+        "esi"
+      ],
+      "in_operands": [
+        "esi"
+      ],
+      "out_operands": [
+        "edx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x6224487b8b38",
+      "opcode": "sar",
+      "raw_operands": [
+        "edx",
+        "0x6"
+      ],
+      "in_operands": [
+        "edx",
+        "0x6"
+      ],
+      "out_operands": [
+        "edx",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x6224487b8b40",
+      "opcode": "and",
+      "raw_operands": [
+        "edx",
+        "0x3f"
+      ],
+      "in_operands": [
+        "edx",
+        "0x3f"
+      ],
+      "out_operands": [
+        "edx",
+        "flag"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x6224487b8b53",
+      "opcode": "mov",
+      "raw_operands": [
+        "r15d",
+        "edx"
+      ],
+      "in_operands": [
+        "edx"
+      ],
+      "out_operands": [
+        "r15d"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "edx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "edx"
+      },
+      "condition": "reg vs reg: edx"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "edx"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "edx"
+      },
+      "condition": "reg vs reg: edx"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "edx"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "edx"
+      },
+      "condition": "reg vs reg: edx"
+    }
+  ],
+  "bench": "531.deepsjeng_r/1",
+  "src": "1/super_hot_regions:48",
+  "order_map": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "ff_boundaries": [
+    2
+  ],
+  "stage_of_uop": [
+    0,
+    0,
+    0,
+    1
+  ],
+  "stage_count_full": 2,
+  "stage_count_fpga": 2,
+  "latency_cycles": 2,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 225.80645161290326,
+  "stage_max_delay_ns": [
+    3.1,
+    0.7
+  ],
+  "crit_path_sigma": 1.1999999999999997,
+  "serial_mem_effective": false,
+  "pcs": [
+    "0x6224487b8b36",
+    "0x6224487b8b38",
+    "0x6224487b8b40",
+    "0x6224487b8b53"
+  ],
+  "opcats": [
+    "move",
+    "shift",
+    "logic",
+    "move"
+  ],
+  "op_mem_kind": [
+    null,
+    null,
+    null,
+    null
+  ],
+  "op_delay_ns": [
+    0.7,
+    1.7,
+    0.7,
+    0.7
+  ],
+  "op_dsp": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    2,
+    2,
+    2,
+    2
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x6224487b8b36"
+}

@@ -1,0 +1,109 @@
+{
+  "rank": 48,
+  "group_index": 1,
+  "execution_count": 308880,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5dbd09be9187",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "xmm7",
+        "qword ptr [rsi]"
+      ],
+      "in_operands": [
+        "[rsi]"
+      ],
+      "out_operands": [
+        "xmm7"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5dbd09be918b",
+      "opcode": "vmovhpd",
+      "raw_operands": [
+        "xmm7",
+        "xmm7",
+        "qword ptr [rsi+r15*1]"
+      ],
+      "in_operands": [
+        "xmm7",
+        "[rsi+r15*1]"
+      ],
+      "out_operands": [
+        "xmm7"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm7"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "xmm7"
+      },
+      "condition": "reg vs reg: xmm7"
+    }
+  ],
+  "bench": "549.fotonik3d_r/1",
+  "src": "1/super_hot_regions:270",
+  "order_map": [
+    0,
+    1
+  ],
+  "ff_boundaries": [
+    0
+  ],
+  "stage_of_uop": [
+    0,
+    1
+  ],
+  "stage_count_full": 2,
+  "stage_count_fpga": 2,
+  "latency_cycles": 2,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 1166.6666666666665,
+  "stage_max_delay_ns": [
+    0.6,
+    0.6
+  ],
+  "crit_path_sigma": 0.0,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x5dbd09be9187",
+    "0x5dbd09be918b"
+  ],
+  "opcats": [
+    "alu",
+    "alu"
+  ],
+  "op_mem_kind": [
+    "load",
+    "load"
+  ],
+  "op_delay_ns": [
+    0.6,
+    0.6
+  ],
+  "op_dsp": [
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    4,
+    4
+  ],
+  "op_need_mpipe": [
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1
+  ],
+  "pc": "0x5dbd09be9187"
+}

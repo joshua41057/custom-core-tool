@@ -1,0 +1,269 @@
+{
+  "rank": 1,
+  "group_index": 1,
+  "execution_count": 13570981,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x61ec7a80be80",
+      "opcode": "vmulpd",
+      "raw_operands": [
+        "ymm1",
+        "ymm6",
+        "ymmword ptr [rdi+rax*1]"
+      ],
+      "in_operands": [
+        "ymm6",
+        "ymmword ptr [rdi+rax*1]"
+      ],
+      "out_operands": [
+        "ymm1"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x61ec7a80be85",
+      "opcode": "vmulpd",
+      "raw_operands": [
+        "ymm3",
+        "ymm5",
+        "ymmword ptr [rsi+rax*1]"
+      ],
+      "in_operands": [
+        "ymm5",
+        "ymmword ptr [rsi+rax*1]"
+      ],
+      "out_operands": [
+        "ymm3"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x61ec7a80be8a",
+      "opcode": "vaddpd",
+      "raw_operands": [
+        "ymm1",
+        "ymm1",
+        "ymm3"
+      ],
+      "in_operands": [
+        "ymm1",
+        "ymm3"
+      ],
+      "out_operands": [
+        "ymm1"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x61ec7a80be8e",
+      "opcode": "vmulpd",
+      "raw_operands": [
+        "ymm3",
+        "ymm4",
+        "ymmword ptr [rcx+rax*1]"
+      ],
+      "in_operands": [
+        "ymm4",
+        "ymmword ptr [rcx+rax*1]"
+      ],
+      "out_operands": [
+        "ymm3"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x61ec7a80be93",
+      "opcode": "vaddpd",
+      "raw_operands": [
+        "ymm1",
+        "ymm1",
+        "ymm3"
+      ],
+      "in_operands": [
+        "ymm1",
+        "ymm3"
+      ],
+      "out_operands": [
+        "ymm1"
+      ]
+    },
+    {
+      "index": 5,
+      "address": "0x61ec7a80be97",
+      "opcode": "vmovupd",
+      "raw_operands": [
+        "ymmword ptr [rdi+rax*1]",
+        "ymm1"
+      ],
+      "in_operands": [
+        "ymm1"
+      ],
+      "out_operands": [
+        "ymmword ptr [rdi+rax*1]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "ymm1"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "ymm1"
+      },
+      "condition": "reg vs reg: ymm1"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "ymm3"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "ymm3"
+      },
+      "condition": "reg vs reg: ymm3"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "ymm1"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "ymm1"
+      },
+      "condition": "reg vs reg: ymm1"
+    },
+    {
+      "from": {
+        "instr_index": 3,
+        "operand": "ymm3"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "ymm3"
+      },
+      "condition": "reg vs reg: ymm3"
+    },
+    {
+      "from": {
+        "instr_index": 4,
+        "operand": "ymm1"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "ymm1"
+      },
+      "condition": "reg vs reg: ymm1"
+    }
+  ],
+  "bench": "507.cactuBSSN_r/1",
+  "src": "1/super_hot_regions:0",
+  "order_map": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "ff_boundaries": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "stage_of_uop": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "stage_count_full": 6,
+  "stage_count_fpga": 6,
+  "latency_cycles": 6,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 109.37499999999999,
+  "stage_max_delay_ns": [
+    0.6,
+    0.6,
+    6.4,
+    0.6,
+    6.4,
+    0.6
+  ],
+  "crit_path_sigma": 2.734146220587984,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x61ec7a80be80",
+    "0x61ec7a80be85",
+    "0x61ec7a80be8a",
+    "0x61ec7a80be8e",
+    "0x61ec7a80be93",
+    "0x61ec7a80be97"
+  ],
+  "opcats": [
+    "mul",
+    "mul",
+    "add",
+    "mul",
+    "add",
+    "alu"
+  ],
+  "op_mem_kind": [
+    "load",
+    "load",
+    null,
+    "load",
+    null,
+    "store"
+  ],
+  "op_delay_ns": [
+    0.6,
+    0.6,
+    6.4,
+    0.6,
+    6.4,
+    0.6
+  ],
+  "op_dsp": [
+    4,
+    4,
+    0,
+    4,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    8,
+    8,
+    8,
+    8,
+    8,
+    8
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    true,
+    false,
+    true,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    2,
+    1,
+    2,
+    1
+  ],
+  "pc": "0x61ec7a80be80"
+}

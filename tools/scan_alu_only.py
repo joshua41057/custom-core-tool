@@ -1,161 +1,177 @@
 #!/usr/bin/env python3
-"""
-scan_alu_only.py <DIR|FILE> [-o out.json] [--min-len N]
-"""
-from __future__ import annotations
-import argparse, json, re, sys
+import json, argparse, logging, sys
 from pathlib import Path
-from typing import List, Dict
-
 
 try:
-    import op_alias
+    import orjson as _json
+    loads = _json.loads
+    dumps = lambda o: _json.dumps(o, option=_json.OPT_INDENT_2)
 except ModuleNotFoundError:
-    op_alias = None 
+    loads = json.loads
+    dumps = lambda o: json.dumps(o, indent=2).encode()
 
-ALLOW_SET = {
+ALLOWED = {
+    # ---- ALU / bit ----
+    "add","sub","and","andn","or","xor","neg","not",
+    "sar","shr","shl","rorx","sarx","shrx","shlx",
+    "blsi","blsr","bzhi","tzcnt","pxor",
+    "cmp","test","ucomisd","vcomisd","vcomiss","vucomisd","vucomiss",
+    "bt",
+    "inc","dec",
 
-    #  ALU BIT COUNT
-    "adc","add","and","andn","blsi","blsr","bt","bzhi","cmp","dec","div",
-    "idiv","imul","inc","mul","neg","not","or","rorx","sar","sarx","sbb",
-    "shl","shlx","shr","shrx","sub","test","tzcnt","xor",
-    # SIMD INT
-    "pxor","punpcklqdq","vpackusdw","vpackuswb","vpaddd","vpaddq","vpaddw",
-    "vpand","vpandn","vpavgb","vpblendd","vpblendvb","vpblendw",
-    "vpbroadcastb","vpbroadcastd","vpbroadcastw","vpcmpeqb","vpcmpeqd",
-    "vpcmpgtd","vpcmpgtw","vpmaxsd","vpminub","vpmovmskb","vpmovsxwd",
-    "vpmovzxbw","vpmovzxwd","vpmulld","vpor","vpsadbw","vpshufb","vpshufd",
-    "vpslld","vpsllq","vpsllw","vpsrad","vpsraw","vpsrld","vpsrldq","vpsrlq",
-    "vpsubd","vpsubw","vptest","vpunpckhqdq","vpunpckldq","vpunpcklqdq",
-    "vpunpcklwd","vpxor",
-    # SIMD FP / FMA
-    "addss","divss","mulss","subss","ucomisd","vaddpd","vaddps","vaddsd",
-    "vaddss","vandpd","vandps","vblendpd","vblendvpd","vbroadcastsd",
-    "vbroadcastss","vcmppd","vcmpsd","vcomisd","vcomiss","vcvtsd2ss",
-    "vcvtsi2sd","vcvtsi2ss","vcvtss2sd","vcvttsd2si","vcvttss2si",
-    "vdivpd","vdivps","vdivsd","vdivss","vfmadd132pd","vfmadd132ps",
-    "vfmadd132sd","vfmadd132ss","vfmadd213pd","vfmadd213sd","vfmadd213ss",
-    "vfmadd231pd","vfmadd231ps","vfmadd231sd","vfmadd231ss","vfmsub132pd",
-    "vfmsub132ps","vfmsub132sd","vfmsub132ss","vfmsub213pd","vfmsub213ss",
-    "vfmsub231pd","vfmsub231sd","vfmsub231ss","vfnmadd132pd","vfnmadd132ps",
-    "vfnmadd132sd","vfnmadd213pd","vfnmadd213ps","vfnmadd213sd",
-    "vfnmadd213ss","vfnmadd231pd","vfnmadd231sd","vfnmadd231ss",
-    "vfnmsub132pd","vfnmsub132sd","vfnmsub231sd","vmaxpd","vmaxsd","vmaxss",
-    "vminpd","vminsd","vminss","vmulpd","vmulps","vmulsd","vmulss","vorpd",
-    "vroundsd","vshufpd","vshufps","vsqrtpd","vsqrtsd","vsqrtss","vsubpd",
-    "vsubps","vsubsd","vsubss","vucomisd","vucomiss","vxorpd","vxorps",
+    # ---- scalar sign/zero extend helpers ----
+    "cdq","cdqe","cqo",
 
-    "mov","movapd","movaps","movd","movdqa","movdqu","movq","movsd","movss",
-    "movsx","movsxd","movzx",
-    "vmovapd","vmovaps","vmovd","vmovddup","vmovdqa","vmovdqu","vmovhpd",
-    "vmovhps","vmovlhps","vmovlpd","vmovlps","vmovmskps","vmovntdq","vmovq",
-    "vmovsd","vmovshdup","vmovsldup","vmovss","vmovupd","vmovups",
-    "cmovb","cmovbe","cmovl","cmovle","cmovnb","cmovnbe","cmovnle",
-    "cmovnz","cmovs","cmovz",
+    # ---- SIMD logic ----
+    "andpd","andps","vandpd","vandps","subss",
+    "vorpd","vpor","vpxor","vxorpd","vxorps",
+    "vpand","vpandn",
+
+    # ---- mul / add / sub (no flag consume) ----
+    "mul","imul","mulss","mulps",
+    "vmulps","vmulpd","vmulsd","vmulss","vpmulld",
+    "vpaddd","vpaddq","vpaddw","vpsubd","vpsubw","vpavgb",
+    "addss","vaddss","vaddps","vaddpd","vaddsd",
+    "vsubps","vsubpd","vsubss","vsubsd",
+
+    # ---- shifts (only) ----
+    "vpslld","vpsllq","vpsllw",
+    "vpsrld","vpsrlq","vpsrad","vpsraw",
+
+    # ---- broadcast / blends (immediate-mask only) ----
+    "vbroadcastsd","vbroadcastss",
+    "vpbroadcastb","vpbroadcastd","vpbroadcastw",
+    "vpblendd","vpblendw","vblendpd",
+
+    # ---- insert / extract / masks / misc ----
+    "vpinsrb","vpinsrd","vpinsrq",
+    "vpextrd","vpextrq",
+    "vinsertps","vextracti128","vextractf128","vinserti128","vinsertf128",
+    "vmovmskps","vpsadbw",
+
+    # ---- vector sign/zero extend (no flags) ----
+    "vpmovsxwd","vpmovzxbw","vpmovzxwd",
+
+    # ---- MOV / loads & stores (regular) ----
+    "mov","movq","movd","movdqa","movdqu","movsd","movss",
+    "movapd","movaps",
+    "movsx","movzx","movsxd",
+    "vmovq","vmovd","vmovdqa","vmovdqu",
+    "vmovaps","vmovapd",
+    "vmovss","vmovsd","vmovups","vmovupd",
+    "vmovhps","vmovhpd","vmovlps","vmovlpd","vmovlhps",
+    "punpcklqdq",
+    "lea",
+
+    # ---- min/max ----
+    "vmaxpd","vmaxps","vmaxsd","vmaxss",
+    "vminpd","vminps","vminsd","vminss",
+
+    # ---- FMA (no flags) ----
+    "vfmadd132ps","vfmadd213ps","vfmadd231ps",
+    "vfmadd132pd","vfmadd213pd","vfmadd231pd",
+    "vfmadd132ss","vfmadd213ss","vfmadd231ss",
+    "vfmadd132sd","vfmadd213sd","vfmadd231sd",
+    "vfmsub132ps","vfmsub213ps","vfmsub231ps",
+    "vfmsub132pd","vfmsub213pd","vfmsub231pd",
+    "vfmsub132ss","vfmsub213ss","vfmsub231ss",
+    "vfmsub132sd","vfmsub213sd","vfmsub231sd",
+    "vfnmadd132ps","vfnmadd213ps","vfnmadd231ps",
+    "vfnmadd132pd","vfnmadd213pd","vfnmadd231pd",
+    "vfnmadd132ss","vfnmadd213ss","vfnmadd231ss",
+    "vfnmadd132sd","vfnmadd213sd","vfnmadd231sd",
+    "vfnmsub132pd","vfnmsub231sd","vfnmsub132sd",
+
+    # ---- compares (no flag consume) ----
+    "vcmppd","vcmpsd",
+    "vpcmpeqb","vpcmpeqd","vpcmpgtd","vpcmpgtw",
+    "vpmaxsd","vpminub","vpmovmskb","vptest",
+
+    # ---- data dup / shuffles (safe) ----
+    "vmovddup","vmovshdup","vmovsldup",
 }
 
-def supported_opcode(mnem: str) -> bool:
-    m = mnem.lower()
-    if op_alias is not None:
-        try:
-            return op_alias.rtl_op(m) != "OP_NOP"
-        except KeyError:
-            return False
-    return m in ALLOW_SET
 
-REG_RX = re.compile(
-    r"""^(r(1?[0-5])?[a-z]*|e?[abcd]x|[sb]p|[sd]i|
-          [abcd][lh]|
-          [xyz]mm\d+|k\d+|
-          flag|imm\d+)$""", re.X | re.I)
+NOT_ALLOWED = {
+    # ---- Branch / calls / system / returns ----
+    "jb","jbe","jl","jle","jnb","jnbe","jnl","jnle","jns","jnz","jp","js","jz",
+    "jmp","call","syscall","ret",
 
-IMM_RX = re.compile(r"^[-+]?(0x[0-9a-f]+|\d+)$", re.I)
+    # ---- Flag consumers ----
+    "adc","sbb",
 
-def is_mem_operand(tok: str) -> bool:
-    t = tok.strip().lower()
-    if '[' in t or 'ptr' in t:
-        return True
-    if REG_RX.fullmatch(t) or IMM_RX.fullmatch(t):
-        return False
-    return t.startswith(('m', 'rel'))
+    # ---- Conditional move & setcc ----
+    "cmovb","cmovbe","cmovl","cmovle","cmovnb","cmovnbe","cmovnle","cmovnz","cmovs","cmovz",
+    "setb","setbe","setle","setnb","setnbe","setnl","setnle","setnp","setnz","setp","setz",
 
-def pure_alu_instruction(ins: Dict) -> bool:
-    if not supported_opcode(ins.get("opcode", "")):
-        return False
-    return not any(is_mem_operand(tok) for tok in ins.get("raw_operands", []))
+    # ---- Division / square root ----
+    "div","idiv","divss","vdivss","vdivsd","vdivpd","vdivps","vsqrtsd","vsqrtss","vsqrtpd",
 
-def pure_block(group: Dict) -> bool:
+    # ---- Memory patterns exclude (streaming / gather / masked stores) ----
+    "vgatherdpd","vgatherqpd","vmaskmovpd","vmovntdq",
 
-    insts = group.get("instructions", [])
-    if not all(pure_alu_instruction(i) for i in insts):
-        return False
-    for me in group.get("merge_edges", []):
-        cond = me.get("condition", "")
-        if not cond.startswith("reg vs reg"):
-            return False
-    return True
+    # ---- Stack / special state ----
+    "push","pop","xchg","vstmxcsr",
 
-def process_json(jpath: Path, min_len: int) -> tuple[List[Dict], List[Dict]]:
-    """return (passed, rejected) tuple for this JSON file"""
-    with jpath.open(encoding="utf-8") as f:
-        meta = json.load(f)
+    # ---- Permute / Shuffle (moved) ----
+    "vpsrldq","vpslldq",
+    "vpshufd","vpshufb",
+    "vshufps","vshufpd",
+    "vperm2i128","vpermq","vpermpd",
 
-    passed:  List[Dict] = []
-    rejected: List[Dict] = []
-    bench_root = jpath.parents[1].name
-    subdir     = jpath.parent.name
-    bench_id   = f"{bench_root}/{subdir}"
-    json_tag   = jpath.stem
+    # ---- Variable blends (moved) ----
+    "vpblendvb","vblendvpd",
 
-    for idx, g in enumerate(meta):
-        insts = g.get("instructions", [])
-        if len(insts) < min_len or not pure_block(g):
-            rejected.append(g)
-        else:
-            gg          = g.copy()
-            gg["bench"] = bench_id
-            gg["src"]   = f"{subdir}/{json_tag}:{idx}"
-            passed.append(gg)
-    return passed, rejected
+    # ---- Conversions / Rounding / Int-conversion (moved) ----
+    "vcvtsd2ss","vcvtss2sd","vcvtsi2ss","vcvtsi2sd","vcvttss2si","vcvttsd2si",
+    "vroundsd",
+
+    # ---- packs / unpacks ----
+    "vpunpcklqdq","vpunpckhqdq","vpunpcklwd","vpunpckldq",
+    "vunpckhpd","vunpcklpd","vunpcklps",
+    "vpackusdw","vpackuswb",
+}
+
+def alu_block(group: dict) -> bool:
+    return all(ins["opcode"].lower() in ALLOWED for ins in group["instructions"])
 
 
-def main() -> None:
+def scan_file(path: Path):
+    run   = path.parents[0].name     
+    bench = path.parents[1].name     
+    tag   = f"{bench}/{run}"          
+
+    ok, bad = [], []
+    groups = loads(path.read_bytes())   
+
+    for idx, g in enumerate(groups):
+        g["bench"] = tag                      
+        g["src"]   = f"{run}/super_hot_regions:{idx}"  
+        (ok if alu_block(g) else bad).append(g)
+    return ok, bad
+
+#  CLI 
+def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("root", help="directory or JSON file")
-    ap.add_argument(
-        "-o", "--out",
-        default=str(Path(__file__).resolve().parents[1] /
-                    "examples" / "alu_only.json"),
-    )
-    ap.add_argument("--min-len", type=int, default=1,
-                    help="minimum uops per group")
-    ap.add_argument("--dump-reject", type=str, default=None,
-                    help="(debug) save rejected groups here")
+    ap.add_argument("root", type=Path)
+    ap.add_argument("-o", "--out",    type=Path, default=Path("alu_only.json"))
+    ap.add_argument("--reject",       type=Path)
+    ap.add_argument("--log", default="info")
     args = ap.parse_args()
+    logging.basicConfig(level=getattr(logging, args.log.upper()))
 
-    root = Path(args.root)
-    json_files = [root] if root.is_file() else list(
-        root.glob("**/super_hot_regions.json"))
+    paths = [args.root] if args.root.is_file() else list(args.root.glob("**/super_hot_regions.json"))
+    if not paths:
+        sys.exit("no JSON found")
 
-    if not json_files:
-        sys.exit("No JSON files found.")
+    keep, drop = [], []
+    for p in paths:
+        g, b = scan_file(p); keep.extend(g); drop.extend(b)
 
-    filtered, rejected = [], []
-    for p in json_files:
-        ok, bad = process_json(p, args.min_len)
-        filtered.extend(ok)
-        rejected.extend(bad)
-
-    out_path = Path(args.out)
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(json.dumps(filtered, indent=2))
-    print(f"Done, {len(filtered)} pure-ALU groups -> {args.out}")
-
-    if args.dump_reject:
-        rej_path = Path(args.dump_reject)
-        rej_path.parent.mkdir(parents=True, exist_ok=True)
-        rej_path.write_text(json.dumps(rejected, indent=2))
-        print(f"Filtered, {len(rejected)} groups rejected -> {args.dump_reject}")
+    args.out.write_bytes(dumps(keep))
+    logging.info("saved %d blocks -> %s", len(keep), args.out)
+    if args.reject:
+        args.reject.write_bytes(dumps(drop))
 
 if __name__ == "__main__":
     main()

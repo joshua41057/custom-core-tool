@@ -1,0 +1,147 @@
+{
+  "rank": 12,
+  "group_index": 2,
+  "execution_count": 6798768,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x622355b54700",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "xmm8",
+        "qword ptr [rsi+0x10]"
+      ],
+      "in_operands": [
+        "[rsi+0x10]"
+      ],
+      "out_operands": [
+        "xmm8"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x622355b5470d",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "xmm1",
+        "qword ptr [rdi+0x88]"
+      ],
+      "in_operands": [
+        "[rdi+0x88]"
+      ],
+      "out_operands": [
+        "xmm1"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x622355b5471a",
+      "opcode": "vsubsd",
+      "raw_operands": [
+        "xmm1",
+        "xmm1",
+        "xmm8"
+      ],
+      "in_operands": [
+        "xmm1",
+        "xmm8"
+      ],
+      "out_operands": [
+        "xmm1"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "xmm1"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "xmm1"
+      },
+      "condition": "reg vs reg: xmm1"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm8"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "xmm8"
+      },
+      "condition": "reg vs reg: xmm8"
+    }
+  ],
+  "bench": "511.povray_r/1",
+  "src": "1/super_hot_regions:14",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_of_uop": [
+    0,
+    1,
+    2
+  ],
+  "stage_count_full": 3,
+  "stage_count_fpga": 3,
+  "latency_cycles": 3,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 218.74999999999997,
+  "stage_max_delay_ns": [
+    0.6,
+    0.6,
+    3.2
+  ],
+  "crit_path_sigma": 1.2256517540566825,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x622355b54700",
+    "0x622355b5470d",
+    "0x622355b5471a"
+  ],
+  "opcats": [
+    "alu",
+    "alu",
+    "add"
+  ],
+  "op_mem_kind": [
+    "load",
+    "load",
+    null
+  ],
+  "op_delay_ns": [
+    0.6,
+    0.6,
+    3.2
+  ],
+  "op_dsp": [
+    0,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    4,
+    4,
+    4
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x622355b54700"
+}

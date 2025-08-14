@@ -3,20 +3,6 @@ import argparse, csv, datetime as dt, json, re, sys
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
-# -------------------------------------------------------------------------------------------------
-# collect_results.py
-# -------------------------------------------------------------------------------------------------
-# Parses Vivado post‑route timing, utilization **and power** reports, summarizing key metrics into
-# JSON/CSV files and (optionally) Sniper/Block CSVs for simulation.
-#
-# **2025‑07‑11 updates**
-#   • Added parsing of post_route_power.rpt – extracts:
-#       ├─ total_on_chip_power_w   (float) – "Total On‑Chip Power (W)" (e.g. 5.732)
-#       ├─ dynamic_power_w         (float) – "Dynamic (W)"             (e.g. 3.219)
-#       └─ device_static_power_w   (float) – "Device Static (W)"       (e.g. 2.513)
-#   • Previously (same date) replaced slice/DSP % fields with explicit CLB/DSP usage & totals.
-# -------------------------------------------------------------------------------------------------
-
 ap0 = argparse.ArgumentParser(add_help=False)
 ap0.add_argument("-d", "--dir", default=".",
                  help="bench dir (default: cur dir)")
@@ -31,17 +17,13 @@ POWER_RPT  = WORKDIR / "post_route_power.rpt"
 CLK_TARGET_MHZ = 300.0  # target clock (MHz) – adjust if constraint changes
 TARGET_T_NS    = 1000.0 / CLK_TARGET_MHZ
 
-# ----------------------------------------------------------------------------------------------
 # Utility: load text safely
-# ----------------------------------------------------------------------------------------------
 
 def text(p: Path) -> str:
     """Read *p* as text, return empty string if file missing."""
     return p.read_text(errors="ignore") if p.is_file() else ""
 
-# ----------------------------------------------------------------------------------------------
 # Timing report parsing (post_route_timing.rpt)
-# ----------------------------------------------------------------------------------------------
 
 WNS_ROW_RE = re.compile(r"Design Timing Summary.*?\n\s*([-+]?[0-9.]+)", re.S | re.I)
 
@@ -62,9 +44,7 @@ def parse_timing() -> tuple[float | None, float | None]:
             fmax = 1000.0 / eff_period  # MHz
     return wns, fmax
 
-# ----------------------------------------------------------------------------------------------
 # Utilization report parsing (utilization_pblock_*.rpt)
-# ----------------------------------------------------------------------------------------------
 
 def _parse_row_usage_available(tag: str, rpt_txt: str) -> tuple[int | None, int | None]:
     """Extract (used, available) from a utilization row whose first cell matches *tag*."""
@@ -92,9 +72,7 @@ def parse_util(rpt: Path) -> dict[str, Any]:
         "pblock_dsp_used":  dsp_used,
     }
 
-# ----------------------------------------------------------------------------------------------
 # Power report parsing (post_route_power.rpt)
-# ----------------------------------------------------------------------------------------------
 
 def _grab_power(label: str, txt: str) -> float | None:
     m = re.search(rf"{re.escape(label)}\s*\(W\)\s*\|\s*([0-9.]+)", txt)
@@ -115,9 +93,7 @@ def parse_power() -> dict[str, Any]:
         "device_static_power_w": _grab_power("Device Static", txt),
     }
 
-# ----------------------------------------------------------------------------------------------
 # len_table_pkg.sv helper – stage / µ‑op extraction
-# ----------------------------------------------------------------------------------------------
 
 def parse_len_pkg() -> tuple[str, str]:
     src = text(LEN_PKG)
@@ -136,10 +112,7 @@ def parse_len_pkg() -> tuple[str, str]:
     )
     return stage_expr, muops
 
-# ----------------------------------------------------------------------------------------------
 # Main collection pipeline
-# ----------------------------------------------------------------------------------------------
-
 def collect(tag: str) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]], List[Dict[str, Any]]]:
     wns, fmax            = parse_timing()
     stage_expr, muops    = parse_len_pkg()

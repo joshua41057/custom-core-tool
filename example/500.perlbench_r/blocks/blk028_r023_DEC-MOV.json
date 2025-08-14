@@ -1,0 +1,104 @@
+{
+  "rank": 23,
+  "group_index": 1,
+  "execution_count": 2706819,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5ebda5d7614e",
+      "opcode": "dec",
+      "raw_operands": [
+        "esi"
+      ],
+      "in_operands": [
+        "esi"
+      ],
+      "out_operands": [
+        "esi",
+        "flag"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5ebda5d76150",
+      "opcode": "mov",
+      "raw_operands": [
+        "dword ptr [r15+0x8]",
+        "esi"
+      ],
+      "in_operands": [
+        "esi"
+      ],
+      "out_operands": [
+        "[r15+0x8]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "esi"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "esi"
+      },
+      "condition": "reg vs reg: esi"
+    }
+  ],
+  "bench": "500.perlbench_r/1",
+  "src": "1/super_hot_regions:33",
+  "order_map": [
+    0,
+    1
+  ],
+  "ff_boundaries": [],
+  "stage_of_uop": [
+    0,
+    0
+  ],
+  "stage_count_full": 1,
+  "stage_count_fpga": 1,
+  "latency_cycles": 1,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 318.18181818181813,
+  "stage_max_delay_ns": [
+    2.2
+  ],
+  "crit_path_sigma": 0.0,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x5ebda5d7614e",
+    "0x5ebda5d76150"
+  ],
+  "opcats": [
+    "add",
+    "move"
+  ],
+  "op_mem_kind": [
+    null,
+    "store"
+  ],
+  "op_delay_ns": [
+    1.6,
+    0.6
+  ],
+  "op_dsp": [
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    2,
+    2
+  ],
+  "op_need_mpipe": [
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1
+  ],
+  "pc": "0x5ebda5d7614e"
+}

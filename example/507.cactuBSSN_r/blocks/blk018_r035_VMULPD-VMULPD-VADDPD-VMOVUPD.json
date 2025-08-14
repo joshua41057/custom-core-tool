@@ -1,0 +1,189 @@
+{
+  "rank": 35,
+  "group_index": 1,
+  "execution_count": 2069377,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x61ec7a80b770",
+      "opcode": "vmulpd",
+      "raw_operands": [
+        "ymm1",
+        "ymm4",
+        "ymmword ptr [rsi+rax*1]"
+      ],
+      "in_operands": [
+        "ymm4",
+        "ymmword ptr [rsi+rax*1]"
+      ],
+      "out_operands": [
+        "ymm1"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x61ec7a80b775",
+      "opcode": "vmulpd",
+      "raw_operands": [
+        "ymm2",
+        "ymm3",
+        "ymmword ptr [rcx+rax*1]"
+      ],
+      "in_operands": [
+        "ymm3",
+        "ymmword ptr [rcx+rax*1]"
+      ],
+      "out_operands": [
+        "ymm2"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x61ec7a80b77a",
+      "opcode": "vaddpd",
+      "raw_operands": [
+        "ymm1",
+        "ymm1",
+        "ymm2"
+      ],
+      "in_operands": [
+        "ymm1",
+        "ymm2"
+      ],
+      "out_operands": [
+        "ymm1"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x61ec7a80b77e",
+      "opcode": "vmovupd",
+      "raw_operands": [
+        "ymmword ptr [rsi+rax*1]",
+        "ymm1"
+      ],
+      "in_operands": [
+        "ymm1"
+      ],
+      "out_operands": [
+        "ymmword ptr [rsi+rax*1]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "ymm1"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "ymm1"
+      },
+      "condition": "reg vs reg: ymm1"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "ymm2"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "ymm2"
+      },
+      "condition": "reg vs reg: ymm2"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "ymm1"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "ymm1"
+      },
+      "condition": "reg vs reg: ymm1"
+    }
+  ],
+  "bench": "507.cactuBSSN_r/1",
+  "src": "1/super_hot_regions:49",
+  "order_map": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "ff_boundaries": [
+    0,
+    1,
+    2
+  ],
+  "stage_of_uop": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "stage_count_full": 4,
+  "stage_count_fpga": 4,
+  "latency_cycles": 4,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 109.37499999999999,
+  "stage_max_delay_ns": [
+    0.6,
+    0.6,
+    6.4,
+    0.6
+  ],
+  "crit_path_sigma": 2.511473670974872,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x61ec7a80b770",
+    "0x61ec7a80b775",
+    "0x61ec7a80b77a",
+    "0x61ec7a80b77e"
+  ],
+  "opcats": [
+    "mul",
+    "mul",
+    "add",
+    "alu"
+  ],
+  "op_mem_kind": [
+    "load",
+    "load",
+    null,
+    "store"
+  ],
+  "op_delay_ns": [
+    0.6,
+    0.6,
+    6.4,
+    0.6
+  ],
+  "op_dsp": [
+    4,
+    4,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    8,
+    8,
+    8,
+    8
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    true,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    2,
+    1
+  ],
+  "pc": "0x61ec7a80b770"
+}

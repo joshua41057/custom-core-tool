@@ -1,0 +1,257 @@
+{
+  "rank": 70,
+  "group_index": 1,
+  "execution_count": 153993,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x57ee1502c3f0",
+      "opcode": "movsxd",
+      "raw_operands": [
+        "rcx",
+        "eax"
+      ],
+      "in_operands": [
+        "eax"
+      ],
+      "out_operands": [
+        "rcx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x57ee1502c3f3",
+      "opcode": "mov",
+      "raw_operands": [
+        "ecx",
+        "dword ptr [rbx+rcx*4]"
+      ],
+      "in_operands": [
+        "[rbx+rcx*4]"
+      ],
+      "out_operands": [
+        "ecx"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x57ee1502c3f6",
+      "opcode": "or",
+      "raw_operands": [
+        "eax",
+        "ebp"
+      ],
+      "in_operands": [
+        "eax",
+        "ebp"
+      ],
+      "out_operands": [
+        "eax",
+        "flag"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x57ee1502c3f8",
+      "opcode": "shl",
+      "raw_operands": [
+        "ecx",
+        "0x13"
+      ],
+      "in_operands": [
+        "ecx",
+        "0x13"
+      ],
+      "out_operands": [
+        "ecx",
+        "flag"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x57ee1502c3fb",
+      "opcode": "or",
+      "raw_operands": [
+        "eax",
+        "ecx"
+      ],
+      "in_operands": [
+        "eax",
+        "ecx"
+      ],
+      "out_operands": [
+        "eax",
+        "flag"
+      ]
+    },
+    {
+      "index": 5,
+      "address": "0x57ee1502c3fd",
+      "opcode": "mov",
+      "raw_operands": [
+        "dword ptr [r15]",
+        "eax"
+      ],
+      "in_operands": [
+        "eax"
+      ],
+      "out_operands": [
+        "[r15]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rcx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "[rbx+rcx*4]"
+      },
+      "condition": "reg vs mem: rcx"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "ecx"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "ecx"
+      },
+      "condition": "reg vs reg: ecx"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 3,
+        "operand": "ecx"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "ecx"
+      },
+      "condition": "reg vs reg: ecx"
+    },
+    {
+      "from": {
+        "instr_index": 4,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    }
+  ],
+  "bench": "631.deepsjeng_s/1",
+  "src": "1/super_hot_regions:128",
+  "order_map": [
+    0,
+    2,
+    1,
+    3,
+    4,
+    5
+  ],
+  "ff_boundaries": [
+    1
+  ],
+  "stage_of_uop": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    1
+  ],
+  "stage_count_full": 2,
+  "stage_count_fpga": 2,
+  "latency_cycles": 2,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 233.33333333333334,
+  "stage_max_delay_ns": [
+    1.4,
+    3.0
+  ],
+  "crit_path_sigma": 0.8,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x57ee1502c3f0",
+    "0x57ee1502c3f3",
+    "0x57ee1502c3f6",
+    "0x57ee1502c3f8",
+    "0x57ee1502c3fb",
+    "0x57ee1502c3fd"
+  ],
+  "opcats": [
+    "move",
+    "move",
+    "logic",
+    "shift",
+    "logic",
+    "move"
+  ],
+  "op_mem_kind": [
+    null,
+    "load",
+    null,
+    null,
+    null,
+    "store"
+  ],
+  "op_delay_ns": [
+    0.7,
+    0.6,
+    0.7,
+    1.7,
+    0.7,
+    0.6
+  ],
+  "op_dsp": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x57ee1502c3f0"
+}

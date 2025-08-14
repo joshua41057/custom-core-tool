@@ -1,0 +1,144 @@
+{
+  "rank": 66,
+  "group_index": 1,
+  "execution_count": 1378743,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x65462c68d023",
+      "opcode": "xor",
+      "raw_operands": [
+        "ebx",
+        "r14d"
+      ],
+      "in_operands": [
+        "ebx",
+        "r14d"
+      ],
+      "out_operands": [
+        "ebx",
+        "flag"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x65462c68d026",
+      "opcode": "mov",
+      "raw_operands": [
+        "eax",
+        "ebx"
+      ],
+      "in_operands": [
+        "ebx"
+      ],
+      "out_operands": [
+        "eax"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x65462c68d028",
+      "opcode": "and",
+      "raw_operands": [
+        "eax",
+        "0x1"
+      ],
+      "in_operands": [
+        "eax",
+        "0x1"
+      ],
+      "out_operands": [
+        "eax",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "ebx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "ebx"
+      },
+      "condition": "reg vs reg: ebx"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    }
+  ],
+  "bench": "600.perlbench_s/1",
+  "src": "1/super_hot_regions:96",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [],
+  "stage_of_uop": [
+    0,
+    0,
+    0
+  ],
+  "stage_count_full": 1,
+  "stage_count_fpga": 1,
+  "latency_cycles": 1,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 333.33333333333337,
+  "stage_max_delay_ns": [
+    2.1
+  ],
+  "crit_path_sigma": 0.0,
+  "serial_mem_effective": false,
+  "pcs": [
+    "0x65462c68d023",
+    "0x65462c68d026",
+    "0x65462c68d028"
+  ],
+  "opcats": [
+    "logic",
+    "move",
+    "logic"
+  ],
+  "op_mem_kind": [
+    null,
+    null,
+    null
+  ],
+  "op_delay_ns": [
+    0.7,
+    0.7,
+    0.7
+  ],
+  "op_dsp": [
+    0,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    2,
+    2,
+    2
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x65462c68d023"
+}

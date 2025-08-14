@@ -1,0 +1,525 @@
+{
+  "rank": 65,
+  "group_index": 3,
+  "execution_count": 686187,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x621bfaa0ccfa",
+      "opcode": "mov",
+      "raw_operands": [
+        "rax",
+        "qword ptr [r12]"
+      ],
+      "in_operands": [
+        "[r12]"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x621bfaa0cd05",
+      "opcode": "mov",
+      "raw_operands": [
+        "rcx",
+        "qword ptr [rax+0x10]"
+      ],
+      "in_operands": [
+        "[rax+0x10]"
+      ],
+      "out_operands": [
+        "rcx"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x621bfaa0cd09",
+      "opcode": "mov",
+      "raw_operands": [
+        "qword ptr [rsp+0x70]",
+        "rax"
+      ],
+      "in_operands": [
+        "rax"
+      ],
+      "out_operands": [
+        "[rsp+0x70]"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x621bfaa0cd0e",
+      "opcode": "mov",
+      "raw_operands": [
+        "rax",
+        "qword ptr [rcx+0x68]"
+      ],
+      "in_operands": [
+        "[rcx+0x68]"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x621bfaa0cd12",
+      "opcode": "mov",
+      "raw_operands": [
+        "qword ptr [rsp+0x30]",
+        "rcx"
+      ],
+      "in_operands": [
+        "rcx"
+      ],
+      "out_operands": [
+        "[rsp+0x30]"
+      ]
+    },
+    {
+      "index": 5,
+      "address": "0x621bfaa0cd17",
+      "opcode": "mov",
+      "raw_operands": [
+        "qword ptr [rsp+0x78]",
+        "rax"
+      ],
+      "in_operands": [
+        "rax"
+      ],
+      "out_operands": [
+        "[rsp+0x78]"
+      ]
+    },
+    {
+      "index": 6,
+      "address": "0x621bfaa0cd1c",
+      "opcode": "mov",
+      "raw_operands": [
+        "eax",
+        "dword ptr [rcx+0x60]"
+      ],
+      "in_operands": [
+        "[rcx+0x60]"
+      ],
+      "out_operands": [
+        "eax"
+      ]
+    },
+    {
+      "index": 7,
+      "address": "0x621bfaa0cd33",
+      "opcode": "mov",
+      "raw_operands": [
+        "eax",
+        "dword ptr [rcx+0x64]"
+      ],
+      "in_operands": [
+        "[rcx+0x64]"
+      ],
+      "out_operands": [
+        "eax"
+      ]
+    },
+    {
+      "index": 8,
+      "address": "0x621bfaa0cd36",
+      "opcode": "mov",
+      "raw_operands": [
+        "dword ptr [rsp]",
+        "eax"
+      ],
+      "in_operands": [
+        "eax"
+      ],
+      "out_operands": [
+        "[rsp]"
+      ]
+    },
+    {
+      "index": 9,
+      "address": "0x621bfaa0cd39",
+      "opcode": "shr",
+      "raw_operands": [
+        "eax",
+        "0x4"
+      ],
+      "in_operands": [
+        "eax",
+        "0x4"
+      ],
+      "out_operands": [
+        "eax",
+        "flag"
+      ]
+    },
+    {
+      "index": 10,
+      "address": "0x621bfaa0cd3c",
+      "opcode": "mov",
+      "raw_operands": [
+        "dword ptr [rsp+0xe4]",
+        "eax"
+      ],
+      "in_operands": [
+        "eax"
+      ],
+      "out_operands": [
+        "[rsp+0xe4]"
+      ]
+    },
+    {
+      "index": 11,
+      "address": "0x621bfaa0cd43",
+      "opcode": "and",
+      "raw_operands": [
+        "eax",
+        "0x1"
+      ],
+      "in_operands": [
+        "eax",
+        "0x1"
+      ],
+      "out_operands": [
+        "eax",
+        "flag"
+      ]
+    },
+    {
+      "index": 12,
+      "address": "0x621bfaa0cd46",
+      "opcode": "mov",
+      "raw_operands": [
+        "dword ptr [rsp+0xb4]",
+        "eax"
+      ],
+      "in_operands": [
+        "eax"
+      ],
+      "out_operands": [
+        "[rsp+0xb4]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "[rax+0x10]"
+      },
+      "condition": "reg vs mem: rax"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "rax"
+      },
+      "condition": "reg vs reg: rax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "rcx"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "[rcx+0x68]"
+      },
+      "condition": "reg vs mem: rcx"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "rcx"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "rcx"
+      },
+      "condition": "reg vs reg: rcx"
+    },
+    {
+      "from": {
+        "instr_index": 3,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "rax"
+      },
+      "condition": "reg vs reg: rax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "rcx"
+      },
+      "to": {
+        "instr_index": 6,
+        "operand": "[rcx+0x60]"
+      },
+      "condition": "reg vs mem: rcx"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "rcx"
+      },
+      "to": {
+        "instr_index": 7,
+        "operand": "[rcx+0x64]"
+      },
+      "condition": "reg vs mem: rcx"
+    },
+    {
+      "from": {
+        "instr_index": 7,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 8,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 7,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 9,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 9,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 10,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 9,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 11,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 11,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 12,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    }
+  ],
+  "bench": "500.perlbench_r/3",
+  "src": "3/super_hot_regions:101",
+  "order_map": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "ff_boundaries": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    10
+  ],
+  "stage_of_uop": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    9,
+    10,
+    10
+  ],
+  "stage_count_full": 11,
+  "stage_count_fpga": 11,
+  "latency_cycles": 11,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 304.34782608695656,
+  "stage_max_delay_ns": [
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    2.3,
+    1.3
+  ],
+  "crit_path_sigma": 0.509577689354237,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x621bfaa0ccfa",
+    "0x621bfaa0cd05",
+    "0x621bfaa0cd09",
+    "0x621bfaa0cd0e",
+    "0x621bfaa0cd12",
+    "0x621bfaa0cd17",
+    "0x621bfaa0cd1c",
+    "0x621bfaa0cd33",
+    "0x621bfaa0cd36",
+    "0x621bfaa0cd39",
+    "0x621bfaa0cd3c",
+    "0x621bfaa0cd43",
+    "0x621bfaa0cd46"
+  ],
+  "opcats": [
+    "move",
+    "move",
+    "move",
+    "move",
+    "move",
+    "move",
+    "move",
+    "move",
+    "move",
+    "shift",
+    "move",
+    "logic",
+    "move"
+  ],
+  "op_mem_kind": [
+    "load",
+    "load",
+    "store",
+    "load",
+    "store",
+    "store",
+    "load",
+    "load",
+    "store",
+    null,
+    "store",
+    null,
+    "store"
+  ],
+  "op_delay_ns": [
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    1.7,
+    0.6,
+    0.7,
+    0.6
+  ],
+  "op_dsp": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x621bfaa0ccfa"
+}

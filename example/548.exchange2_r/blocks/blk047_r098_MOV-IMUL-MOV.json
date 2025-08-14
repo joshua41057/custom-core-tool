@@ -1,0 +1,144 @@
+{
+  "rank": 98,
+  "group_index": 2,
+  "execution_count": 403374,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x78f0e2261fc5",
+      "opcode": "mov",
+      "raw_operands": [
+        "rax",
+        "qword ptr [r12+rsi*1]"
+      ],
+      "in_operands": [
+        "[r12+rsi*1]"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x78f0e2261fc9",
+      "opcode": "imul",
+      "raw_operands": [
+        "rax",
+        "r11"
+      ],
+      "in_operands": [
+        "rax",
+        "r11"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x78f0e2261fcd",
+      "opcode": "mov",
+      "raw_operands": [
+        "qword ptr [r10+rcx*8]",
+        "rax"
+      ],
+      "in_operands": [
+        "rax"
+      ],
+      "out_operands": [
+        "[r10+rcx*8]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rax"
+      },
+      "condition": "reg vs reg: rax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "rax"
+      },
+      "condition": "reg vs reg: rax"
+    }
+  ],
+  "bench": "548.exchange2_r/1",
+  "src": "1/super_hot_regions:133",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0
+  ],
+  "stage_of_uop": [
+    0,
+    1,
+    1
+  ],
+  "stage_count_full": 2,
+  "stage_count_fpga": 2,
+  "latency_cycles": 2,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 388.8888888888889,
+  "stage_max_delay_ns": [
+    0.6,
+    1.8
+  ],
+  "crit_path_sigma": 0.5999999999999999,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x78f0e2261fc5",
+    "0x78f0e2261fc9",
+    "0x78f0e2261fcd"
+  ],
+  "opcats": [
+    "move",
+    "imul",
+    "move"
+  ],
+  "op_mem_kind": [
+    "load",
+    null,
+    "store"
+  ],
+  "op_delay_ns": [
+    0.6,
+    1.2,
+    0.6
+  ],
+  "op_dsp": [
+    0,
+    1,
+    0
+  ],
+  "op_lut_slices": [
+    2,
+    2,
+    2
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x78f0e2261fc5"
+}

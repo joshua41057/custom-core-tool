@@ -1,0 +1,147 @@
+{
+  "rank": 53,
+  "group_index": 1,
+  "execution_count": 598500,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5f9346cb49b8",
+      "opcode": "vmovupd",
+      "raw_operands": [
+        "ymm7",
+        "ymmword ptr [rdi+rax*1]"
+      ],
+      "in_operands": [
+        "ymmword ptr [rdi+rax*1]"
+      ],
+      "out_operands": [
+        "ymm7"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5f9346cb49bd",
+      "opcode": "vmulpd",
+      "raw_operands": [
+        "ymm0",
+        "ymm7",
+        "ymmword ptr [rsi+rax*1]"
+      ],
+      "in_operands": [
+        "ymm7",
+        "ymmword ptr [rsi+rax*1]"
+      ],
+      "out_operands": [
+        "ymm0"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5f9346cb49c2",
+      "opcode": "vmovupd",
+      "raw_operands": [
+        "ymmword ptr [rsi+rax*1]",
+        "ymm0"
+      ],
+      "in_operands": [
+        "ymm0"
+      ],
+      "out_operands": [
+        "ymmword ptr [rsi+rax*1]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "ymm7"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "ymm7"
+      },
+      "condition": "reg vs reg: ymm7"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "ymm0"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "ymm0"
+      },
+      "condition": "reg vs reg: ymm0"
+    }
+  ],
+  "bench": "527.cam4_r/1",
+  "src": "1/super_hot_regions:74",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_of_uop": [
+    0,
+    1,
+    2
+  ],
+  "stage_count_full": 3,
+  "stage_count_fpga": 3,
+  "latency_cycles": 3,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 1166.6666666666665,
+  "stage_max_delay_ns": [
+    0.6,
+    0.6,
+    0.6
+  ],
+  "crit_path_sigma": 0.0,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x5f9346cb49b8",
+    "0x5f9346cb49bd",
+    "0x5f9346cb49c2"
+  ],
+  "opcats": [
+    "alu",
+    "mul",
+    "alu"
+  ],
+  "op_mem_kind": [
+    "load",
+    "load",
+    "store"
+  ],
+  "op_delay_ns": [
+    0.6,
+    0.6,
+    0.6
+  ],
+  "op_dsp": [
+    0,
+    4,
+    0
+  ],
+  "op_lut_slices": [
+    8,
+    8,
+    8
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5f9346cb49b8"
+}

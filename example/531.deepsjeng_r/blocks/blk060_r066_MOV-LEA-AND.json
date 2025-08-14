@@ -1,0 +1,147 @@
+{
+  "rank": 66,
+  "group_index": 2,
+  "execution_count": 748760,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x6224487c281c",
+      "opcode": "mov",
+      "raw_operands": [
+        "rax",
+        "qword ptr [rsp]"
+      ],
+      "in_operands": [
+        "[rsp]"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x6224487c2822",
+      "opcode": "lea",
+      "raw_operands": [
+        "rdi",
+        "ptr [rip+0xa8f7]"
+      ],
+      "in_operands": [
+        "ptr [rip+0xa8f7]"
+      ],
+      "out_operands": [
+        "rdi"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x6224487c282b",
+      "opcode": "and",
+      "raw_operands": [
+        "rax",
+        "qword ptr [rdi+r13*8]"
+      ],
+      "in_operands": [
+        "rax",
+        "[rdi+r13*8]"
+      ],
+      "out_operands": [
+        "rax",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "rax"
+      },
+      "condition": "reg vs reg: rax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "rdi"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "[rdi+r13*8]"
+      },
+      "condition": "reg vs mem: rdi"
+    }
+  ],
+  "bench": "531.deepsjeng_r/1",
+  "src": "1/super_hot_regions:123",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_of_uop": [
+    0,
+    1,
+    2
+  ],
+  "stage_count_full": 3,
+  "stage_count_fpga": 3,
+  "latency_cycles": 3,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 1166.6666666666665,
+  "stage_max_delay_ns": [
+    0.6,
+    0.6,
+    0.6
+  ],
+  "crit_path_sigma": 0.0,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x6224487c281c",
+    "0x6224487c2822",
+    "0x6224487c282b"
+  ],
+  "opcats": [
+    "move",
+    "move",
+    "logic"
+  ],
+  "op_mem_kind": [
+    "load",
+    "load",
+    "load"
+  ],
+  "op_delay_ns": [
+    0.6,
+    0.6,
+    0.6
+  ],
+  "op_dsp": [
+    0,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    2,
+    2,
+    2
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x6224487c281c"
+}

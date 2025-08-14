@@ -1,0 +1,144 @@
+{
+  "rank": 72,
+  "group_index": 1,
+  "execution_count": 226481,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5898c1316822",
+      "opcode": "mov",
+      "raw_operands": [
+        "ecx",
+        "esi"
+      ],
+      "in_operands": [
+        "esi"
+      ],
+      "out_operands": [
+        "ecx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5898c1316824",
+      "opcode": "shr",
+      "raw_operands": [
+        "ecx",
+        "0x6"
+      ],
+      "in_operands": [
+        "ecx",
+        "0x6"
+      ],
+      "out_operands": [
+        "ecx",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5898c1316827",
+      "opcode": "and",
+      "raw_operands": [
+        "ecx",
+        "0x1"
+      ],
+      "in_operands": [
+        "ecx",
+        "0x1"
+      ],
+      "out_operands": [
+        "ecx",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "ecx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "ecx"
+      },
+      "condition": "reg vs reg: ecx"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "ecx"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "ecx"
+      },
+      "condition": "reg vs reg: ecx"
+    }
+  ],
+  "bench": "502.gcc_r/5",
+  "src": "5/super_hot_regions:93",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [],
+  "stage_of_uop": [
+    0,
+    0,
+    0
+  ],
+  "stage_count_full": 1,
+  "stage_count_fpga": 1,
+  "latency_cycles": 1,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 225.80645161290326,
+  "stage_max_delay_ns": [
+    3.1
+  ],
+  "crit_path_sigma": 0.0,
+  "serial_mem_effective": false,
+  "pcs": [
+    "0x5898c1316822",
+    "0x5898c1316824",
+    "0x5898c1316827"
+  ],
+  "opcats": [
+    "move",
+    "shift",
+    "logic"
+  ],
+  "op_mem_kind": [
+    null,
+    null,
+    null
+  ],
+  "op_delay_ns": [
+    0.7,
+    1.7,
+    0.7
+  ],
+  "op_dsp": [
+    0,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    2,
+    2,
+    2
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5898c1316822"
+}

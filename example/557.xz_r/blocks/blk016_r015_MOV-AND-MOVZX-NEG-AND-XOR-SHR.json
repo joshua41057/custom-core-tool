@@ -1,0 +1,297 @@
+{
+  "rank": 15,
+  "group_index": 1,
+  "execution_count": 6221656,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5c92f1c94560",
+      "opcode": "mov",
+      "raw_operands": [
+        "edx",
+        "r9d"
+      ],
+      "in_operands": [
+        "r9d"
+      ],
+      "out_operands": [
+        "edx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5c92f1c94566",
+      "opcode": "and",
+      "raw_operands": [
+        "edx",
+        "0x1"
+      ],
+      "in_operands": [
+        "edx",
+        "0x1"
+      ],
+      "out_operands": [
+        "edx",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5c92f1c9456c",
+      "opcode": "movzx",
+      "raw_operands": [
+        "eax",
+        "word ptr [rsi+rax*2]"
+      ],
+      "in_operands": [
+        "[rsi+rax*2]"
+      ],
+      "out_operands": [
+        "eax"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x5c92f1c94570",
+      "opcode": "neg",
+      "raw_operands": [
+        "edx"
+      ],
+      "in_operands": [
+        "edx"
+      ],
+      "out_operands": [
+        "edx",
+        "flag"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x5c92f1c94572",
+      "opcode": "and",
+      "raw_operands": [
+        "edx",
+        "0x7ff"
+      ],
+      "in_operands": [
+        "edx",
+        "0x7ff"
+      ],
+      "out_operands": [
+        "edx",
+        "flag"
+      ]
+    },
+    {
+      "index": 5,
+      "address": "0x5c92f1c94578",
+      "opcode": "xor",
+      "raw_operands": [
+        "eax",
+        "edx"
+      ],
+      "in_operands": [
+        "eax",
+        "edx"
+      ],
+      "out_operands": [
+        "eax",
+        "flag"
+      ]
+    },
+    {
+      "index": 6,
+      "address": "0x5c92f1c9457a",
+      "opcode": "shr",
+      "raw_operands": [
+        "eax",
+        "0x4"
+      ],
+      "in_operands": [
+        "eax",
+        "0x4"
+      ],
+      "out_operands": [
+        "eax",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "edx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "edx"
+      },
+      "condition": "reg vs reg: edx"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "edx"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "edx"
+      },
+      "condition": "reg vs reg: edx"
+    },
+    {
+      "from": {
+        "instr_index": 3,
+        "operand": "edx"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "edx"
+      },
+      "condition": "reg vs reg: edx"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 4,
+        "operand": "edx"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "edx"
+      },
+      "condition": "reg vs reg: edx"
+    },
+    {
+      "from": {
+        "instr_index": 5,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 6,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    }
+  ],
+  "bench": "557.xz_r/1",
+  "src": "1/super_hot_regions:24",
+  "order_map": [
+    0,
+    1,
+    3,
+    4,
+    2,
+    5,
+    6
+  ],
+  "ff_boundaries": [
+    3,
+    2
+  ],
+  "stage_of_uop": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    2,
+    2
+  ],
+  "stage_count_full": 3,
+  "stage_count_fpga": 3,
+  "latency_cycles": 3,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 233.33333333333334,
+  "stage_max_delay_ns": [
+    3.0,
+    0.7,
+    2.4
+  ],
+  "crit_path_sigma": 0.9741092797468305,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x5c92f1c94560",
+    "0x5c92f1c94566",
+    "0x5c92f1c9456c",
+    "0x5c92f1c94570",
+    "0x5c92f1c94572",
+    "0x5c92f1c94578",
+    "0x5c92f1c9457a"
+  ],
+  "opcats": [
+    "move",
+    "logic",
+    "move",
+    "add",
+    "logic",
+    "logic",
+    "shift"
+  ],
+  "op_mem_kind": [
+    null,
+    null,
+    "load",
+    null,
+    null,
+    null,
+    null
+  ],
+  "op_delay_ns": [
+    0.7,
+    0.7,
+    0.6,
+    1.6,
+    0.7,
+    0.7,
+    1.7
+  ],
+  "op_dsp": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5c92f1c94560"
+}

@@ -1,0 +1,107 @@
+{
+  "rank": 50,
+  "group_index": 1,
+  "execution_count": 707483,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x621bfa949a23",
+      "opcode": "mov",
+      "raw_operands": [
+        "r15",
+        "qword ptr [rbp]"
+      ],
+      "in_operands": [
+        "[rbp]"
+      ],
+      "out_operands": [
+        "r15"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x621bfa949a2a",
+      "opcode": "mov",
+      "raw_operands": [
+        "r10",
+        "r15"
+      ],
+      "in_operands": [
+        "r15"
+      ],
+      "out_operands": [
+        "r10"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "r15"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "r15"
+      },
+      "condition": "reg vs reg: r15"
+    }
+  ],
+  "bench": "500.perlbench_r/3",
+  "src": "3/super_hot_regions:75",
+  "order_map": [
+    0,
+    1
+  ],
+  "ff_boundaries": [
+    0
+  ],
+  "stage_of_uop": [
+    0,
+    1
+  ],
+  "stage_count_full": 2,
+  "stage_count_fpga": 2,
+  "latency_cycles": 2,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 1000.0,
+  "stage_max_delay_ns": [
+    0.6,
+    0.7
+  ],
+  "crit_path_sigma": 0.04999999999999999,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x621bfa949a23",
+    "0x621bfa949a2a"
+  ],
+  "opcats": [
+    "move",
+    "move"
+  ],
+  "op_mem_kind": [
+    "load",
+    null
+  ],
+  "op_delay_ns": [
+    0.6,
+    0.7
+  ],
+  "op_dsp": [
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    2,
+    2
+  ],
+  "op_need_mpipe": [
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1
+  ],
+  "pc": "0x621bfa949a23"
+}

@@ -1,0 +1,342 @@
+{
+  "rank": 70,
+  "group_index": 1,
+  "execution_count": 36652,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5dbd09be9600",
+      "opcode": "vmovupd",
+      "raw_operands": [
+        "ymm4",
+        "ymmword ptr [rbx+rax*1]"
+      ],
+      "in_operands": [
+        "ymmword ptr [rbx+rax*1]"
+      ],
+      "out_operands": [
+        "ymm4"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5dbd09be9605",
+      "opcode": "vsubpd",
+      "raw_operands": [
+        "ymm0",
+        "ymm4",
+        "ymmword ptr [r11+rax*1]"
+      ],
+      "in_operands": [
+        "ymm4",
+        "ymmword ptr [r11+rax*1]"
+      ],
+      "out_operands": [
+        "ymm0"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5dbd09be960b",
+      "opcode": "vmovupd",
+      "raw_operands": [
+        "ymm4",
+        "ymmword ptr [r8+rax*1]"
+      ],
+      "in_operands": [
+        "ymmword ptr [r8+rax*1]"
+      ],
+      "out_operands": [
+        "ymm4"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x5dbd09be9611",
+      "opcode": "vsubpd",
+      "raw_operands": [
+        "ymm4",
+        "ymm4",
+        "ymmword ptr [r9+rax*1]"
+      ],
+      "in_operands": [
+        "ymm4",
+        "ymmword ptr [r9+rax*1]"
+      ],
+      "out_operands": [
+        "ymm4"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x5dbd09be9617",
+      "opcode": "vmulpd",
+      "raw_operands": [
+        "ymm4",
+        "ymm4",
+        "ymm7"
+      ],
+      "in_operands": [
+        "ymm4",
+        "ymm7"
+      ],
+      "out_operands": [
+        "ymm4"
+      ]
+    },
+    {
+      "index": 5,
+      "address": "0x5dbd09be961b",
+      "opcode": "vfmadd132pd",
+      "raw_operands": [
+        "ymm0",
+        "ymm4",
+        "ymm8"
+      ],
+      "in_operands": [
+        "ymm0",
+        "ymm4",
+        "ymm8"
+      ],
+      "out_operands": [
+        "ymm0"
+      ]
+    },
+    {
+      "index": 6,
+      "address": "0x5dbd09be9620",
+      "opcode": "vaddpd",
+      "raw_operands": [
+        "ymm0",
+        "ymm0",
+        "ymmword ptr [rdi+rax*1]"
+      ],
+      "in_operands": [
+        "ymm0",
+        "ymmword ptr [rdi+rax*1]"
+      ],
+      "out_operands": [
+        "ymm0"
+      ]
+    },
+    {
+      "index": 7,
+      "address": "0x5dbd09be9625",
+      "opcode": "vmovupd",
+      "raw_operands": [
+        "ymmword ptr [rdi+rax*1]",
+        "ymm0"
+      ],
+      "in_operands": [
+        "ymm0"
+      ],
+      "out_operands": [
+        "ymmword ptr [rdi+rax*1]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "ymm4"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "ymm4"
+      },
+      "condition": "reg vs reg: ymm4"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "ymm4"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "ymm4"
+      },
+      "condition": "reg vs reg: ymm4"
+    },
+    {
+      "from": {
+        "instr_index": 3,
+        "operand": "ymm4"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "ymm4"
+      },
+      "condition": "reg vs reg: ymm4"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "ymm0"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "ymm0"
+      },
+      "condition": "reg vs reg: ymm0"
+    },
+    {
+      "from": {
+        "instr_index": 4,
+        "operand": "ymm4"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "ymm4"
+      },
+      "condition": "reg vs reg: ymm4"
+    },
+    {
+      "from": {
+        "instr_index": 5,
+        "operand": "ymm0"
+      },
+      "to": {
+        "instr_index": 6,
+        "operand": "ymm0"
+      },
+      "condition": "reg vs reg: ymm0"
+    },
+    {
+      "from": {
+        "instr_index": 6,
+        "operand": "ymm0"
+      },
+      "to": {
+        "instr_index": 7,
+        "operand": "ymm0"
+      },
+      "condition": "reg vs reg: ymm0"
+    }
+  ],
+  "bench": "549.fotonik3d_r/1",
+  "src": "1/super_hot_regions:321",
+  "order_map": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "ff_boundaries": [
+    0,
+    1,
+    2,
+    3,
+    6
+  ],
+  "stage_of_uop": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    4,
+    4,
+    5
+  ],
+  "stage_count_full": 6,
+  "stage_count_fpga": 6,
+  "latency_cycles": 6,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 205.88235294117644,
+  "stage_max_delay_ns": [
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    3.4,
+    0.6
+  ],
+  "crit_path_sigma": 1.043498389499902,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x5dbd09be9600",
+    "0x5dbd09be9605",
+    "0x5dbd09be960b",
+    "0x5dbd09be9611",
+    "0x5dbd09be9617",
+    "0x5dbd09be961b",
+    "0x5dbd09be9620",
+    "0x5dbd09be9625"
+  ],
+  "opcats": [
+    "alu",
+    "add",
+    "alu",
+    "add",
+    "mul",
+    "fma",
+    "add",
+    "alu"
+  ],
+  "op_mem_kind": [
+    "load",
+    "load",
+    "load",
+    "load",
+    null,
+    null,
+    "load",
+    "store"
+  ],
+  "op_delay_ns": [
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    1.2,
+    1.6,
+    0.6,
+    0.6
+  ],
+  "op_dsp": [
+    0,
+    0,
+    0,
+    0,
+    4,
+    8,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5dbd09be9600"
+}

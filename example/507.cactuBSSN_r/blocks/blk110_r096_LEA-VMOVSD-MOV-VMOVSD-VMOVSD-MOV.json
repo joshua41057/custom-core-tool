@@ -1,0 +1,259 @@
+{
+  "rank": 96,
+  "group_index": 6,
+  "execution_count": 148204,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x61ec7a75da9e",
+      "opcode": "lea",
+      "raw_operands": [
+        "rsi",
+        "ptr [rdi+rdx*1]"
+      ],
+      "in_operands": [
+        "ptr [rdi+rdx*1]"
+      ],
+      "out_operands": [
+        "rsi"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x61ec7a75dac9",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "xmm3",
+        "qword ptr [rsi]"
+      ],
+      "in_operands": [
+        "[rsi]"
+      ],
+      "out_operands": [
+        "xmm3"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x61ec7a75dacd",
+      "opcode": "mov",
+      "raw_operands": [
+        "qword ptr [rsp+0x278]",
+        "rsi"
+      ],
+      "in_operands": [
+        "rsi"
+      ],
+      "out_operands": [
+        "[rsp+0x278]"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x61ec7a75dad9",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "qword ptr [rsp+0x340]",
+        "xmm3"
+      ],
+      "in_operands": [
+        "xmm3"
+      ],
+      "out_operands": [
+        "[rsp+0x340]"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x61ec7a75dae2",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "xmm3",
+        "qword ptr [rsi]"
+      ],
+      "in_operands": [
+        "[rsi]"
+      ],
+      "out_operands": [
+        "xmm3"
+      ]
+    },
+    {
+      "index": 5,
+      "address": "0x61ec7a75dae6",
+      "opcode": "mov",
+      "raw_operands": [
+        "qword ptr [rsp+0x280]",
+        "rsi"
+      ],
+      "in_operands": [
+        "rsi"
+      ],
+      "out_operands": [
+        "[rsp+0x280]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rsi"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "[rsi]"
+      },
+      "condition": "reg vs mem: rsi"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rsi"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "rsi"
+      },
+      "condition": "reg vs reg: rsi"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "xmm3"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "xmm3"
+      },
+      "condition": "reg vs reg: xmm3"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rsi"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "[rsi]"
+      },
+      "condition": "reg vs mem: rsi"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rsi"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "rsi"
+      },
+      "condition": "reg vs reg: rsi"
+    }
+  ],
+  "bench": "507.cactuBSSN_r/1",
+  "src": "1/super_hot_regions:188",
+  "order_map": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "ff_boundaries": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "stage_of_uop": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "stage_count_full": 6,
+  "stage_count_fpga": 6,
+  "latency_cycles": 6,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 1166.6666666666665,
+  "stage_max_delay_ns": [
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    0.6
+  ],
+  "crit_path_sigma": 0.0,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x61ec7a75da9e",
+    "0x61ec7a75dac9",
+    "0x61ec7a75dacd",
+    "0x61ec7a75dad9",
+    "0x61ec7a75dae2",
+    "0x61ec7a75dae6"
+  ],
+  "opcats": [
+    "move",
+    "alu",
+    "move",
+    "alu",
+    "alu",
+    "move"
+  ],
+  "op_mem_kind": [
+    "load",
+    "load",
+    "store",
+    "store",
+    "load",
+    "store"
+  ],
+  "op_delay_ns": [
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    0.6
+  ],
+  "op_dsp": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    2,
+    4,
+    2,
+    4,
+    4,
+    2
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x61ec7a75da9e"
+}

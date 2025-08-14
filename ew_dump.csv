@@ -1,0 +1,462 @@
+block_idx,uop_idx,opcode,elem_w,data_w,cont_w,addr_w,bw_legacy,raw_operands
+0,0,lea,64,64,0,64,64,rbp ptr [r8+rdx*1]
+0,1,movzx,8,32,0,64,64,ecx byte ptr [rbp]
+1,0,add,64,64,0,0,64,rdx r11
+1,1,movzx,8,32,0,64,64,esi byte ptr [rdx]
+2,0,mov,32,32,0,64,64,eax dword ptr [rsp-0x4]
+2,1,add,32,32,0,0,64,eax esi
+3,0,mov,64,64,0,0,64,r8 rdi
+3,1,sub,64,64,0,0,64,r8 rdx
+3,2,movzx,8,32,0,64,64,ecx byte ptr [r8+rdx*1]
+4,0,mov,32,32,0,64,64,eax dword ptr [rsp-0x14]
+4,1,add,32,32,0,0,64,eax r10d
+5,0,mov,64,64,0,0,64,r8 r11
+5,1,sub,64,64,0,0,64,r8 rax
+5,2,movzx,8,32,0,64,64,ecx byte ptr [r8+rdx*1]
+6,0,lea,64,64,0,64,64,rbp ptr [r8+rdx*1]
+6,1,movzx,8,32,0,64,64,ecx byte ptr [rbp]
+7,0,add,64,64,0,0,64,rdx r11
+7,1,movzx,8,32,0,64,64,esi byte ptr [rdx]
+8,0,mov,32,32,0,0,64,r8d r11d
+8,1,and,32,32,0,0,64,r8d 0xf
+9,0,lea,64,64,0,64,64,rax ptr [rsi+rax*1+0x40a0]
+9,1,mov,32,32,0,64,64,eax dword ptr [rdi+rax*4+0x10]
+9,2,add,32,32,0,64,64,eax dword ptr [rdi+r8*4+0x10e98]
+10,0,lea,64,64,0,64,64,rdi ptr [rip+0x191b4]
+10,1,movsxd,32,64,0,64,64,rax dword ptr [rdi+rax*4]
+10,2,add,64,64,0,0,64,rax rdi
+11,0,lea,64,64,0,64,64,rdi ptr [rip+0x191b4]
+11,1,movsxd,32,64,0,64,64,rax dword ptr [rdi+rax*4]
+11,2,add,64,64,0,0,64,rax rdi
+12,0,mov,32,32,0,64,64,eax dword ptr [rsp+0x38]
+12,1,mov,32,32,0,0,64,esi ecx
+12,2,sub,32,32,0,64,64,eax dword ptr [rsp-0x8]
+12,3,mov,32,64,0,64,64,dword ptr [rsp-0x4] eax
+12,4,mov,32,32,0,64,64,eax dword ptr [rsp-0x4]
+12,5,add,32,32,0,0,64,eax esi
+13,0,lea,64,64,0,64,64,rbx ptr [rip+0x15b3e]
+13,1,movzx,8,32,0,64,64,esi byte ptr [rbx+rsi*1]
+13,2,add,32,32,0,0,64,esi 0xc
+14,0,add,64,64,0,64,64,rdx qword ptr [rbx]
+14,1,movzx,8,32,0,64,64,eax byte ptr [rdx]
+14,2,movzx,8,32,0,64,64,ecx byte ptr [rdx+0x1]
+14,3,xor,32,32,0,64,64,ecx dword ptr [r12+rax*4]
+14,4,movzx,8,32,0,64,64,eax byte ptr [rdx+0x2]
+14,5,mov,32,32,0,0,64,r8d ecx
+14,6,shl,32,32,0,0,64,eax 0x8
+14,7,xor,32,32,0,0,64,eax ecx
+14,8,movzx,8,32,0,64,64,ecx byte ptr [rdx+0x3]
+14,9,mov,32,32,0,64,64,ecx dword ptr [r12+rcx*4]
+14,10,shl,32,32,0,0,64,ecx 0x5
+14,11,xor,32,32,0,0,64,ecx eax
+14,12,and,32,32,0,64,64,ecx dword ptr [rbx+0x58]
+14,13,mov,32,32,0,0,64,ecx r8d
+14,14,and,32,32,0,0,64,ecx 0x3ff
+15,0,mov,64,64,0,64,64,r9 qword ptr [rbx+0x40]
+15,1,mov,32,32,0,64,64,r10d dword ptr [r9+r11*4]
+15,2,mov,32,32,0,0,64,ecx r10d
+16,0,add,32,32,0,64,64,esi dword ptr [rbx+0x14]
+16,1,mov,32,64,0,64,64,dword ptr [r9+rcx*4] esi
+16,2,mov,32,64,0,64,64,dword ptr [rcx+rax*4+0x1000] esi
+16,3,mov,32,64,0,64,64,dword ptr [rax+r11*4] esi
+17,0,movzx,8,32,0,64,64,eax byte ptr [rcx+rax*1]
+17,1,add,32,32,0,0,64,r10d eax
+18,0,mov,32,32,0,0,64,edx r9d
+18,1,and,32,32,0,0,64,edx 0x1
+18,2,movzx,16,32,0,64,64,eax word ptr [rsi+rax*2]
+18,3,neg,32,32,0,0,64,edx
+18,4,and,32,32,0,0,64,edx 0x7ff
+18,5,xor,32,32,0,0,64,eax edx
+18,6,shr,32,32,0,0,64,eax 0x4
+19,0,movzx,8,32,0,64,64,eax byte ptr [rcx+rax*1]
+19,1,add,32,32,0,0,64,r10d eax
+20,0,mov,32,32,0,64,64,eax dword ptr [r11]
+20,1,mov,32,64,0,64,64,dword ptr [r14] eax
+21,0,mov,32,32,0,64,64,eax dword ptr [r11+0x4]
+21,1,mov,32,64,0,64,64,dword ptr [r15] eax
+22,0,mov,32,32,0,64,64,eax dword ptr [rsp-0x14]
+22,1,add,32,32,0,0,64,eax r10d
+23,0,mov,64,64,0,0,64,r8 r11
+23,1,sub,64,64,0,0,64,r8 rax
+23,2,movzx,8,32,0,64,64,ecx byte ptr [r8+rdx*1]
+24,0,vmovdqu,32,128,128,64,128,xmm2 xmmword ptr [rax-0x78]
+24,1,vpsrlq,64,128,128,0,128,xmm3 xmm2 0x8
+24,2,vpsllq,64,128,128,0,128,xmm0 xmm2 0x38
+24,3,vpsrlq,64,128,128,0,128,xmm4 xmm2 0x1
+24,4,vpor,8,128,128,0,128,xmm0 xmm0 xmm3
+24,5,vpsllq,64,128,128,0,128,xmm3 xmm2 0x3f
+24,6,vpor,8,128,128,0,128,xmm3 xmm3 xmm4
+24,7,vpxor,8,128,128,0,128,xmm0 xmm0 xmm3
+24,8,vpsrlq,64,128,128,0,128,xmm2 xmm2 0x7
+24,9,vpxor,8,128,128,0,128,xmm0 xmm0 xmm2
+24,10,vpsllq,64,128,128,0,128,xmm2 xmm1 0x3
+24,11,vpor,8,128,128,0,128,xmm2 xmm2 xmm3
+24,12,vpsrlq,64,128,128,0,128,xmm4 xmm1 0x13
+24,13,vpsllq,64,128,128,0,128,xmm3 xmm1 0x2d
+24,14,vpor,8,128,128,0,128,xmm3 xmm3 xmm4
+24,15,vpxor,8,128,128,0,128,xmm2 xmm2 xmm3
+24,16,vpsrlq,64,128,128,0,128,xmm1 xmm1 0x6
+24,17,vpxor,8,128,128,0,128,xmm1 xmm2 xmm1
+24,18,vpaddq,64,128,128,0,128,xmm0 xmm0 xmm1
+24,19,vpaddq,64,128,128,64,128,xmm0 xmm0 xmmword ptr [rax-0x90]
+24,20,vpaddq,64,128,128,64,128,xmm1 xmm0 xmmword ptr [rax-0x48]
+24,21,vmovdqa,32,128,128,64,128,xmmword ptr [rax-0x10] xmm1
+25,0,movzx,8,32,0,0,64,ecx dh
+25,1,mov,32,32,0,0,64,ecx ecx
+26,0,mov,32,32,0,64,64,edx dword ptr [r8]
+26,1,xor,32,32,0,0,64,edx eax
+26,2,mov,32,32,0,0,64,ebx edx
+26,3,shr,32,32,0,0,64,ebx 0x18
+26,4,shr,32,32,0,0,64,edx 0x10
+27,0,mov,64,64,0,64,64,rcx qword ptr [rsi+rcx*8+0x1800]
+27,1,xor,64,64,0,64,64,rcx qword ptr [rsi+rbx*8]
+27,2,shr,64,64,0,0,64,rax 0x20
+27,3,xor,64,64,0,0,64,rax rcx
+27,4,xor,64,64,0,64,64,rax qword ptr [rsi+rcx*8+0x1000]
+27,5,xor,64,64,0,64,64,rax qword ptr [rsi+rdx*8+0x800]
+28,0,shr,32,32,0,0,64,r13d 0x1
+28,1,sub,32,32,0,0,64,r15d r13d
+28,2,mov,32,32,0,0,64,ecx r15d
+28,3,sar,32,32,0,0,64,ecx 0x1f
+28,4,mov,32,32,0,0,64,esi r13d
+28,5,and,32,32,0,0,64,esi ecx
+28,6,add,32,32,0,0,64,r15d esi
+29,0,movzx,8,32,0,64,64,eax byte ptr [rcx+rax*1]
+29,1,add,32,32,0,0,64,r10d eax
+30,0,mov,64,64,0,64,64,rcx qword ptr [rbx+rcx*8+0x110]
+30,1,shr,32,32,0,0,64,esi 0xb
+30,2,movzx,16,32,0,64,64,edi word ptr [rcx]
+30,3,mov,32,32,0,0,64,edx r9d
+30,4,imul,32,32,0,0,64,esi edi
+30,5,sub,32,32,0,0,64,edx edi
+30,6,mov,32,32,0,0,64,eax edi
+30,7,shr,32,32,0,0,64,edx 0x5
+30,8,add,32,32,0,0,64,eax edx
+30,9,mov,32,64,0,64,64,dword ptr [rbx+0x10] esi
+31,0,not,64,64,0,0,64,r8
+31,1,add,64,64,0,0,64,r8 r15
+32,0,sub,32,32,0,0,64,edx ecx
+32,1,mov,32,64,0,64,64,dword ptr [rsp+0xc0] edx
+33,0,mov,32,32,0,0,64,r8d r11d
+33,1,and,32,32,0,0,64,r8d 0xf
+34,0,lea,64,64,0,64,64,rax ptr [rsi+rax*1+0x40a0]
+34,1,mov,32,32,0,64,64,eax dword ptr [rdi+rax*4+0x10]
+34,2,add,32,32,0,64,64,eax dword ptr [rdi+r8*4+0x10e98]
+35,0,mov,64,64,0,64,64,rcx qword ptr [rbx+rcx*8+0x110]
+35,1,mov,32,32,0,0,64,edx esi
+35,2,movzx,16,32,0,64,64,edi word ptr [rcx]
+35,3,shr,32,32,0,0,64,edx 0xb
+35,4,imul,32,32,0,0,64,edx edi
+35,5,mov,32,32,0,0,64,eax edi
+35,6,sub,32,32,0,0,64,esi edx
+35,7,mov,32,32,0,0,64,edi edx
+35,8,mov,32,32,0,0,64,edx eax
+35,9,sub,32,32,0,0,64,eax edx
+35,10,mov,32,64,0,64,64,dword ptr [rbx+0x10] esi
+36,0,mov,64,64,0,64,64,rax qword ptr [rsp+0xa8]
+36,1,mov,32,32,0,64,64,eax dword ptr [rax+rbx*4]
+36,2,not,64,64,0,0,64,rax
+36,3,add,64,64,0,0,64,rax r15
+36,4,movzx,8,32,0,64,64,ecx byte ptr [rax]
+37,0,mov,64,64,0,64,64,rcx qword ptr [rbx+rcx*8+0x110]
+37,1,shr,32,32,0,0,64,esi 0xb
+37,2,movzx,16,32,0,64,64,edi word ptr [rcx]
+37,3,mov,32,32,0,0,64,edx r9d
+37,4,imul,32,32,0,0,64,esi edi
+37,5,sub,32,32,0,0,64,edx edi
+37,6,mov,32,32,0,0,64,eax edi
+37,7,shr,32,32,0,0,64,edx 0x5
+37,8,add,32,32,0,0,64,eax edx
+37,9,mov,32,64,0,64,64,dword ptr [rbx+0x10] esi
+38,0,lea,64,64,0,64,64,rbx ptr [rip+0x15b3e]
+38,1,movzx,8,32,0,64,64,esi byte ptr [rbx+rsi*1]
+38,2,add,32,32,0,0,64,esi 0xc
+39,0,dec,32,32,0,0,64,edi
+39,1,vmovd,32,32,128,0,128,xmm1 eax
+39,2,vpinsrd,32,128,128,0,128,xmm0 xmm1 edi 0x1
+39,3,vmovq,64,64,128,64,128,qword ptr [rsi] xmm0
+40,0,mov,64,64,0,64,64,rsi qword ptr [rsp-0x10]
+40,1,add,64,64,0,0,64,rsi 0x8
+40,2,mov,64,64,0,64,64,qword ptr [rsp-0x10] rsi
+41,0,shr,32,32,0,0,64,r13d 0x1
+41,1,sub,32,32,0,0,64,r15d r13d
+41,2,mov,32,32,0,0,64,ecx r15d
+41,3,sar,32,32,0,0,64,ecx 0x1f
+41,4,mov,32,32,0,0,64,esi r13d
+41,5,and,32,32,0,0,64,esi ecx
+41,6,add,32,32,0,0,64,r15d esi
+42,0,mov,64,64,0,64,64,rcx qword ptr [rbx+rcx*8+0x110]
+42,1,mov,32,32,0,0,64,edx esi
+42,2,movzx,16,32,0,64,64,edi word ptr [rcx]
+42,3,shr,32,32,0,0,64,edx 0xb
+42,4,imul,32,32,0,0,64,edx edi
+42,5,mov,32,32,0,0,64,eax edi
+42,6,sub,32,32,0,0,64,esi edx
+42,7,mov,32,32,0,0,64,edi edx
+42,8,mov,32,32,0,0,64,edx eax
+42,9,sub,32,32,0,0,64,eax edx
+42,10,mov,32,64,0,64,64,dword ptr [rbx+0x10] esi
+43,0,lea,32,32,0,64,64,eax ptr [r11+0x4]
+43,1,mov,32,64,0,64,64,dword ptr [rsi+0x10efc] eax
+44,0,mov,64,64,0,64,64,rax qword ptr [rsp+0xa8]
+44,1,mov,32,32,0,64,64,eax dword ptr [rax+rbx*4]
+44,2,not,64,64,0,0,64,rax
+44,3,add,64,64,0,0,64,rax r15
+44,4,movzx,8,32,0,64,64,ecx byte ptr [rax]
+45,0,lea,64,64,0,64,64,rbx ptr [rip+0x15b26]
+45,1,movzx,8,32,0,64,64,esi byte ptr [rbx+rsi*1]
+45,2,add,32,32,0,0,64,esi 0x24
+46,0,movzx,8,32,0,0,64,ecx dh
+46,1,mov,32,32,0,0,64,ecx ecx
+47,0,mov,32,32,0,64,64,edx dword ptr [r8]
+47,1,xor,32,32,0,0,64,edx eax
+47,2,mov,32,32,0,0,64,ebx edx
+47,3,shr,32,32,0,0,64,ebx 0x18
+47,4,shr,32,32,0,0,64,edx 0x10
+48,0,mov,64,64,0,64,64,rcx qword ptr [rsi+rcx*8+0x1800]
+48,1,xor,64,64,0,64,64,rcx qword ptr [rsi+rbx*8]
+48,2,shr,64,64,0,0,64,rax 0x20
+48,3,xor,64,64,0,0,64,rax rcx
+48,4,xor,64,64,0,64,64,rax qword ptr [rsi+rcx*8+0x1000]
+48,5,xor,64,64,0,64,64,rax qword ptr [rsi+rdx*8+0x800]
+49,0,mov,32,32,0,0,64,edx r9d
+49,1,and,32,32,0,0,64,edx 0x1
+49,2,movzx,16,32,0,64,64,eax word ptr [rsi+rax*2]
+49,3,neg,32,32,0,0,64,edx
+49,4,and,32,32,0,0,64,edx 0x7ff
+49,5,xor,32,32,0,0,64,eax edx
+49,6,shr,32,32,0,0,64,eax 0x4
+50,0,movzx,8,32,0,64,64,eax byte ptr [rcx+rax*1]
+50,1,add,32,32,0,0,64,r10d eax
+51,0,mov,64,64,0,0,64,rax rdi
+51,1,mov,32,32,0,64,64,edi dword ptr [rdi+0xb94]
+51,2,mov,32,32,0,0,64,ecx 0x8
+51,3,and,32,32,0,64,64,esi dword ptr [rax+0xb98]
+51,4,sub,32,32,0,0,64,ecx edi
+51,5,shlx,32,32,0,0,64,esi esi edi
+51,6,shrx,32,32,0,0,64,edx edx ecx
+51,7,add,32,32,0,0,64,edx esi
+51,8,mov,32,32,0,0,64,edx edx
+52,0,lea,64,64,0,64,64,rdx ptr [rdx+rdx*2]
+52,1,shl,64,64,0,0,64,rdx 0x9
+53,0,mov,32,32,0,64,64,r9d dword ptr [rsp+0x64]
+53,1,and,32,32,0,0,64,r9d eax
+54,0,not,64,64,0,0,64,r8
+54,1,add,64,64,0,0,64,r8 r15
+55,0,mov,32,32,0,0,64,ecx 0x800
+55,1,sub,32,32,0,0,64,ecx r11d
+55,2,shr,32,32,0,0,64,ecx 0x5
+55,3,add,32,32,0,0,64,ecx r11d
+56,0,mov,32,32,0,64,64,ecx dword ptr [rsp+0x68]
+56,1,and,32,32,0,0,64,ecx eax
+57,0,lea,64,64,0,64,64,rcx ptr [rcx+rcx*2]
+57,1,shl,64,64,0,0,64,rcx 0x9
+58,0,lea,64,64,0,64,64,rsi ptr [rbx+rcx*1]
+58,1,mov,64,64,0,64,64,qword ptr [rsp+0x18] rsi
+59,0,sub,32,32,0,0,64,edx ecx
+59,1,mov,32,64,0,64,64,dword ptr [rsp+0xc0] edx
+60,0,mov,64,64,0,64,64,r13 qword ptr [rbx+0x8]
+60,1,add,64,64,0,64,64,r13 qword ptr [r11+0x8]
+61,0,add,64,64,0,64,64,rdx qword ptr [rbx]
+61,1,movzx,8,32,0,64,64,eax byte ptr [rdx]
+61,2,movzx,8,32,0,64,64,ecx byte ptr [rdx+0x1]
+61,3,lea,64,64,0,64,64,r10 ptr [rip+0x15f7f]
+61,4,xor,32,32,0,64,64,ecx dword ptr [r10+rax*4]
+61,5,movzx,8,32,0,64,64,eax byte ptr [rdx+0x2]
+61,6,shl,32,32,0,0,64,eax 0x8
+61,7,xor,32,32,0,0,64,eax ecx
+61,8,movzx,8,32,0,64,64,r15d byte ptr [rdx+0x3]
+61,9,mov,32,32,0,64,64,r10d dword ptr [r10+r15*4]
+61,10,and,32,32,0,0,64,ecx 0x3ff
+61,11,shl,32,32,0,0,64,r10d 0x5
+61,12,xor,32,32,0,0,64,eax r10d
+61,13,and,32,32,0,64,64,eax dword ptr [rbx+0x58]
+61,14,add,32,32,0,0,64,eax 0x10400
+61,15,mov,32,32,0,64,64,r10d dword ptr [r10+rax*4]
+62,0,lea,64,64,0,64,64,rbx ptr [r9+rax*1]
+62,1,mov,64,64,0,64,64,qword ptr [rsp-0x28] rbx
+63,0,mov,32,32,0,64,64,eax dword ptr [rip+0x2a233]
+63,1,cdqe,64,64,0,0,64,
+64,0,lea,64,64,0,64,64,rdx ptr [rip+0x7f3e]
+64,1,movzx,8,32,0,64,64,eax byte ptr [rax+rdx*1]
+65,0,movsx,8,32,0,0,64,eax al
+65,1,mov,32,32,0,0,64,edi eax
+66,0,sub,64,64,0,0,64,rax r12
+66,1,sar,64,64,0,0,64,rax 0x3
+67,0,mov,32,32,0,64,64,eax dword ptr [rsp+0x38]
+67,1,sub,32,32,0,64,64,eax dword ptr [rsp-0x18]
+67,2,mov,32,64,0,64,64,dword ptr [rsp-0x14] eax
+67,3,mov,32,32,0,0,64,r10d ecx
+67,4,mov,32,32,0,64,64,eax dword ptr [rsp-0x14]
+67,5,add,32,32,0,0,64,eax r10d
+68,0,mov,64,64,0,0,64,r11 rdx
+68,1,mov,64,64,0,64,64,rax qword ptr [rsp+0x48]
+68,2,mov,64,64,0,64,64,qword ptr [rsp-0x10] rax
+68,3,mov,64,64,0,0,64,r8 r11
+68,4,sub,64,64,0,0,64,r8 rax
+68,5,movzx,8,32,0,64,64,ecx byte ptr [r8+rdx*1]
+68,6,movzx,8,32,0,64,64,esi byte ptr [r11+rdx*1]
+69,0,mov,32,32,0,64,64,eax dword ptr [rip+0x2a107]
+69,1,add,32,32,0,0,64,eax 0x1
+69,2,mov,32,32,0,64,64,dword ptr [rip+0x2a0fe] eax
+70,0,mov,32,32,0,64,64,eax dword ptr [r14+0xb84]
+70,1,mov,32,64,0,64,64,dword ptr [rsp+0xb4] eax
+71,0,add,64,64,0,64,64,rdx qword ptr [rbx]
+71,1,movzx,8,32,0,64,64,eax byte ptr [rdx]
+71,2,movzx,8,32,0,64,64,ecx byte ptr [rdx+0x1]
+71,3,lea,64,64,0,64,64,r10 ptr [rip+0x15f7f]
+71,4,xor,32,32,0,64,64,ecx dword ptr [r10+rax*4]
+71,5,movzx,8,32,0,64,64,eax byte ptr [rdx+0x2]
+71,6,shl,32,32,0,0,64,eax 0x8
+71,7,xor,32,32,0,0,64,eax ecx
+71,8,movzx,8,32,0,64,64,r15d byte ptr [rdx+0x3]
+71,9,mov,32,32,0,64,64,r10d dword ptr [r10+r15*4]
+71,10,and,32,32,0,0,64,ecx 0x3ff
+71,11,shl,32,32,0,0,64,r10d 0x5
+71,12,xor,32,32,0,0,64,eax r10d
+71,13,and,32,32,0,64,64,eax dword ptr [rbx+0x58]
+71,14,add,32,32,0,0,64,eax 0x10400
+71,15,mov,32,32,0,64,64,r10d dword ptr [r10+rax*4]
+72,0,mov,32,32,0,64,64,eax dword ptr [rsp+0xa4]
+72,1,mov,32,64,0,64,64,dword ptr [rsp+0xc0] eax
+73,0,mov,32,32,0,64,64,r9d dword ptr [rsp+0x64]
+73,1,and,32,32,0,0,64,r9d eax
+74,0,mov,64,64,0,64,64,rbx qword ptr [rsp+0x78]
+74,1,mov,64,64,0,0,64,rdi rbx
+75,0,mov,32,32,0,0,64,ecx 0x800
+75,1,sub,32,32,0,0,64,ecx r11d
+75,2,shr,32,32,0,0,64,ecx 0x5
+75,3,add,32,32,0,0,64,ecx r11d
+76,0,mov,32,32,0,64,64,ecx dword ptr [rsp+0x68]
+76,1,and,32,32,0,0,64,ecx eax
+77,0,lea,64,64,0,64,64,rcx ptr [rcx+rcx*2]
+77,1,shl,64,64,0,0,64,rcx 0x9
+78,0,lea,64,64,0,64,64,rsi ptr [rbx+rcx*1]
+78,1,mov,64,64,0,64,64,qword ptr [rsp+0x18] rsi
+79,0,lea,64,64,0,64,64,rbx ptr [r9+rax*1]
+79,1,mov,64,64,0,64,64,qword ptr [rsp-0x28] rbx
+80,0,sub,64,64,0,0,64,rax r12
+80,1,sar,64,64,0,0,64,rax 0x3
+81,0,imul,64,64,0,0,64,rdx rax 0x2c
+81,1,mov,32,32,0,64,64,edx dword ptr [r14+rdx*1+0x10ee4]
+82,0,mov,64,64,0,64,64,rcx qword ptr [rsp+0xd0]
+82,1,movzx,8,32,0,64,64,eax byte ptr [rcx+rax*1]
+82,2,add,32,32,0,64,64,eax dword ptr [rsp+0x70]
+82,3,mov,32,64,0,64,64,dword ptr [rsp+0xe0] eax
+83,0,dec,32,32,0,0,64,edi
+83,1,vmovd,32,32,128,0,128,xmm1 eax
+83,2,vpinsrd,32,128,128,0,128,xmm0 xmm1 edi 0x1
+83,3,vmovq,64,64,128,64,128,qword ptr [rsi] xmm0
+84,0,mov,64,64,0,64,64,rsi qword ptr [rsp-0x10]
+84,1,add,64,64,0,0,64,rsi 0x8
+84,2,mov,64,64,0,64,64,qword ptr [rsp-0x10] rsi
+85,0,lea,32,32,0,64,64,eax ptr [r11+0x4]
+85,1,mov,32,64,0,64,64,dword ptr [rsi+0x10efc] eax
+86,0,mov,32,32,0,0,64,r10d edx
+86,1,and,32,32,0,0,64,r10d 0x1
+86,2,movzx,16,32,0,64,64,eax word ptr [rdi+rax*2]
+86,3,neg,32,32,0,0,64,r10d
+86,4,and,32,32,0,0,64,r10d 0x7ff
+86,5,xor,32,32,0,0,64,eax r10d
+86,6,shr,32,32,0,0,64,eax 0x4
+87,0,movzx,8,32,0,64,64,eax byte ptr [r14+rax*1]
+87,1,add,32,32,0,0,64,ecx eax
+88,0,mov,32,32,0,0,64,eax 0x800
+88,1,sub,32,32,0,0,64,eax r9d
+88,2,shr,32,32,0,0,64,eax 0x5
+88,3,add,32,32,0,0,64,eax r9d
+89,0,mov,32,32,0,0,64,eax esi
+89,1,sub,32,32,0,0,64,r9d eax
+90,0,mov,32,32,0,64,64,r9d dword ptr [rsp+0xd8]
+90,1,mov,32,64,0,64,64,dword ptr [rdx+0x10ee4] r9d
+90,2,mov,32,32,0,0,64,eax r9d
+91,0,mov,32,32,0,64,64,eax dword ptr [r14+0xb90]
+91,1,mov,32,32,0,64,64,esi dword ptr [rsp+0xa0]
+91,2,mov,32,64,0,64,64,dword ptr [rsp+0xb0] eax
+91,3,mov,32,32,0,0,64,ebx eax
+91,4,and,32,32,0,0,64,ebx esi
+92,0,lea,64,64,0,64,64,rax ptr [rax+rbx*1+0x35c0]
+92,1,movzx,16,32,0,64,64,ebx word ptr [r14+rax*2+0x1c]
+93,0,imul,64,64,0,0,64,rdx r10 0x2c
+93,1,add,64,64,0,0,64,rdx r14
+93,2,mov,32,32,0,64,64,r10d dword ptr [rdx+0x10ef4]
+93,3,mov,32,64,0,64,64,dword ptr [rsp+0xa4] r10d
+94,0,mov,64,64,0,0,64,rax r11
+94,1,not,64,64,0,0,64,rax
+94,2,movzx,8,32,0,64,64,r8d byte ptr [r15+rax*1]
+94,3,mov,64,64,0,64,64,qword ptr [rsp+0xe8] rax
+94,4,shl,64,64,0,0,64,rax 0x4
+94,5,mov,32,32,0,0,64,r12d r8d
+95,0,mov,64,64,0,64,64,r8 qword ptr [rbx]
+95,1,mov,64,64,0,0,64,rdi r8
+95,2,shr,64,64,0,0,64,rdi 0x20
+96,0,mov,64,64,0,64,64,rax qword ptr [rsp+0xe8]
+96,1,shl,64,64,0,0,64,rax 0x4
+97,0,lea,64,64,0,64,64,rax ptr [rcx+rax*1+0x36b0]
+97,1,mov,64,64,0,64,64,qword ptr [rsp+0x40] rax
+98,0,mov,32,32,0,0,64,r10d 0x2
+98,1,mov,32,64,0,64,64,dword ptr [rsp+0x90] r10d
+99,0,mov,64,64,0,64,64,rcx qword ptr [rsp+0x98]
+99,1,imul,64,64,0,0,64,rdi rcx 0x110
+99,2,mov,64,64,0,0,64,r10 rdi
+100,0,xor,32,32,0,0,64,ebx ebx
+100,1,mov,32,32,0,0,64,r12d ebx
+101,0,movzx,8,32,0,64,64,edx byte ptr [rbx+0x14]
+101,1,add,32,32,0,0,64,edx edi
+102,0,mov,64,64,0,0,64,rax r8
+102,1,shr,64,64,0,0,64,rax 0x18
+103,0,shl,32,32,0,0,64,esi 0x8
+103,1,mov,32,64,0,64,64,dword ptr [rbx+0x10] esi
+104,0,vmovd,32,32,128,0,128,xmm0 r8d
+104,1,vpinsrq,64,128,128,0,128,xmm0 xmm0 rax 0x1
+104,2,vmovdqu,32,128,128,64,128,xmmword ptr [rbx] xmm0
+105,0,mov,64,64,0,0,64,rax rdi
+105,1,mov,32,32,0,64,64,edi dword ptr [rdi+0xb94]
+105,2,mov,32,32,0,0,64,ecx 0x8
+105,3,and,32,32,0,64,64,esi dword ptr [rax+0xb98]
+105,4,sub,32,32,0,0,64,ecx edi
+105,5,shlx,32,32,0,0,64,esi esi edi
+105,6,shrx,32,32,0,0,64,edx edx ecx
+105,7,add,32,32,0,0,64,edx esi
+105,8,mov,32,32,0,0,64,edx edx
+106,0,lea,64,64,0,64,64,rdx ptr [rdx+rdx*2]
+106,1,shl,64,64,0,0,64,rdx 0x9
+107,0,mov,32,32,0,0,64,esi 0x800
+107,1,sub,32,32,0,0,64,esi edi
+107,2,shr,32,32,0,0,64,esi 0x5
+107,3,add,32,32,0,0,64,esi edi
+108,0,mov,32,32,0,64,64,eax dword ptr [rsp+0x38]
+108,1,sub,32,32,0,64,64,eax dword ptr [rsp-0x18]
+108,2,mov,32,64,0,64,64,dword ptr [rsp-0x14] eax
+108,3,mov,32,32,0,0,64,r10d ecx
+108,4,mov,32,32,0,64,64,eax dword ptr [rsp-0x14]
+108,5,add,32,32,0,0,64,eax r10d
+109,0,mov,64,64,0,0,64,r11 rdx
+109,1,mov,64,64,0,64,64,rax qword ptr [rsp+0x48]
+109,2,mov,64,64,0,64,64,qword ptr [rsp-0x10] rax
+109,3,mov,64,64,0,0,64,r8 r11
+109,4,sub,64,64,0,0,64,r8 rax
+109,5,movzx,8,32,0,64,64,ecx byte ptr [r8+rdx*1]
+109,6,movzx,8,32,0,64,64,esi byte ptr [r11+rdx*1]
+110,0,imul,64,64,0,64,64,rax qword ptr [rsp+0x98] 0x110
+110,1,mov,64,64,0,64,64,qword ptr [rsp+0xd8] rax
+111,0,mov,32,32,0,64,64,eax dword ptr [rsp+0xa0]
+111,1,dec,32,32,0,0,64,eax
+111,2,mov,32,64,0,64,64,dword ptr [rsp+0x70] eax
+112,0,lea,32,32,0,64,64,eax ptr [rcx-0x1]
+112,1,mov,32,64,0,64,64,dword ptr [r12+0x4] eax
+113,0,lea,32,32,0,64,64,ecx ptr [r13-0x1]
+113,1,mov,32,64,0,64,64,dword ptr [r14+0x4] ecx
+114,0,lea,64,64,0,64,64,rax ptr [rip+0x15e7e]
+114,1,mov,32,32,0,64,64,eax dword ptr [rax+rdx*4]
+114,2,mov,32,64,0,64,64,dword ptr [rsp+0x40] eax
+115,0,mov,32,32,0,64,64,eax dword ptr [r14+0xb84]
+115,1,mov,32,64,0,64,64,dword ptr [rsp+0xb4] eax
+116,0,mov,32,32,0,0,64,eax 0x800
+116,1,sub,32,32,0,0,64,eax r9d
+116,2,shr,32,32,0,0,64,eax 0x5
+116,3,add,32,32,0,0,64,eax r9d
+117,0,imul,64,64,0,0,64,rdx rax 0x2c
+117,1,mov,32,32,0,64,64,edx dword ptr [r14+rdx*1+0x10ee4]
+118,0,mov,32,32,0,0,64,eax edi
+118,1,sub,32,32,0,0,64,edx eax

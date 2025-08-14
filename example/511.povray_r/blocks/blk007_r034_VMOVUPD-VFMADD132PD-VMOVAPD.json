@@ -1,0 +1,148 @@
+{
+  "rank": 34,
+  "group_index": 1,
+  "execution_count": 2930215,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x622355b2fa75",
+      "opcode": "vmovupd",
+      "raw_operands": [
+        "xmm6",
+        "xmmword ptr [r12]"
+      ],
+      "in_operands": [
+        "xmmword ptr [r12]"
+      ],
+      "out_operands": [
+        "xmm6"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x622355b2fa7f",
+      "opcode": "vfmadd132pd",
+      "raw_operands": [
+        "xmm1",
+        "xmm6",
+        "xmmword ptr [r12+0x18]"
+      ],
+      "in_operands": [
+        "xmm1",
+        "xmm6",
+        "xmmword ptr [r12+0x18]"
+      ],
+      "out_operands": [
+        "xmm1"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x622355b2fa98",
+      "opcode": "vmovapd",
+      "raw_operands": [
+        "xmmword ptr [rsp+0x30]",
+        "xmm1"
+      ],
+      "in_operands": [
+        "xmm1"
+      ],
+      "out_operands": [
+        "xmmword ptr [rsp+0x30]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm6"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "xmm6"
+      },
+      "condition": "reg vs reg: xmm6"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "xmm1"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "xmm1"
+      },
+      "condition": "reg vs reg: xmm1"
+    }
+  ],
+  "bench": "511.povray_r/1",
+  "src": "1/super_hot_regions:44",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_of_uop": [
+    0,
+    1,
+    2
+  ],
+  "stage_count_full": 3,
+  "stage_count_fpga": 3,
+  "latency_cycles": 3,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 1166.6666666666665,
+  "stage_max_delay_ns": [
+    0.6,
+    0.6,
+    0.6
+  ],
+  "crit_path_sigma": 0.0,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x622355b2fa75",
+    "0x622355b2fa7f",
+    "0x622355b2fa98"
+  ],
+  "opcats": [
+    "alu",
+    "fma",
+    "alu"
+  ],
+  "op_mem_kind": [
+    "load",
+    "load",
+    "store"
+  ],
+  "op_delay_ns": [
+    0.6,
+    0.6,
+    0.6
+  ],
+  "op_dsp": [
+    0,
+    4,
+    0
+  ],
+  "op_lut_slices": [
+    4,
+    4,
+    4
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x622355b2fa75"
+}

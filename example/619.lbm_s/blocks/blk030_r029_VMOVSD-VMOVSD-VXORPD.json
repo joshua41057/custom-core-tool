@@ -1,0 +1,158 @@
+{
+  "rank": 29,
+  "group_index": 8,
+  "execution_count": 260690,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5ad2e9b1bb17",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "xmm3",
+        "qword ptr [rip+0x26b9]"
+      ],
+      "in_operands": [
+        "[rip+0x26b9]"
+      ],
+      "out_operands": [
+        "xmm3"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5ad2e9b1bb2b",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "qword ptr [rsp+0x28]",
+        "xmm3"
+      ],
+      "in_operands": [
+        "xmm3"
+      ],
+      "out_operands": [
+        "[rsp+0x28]"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5ad2e9b1bb8c",
+      "opcode": "vxorpd",
+      "raw_operands": [
+        "xmm3",
+        "xmm3",
+        "xmm3"
+      ],
+      "in_operands": [
+        "xmm3",
+        "xmm3"
+      ],
+      "out_operands": [
+        "xmm3"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm3"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "xmm3"
+      },
+      "condition": "reg vs reg: xmm3"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm3"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "xmm3"
+      },
+      "condition": "reg vs reg: xmm3"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm3"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "xmm3"
+      },
+      "condition": "reg vs reg: xmm3"
+    }
+  ],
+  "bench": "619.lbm_s/1",
+  "src": "1/super_hot_regions:64",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_of_uop": [
+    0,
+    1,
+    2
+  ],
+  "stage_count_full": 3,
+  "stage_count_fpga": 3,
+  "latency_cycles": 3,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 500.0,
+  "stage_max_delay_ns": [
+    0.6,
+    0.6,
+    1.4
+  ],
+  "crit_path_sigma": 0.37712361663282534,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x5ad2e9b1bb17",
+    "0x5ad2e9b1bb2b",
+    "0x5ad2e9b1bb8c"
+  ],
+  "opcats": [
+    "alu",
+    "alu",
+    "logic"
+  ],
+  "op_mem_kind": [
+    "load",
+    "store",
+    null
+  ],
+  "op_delay_ns": [
+    0.6,
+    0.6,
+    1.4
+  ],
+  "op_dsp": [
+    0,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    4,
+    4,
+    4
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5ad2e9b1bb17"
+}

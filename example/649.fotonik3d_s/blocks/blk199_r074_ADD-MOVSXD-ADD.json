@@ -1,0 +1,147 @@
+{
+  "rank": 74,
+  "group_index": 4,
+  "execution_count": 54494,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x566cf368e322",
+      "opcode": "add",
+      "raw_operands": [
+        "edi",
+        "0x2"
+      ],
+      "in_operands": [
+        "edi",
+        "0x2"
+      ],
+      "out_operands": [
+        "edi",
+        "flag"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x566cf368e331",
+      "opcode": "movsxd",
+      "raw_operands": [
+        "rax",
+        "edi"
+      ],
+      "in_operands": [
+        "edi"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x566cf368e5d6",
+      "opcode": "add",
+      "raw_operands": [
+        "rax",
+        "0x2"
+      ],
+      "in_operands": [
+        "rax",
+        "0x2"
+      ],
+      "out_operands": [
+        "rax",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "edi"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "edi"
+      },
+      "condition": "reg vs reg: edi"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "rax"
+      },
+      "condition": "reg vs reg: rax"
+    }
+  ],
+  "bench": "649.fotonik3d_s/1",
+  "src": "1/super_hot_regions:283",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    1
+  ],
+  "stage_of_uop": [
+    0,
+    0,
+    1
+  ],
+  "stage_count_full": 2,
+  "stage_count_fpga": 2,
+  "latency_cycles": 2,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 304.34782608695656,
+  "stage_max_delay_ns": [
+    2.3,
+    1.6
+  ],
+  "crit_path_sigma": 0.34999999999999987,
+  "serial_mem_effective": false,
+  "pcs": [
+    "0x566cf368e322",
+    "0x566cf368e331",
+    "0x566cf368e5d6"
+  ],
+  "opcats": [
+    "add",
+    "move",
+    "add"
+  ],
+  "op_mem_kind": [
+    null,
+    null,
+    null
+  ],
+  "op_delay_ns": [
+    1.6,
+    0.7,
+    1.6
+  ],
+  "op_dsp": [
+    0,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    2,
+    2,
+    2
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x566cf368e322"
+}

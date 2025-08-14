@@ -1,0 +1,140 @@
+{
+  "rank": 48,
+  "group_index": 4,
+  "execution_count": 235693,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x63b8bf9f444c",
+      "opcode": "vmovd",
+      "raw_operands": [
+        "xmm6",
+        "r11d"
+      ],
+      "in_operands": [
+        "r11d"
+      ],
+      "out_operands": [
+        "xmm6"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x63b8bf9f4453",
+      "opcode": "vpbroadcastw",
+      "raw_operands": [
+        "xmm6",
+        "xmm6"
+      ],
+      "in_operands": [
+        "xmm6"
+      ],
+      "out_operands": [
+        "xmm6"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x63b8bf9f448a",
+      "opcode": "vmovdqa",
+      "raw_operands": [
+        "xmmword ptr [rsp-0x20]",
+        "xmm6"
+      ],
+      "in_operands": [
+        "xmm6"
+      ],
+      "out_operands": [
+        "xmmword ptr [rsp-0x20]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm6"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "xmm6"
+      },
+      "condition": "reg vs reg: xmm6"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "xmm6"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "xmm6"
+      },
+      "condition": "reg vs reg: xmm6"
+    }
+  ],
+  "bench": "625.x264_s/3",
+  "src": "3/super_hot_regions:86",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [],
+  "stage_of_uop": [
+    0,
+    0,
+    0
+  ],
+  "stage_count_full": 1,
+  "stage_count_fpga": 1,
+  "latency_cycles": 1,
+  "initiation_interval": 1,
+  "est_fmax_mhz": 205.88235294117644,
+  "stage_max_delay_ns": [
+    3.4
+  ],
+  "crit_path_sigma": 0.0,
+  "serial_mem_effective": true,
+  "pcs": [
+    "0x63b8bf9f444c",
+    "0x63b8bf9f4453",
+    "0x63b8bf9f448a"
+  ],
+  "opcats": [
+    "alu",
+    "alu",
+    "alu"
+  ],
+  "op_mem_kind": [
+    null,
+    null,
+    "store"
+  ],
+  "op_delay_ns": [
+    1.4,
+    1.4,
+    0.6
+  ],
+  "op_dsp": [
+    0,
+    0,
+    0
+  ],
+  "op_lut_slices": [
+    4,
+    4,
+    4
+  ],
+  "op_need_mpipe": [
+    false,
+    false,
+    false
+  ],
+  "op_substages": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x63b8bf9f444c"
+}
