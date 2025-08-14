@@ -121,7 +121,7 @@ proc run_auto_pblock {bench bench_dir rpt_dir npblocks target_fill} {
     "--npblocks" $npblocks "--target-fill" $target_fill \
     "--bench" $bench "--out" $out_tcl]
   puts "Info: EXEC: $cmd"
-  set rc [catch {eval exec $cmd} emsg]
+  set rc [catch {exec {*}$cmd} emsg]
   if {$rc} {
     puts "ERROR running auto_pblock_gen.py: $emsg"
     exit 1
@@ -169,11 +169,12 @@ foreach bench $sel_benches {
   # RTL
   read_rtl_excluding_len_table $RTL_DIR
   add_bench_len_table $bench_dir
+  update_compile_order -fileset sources_1
 
   # Constraints
   try_source [file join $CONS_DIR "clocks.xdc"]
-  try_source [file join $bench_dir "pipe_stages.tcl"]
-  try_source [file join $CONS_DIR "pipe_stages.tcl"]
+  try_source [file join $CONS_DIR  "pipe_stages.tcl"]
+  try_source [file join $bench_dir "pipe_stages.tcl"]  
 
   # Synthesis
   synth_design -top $TOP_MODULE -part $PART -flatten_hierarchy none
@@ -198,7 +199,8 @@ foreach bench $sel_benches {
   report_power          -file [file join $bench_rpt_dir "post_route_power.rpt"]
 
   # Per-pblock util
-  set pb_list [get_pblocks pblock_${bench}_*]
+  set SAFE_BENCH [regsub -all {[^A-Za-z0-9_]} $bench _]
+  set pb_list [get_pblocks pblock_${SAFE_BENCH}_*]
   foreach pb $pb_list {
       set short [regsub -all {[:/]} $pb _]
       set rpt_name [format "%s/utilization_%s.rpt" $bench_rpt_dir $short]

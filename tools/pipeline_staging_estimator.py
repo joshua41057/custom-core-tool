@@ -321,8 +321,6 @@ def schedule_list_crit(
     while ready:
         _, u = heapq.heappop(ready)
         if not can_place(u):
-            # 스테이지를 닫고 새 스테이지를 연 뒤,
-            # 단일 연산이 자원 한도를 스스로 초과하는지 검사(II=1일 때는 금지)
             commit()
             if not allow_ii:
                 if (dsp_budget  >= 0 and nodes[u].dsp        > dsp_budget) or \
@@ -333,7 +331,6 @@ def schedule_list_crit(
                         f"DSP={nodes[u].dsp}, BRAMports={nodes[u].bram_ports}, LUTs={nodes[u].lut_units}. "
                         f"Increase budgets or use --allow-ii."
                     )
-        # 빈 스테이지에 단독 배치는 허용(경로 초과는 마이크로 파이프라인으로 표기)
         place(u)
         placed_order.append(u)
         for v in succ[u]:
@@ -365,7 +362,6 @@ def analyse_group(
 ):
     dmodel = DelayModel()
 
-    # === 변경 1: 입력에 메모리 uop이 1개라도 있으면 자동 직렬화 ===
     has_mem = any(detect_mem_kind(u) is not None for u in group["instructions"])
     serial_eff = serial_mem or has_mem
 
@@ -394,7 +390,6 @@ def analyse_group(
     latency_cycles = stage_count_full
     initiation_interval = max((st.ii for st in stages), default=1)
 
-    # Fmax 추정(보수적)
     worst_stage_delay = max((st.max_delay_ns for st in stages), default=0.0)
     worst_op_delay    = max((n.delay_ns for n in nodes), default=0.0)
     est_Tclk_ns = 0.0
@@ -417,7 +412,7 @@ def analyse_group(
     group["est_fmax_mhz"]        = est_fmax_mhz
     group["stage_max_delay_ns"]  = [round(st.max_delay_ns,4) for st in stages]
     group["crit_path_sigma"]     = sigma
-    group["serial_mem_effective"]= serial_eff  # 리포트에 기록
+    group["serial_mem_effective"]= serial_eff  
 
     # Op info
     group["pcs"]            = [ins.get("address","") for ins in group["instructions"]]

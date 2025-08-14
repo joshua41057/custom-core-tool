@@ -20,12 +20,9 @@ from collections import defaultdict, namedtuple
 RES_KEYS = ["LUT", "FF", "DSP", "BRAM18", "BRAM36", "URAM"]
 
 def parse_grid_ranges(txt: str):
-    """
-    Accepts a file that contains a line starting with 'GRID_RANGES' followed by
-    comma-separated ranges like 'SLICE_X0Y1:SLICE_X7Y898' etc.
-    Returns a dict with per-type sorted unique X columns.
-    """
     type_xs = {"SLICE": set(), "DSP48E2": set(), "RAMB18": set(), "RAMB36": set(), "URAM288": set()}
+    type_ymin = {"SLICE":  1<<30, "DSP48E2": 1<<30, "RAMB18": 1<<30, "RAMB36": 1<<30, "URAM288": 1<<30}
+    type_ymax = {"SLICE": -(1<<30), "DSP48E2": -(1<<30), "RAMB18": -(1<<30), "RAMB36": -(1<<30), "URAM288": -(1<<30)}
     lines = [l.strip() for l in txt.splitlines() if l.strip()]
     grid_line = None
     for l in lines:
@@ -34,11 +31,9 @@ def parse_grid_ranges(txt: str):
             break
         if l.startswith("DERIVED_RANGES"):
             grid_line = l.split("DERIVED_RANGES",1)[1].strip()
-            # still acceptable if only DERIVED_RANGES present
     if not grid_line:
         raise ValueError("No GRID_RANGES/DERIVED_RANGES line found in grid file")
 
-    # Split ranges by comma
     parts = [p.strip() for p in grid_line.split(",")]
     rng_re = re.compile(r'(?P<typ>SLICE|DSP48E2|RAMB18|RAMB36|URAM288)_X(?P<x0>\d+)Y(?P<y0>-?\d+):\w+_X(?P<x1>\d+)Y(?P<y1>-?\d+)')
     for p in parts:
@@ -47,19 +42,21 @@ def parse_grid_ranges(txt: str):
             continue
         typ = m.group("typ")
         x0, x1 = int(m.group("x0")), int(m.group("x1"))
+        y0, y1 = int(m.group("y0")), int(m.group("y1"))
         for x in range(min(x0,x1), max(x0,x1)+1):
             type_xs[typ].add(x)
+        lo_y, hi_y = (y0, y1) if y0 <= y1 else (y1, y0)
+        type_ymin[typ] = min(type_ymin[typ], lo_y)
+        type_ymax[typ] = max(type_ymax[typ], hi_y)
     # Sort
     type_xs = {k: sorted(v) for k,v in type_xs.items()}
-    return type_xs
+    for k in list(type_ymin.keys()):
+        if type_ymin[k] > type_ymax[k]:
+            type_ymin[k], type_ymax[k] = 0, -1
+    return type_xs, (type_ymin, type_ymax)
 
 def parse_util_hier_ascii(rpt_text: str):
-    """
-    Very tolerant parser for Vivado 'report_utilization -hierarchical' ASCII.
-    Returns totals and a list of top-level children with resource counts.
-    """
     lines = rpt_text.splitlines()
-    # Identify header line to detect column indices
     hdr_idx = None
     for i,l in enumerate(lines):
         if re.search(r'\bLUT\b', l) and re.search(r'\bFF\b', l) and re.search(r'\bDSP\b', l):
@@ -68,12 +65,10 @@ def parse_util_hier_ascii(rpt_text: str):
     if hdr_idx is None:
         raise ValueError("Cannot find header with LUT/FF/DSP in utilization report")
     header = lines[hdr_idx]
-    # Determine columns by searching for numbers below headers -> we will just split by '|' and strip
     Entry = namedtuple("Entry", "name depth LUT FF DSP BRAM18 BRAM36 URAM")
     entries = []
     totals = dict((k,0) for k in RES_KEYS)
 
-    # heuristic: lines with '|' separators and numeric fields will be parsed
     for l in lines[hdr_idx+1:]:
         if '|' not in l: 
             continue
@@ -81,46 +76,29 @@ def parse_util_hier_ascii(rpt_text: str):
         if len(cols) < 3:
             continue
         name_field = cols[0]
-        # try to parse resource numbers from last columns (they are often at the end)
         nums = [c for c in cols[1:] if re.search(r'\d', c)]
         if len(nums) < 3:
             continue
-        # Extract name and depth by counting leading spaces
         raw = name_field
-        # remove draw characters
         cname = raw.replace('+', '').replace('-', '').replace('─','').replace('└','').replace('├','').replace('│','').strip()
         depth = len(raw) - len(raw.lstrip())
-        # Now scan for resource values in the entire line using regex keys
         def find_num(key):
-            # search like 'LUT' then the number after in the table; fallback: any number token with key nearby
-            m = re.search(rf'{key}\s*\:\s*([0-9]+)', l)  # not common
+            m = re.search(rf'{key}\s*\:\s*([0-9]+)', l) 
             if m:
                 return int(m.group(1))
-            # fallback: try to map by typical column ordering (LUT, LUTRAM, FF, BRAM_18K, URAM, DSP...)
             return None
 
-        # Robust tokenization: grab all integers in the line
         ints = [int(x) for x in re.findall(r'\b\d+\b', l)]
-        # Try to map: take last 6 ints as (maybe) [LUT, FF, BRAM18, BRAM36, URAM, DSP] in some order
         LUT=FF=DSP=BRAM18=BRAM36=URAM=0
         if len(ints)>=6:
-            # Guess: Vivado usually has "... LUT as Logic | LUT as Memory | Reg | BRAM_18K | URAM | DSP"
-            # We'll approximate LUT by the max of first two LUT fields if present. Hard to robustly do without JSON.
-            # Strategy: use the largest among early integers as LUT-ish, the next as FF-ish etc. It's a heuristic.
-            # To be safer, we also search for tokens with clues.
-            # Basic fallback:
             LUT = ints[-6]
             FF  = ints[-5]
             BRAM18 = ints[-4]
             URAM = ints[-3]
             DSP = ints[-1]
-            # BRAM36 is often not a separate column; approximate from BRAM18//2
             BRAM36 = BRAM18//2
-        # Accumulate totals only for the grand total row (depth small)
         entries.append(Entry(cname, depth, LUT, FF, DSP, BRAM18, BRAM36, URAM))
 
-    # Summarize by top-level children (depth minimal but not zero)
-    # Find top name (first non-empty)
     top = None
     for e in entries:
         if e.depth == 0 and e.name:
@@ -128,14 +106,11 @@ def parse_util_hier_ascii(rpt_text: str):
             break
     top_children = []
     for e in entries:
-        if e.depth == 2:  # heuristic: table draws add 2 spaces for first level
+        if e.depth == 2:  
             top_children.append(e)
 
-    # If no children detected, fallback to grouping by the biggest few entries
     if not top_children:
-        # choose first 50 entries as potential groups
         top_children = [e for e in entries[:50] if e.name]
-    # Compute totals across entries (rough, used only for scaling wide devices)
     tot = dict((k,0) for k in RES_KEYS)
     for e in top_children:
         tot["LUT"] += e.LUT
@@ -169,25 +144,17 @@ def split_columns(xs, k, weights):
             end = start + 1
         bands.append( (xs[start], xs[end-1]) )
         start = end
-    # Fix any gaps/overlaps due to rounding
     if bands and bands[-1][1] != xs[-1]:
         bands[-1] = (bands[-1][0], xs[-1])
     return bands
 
 def greedy_pack(children, capacities, k):
-    """
-    Greedy bin pack top-level children into k bins to match capacities.
-    capacities: dict with keys in RES_KEYS mapping to list of per-bin capacities (relative units)
-    Returns list of lists of child names per bin.
-    """
     bins = [dict((rk,0) for rk in RES_KEYS) for _ in range(k)]
     groups = [[] for _ in range(k)]
-    # weight vector for demand: emphasize LUT/FF + DSP + memories
     def score(e):
         return e.LUT + e.FF/2 + 200*e.DSP + 20*(e.BRAM18 + 2*e.BRAM36) + 300*e.URAM
     order = sorted(children, key=score, reverse=True)
 
-    # "distance" of bin load to capacity (sum normalized squares)
     def dist(bin_load, i):
         d = 0.0
         for rk in RES_KEYS:
@@ -197,7 +164,6 @@ def greedy_pack(children, capacities, k):
         return d
 
     for e in order:
-        # try all bins and pick the one that minimizes distance
         best_i, best_val = 0, float('inf')
         for i in range(k):
             tmp = bins[i].copy()
@@ -229,9 +195,11 @@ def main():
     ap.add_argument("--bench", required=True)
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
+    
+    safe_bench = re.sub(r'[^A-Za-z0-9_]', '_', args.bench)
 
     grid_txt = Path(args.grid).read_text(encoding="utf-8", errors="ignore")
-    type_xs = parse_grid_ranges(grid_txt)
+    type_xs, (type_ymin, type_ymax) = parse_grid_ranges(grid_txt)
 
     rpt_txt  = Path(args.util).read_text(encoding="utf-8", errors="ignore")
     totals, children = parse_util_hier_ascii(rpt_txt)
@@ -245,17 +213,10 @@ def main():
 
     k = max(1, int(args.npblocks))
 
-    # Capacity per column is assumed uniform along Y; normalize to columns.
-    # Compute desired total width W such that total design uses ~target_fill of W (not of whole device).
-    # For columns, we can't shrink device; instead we partition whole device but size bands per expected load fraction.
-    # We compute weights per band = capacity share; here we just split *equally* across bands by capacity, but
-    # we will later *assign* modules to match resource capacities.
     weights = [1.0/k for _ in range(k)]
 
-    # Split columns into k bands
-    slice_bands = split_columns(type_xs["SLICE"], k, weights)
-    # For hard resources, we keep the same X bands (vertical alignment). This is important for routability.
-    # Compute per-band capacities (relative units = column count within the band)
+    slice_xs   = type_xs["SLICE"]
+    slice_bands = split_columns(slice_xs, k, weights)
     def band_capacity(xs, bands):
         cap = []
         for lo,hi in bands:
@@ -272,9 +233,27 @@ def main():
         "URAM": band_capacity(type_xs["URAM288"], slice_bands),
     }
 
-    # Greedy pack top-level children into bands according to capacities
     groups = greedy_pack(children, caps, k)
 
+    def map_band_to_res(xs_res, band):
+        if not xs_res:
+            return None
+        xlo, xhi = band
+        # positions in SLICE ordered list
+        try:
+            pos_lo = slice_xs.index(xlo)
+            pos_hi = slice_xs.index(xhi)
+        except ValueError:
+            return None
+        if pos_lo > pos_hi:
+            pos_lo, pos_hi = pos_hi, pos_lo
+        nS = max(1, len(slice_xs) - 1)
+        nR = max(1, len(xs_res)  - 1)
+        r_lo = int(round((pos_lo / nS) * nR))
+        r_hi = int(round((pos_hi / nS) * nR))
+        if r_hi < r_lo:
+            r_hi = r_lo
+        return xs_res[r_lo], xs_res[r_hi]
     # Emit Tcl
     out = []
     out.append(f"# Auto-generated pblocks for bench {args.bench}")
@@ -282,34 +261,44 @@ def main():
     out.append("set_param place.enableClockRegionRepacking true")
     out.append("")
     for i, (xlo,xhi) in enumerate(slice_bands):
-        pb = f"pblock_{args.bench}_{i}"
+        pb = f"pblock_{safe_bench}_{i}"
         out.append(f"if {{[llength [get_pblocks {pb}]]}} {{ delete_pblocks [get_pblocks {pb}] }}")
         out.append(f"create_pblock {pb}")
-        # Collect resources inside this X band across full height
-        # We define RANGE strings per type.
-        # SLICE range
-        out.append(f"resize_pblock [get_pblocks {pb}] -add {{SLICE_X{xlo}Y0:SLICE_X{xhi}Y9999}}")
-        # Add matching DSP/BRAM/URAM columns (full height)
-        if n_dsp>0:
-            # approximate: include any DSP columns whose X falls within band
-            out.append(f"resize_pblock [get_pblocks {pb}] -add {{DSP48E2_X{xlo}Y0:DSP48E2_X{xhi}Y9999}}")
-        if n_b18>0:
-            out.append(f"resize_pblock [get_pblocks {pb}] -add {{RAMB18_X{xlo}Y0:RAMB18_X{xhi}Y9999}}")
-        if n_b36>0:
-            out.append(f"resize_pblock [get_pblocks {pb}] -add {{RAMB36_X{xlo}Y0:RAMB36_X{xhi}Y9999}}")
-        if n_uram>0:
-            out.append(f"resize_pblock [get_pblocks {pb}] -add {{URAM288_X{xlo}Y0:URAM288_X{xhi}Y9999}}")
+        set_ylo = type_ymin["SLICE"]; set_yhi = type_ymax["SLICE"]
+        out.append(f"resize_pblock [get_pblocks {pb}] -add {{SLICE_X{xlo}Y{set_ylo}:SLICE_X{xhi}Y{set_yhi}}}")
+        
+
+        dsp_band = map_band_to_res(type_xs["DSP48E2"], (xlo,xhi))
+        if dsp_band and n_dsp>0:
+            dx0, dx1 = dsp_band
+            out.append(f"resize_pblock [get_pblocks {pb}] -add {{DSP48E2_X{dx0}Y{type_ymin['DSP48E2']}:DSP48E2_X{dx1}Y{type_ymax['DSP48E2']}}}")
+        b18_band = map_band_to_res(type_xs["RAMB18"], (xlo,xhi))
+        if b18_band and n_b18>0:
+            bx0, bx1 = b18_band
+            out.append(f"resize_pblock [get_pblocks {pb}] -add {{RAMB18_X{bx0}Y{type_ymin['RAMB18']}:RAMB18_X{bx1}Y{type_ymax['RAMB18']}}}")
+        b36_band = map_band_to_res(type_xs["RAMB36"], (xlo,xhi))
+        if b36_band and n_b36>0:
+            cx0, cx1 = b36_band
+            out.append(f"resize_pblock [get_pblocks {pb}] -add {{RAMB36_X{cx0}Y{type_ymin['RAMB36']}:RAMB36_X{cx1}Y{type_ymax['RAMB36']}}}")
+        ur_band = map_band_to_res(type_xs["URAM288"], (xlo,xhi))
+        if ur_band and n_uram>0:
+            ux0, ux1 = ur_band
+            out.append(f"resize_pblock [get_pblocks {pb}] -add {{URAM288_X{ux0}Y{type_ymin['URAM288']}:URAM288_X{ux1}Y{type_ymax['URAM288']}}}")
+
         out.append(f"set_property SNAPPING_MODE ON [get_pblocks {pb}]")
         out.append(f"set_property EXCLUDE_PLACEMENT false [get_pblocks {pb}]")
         out.append(f"set_property EXCLUDE_ROUTING   false [get_pblocks {pb}]")
         # Assign cells (hierarchical groups greedily packed)
+
         names = groups[i]
         if names:
-            # Convert to Tcl list of hierarchical cell patterns under the current top
-            # We assume top is 'top_multi_len'
-            # If exact names don't match, users may adjust later. We use wildcards to be tolerant.
-            toks = " ".join([f"*{n}*" for n in names])
-            out.append(f"set sel_cells [get_cells -hier -quiet -filter {{NAME =~ {toks}}}]")
+            out.append("set sel_cells {}")
+            pats = " ".join([f"*{n}*" for n in names])
+            out.append(f"set _patterns {{{pats}}}")
+            out.append("foreach p $_patterns {")
+            out.append("  set c [get_cells -hier -quiet -filter \"NAME =~ $p\"]")
+            out.append("  if {[llength $c]} { lappend sel_cells $c }")
+            out.append("}")
             out.append(f"if {{[llength $sel_cells]}} {{ add_cells_to_pblock [get_pblocks {pb}] $sel_cells }}")
         out.append("")
     # Write out
