@@ -1,5 +1,3 @@
-`include "uop_pkg.sv"
-
 module uop_block #(
     parameter int             LEN          = 4,
     parameter int             PIPE_STAGES  = 1,
@@ -23,9 +21,9 @@ module uop_block #(
     generate
         for (genvar i = 0; i < LEN; i++) begin : g
             logic [W-1:0] alu_out;
-            wire  [W-1:0] b_input = USE_IMM[i] ? IMM[i] : stage[i];
+            wire  [W-1:0] b_input = USE_IMM[i] ? {{(W-32){1'b0}}, IMM[i]} : src;
             
-            microop_unit #(.OP(OPS[i]), .W(W)) alu_i (
+            microop_unit #(.OP(OPS[i]), .W(W), .FP_LATENCY(PIPE_STAGES)) alu_i (
                 .clk  (clk),
                 .a(stage[i]),
                 .b   (b_input),

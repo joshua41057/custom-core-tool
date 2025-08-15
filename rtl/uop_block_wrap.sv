@@ -1,9 +1,7 @@
-`include "uop_pkg.sv"
-
 module uop_block_wrap #(
     parameter int             LEN         = 1,
     parameter int             PIPE_STAGES = 1,
-    parameter bit    [31:0]    FF_MASK     = 32'h0,
+    parameter bit    [LEN-1:0] FF_MASK     = '0,
     parameter bit             OUT_FF      = 1'b1,
     parameter uop_pkg::op_t   OPS [0:LEN-1] = '{default:uop_pkg::OP_NOP},
     parameter logic [31:0]    IMM   [LEN] = '{default:32'h0},   

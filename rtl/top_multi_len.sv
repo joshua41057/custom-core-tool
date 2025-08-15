@@ -1,5 +1,3 @@
-`include "uop_pkg.sv"
-
 module top_multi_len #(
     parameter int W = 64
 )(
@@ -16,6 +14,7 @@ module top_multi_len #(
             localparam int             THIS_LEN   = LEN_LUT[i];
             localparam int             THIS_STAGE = STAGE_LUT[i];
             localparam bit [31:0]   THIS_MASK  = FF_MASK_LUT[i];
+            
             (* keep_hierarchy = "yes",  dont_touch = "true" *)
             uop_block_wrap #(
                 .LEN         (THIS_LEN),

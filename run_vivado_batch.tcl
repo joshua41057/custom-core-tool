@@ -133,6 +133,47 @@ proc run_auto_pblock {bench bench_dir rpt_dir npblocks target_fill} {
   source $out_tcl
 }
 
+proc add_constraint_file {f} {
+  if {![file exists $f]} { return 0 }
+  set ext [string tolower [file extension $f]]
+  if {$ext eq ".xdc"} {
+    puts "Info: add XDC $f"
+    add_files -fileset constrs_1 -norecurse $f
+  } else {
+    puts "Info: source $f"
+    source $f
+  }
+  return 1
+}
+
+proc ensure_ip_products {} {
+  set ips [get_ips]
+  if {[llength $ips] == 0} { return }
+
+  upgrade_ip -quiet $ips
+
+  catch { generate_target all $ips }
+
+  export_ip_user_files -of_objects $ips -no_script -sync -force -quiet
+
+  puts "Info: synth_ip to ensure synthesis products exist"
+  catch { synth_ip $ips }
+
+  set missing {}
+  foreach ip $ips {
+    set syn_files [get_files -quiet -of_objects $ip -filter {IS_GENERATED == 1 && (FILE_TYPE =~ "*Synthesis*" || NAME =~ "*.dcp")}]
+    if {[llength $syn_files] == 0} {
+      lappend missing $ip
+    }
+  }
+  if {[llength $missing]} {
+    puts "Info: forcing reset_target/generate_target for: $missing"
+    reset_target all $missing
+    generate_target all $missing
+    export_ip_user_files -of_objects $missing -no_script -sync -force -quiet
+  }
+}
+
 # ---- Per-benchmark loop ----
 foreach bench $sel_benches {
   set bench_dir [file join $EX_DIR $bench]
@@ -160,11 +201,35 @@ foreach bench $sel_benches {
   set ip_xci [glob -nocomplain "$IP_REPO_DIR/*/*.xci"]
   if {[llength $ip_xci] > 0} {
     add_files -fileset sources_1 -norecurse $ip_xci
-    upgrade_ip -quiet [get_ips]
-    set_property generate_synth_checkpoint true [get_ips]
-    generate_target all [get_ips]
-    update_compile_order -fileset sources_1
   }
+
+  set ips [get_ips]
+  if {[llength $ips] > 0} {
+    upgrade_ip -quiet $ips
+
+    catch { set_property GENERATE_SYNTH_CHECKPOINT true $ips }
+
+    set xci_files [get_files -quiet -of_objects $ips -filter {NAME =~ "*.xci"}]
+    if {[llength $xci_files] > 0} {
+      catch { set_property generate_synth_checkpoint true $xci_files }
+    }
+
+    catch { generate_target {Synthesis} $ips }
+
+    set missing {}
+    foreach ip $ips {
+      set syn_files [get_files -quiet -of_objects $ip -filter {IS_GENERATED == 1 && (FILE_TYPE =~ "*Synthesis*" || NAME =~ "*.dcp")}]
+      if {[llength $syn_files] == 0} { lappend missing $ip }
+    }
+    if {[llength $missing]} {
+      puts "Info: forcing reset_target/generate_target for: $missing"
+      catch { reset_target all $missing }
+      catch { generate_target {Synthesis} $missing }
+    }
+
+    export_ip_user_files -of_objects $ips -no_script -sync -force -quiet
+  }
+  update_compile_order -fileset sources_1
 
   # RTL
   read_rtl_excluding_len_table $RTL_DIR
@@ -172,12 +237,19 @@ foreach bench $sel_benches {
   update_compile_order -fileset sources_1
 
   # Constraints
-  try_source [file join $CONS_DIR "clocks.xdc"]
-  try_source [file join $CONS_DIR  "pipe_stages.tcl"]
-  try_source [file join $bench_dir "pipe_stages.tcl"]  
+  add_constraint_file [file join $CONS_DIR "clocks.xdc"]
 
   # Synthesis
   synth_design -top $TOP_MODULE -part $PART -flatten_hierarchy none
+
+  if {[file exists [file join $CONS_DIR "pipe_stages.tcl"]]} {
+  puts "Info: post-synth source $CONS_DIR/pipe_stages.tcl"
+  source [file join $CONS_DIR "pipe_stages.tcl"]
+  }
+  if {[file exists [file join $bench_dir "pipe_stages.tcl"]]} {
+    puts "Info: post-synth source $bench_dir/pipe_stages.tcl"
+    source [file join $bench_dir "pipe_stages.tcl"]
+  }
   update_timing
 
   # Pre-place reports
@@ -185,6 +257,8 @@ foreach bench $sel_benches {
 
   # Build pblocks based on post-synth utilization
   run_auto_pblock $bench $bench_dir $bench_rpt_dir $NPBLOCKS $TARGET_FILL
+
+  
 
   # Implementation
   opt_design
