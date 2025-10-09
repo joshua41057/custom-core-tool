@@ -1,0 +1,104 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
+| Date         : Mon Sep 22 16:27:29 2025
+| Host         : orthanc running 64-bit Ubuntu 22.04.4 LTS
+| Command      : report_utilization -hierarchical -file /home/jyoo/custom_v_2/custom-core-tool/reports/memory_wo_simd/benches/527_cam4_r/527_cam4_r_util_hier.rpt
+| Design       : top_bench__527_cam4_r
+| Device       : xcu200fsgd2104-2
+| Design State : Optimized
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++----------------------------------------------+------------------------------------------------------+------------+------------+---------+------+------+--------+--------+------+------------+
+|                   Instance                   |                        Module                        | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | URAM | DSP Blocks |
++----------------------------------------------+------------------------------------------------------+------------+------------+---------+------+------+--------+--------+------+------------+
+| top_bench__527_cam4_r                        |                                                (top) |        517 |        517 |       0 |    0 | 2152 |      0 |      0 |    0 |          0 |
+|   (top_bench__527_cam4_r)                    |                                                (top) |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|   u_527_cam4_r                               |                               bench_core__527_cam4_r |        517 |        517 |       0 |    0 | 2152 |      0 |      0 |    0 |          0 |
+|     (u_527_cam4_r)                           |                               bench_core__527_cam4_r |        127 |        127 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|     glen[0].core_i                           |                            uop_block_wrap__xdcDup__1 |         65 |         65 |       0 |    0 |  448 |      0 |      0 |    0 |          0 |
+|       (glen[0].core_i)                       |                            uop_block_wrap__xdcDup__1 |          0 |          0 |       0 |    0 |  192 |      0 |      0 |    0 |          0 |
+|       core                                   |                                 uop_block__xdcDup__1 |         65 |         65 |       0 |    0 |  256 |      0 |      0 |    0 |          0 |
+|         (core)                               |                                 uop_block__xdcDup__1 |          1 |          1 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|         g[0].g_normal.alu_i                  |                                      microop_unit__3 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|         g[1].g_normal.alu_i                  |              microop_unit__parameterized0__xdcDup__1 |         64 |         64 |       0 |    0 |  128 |      0 |      0 |    0 |          0 |
+|           (g[1].g_normal.alu_i)              |              microop_unit__parameterized0__xdcDup__1 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|           g_iadd.use_ip.u_addsub             |                                       integer_addsub |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|             U0                               |                      integer_addsubc_addsub_v12_0_14 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|               xst_addsub                     |                  integer_addsubc_addsub_v12_0_14_viv |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|                 i_baseblox.i_baseblox_addsub |               integer_addsubc_addsub_v12_0_14_legacy |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|                   no_pipelining.the_addsub   |        integer_addsubc_addsub_v12_0_14_fabric_legacy |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|                     i_lut6.i_lut6_addsub     |          integer_addsubc_addsub_v12_0_14_lut6_legacy |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|                       (i_lut6.i_lut6_addsub) |          integer_addsubc_addsub_v12_0_14_lut6_legacy |         64 |         64 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|                       i_q.i_simple.qreg      |                   integer_addsubc_reg_fd_v12_0_6_viv |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|     glen[1].core_i                           |                            uop_block_wrap__xdcDup__2 |         65 |         65 |       0 |    0 |  448 |      0 |      0 |    0 |          0 |
+|       (glen[1].core_i)                       |                            uop_block_wrap__xdcDup__2 |          0 |          0 |       0 |    0 |  192 |      0 |      0 |    0 |          0 |
+|       core                                   |                                 uop_block__xdcDup__2 |         65 |         65 |       0 |    0 |  256 |      0 |      0 |    0 |          0 |
+|         (core)                               |                                 uop_block__xdcDup__2 |          1 |          1 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|         g[0].g_normal.alu_i                  |                                      microop_unit__4 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|         g[1].g_normal.alu_i                  |              microop_unit__parameterized0__xdcDup__2 |         64 |         64 |       0 |    0 |  128 |      0 |      0 |    0 |          0 |
+|           (g[1].g_normal.alu_i)              |              microop_unit__parameterized0__xdcDup__2 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|           g_iadd.use_ip.u_addsub             |                                integer_addsub_HD2529 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|             U0                               |               integer_addsubc_addsub_v12_0_14_HD2530 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|               xst_addsub                     |           integer_addsubc_addsub_v12_0_14_viv_HD2531 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|                 i_baseblox.i_baseblox_addsub |        integer_addsubc_addsub_v12_0_14_legacy_HD2532 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|                   no_pipelining.the_addsub   | integer_addsubc_addsub_v12_0_14_fabric_legacy_HD2533 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|                     i_lut6.i_lut6_addsub     |   integer_addsubc_addsub_v12_0_14_lut6_legacy_HD2534 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|                       (i_lut6.i_lut6_addsub) |   integer_addsubc_addsub_v12_0_14_lut6_legacy_HD2534 |         64 |         64 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|                       i_q.i_simple.qreg      |            integer_addsubc_reg_fd_v12_0_6_viv_HD2535 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|     glen[2].core_i                           |                                       uop_block_wrap |         65 |         65 |       0 |    0 |  448 |      0 |      0 |    0 |          0 |
+|       (glen[2].core_i)                       |                                       uop_block_wrap |          0 |          0 |       0 |    0 |  192 |      0 |      0 |    0 |          0 |
+|       core                                   |                                            uop_block |         65 |         65 |       0 |    0 |  256 |      0 |      0 |    0 |          0 |
+|         (core)                               |                                            uop_block |          1 |          1 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|         g[0].g_normal.alu_i                  |                                      microop_unit__5 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|         g[1].g_normal.alu_i                  |                         microop_unit__parameterized0 |         64 |         64 |       0 |    0 |  128 |      0 |      0 |    0 |          0 |
+|           (g[1].g_normal.alu_i)              |                         microop_unit__parameterized0 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|           g_iadd.use_ip.u_addsub             |                                integer_addsub_HD2536 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|             U0                               |               integer_addsubc_addsub_v12_0_14_HD2537 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|               xst_addsub                     |           integer_addsubc_addsub_v12_0_14_viv_HD2538 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|                 i_baseblox.i_baseblox_addsub |        integer_addsubc_addsub_v12_0_14_legacy_HD2539 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|                   no_pipelining.the_addsub   | integer_addsubc_addsub_v12_0_14_fabric_legacy_HD2540 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|                     i_lut6.i_lut6_addsub     |   integer_addsubc_addsub_v12_0_14_lut6_legacy_HD2541 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|                       (i_lut6.i_lut6_addsub) |   integer_addsubc_addsub_v12_0_14_lut6_legacy_HD2541 |         64 |         64 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|                       i_q.i_simple.qreg      |            integer_addsubc_reg_fd_v12_0_6_viv_HD2542 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|     glen[3].core_i                           |                       uop_block_wrap__parameterized0 |        129 |        129 |       0 |    0 |  448 |      0 |      0 |    0 |          0 |
+|       (glen[3].core_i)                       |                       uop_block_wrap__parameterized0 |          0 |          0 |       0 |    0 |  192 |      0 |      0 |    0 |          0 |
+|       core                                   |                            uop_block__parameterized0 |        129 |        129 |       0 |    0 |  256 |      0 |      0 |    0 |          0 |
+|         (core)                               |                            uop_block__parameterized0 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|         g[0].g_normal.alu_i                  |                         microop_unit__parameterized1 |         64 |         64 |       0 |    0 |  128 |      0 |      0 |    0 |          0 |
+|           (g[0].g_normal.alu_i)              |                         microop_unit__parameterized1 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|           g_iadd.use_ip.u_addsub             |                                integer_addsub_HD2543 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|             U0                               |               integer_addsubc_addsub_v12_0_14_HD2544 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|               xst_addsub                     |           integer_addsubc_addsub_v12_0_14_viv_HD2545 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|                 i_baseblox.i_baseblox_addsub |        integer_addsubc_addsub_v12_0_14_legacy_HD2546 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|                   no_pipelining.the_addsub   | integer_addsubc_addsub_v12_0_14_fabric_legacy_HD2547 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|                     i_lut6.i_lut6_addsub     |   integer_addsubc_addsub_v12_0_14_lut6_legacy_HD2548 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|                       (i_lut6.i_lut6_addsub) |   integer_addsubc_addsub_v12_0_14_lut6_legacy_HD2548 |         64 |         64 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|                       i_q.i_simple.qreg      |            integer_addsubc_reg_fd_v12_0_6_viv_HD2549 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|         g[1].g_normal.alu_i                  |                                         microop_unit |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|         g[2].g_normal.alu_i                  |                         microop_unit__parameterized2 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|     glen[4].core_i                           |                       uop_block_wrap__parameterized1 |         33 |         33 |       0 |    0 |  136 |      0 |      0 |    0 |          0 |
+|       (glen[4].core_i)                       |                       uop_block_wrap__parameterized1 |          0 |          0 |       0 |    0 |   72 |      0 |      0 |    0 |          0 |
+|       core                                   |                            uop_block__parameterized1 |         33 |         33 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|         (core)                               |                            uop_block__parameterized1 |          1 |          1 |       0 |    0 |   16 |      0 |      0 |    0 |          0 |
+|         g[0].g_normal.alu_i                  |                      microop_unit__parameterized3__1 |          0 |          0 |       0 |    0 |    8 |      0 |      0 |    0 |          0 |
+|         g[1].g_normal.alu_i                  |                         microop_unit__parameterized3 |          0 |          0 |       0 |    0 |    8 |      0 |      0 |    0 |          0 |
+|         g[2].g_normal.alu_i                  |                         microop_unit__parameterized4 |         32 |         32 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
+|     glen[5].core_i                           |                       uop_block_wrap__parameterized2 |         33 |         33 |       0 |    0 |  224 |      0 |      0 |    0 |          0 |
+|       (glen[5].core_i)                       |                       uop_block_wrap__parameterized2 |          0 |          0 |       0 |    0 |  128 |      0 |      0 |    0 |          0 |
+|       core                                   |                            uop_block__parameterized2 |         33 |         33 |       0 |    0 |   96 |      0 |      0 |    0 |          0 |
+|         (core)                               |                            uop_block__parameterized2 |          1 |          1 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
+|         g[0].g_normal.alu_i                  |                         microop_unit__parameterized5 |         32 |         32 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
+|         g[1].g_normal.alu_i                  |                         microop_unit__parameterized6 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
++----------------------------------------------+------------------------------------------------------+------------+------------+---------+------+------+--------+--------+------+------------+
+
+

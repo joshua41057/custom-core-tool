@@ -1,0 +1,114 @@
+{
+  "rank": 52,
+  "group_index": 6,
+  "execution_count": 515100,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5a7ed4f26c9c",
+      "opcode": "lea",
+      "raw_operands": [
+        "r8",
+        "ptr [r8+r8*4]"
+      ],
+      "in_operands": [
+        "ptr [r8+r8*4]"
+      ],
+      "out_operands": [
+        "r8"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5a7ed4f26ca0",
+      "opcode": "add",
+      "raw_operands": [
+        "r8",
+        "qword ptr [rbp-0x2f0]"
+      ],
+      "in_operands": [
+        "r8",
+        "[rbp-0x2f0]"
+      ],
+      "out_operands": [
+        "r8",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5a7ed4f26ca7",
+      "opcode": "mov",
+      "raw_operands": [
+        "qword ptr [rbp-0x308]",
+        "r8"
+      ],
+      "in_operands": [
+        "r8"
+      ],
+      "out_operands": [
+        "[rbp-0x308]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "r8"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "r8"
+      },
+      "condition": "reg vs reg: r8"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "r8"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "r8"
+      },
+      "condition": "reg vs reg: r8"
+    }
+  ],
+  "bench": "603.bwaves_s/1",
+  "src": "1/super_hot_regions:83",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.9428090415820634,
+  "comb_bound_hits": 2,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 1,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 3
+  },
+  "pcs": [
+    "0x5a7ed4f26c9c",
+    "0x5a7ed4f26ca0",
+    "0x5a7ed4f26ca7"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5a7ed4f26c9c"
+}

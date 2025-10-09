@@ -1,0 +1,101 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
+| Date         : Thu Sep 18 19:18:23 2025
+| Host         : orthanc running 64-bit Ubuntu 22.04.4 LTS
+| Command      : report_utilization -hierarchical -cells [get_cells -quiet -of_objects pblock_u_648_exchange2_s] -file /home/jyoo/custom_v_2/custom-core-tool/reports/multi/pblocks/pblock_u_648_exchange2_s_util_hier.rpt
+| Design       : top_multi_bench
+| Device       : xcu200fsgd2104-2
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++-----------------------------------------------------------------------------------+------------------------------------------------+------------+------------+---------+------+------+--------+--------+------+------------+
+|                                      Instance                                     |                     Module                     | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | URAM | DSP Blocks |
++-----------------------------------------------------------------------------------+------------------------------------------------+------------+------------+---------+------+------+--------+--------+------+------------+
+| u_648_exchange2_s                                                                 |                    bench_core__648_exchange2_s |        218 |         64 |       0 |  154 | 1220 |      0 |      0 |    0 |         20 |
+|   u_648_exchange2_s                                                               |                    bench_core__648_exchange2_s |        218 |         64 |       0 |  154 | 1220 |      0 |      0 |    0 |         20 |
+|     (u_648_exchange2_s)                                                           |                    bench_core__648_exchange2_s |         60 |         60 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|     glen[0].core_i                                                                |             uop_block_wrap__parameterized72__1 |          1 |          1 |       0 |    0 |  128 |      0 |      0 |    0 |          0 |
+|       (glen[0].core_i)                                                            |             uop_block_wrap__parameterized72__1 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       core                                                                        |                  uop_block__parameterized72__1 |          1 |          1 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|         (core)                                                                    |                  uop_block__parameterized72__1 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|         g[0].g_normal.alu_i                                                       |               microop_unit__parameterized3__14 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
+|         g[1].g_normal.alu_i                                                       |               microop_unit__parameterized12__7 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
+|     glen[1].core_i                                                                |             uop_block_wrap__parameterized72__2 |          1 |          1 |       0 |    0 |  128 |      0 |      0 |    0 |          0 |
+|       (glen[1].core_i)                                                            |             uop_block_wrap__parameterized72__2 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       core                                                                        |                  uop_block__parameterized72__2 |          1 |          1 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|         (core)                                                                    |                  uop_block__parameterized72__2 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|         g[0].g_normal.alu_i                                                       |               microop_unit__parameterized3__15 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
+|         g[1].g_normal.alu_i                                                       |               microop_unit__parameterized12__8 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
+|     glen[2].core_i                                                                |                uop_block_wrap__parameterized99 |         78 |          1 |       0 |   77 |  482 |      0 |      0 |    0 |         10 |
+|       (glen[2].core_i)                                                            |                uop_block_wrap__parameterized99 |          0 |          0 |       0 |    0 |  128 |      0 |      0 |    0 |          0 |
+|       core                                                                        |                     uop_block__parameterized99 |         78 |          1 |       0 |   77 |  354 |      0 |      0 |    0 |         10 |
+|         (core)                                                                    |                     uop_block__parameterized99 |          1 |          1 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|         g[0].g_normal.alu_i                                                       |              microop_unit__parameterized5__121 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|         g[1].g_normal.alu_i                                                       |      microop_unit__parameterized19__xdcDup__20 |         77 |          0 |       0 |   77 |  226 |      0 |      0 |    0 |         10 |
+|           (g[1].g_normal.alu_i)                                                   |      microop_unit__parameterized19__xdcDup__20 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|           g_imul.mul64_ip.mul_i                                                   |                             integer_mul_HD3605 |         77 |          0 |       0 |   77 |  162 |      0 |      0 |    0 |         10 |
+|             U0                                                                    |            integer_mulmult_gen_v12_0_16_HD3606 |         77 |          0 |       0 |   77 |  162 |      0 |      0 |    0 |         10 |
+|               i_mult                                                              |        integer_mulmult_gen_v12_0_16_viv_HD3607 |         77 |          0 |       0 |   77 |  162 |      0 |      0 |    0 |         10 |
+|                 gDSP.gDSP_only.iDSP                                               |                          integer_muldsp_HD3608 |         77 |          0 |       0 |   77 |  162 |      0 |      0 |    0 |         10 |
+|                   (gDSP.gDSP_only.iDSP)                                           |                          integer_muldsp_HD3608 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |         10 |
+|                   use_prim.appDSP48[0].bppDSP48[0].need_output_delay.output_delay |  integer_muldelay_line__parameterized16_HD3609 |          9 |          0 |       0 |    9 |   17 |      0 |      0 |    0 |          0 |
+|                   use_prim.appDSP48[0].bppDSP48[2].need_output_delay.output_delay |  integer_muldelay_line__parameterized18_HD3610 |          9 |          0 |       0 |    9 |   17 |      0 |      0 |    0 |          0 |
+|                   use_prim.appDSP48[1].bppDSP48[0].need_output_delay.output_delay |  integer_muldelay_line__parameterized19_HD3611 |          9 |          0 |       0 |    9 |   17 |      0 |      0 |    0 |          0 |
+|                   use_prim.appDSP48[3].bppDSP48[0].need_output_delay.output_delay |  integer_muldelay_line__parameterized21_HD3613 |          7 |          0 |       0 |    7 |   13 |      0 |      0 |    0 |          0 |
+|                   use_prim.iAdelx[0].iAdely[2].use_delay_line.Adelay              |   integer_muldelay_line__parameterized0_HD3615 |          9 |          0 |       0 |    9 |   17 |      0 |      0 |    0 |          0 |
+|                   use_prim.iAdelx[1].iAdely[1].use_delay_line.Adelay              |   integer_muldelay_line__parameterized1_HD3616 |          9 |          0 |       0 |    9 |   17 |      0 |      0 |    0 |          0 |
+|                   use_prim.iAdelx[1].iAdely[2].use_delay_line.Adelay              |   integer_muldelay_line__parameterized2_HD3617 |          9 |          0 |       0 |    9 |   17 |      0 |      0 |    0 |          0 |
+|                   use_prim.iAdelx[2].iAdely[0].use_delay_line.Adelay              |   integer_muldelay_line__parameterized4_HD3619 |          0 |          0 |       0 |    0 |   17 |      0 |      0 |    0 |          0 |
+|                   use_prim.iAdelx[2].iAdely[1].use_delay_line.Adelay              |   integer_muldelay_line__parameterized5_HD3620 |          9 |          0 |       0 |    9 |   17 |      0 |      0 |    0 |          0 |
+|                   use_prim.iAdelx[3].iAdely[0].use_delay_line.Adelay              |   integer_muldelay_line__parameterized8_HD3623 |          7 |          0 |       0 |    7 |   13 |      0 |      0 |    0 |          0 |
+|                   use_prim.iBdelx[0].iBdely[2].need_delay_line.Bdelay             | integer_muldelay_line__parameterized0_0_HD3625 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|                   use_prim.iBdelx[0].iBdely[3].need_delay_line.Bdelay             |  integer_muldelay_line__parameterized10_HD3626 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|                   use_prim.iBdelx[1].iBdely[0].need_delay_line.Bdelay             | integer_muldelay_line__parameterized4_1_HD3627 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|                   use_prim.iBdelx[1].iBdely[1].need_delay_line.Bdelay             | integer_muldelay_line__parameterized1_2_HD3628 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|                   use_prim.iBdelx[1].iBdely[2].need_delay_line.Bdelay             | integer_muldelay_line__parameterized2_3_HD3629 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|                   use_prim.iBdelx[2].iBdely[1].need_delay_line.Bdelay             | integer_muldelay_line__parameterized5_5_HD3631 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|                   use_prim.iBdelx[3].iBdely[0].need_delay_line.Bdelay             |  integer_muldelay_line__parameterized11_HD3633 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|     glen[3].core_i                                                                |                uop_block_wrap__parameterized97 |         78 |          1 |       0 |   77 |  482 |      0 |      0 |    0 |         10 |
+|       (glen[3].core_i)                                                            |                uop_block_wrap__parameterized97 |          0 |          0 |       0 |    0 |   96 |      0 |      0 |    0 |          0 |
+|       core                                                                        |                     uop_block__parameterized97 |         78 |          1 |       0 |   77 |  386 |      0 |      0 |    0 |         10 |
+|         (core)                                                                    |                     uop_block__parameterized97 |          1 |          1 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|         g[0].g_normal.alu_i                                                       |              microop_unit__parameterized15__45 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
+|         g[1].g_normal.alu_i                                                       |              microop_unit__parameterized5__120 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|         g[2].g_normal.alu_i                                                       |                  microop_unit__parameterized19 |         77 |          0 |       0 |   77 |  226 |      0 |      0 |    0 |         10 |
+|           (g[2].g_normal.alu_i)                                                   |                  microop_unit__parameterized19 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|           g_imul.mul64_ip.mul_i                                                   |                             integer_mul_HD3637 |         77 |          0 |       0 |   77 |  162 |      0 |      0 |    0 |         10 |
+|             U0                                                                    |            integer_mulmult_gen_v12_0_16_HD3638 |         77 |          0 |       0 |   77 |  162 |      0 |      0 |    0 |         10 |
+|               i_mult                                                              |        integer_mulmult_gen_v12_0_16_viv_HD3639 |         77 |          0 |       0 |   77 |  162 |      0 |      0 |    0 |         10 |
+|                 gDSP.gDSP_only.iDSP                                               |                          integer_muldsp_HD3640 |         77 |          0 |       0 |   77 |  162 |      0 |      0 |    0 |         10 |
+|                   (gDSP.gDSP_only.iDSP)                                           |                          integer_muldsp_HD3640 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |         10 |
+|                   use_prim.appDSP48[0].bppDSP48[0].need_output_delay.output_delay |  integer_muldelay_line__parameterized16_HD3641 |          9 |          0 |       0 |    9 |   17 |      0 |      0 |    0 |          0 |
+|                   use_prim.appDSP48[0].bppDSP48[2].need_output_delay.output_delay |  integer_muldelay_line__parameterized18_HD3642 |          9 |          0 |       0 |    9 |   17 |      0 |      0 |    0 |          0 |
+|                   use_prim.appDSP48[1].bppDSP48[0].need_output_delay.output_delay |  integer_muldelay_line__parameterized19_HD3643 |          9 |          0 |       0 |    9 |   17 |      0 |      0 |    0 |          0 |
+|                   use_prim.appDSP48[3].bppDSP48[0].need_output_delay.output_delay |  integer_muldelay_line__parameterized21_HD3645 |          7 |          0 |       0 |    7 |   13 |      0 |      0 |    0 |          0 |
+|                   use_prim.iAdelx[0].iAdely[2].use_delay_line.Adelay              |   integer_muldelay_line__parameterized0_HD3647 |          9 |          0 |       0 |    9 |   17 |      0 |      0 |    0 |          0 |
+|                   use_prim.iAdelx[1].iAdely[1].use_delay_line.Adelay              |   integer_muldelay_line__parameterized1_HD3648 |          9 |          0 |       0 |    9 |   17 |      0 |      0 |    0 |          0 |
+|                   use_prim.iAdelx[1].iAdely[2].use_delay_line.Adelay              |   integer_muldelay_line__parameterized2_HD3649 |          9 |          0 |       0 |    9 |   17 |      0 |      0 |    0 |          0 |
+|                   use_prim.iAdelx[2].iAdely[0].use_delay_line.Adelay              |   integer_muldelay_line__parameterized4_HD3651 |          0 |          0 |       0 |    0 |   17 |      0 |      0 |    0 |          0 |
+|                   use_prim.iAdelx[2].iAdely[1].use_delay_line.Adelay              |   integer_muldelay_line__parameterized5_HD3652 |          9 |          0 |       0 |    9 |   17 |      0 |      0 |    0 |          0 |
+|                   use_prim.iAdelx[3].iAdely[0].use_delay_line.Adelay              |   integer_muldelay_line__parameterized8_HD3655 |          7 |          0 |       0 |    7 |   13 |      0 |      0 |    0 |          0 |
+|                   use_prim.iBdelx[0].iBdely[2].need_delay_line.Bdelay             | integer_muldelay_line__parameterized0_0_HD3657 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|                   use_prim.iBdelx[0].iBdely[3].need_delay_line.Bdelay             |  integer_muldelay_line__parameterized10_HD3658 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|                   use_prim.iBdelx[1].iBdely[0].need_delay_line.Bdelay             | integer_muldelay_line__parameterized4_1_HD3659 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|                   use_prim.iBdelx[1].iBdely[1].need_delay_line.Bdelay             | integer_muldelay_line__parameterized1_2_HD3660 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|                   use_prim.iBdelx[1].iBdely[2].need_delay_line.Bdelay             | integer_muldelay_line__parameterized2_3_HD3661 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|                   use_prim.iBdelx[2].iBdely[1].need_delay_line.Bdelay             | integer_muldelay_line__parameterized5_5_HD3663 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|                   use_prim.iBdelx[3].iBdely[0].need_delay_line.Bdelay             |  integer_muldelay_line__parameterized11_HD3665 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
++-----------------------------------------------------------------------------------+------------------------------------------------+------------+------------+---------+------+------+--------+--------+------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+

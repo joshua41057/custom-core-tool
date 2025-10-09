@@ -1,0 +1,122 @@
+{
+  "rank": 75,
+  "group_index": 1,
+  "execution_count": 299212,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5c02260edb13",
+      "opcode": "mov",
+      "raw_operands": [
+        "r9d",
+        "0x3"
+      ],
+      "in_operands": [
+        "0x3"
+      ],
+      "out_operands": [
+        "r9d"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5c02260edb19",
+      "opcode": "cmp",
+      "raw_operands": [
+        "r8d",
+        "r9d"
+      ],
+      "in_operands": [
+        "r8d",
+        "r9d"
+      ],
+      "out_operands": [
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5c02260edb20",
+      "opcode": "cmovb",
+      "raw_operands": [
+        "r8d",
+        "r9d"
+      ],
+      "in_operands": [
+        "r9d",
+        "flag"
+      ],
+      "out_operands": [
+        "r8d"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "r9d"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "r9d"
+      },
+      "condition": "reg vs reg: r9d"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "r9d"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "r9d"
+      },
+      "condition": "reg vs reg: r9d"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "flag"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "flag"
+      },
+      "condition": "flag vs flag"
+    }
+  ],
+  "bench": "557.xz_r/2",
+  "src": "2/super_hot_regions:123",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "comb_bound_hits": 0,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 3,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 3
+  },
+  "pcs": [
+    "0x5c02260edb13",
+    "0x5c02260edb19",
+    "0x5c02260edb20"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5c02260edb13"
+}

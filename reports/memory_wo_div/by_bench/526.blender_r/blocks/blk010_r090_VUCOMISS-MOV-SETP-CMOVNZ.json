@@ -1,0 +1,141 @@
+{
+  "rank": 90,
+  "group_index": 1,
+  "execution_count": 592956,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x56d60d474100",
+      "opcode": "vucomiss",
+      "raw_operands": [
+        "xmm1",
+        "dword ptr [rip+0x550d3c]"
+      ],
+      "in_operands": [
+        "xmm1",
+        "[rip+0x550d3c]"
+      ],
+      "out_operands": [
+        "flag"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x56d60d474108",
+      "opcode": "mov",
+      "raw_operands": [
+        "edx",
+        "0x1"
+      ],
+      "in_operands": [
+        "0x1"
+      ],
+      "out_operands": [
+        "edx"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x56d60d47410d",
+      "opcode": "setp",
+      "raw_operands": [
+        "al"
+      ],
+      "in_operands": [
+        "flag"
+      ],
+      "out_operands": [
+        "al"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x56d60d474110",
+      "opcode": "cmovnz",
+      "raw_operands": [
+        "eax",
+        "edx"
+      ],
+      "in_operands": [
+        "edx",
+        "flag"
+      ],
+      "out_operands": [
+        "eax"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "flag"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "flag"
+      },
+      "condition": "flag vs flag"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "edx"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "edx"
+      },
+      "condition": "reg vs reg: edx"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "flag"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "flag"
+      },
+      "condition": "flag vs flag"
+    }
+  ],
+  "bench": "526.blender_r/1",
+  "src": "1/super_hot_regions:123",
+  "order_map": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "ff_boundaries": [
+    0
+  ],
+  "stage_count": 2,
+  "latency_cycles": 2,
+  "crit_path_sigma": 0.0,
+  "comb_bound_hits": 1,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 3,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 1,
+    "final_edges": 4
+  },
+  "pcs": [
+    "0x56d60d474100",
+    "0x56d60d474108",
+    "0x56d60d47410d",
+    "0x56d60d474110"
+  ],
+  "latencies": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x56d60d474100"
+}

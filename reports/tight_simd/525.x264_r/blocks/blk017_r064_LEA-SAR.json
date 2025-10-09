@@ -1,0 +1,145 @@
+{
+  "rank": 64,
+  "group_index": 6,
+  "execution_count": 195342,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x560e9647bfda",
+      "opcode": "lea",
+      "raw_operands": [
+        "edi",
+        "ptr [r14+rdi*1+0x1]"
+      ],
+      "in_operands": [
+        "ptr [r14+rdi*1+0x1]"
+      ],
+      "out_operands": [
+        "edi"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x560e9647bfdf",
+      "opcode": "sar",
+      "raw_operands": [
+        "edi",
+        "0x1"
+      ],
+      "in_operands": [
+        "edi",
+        "0x1"
+      ],
+      "out_operands": [
+        "edi",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "edi"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "edi"
+      },
+      "condition": "reg vs reg: edi"
+    }
+  ],
+  "bench": "525.x264_r/1",
+  "src": "1/super_hot_regions:133",
+  "order_map": [
+    0,
+    1
+  ],
+  "cut_mask": [
+    false
+  ],
+  "ff_boundaries": [],
+  "ff_hints": [],
+  "stage_of": [
+    0,
+    0
+  ],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "edge_stats": {
+    "base_edges": 1,
+    "added_flag_wr": 0,
+    "added_flag_anti": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "added_mem_raw": 0,
+    "added_mem_war": 0,
+    "added_mem_waw": 0,
+    "added_mem_conservative": 0,
+    "added_mem_rar": 0,
+    "final_edges": 1
+  },
+  "nodes_meta": [
+    {
+      "idx": 0,
+      "op": "LEA",
+      "bw": 32,
+      "comb": 0,
+      "dsp": 0,
+      "lut": 1,
+      "is_load": false,
+      "is_store": false,
+      "cls": "LEA",
+      "mem": [
+        {
+          "base": "R14",
+          "index": "RDI",
+          "scale": 1,
+          "disp": 1,
+          "space": "GEN",
+          "width": 32
+        }
+      ],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [],
+      "is_atomic": false
+    },
+    {
+      "idx": 1,
+      "op": "SAR",
+      "bw": 32,
+      "comb": 1,
+      "dsp": 0,
+      "lut": 1,
+      "is_load": false,
+      "is_store": false,
+      "cls": "SAR",
+      "mem": [],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [
+        "CF",
+        "OF",
+        "PF",
+        "SF",
+        "ZF"
+      ],
+      "is_atomic": false
+    }
+  ],
+  "mem_calendar": {
+    "0": {
+      "GEN:R14": {
+        "reads": 0,
+        "writes": 0,
+        "ops": 0,
+        "max_bits": 32
+      }
+    }
+  },
+  "dsp_need_total": 0,
+  "pc": "0x560e9647bfda"
+}

@@ -1,0 +1,115 @@
+{
+  "rank": 83,
+  "group_index": 1,
+  "execution_count": 589864,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x57d805dd5615",
+      "opcode": "vmovss",
+      "raw_operands": [
+        "xmm2",
+        "dword ptr [rsp+0xc]"
+      ],
+      "in_operands": [
+        "[rsp+0xc]"
+      ],
+      "out_operands": [
+        "xmm2"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x57d805dd5624",
+      "opcode": "vmovss",
+      "raw_operands": [
+        "xmm0",
+        "dword ptr [rip+0x3599d4]"
+      ],
+      "in_operands": [
+        "[rip+0x3599d4]"
+      ],
+      "out_operands": [
+        "xmm0"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x57d805dd5634",
+      "opcode": "vfnmadd231ss",
+      "raw_operands": [
+        "xmm0",
+        "xmm2",
+        "dword ptr [rip+0x3cefbb]"
+      ],
+      "in_operands": [
+        "xmm0",
+        "xmm2",
+        "[rip+0x3cefbb]"
+      ],
+      "out_operands": [
+        "xmm0"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "xmm0"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "xmm0"
+      },
+      "condition": "reg vs reg: xmm0"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm2"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "xmm2"
+      },
+      "condition": "reg vs reg: xmm2"
+    }
+  ],
+  "bench": "621.wrf_s/1",
+  "src": "1/super_hot_regions:128",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.0,
+  "comb_bound_hits": 2,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 2
+  },
+  "pcs": [
+    "0x57d805dd5615",
+    "0x57d805dd5624",
+    "0x57d805dd5634"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x57d805dd5615"
+}

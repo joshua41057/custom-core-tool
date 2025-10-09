@@ -1,0 +1,113 @@
+{
+  "rank": 30,
+  "group_index": 2,
+  "execution_count": 918620,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x6224487b8b5c",
+      "opcode": "sar",
+      "raw_operands": [
+        "esi",
+        "0x10"
+      ],
+      "in_operands": [
+        "esi",
+        "0x10"
+      ],
+      "out_operands": [
+        "esi",
+        "flag"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x6224487b8b5f",
+      "opcode": "and",
+      "raw_operands": [
+        "esi",
+        "0x7"
+      ],
+      "in_operands": [
+        "esi",
+        "0x7"
+      ],
+      "out_operands": [
+        "esi",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x6224487b8b68",
+      "opcode": "mov",
+      "raw_operands": [
+        "dword ptr [rsp-0x34]",
+        "esi"
+      ],
+      "in_operands": [
+        "esi"
+      ],
+      "out_operands": [
+        "[rsp-0x34]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "esi"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "esi"
+      },
+      "condition": "reg vs reg: esi"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "esi"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "esi"
+      },
+      "condition": "reg vs reg: esi"
+    }
+  ],
+  "bench": "531.deepsjeng_r/1",
+  "src": "1/super_hot_regions:49",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "comb_bound_hits": 0,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 1,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 3
+  },
+  "pcs": [
+    "0x6224487b8b5c",
+    "0x6224487b8b5f",
+    "0x6224487b8b68"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x6224487b8b5c"
+}

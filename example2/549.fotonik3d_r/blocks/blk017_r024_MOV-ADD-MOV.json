@@ -1,0 +1,113 @@
+{
+  "rank": 24,
+  "group_index": 3,
+  "execution_count": 502766,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5dbd09c1345c",
+      "opcode": "mov",
+      "raw_operands": [
+        "rax",
+        "qword ptr [rsp+0x648]"
+      ],
+      "in_operands": [
+        "[rsp+0x648]"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5dbd09c13464",
+      "opcode": "add",
+      "raw_operands": [
+        "rax",
+        "r13"
+      ],
+      "in_operands": [
+        "rax",
+        "r13"
+      ],
+      "out_operands": [
+        "rax",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5dbd09c13467",
+      "opcode": "mov",
+      "raw_operands": [
+        "qword ptr [rsp+0x7c0]",
+        "rax"
+      ],
+      "in_operands": [
+        "rax"
+      ],
+      "out_operands": [
+        "[rsp+0x7c0]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rax"
+      },
+      "condition": "reg vs reg: rax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "rax"
+      },
+      "condition": "reg vs reg: rax"
+    }
+  ],
+  "bench": "549.fotonik3d_r/1",
+  "src": "1/super_hot_regions:123",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0
+  ],
+  "stage_count": 2,
+  "latency_cycles": 2,
+  "crit_path_sigma": 0.5,
+  "comb_bound_hits": 1,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 1,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 3
+  },
+  "pcs": [
+    "0x5dbd09c1345c",
+    "0x5dbd09c13464",
+    "0x5dbd09c13467"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5dbd09c1345c"
+}

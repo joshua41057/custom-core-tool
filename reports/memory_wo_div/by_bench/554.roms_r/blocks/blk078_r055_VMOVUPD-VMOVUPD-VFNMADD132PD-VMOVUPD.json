@@ -1,0 +1,145 @@
+{
+  "rank": 55,
+  "group_index": 1,
+  "execution_count": 998361,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5d9dc6f48808",
+      "opcode": "vmovupd",
+      "raw_operands": [
+        "ymm4",
+        "ymmword ptr [rcx+rax*1]"
+      ],
+      "in_operands": [
+        "ymmword ptr [rcx+rax*1]"
+      ],
+      "out_operands": [
+        "ymm4"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5d9dc6f4880d",
+      "opcode": "vmovupd",
+      "raw_operands": [
+        "ymm1",
+        "ymmword ptr [r10+rax*1]"
+      ],
+      "in_operands": [
+        "ymmword ptr [r10+rax*1]"
+      ],
+      "out_operands": [
+        "ymm1"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5d9dc6f48813",
+      "opcode": "vfnmadd132pd",
+      "raw_operands": [
+        "ymm1",
+        "ymm4",
+        "ymmword ptr [rdi+rax*1]"
+      ],
+      "in_operands": [
+        "ymm1",
+        "ymm4",
+        "ymmword ptr [rdi+rax*1]"
+      ],
+      "out_operands": [
+        "ymm1"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x5d9dc6f48819",
+      "opcode": "vmovupd",
+      "raw_operands": [
+        "ymmword ptr [rcx+rax*1]",
+        "ymm1"
+      ],
+      "in_operands": [
+        "ymm1"
+      ],
+      "out_operands": [
+        "ymmword ptr [rcx+rax*1]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "ymm1"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "ymm1"
+      },
+      "condition": "reg vs reg: ymm1"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "ymm4"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "ymm4"
+      },
+      "condition": "reg vs reg: ymm4"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "ymm1"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "ymm1"
+      },
+      "condition": "reg vs reg: ymm1"
+    }
+  ],
+  "bench": "554.roms_r/1",
+  "src": "1/super_hot_regions:94",
+  "order_map": [
+    1,
+    0,
+    2,
+    3
+  ],
+  "ff_boundaries": [
+    1,
+    0,
+    2
+  ],
+  "stage_count": 4,
+  "latency_cycles": 4,
+  "crit_path_sigma": 0.8660254037844386,
+  "comb_bound_hits": 3,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 3,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 1,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 4
+  },
+  "pcs": [
+    "0x5d9dc6f48808",
+    "0x5d9dc6f4880d",
+    "0x5d9dc6f48813",
+    "0x5d9dc6f48819"
+  ],
+  "latencies": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5d9dc6f48808"
+}

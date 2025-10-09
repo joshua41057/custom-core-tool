@@ -1,0 +1,42 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
+| Date         : Thu Sep 18 19:17:17 2025
+| Host         : orthanc running 64-bit Ubuntu 22.04.4 LTS
+| Command      : report_utilization -hierarchical -cells [get_cells -quiet -of_objects pblock_u_607_cactuBSSN_s] -file /home/jyoo/custom_v_2/custom-core-tool/reports/multi/pblocks/pblock_u_607_cactuBSSN_s_util_hier.rpt
+| Design       : top_multi_bench
+| Device       : xcu200fsgd2104-2
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++-----------------------------+------------------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+|           Instance          |               Module               | Total LUTs | Logic LUTs | LUTRAMs | SRLs | FFs | RAMB36 | RAMB18 | URAM | DSP Blocks |
++-----------------------------+------------------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+| u_607_cactuBSSN_s           |        bench_core__607_cactuBSSN_s |          9 |          9 |       0 |    0 | 108 |      0 |      0 |    0 |          0 |
+|   u_607_cactuBSSN_s         |        bench_core__607_cactuBSSN_s |          9 |          9 |       0 |    0 | 108 |      0 |      0 |    0 |          0 |
+|     (u_607_cactuBSSN_s)     |        bench_core__607_cactuBSSN_s |          7 |          7 |       0 |    0 |   0 |      0 |      0 |    0 |          0 |
+|     glen[0].core_i          | uop_block_wrap__parameterized24__1 |          1 |          1 |       0 |    0 |  28 |      0 |      0 |    0 |          0 |
+|       (glen[0].core_i)      | uop_block_wrap__parameterized24__1 |          0 |          0 |       0 |    0 |  14 |      0 |      0 |    0 |          0 |
+|       core                  |      uop_block__parameterized24__1 |          1 |          1 |       0 |    0 |  14 |      0 |      0 |    0 |          0 |
+|         (core)              |      uop_block__parameterized24__1 |          1 |          1 |       0 |    0 |   0 |      0 |      0 |    0 |          0 |
+|         g[0].g_normal.alu_i |   microop_unit__parameterized2__15 |          0 |          0 |       0 |    0 |   7 |      0 |      0 |    0 |          0 |
+|         g[1].g_normal.alu_i |   microop_unit__parameterized2__16 |          0 |          0 |       0 |    0 |   7 |      0 |      0 |    0 |          0 |
+|     glen[1].core_i          | uop_block_wrap__parameterized21__1 |          1 |          1 |       0 |    0 |  80 |      0 |      0 |    0 |          0 |
+|       (glen[1].core_i)      | uop_block_wrap__parameterized21__1 |          0 |          0 |       0 |    0 |  40 |      0 |      0 |    0 |          0 |
+|       core                  |      uop_block__parameterized21__1 |          1 |          1 |       0 |    0 |  40 |      0 |      0 |    0 |          0 |
+|         (core)              |      uop_block__parameterized21__1 |          1 |          1 |       0 |    0 |   0 |      0 |      0 |    0 |          0 |
+|         g[0].g_normal.alu_i |   microop_unit__parameterized17__1 |          0 |          0 |       0 |    0 |   8 |      0 |      0 |    0 |          0 |
+|         g[1].g_normal.alu_i |   microop_unit__parameterized1__48 |          0 |          0 |       0 |    0 |  32 |      0 |      0 |    0 |          0 |
++-----------------------------+------------------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+

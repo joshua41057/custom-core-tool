@@ -1,0 +1,116 @@
+{
+  "rank": 46,
+  "group_index": 9,
+  "execution_count": 371859,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5dbd09c18db9",
+      "opcode": "mov",
+      "raw_operands": [
+        "rdi",
+        "qword ptr [rsp+0x668]"
+      ],
+      "in_operands": [
+        "[rsp+0x668]"
+      ],
+      "out_operands": [
+        "rdi"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5dbd09c18dc1",
+      "opcode": "add",
+      "raw_operands": [
+        "qword ptr [rsp+0x818]",
+        "rdi"
+      ],
+      "in_operands": [
+        "[rsp+0x818]",
+        "rdi"
+      ],
+      "out_operands": [
+        "[rsp+0x818]",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5dbd09c18df9",
+      "opcode": "add",
+      "raw_operands": [
+        "qword ptr [rsp+0xac8]",
+        "rdi"
+      ],
+      "in_operands": [
+        "[rsp+0xac8]",
+        "rdi"
+      ],
+      "out_operands": [
+        "[rsp+0xac8]",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rdi"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rdi"
+      },
+      "condition": "reg vs reg: rdi"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rdi"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "rdi"
+      },
+      "condition": "reg vs reg: rdi"
+    }
+  ],
+  "bench": "549.fotonik3d_r/1",
+  "src": "1/super_hot_regions:250",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.9428090415820634,
+  "comb_bound_hits": 1,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 1,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 3
+  },
+  "pcs": [
+    "0x5dbd09c18db9",
+    "0x5dbd09c18dc1",
+    "0x5dbd09c18df9"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5dbd09c18db9"
+}

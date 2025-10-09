@@ -1,0 +1,181 @@
+{
+  "rank": 57,
+  "group_index": 3,
+  "execution_count": 1664924,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x61244ae7300f",
+      "opcode": "lea",
+      "raw_operands": [
+        "eax",
+        "ptr [rsi+rcx*1+0x2]"
+      ],
+      "in_operands": [
+        "ptr [rsi+rcx*1+0x2]"
+      ],
+      "out_operands": [
+        "eax"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x61244ae73013",
+      "opcode": "cdqe",
+      "raw_operands": [],
+      "in_operands": [
+        "eax"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x61244ae73015",
+      "opcode": "movsxd",
+      "raw_operands": [
+        "rax",
+        "dword ptr [rdx+rax*4+0x6f0]"
+      ],
+      "in_operands": [
+        "[rdx+rax*4+0x6f0]"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x61244ae7301d",
+      "opcode": "inc",
+      "raw_operands": [
+        "dword ptr [rsp+rax*4]"
+      ],
+      "in_operands": [
+        "[rsp+rax*4]"
+      ],
+      "out_operands": [
+        "[rsp+rax*4]",
+        "flag"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x61244ae73020",
+      "opcode": "xor",
+      "raw_operands": [
+        "eax",
+        "eax"
+      ],
+      "in_operands": [
+        "eax",
+        "eax"
+      ],
+      "out_operands": [
+        "eax",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "[rdx+rax*4+0x6f0]"
+      },
+      "condition": "reg vs mem: rax"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "[rsp+rax*4]"
+      },
+      "condition": "reg vs mem: rax"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    }
+  ],
+  "bench": "641.leela_s/1",
+  "src": "1/super_hot_regions:76",
+  "order_map": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "ff_boundaries": [
+    0,
+    1,
+    2
+  ],
+  "stage_count": 4,
+  "latency_cycles": 4,
+  "crit_path_sigma": 0.82915619758885,
+  "comb_bound_hits": 2,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 5,
+    "added_flag_wr": 0,
+    "added_flag_waw": 1,
+    "added_raw": 2,
+    "added_war": 0,
+    "added_waw": 1,
+    "final_edges": 8
+  },
+  "pcs": [
+    "0x61244ae7300f",
+    "0x61244ae73013",
+    "0x61244ae73015",
+    "0x61244ae7301d",
+    "0x61244ae73020"
+  ],
+  "latencies": [
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x61244ae7300f"
+}

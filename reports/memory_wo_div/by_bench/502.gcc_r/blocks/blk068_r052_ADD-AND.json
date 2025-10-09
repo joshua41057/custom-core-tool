@@ -1,0 +1,84 @@
+{
+  "rank": 52,
+  "group_index": 1,
+  "execution_count": 404298,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5b35c687f6da",
+      "opcode": "add",
+      "raw_operands": [
+        "ebx",
+        "0x3f"
+      ],
+      "in_operands": [
+        "ebx",
+        "0x3f"
+      ],
+      "out_operands": [
+        "ebx",
+        "flag"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5b35c687f6dd",
+      "opcode": "and",
+      "raw_operands": [
+        "ebx",
+        "0xffffffc0"
+      ],
+      "in_operands": [
+        "ebx",
+        "0xffffffc0"
+      ],
+      "out_operands": [
+        "ebx",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "ebx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "ebx"
+      },
+      "condition": "reg vs reg: ebx"
+    }
+  ],
+  "bench": "502.gcc_r/3",
+  "src": "3/super_hot_regions:61",
+  "order_map": [
+    0,
+    1
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "comb_bound_hits": 0,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 1,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 1
+  },
+  "pcs": [
+    "0x5b35c687f6da",
+    "0x5b35c687f6dd"
+  ],
+  "latencies": [
+    1,
+    1
+  ],
+  "pc": "0x5b35c687f6da"
+}

@@ -1,0 +1,125 @@
+{
+  "rank": 75,
+  "group_index": 1,
+  "execution_count": 661972,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x57e5849fcd26",
+      "opcode": "lea",
+      "raw_operands": [
+        "rsi",
+        "ptr [rip+0x203e5f]"
+      ],
+      "in_operands": [
+        "ptr [rip+0x203e5f]"
+      ],
+      "out_operands": [
+        "rsi"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x57e5849fcd2d",
+      "opcode": "movsxd",
+      "raw_operands": [
+        "rax",
+        "dword ptr [rsi+rax*4]"
+      ],
+      "in_operands": [
+        "[rsi+rax*4]"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x57e5849fcd31",
+      "opcode": "add",
+      "raw_operands": [
+        "rax",
+        "rsi"
+      ],
+      "in_operands": [
+        "rax",
+        "rsi"
+      ],
+      "out_operands": [
+        "rax",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rsi"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "[rsi+rax*4]"
+      },
+      "condition": "reg vs mem: rsi"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "rax"
+      },
+      "condition": "reg vs reg: rax"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rsi"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "rsi"
+      },
+      "condition": "reg vs reg: rsi"
+    }
+  ],
+  "bench": "623.xalancbmk_s/1",
+  "src": "1/super_hot_regions:86",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.9428090415820634,
+  "comb_bound_hits": 2,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 3,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 3
+  },
+  "pcs": [
+    "0x57e5849fcd26",
+    "0x57e5849fcd2d",
+    "0x57e5849fcd31"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x57e5849fcd26"
+}

@@ -1,0 +1,571 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version     : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
+| Date             : Mon Sep 22 16:53:03 2025
+| Host             : orthanc running 64-bit Ubuntu 22.04.4 LTS
+| Command          : report_power -file /home/jyoo/custom_v_2/custom-core-tool/reports/memory_wo_simd/benches/557_xz_r/557_xz_r_power.rpt
+| Design           : top_bench__557_xz_r
+| Device           : xcu200-fsgd2104-2-e
+| Design State     : synthesized
+| Grade            : extended
+| Process          : typical
+| Characterization : Production
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Power Report
+
+Table of Contents
+-----------------
+1. Summary
+1.1 On-Chip Components
+1.2 Power Supply Summary
+1.3 Confidence Level
+2. Settings
+2.1 Environment
+2.2 Clock Constraints
+3. Detailed Reports
+3.1 By Hierarchy
+
+1. Summary
+----------
+
++--------------------------+--------------+
+| Total On-Chip Power (W)  | 4.418        |
+| Design Power Budget (W)  | Unspecified* |
+| Power Budget Margin (W)  | NA           |
+| Dynamic (W)              | 1.923        |
+| Device Static (W)        | 2.495        |
+| Effective TJA (C/W)      | 0.5          |
+| Max Ambient (C)          | 97.7         |
+| Junction Temperature (C) | 27.3         |
+| Confidence Level         | Low          |
+| Setting File             | ---          |
+| Simulation Activity File | ---          |
+| Design Nets Matched      | NA           |
++--------------------------+--------------+
+* Specify Design Power Budget using, set_operating_conditions -design_power_budget <value in Watts>
+
+
+1.1 On-Chip Components
+----------------------
+
++-------------------------+-----------+----------+-----------+-----------------+
+| On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
++-------------------------+-----------+----------+-----------+-----------------+
+| Clocks                  |     0.792 |        3 |       --- |             --- |
+| CLB Logic               |     0.381 |    78666 |       --- |             --- |
+|   LUT as Logic          |     0.193 |    13490 |   1182240 |            1.14 |
+|   Register              |     0.109 |    58878 |   2364480 |            2.49 |
+|   LUT as Shift Register |     0.064 |      757 |    591840 |            0.13 |
+|   CARRY8                |     0.015 |     1055 |    147780 |            0.71 |
+|   Others                |     0.000 |     3361 |       --- |             --- |
+| Signals                 |     0.347 |    57947 |       --- |             --- |
+| DSPs                    |     0.070 |       86 |      6840 |            1.26 |
+| I/O                     |     0.334 |      135 |       676 |           19.97 |
+| Static Power            |     2.495 |          |           |                 |
+| Total                   |     4.418 |          |           |                 |
++-------------------------+-----------+----------+-----------+-----------------+
+
+
+1.2 Power Supply Summary
+------------------------
+
++------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
+| Source     | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
++------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
+| Vccint     |       0.850 |     2.710 |       1.870 |      0.840 |       NA    | Unspecified | NA         |
+| Vccint_io  |       0.850 |     0.279 |       0.015 |      0.263 |       NA    | Unspecified | NA         |
+| Vccbram    |       0.850 |     0.016 |       0.000 |      0.016 |       NA    | Unspecified | NA         |
+| Vccaux     |       1.800 |     0.648 |       0.000 |      0.648 |       NA    | Unspecified | NA         |
+| Vccaux_io  |       1.800 |     0.232 |       0.047 |      0.185 |       NA    | Unspecified | NA         |
+| Vcco33     |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco25     |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco18     |       1.800 |     0.131 |       0.131 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco15     |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco135    |       1.350 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco12     |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco10     |       1.000 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vccadc     |       1.800 |     0.024 |       0.000 |      0.024 |       NA    | Unspecified | NA         |
+| MGTYAVcc   |       0.900 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| MGTYAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| MGTYVccaux |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
++------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
+
+
+1.3 Confidence Level
+--------------------
+
++-----------------------------+------------+--------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| User Input Data             | Confidence | Details                                                | Action                                                                                                     |
++-----------------------------+------------+--------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| Design implementation state | Low        | Design is synthesized                                  | Accuracy of the tool is not optimal until design is fully placed and routed                                |
+| Clock nodes activity        | High       | User specified more than 95% of clocks                 |                                                                                                            |
+| I/O nodes activity          | Low        | More than 75% of inputs are missing user specification | Provide missing input activity with simulation results or by editing the "By Resource Type -> I/Os" view   |
+| Internal nodes activity     | Medium     | User specified less than 25% of internal nodes         | Provide missing internal nodes activity with simulation results or by editing the "By Resource Type" views |
+| Device models               | High       | Device models are Production                           |                                                                                                            |
+|                             |            |                                                        |                                                                                                            |
+| Overall confidence level    | Low        |                                                        |                                                                                                            |
++-----------------------------+------------+--------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+
+
+2. Settings
+-----------
+
+2.1 Environment
+---------------
+
++-----------------------+--------------------------+
+| Ambient Temp (C)      | 25.0                     |
+| ThetaJA (C/W)         | 0.5                      |
+| Airflow (LFM)         | 250                      |
+| Heat Sink             | medium (Medium Profile)  |
+| ThetaSA (C/W)         | 0.7                      |
+| Board Selection       | medium (10"x10")         |
+| # of Board Layers     | 12to15 (12 to 15 Layers) |
+| Board Temperature (C) | 25.0                     |
++-----------------------+--------------------------+
+
+
+2.2 Clock Constraints
+---------------------
+
++----------+--------+-----------------+
+| Clock    | Domain | Constraint (ns) |
++----------+--------+-----------------+
+| host_clk | clk    |             3.3 |
++----------+--------+-----------------+
+
+
+3. Detailed Reports
+-------------------
+
+3.1 By Hierarchy
+----------------
+
++----------------------+-----------+
+| Name                 | Power (W) |
++----------------------+-----------+
+| top_bench__557_xz_r  |     1.923 |
+|   u_557_xz_r         |     1.590 |
+|     glen[0].core_i   |     0.001 |
+|     glen[100].core_i |     0.004 |
+|       core           |     0.003 |
+|     glen[101].core_i |     0.014 |
+|       core           |     0.012 |
+|     glen[102].core_i |     0.002 |
+|       core           |     0.001 |
+|     glen[103].core_i |     0.038 |
+|       core           |     0.033 |
+|     glen[104].core_i |     0.003 |
+|       core           |     0.002 |
+|     glen[105].core_i |     0.002 |
+|       core           |     0.002 |
+|     glen[106].core_i |     0.004 |
+|       core           |     0.002 |
+|     glen[107].core_i |     0.001 |
+|     glen[109].core_i |     0.001 |
+|       core           |     0.001 |
+|     glen[10].core_i  |     0.014 |
+|       core           |     0.012 |
+|     glen[110].core_i |     0.002 |
+|     glen[111].core_i |     0.005 |
+|       core           |     0.003 |
+|     glen[112].core_i |     0.004 |
+|       core           |     0.002 |
+|     glen[113].core_i |     0.004 |
+|       core           |     0.002 |
+|     glen[114].core_i |     0.003 |
+|       core           |     0.002 |
+|     glen[115].core_i |     0.006 |
+|       core           |     0.004 |
+|     glen[116].core_i |     0.003 |
+|       core           |     0.002 |
+|     glen[117].core_i |     0.006 |
+|       core           |     0.004 |
+|     glen[118].core_i |     0.001 |
+|     glen[119].core_i |     0.016 |
+|       core           |     0.014 |
+|     glen[11].core_i  |     0.002 |
+|       core           |     0.001 |
+|     glen[120].core_i |     0.001 |
+|       core           |     0.001 |
+|     glen[121].core_i |     0.001 |
+|     glen[123].core_i |     0.003 |
+|       core           |     0.001 |
+|     glen[124].core_i |     0.002 |
+|     glen[125].core_i |     0.002 |
+|       core           |     0.001 |
+|     glen[126].core_i |     0.004 |
+|       core           |     0.002 |
+|     glen[127].core_i |     0.007 |
+|       core           |     0.005 |
+|     glen[129].core_i |     0.007 |
+|       core           |     0.005 |
+|     glen[12].core_i  |     0.038 |
+|       core           |     0.033 |
+|     glen[130].core_i |     0.001 |
+|     glen[131].core_i |     0.002 |
+|     glen[132].core_i |     0.004 |
+|       core           |     0.002 |
+|     glen[133].core_i |     0.008 |
+|       core           |     0.006 |
+|     glen[134].core_i |     0.004 |
+|       core           |     0.003 |
+|     glen[135].core_i |     0.001 |
+|     glen[136].core_i |     0.002 |
+|     glen[137].core_i |     0.001 |
+|     glen[138].core_i |     0.002 |
+|     glen[139].core_i |     0.002 |
+|     glen[13].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[140].core_i |     0.006 |
+|       core           |     0.004 |
+|     glen[141].core_i |     0.002 |
+|     glen[142].core_i |     0.012 |
+|       core           |     0.009 |
+|     glen[143].core_i |     0.002 |
+|     glen[144].core_i |     0.004 |
+|       core           |     0.002 |
+|     glen[145].core_i |     0.009 |
+|       core           |     0.006 |
+|     glen[146].core_i |     0.009 |
+|       core           |     0.008 |
+|     glen[147].core_i |     0.010 |
+|       core           |     0.009 |
+|     glen[148].core_i |     0.009 |
+|       core           |     0.005 |
+|     glen[149].core_i |     0.003 |
+|       core           |     0.002 |
+|     glen[14].core_i  |     0.002 |
+|       core           |     0.002 |
+|     glen[150].core_i |     0.008 |
+|       core           |     0.006 |
+|     glen[151].core_i |     0.007 |
+|       core           |     0.003 |
+|     glen[152].core_i |     0.009 |
+|       core           |     0.005 |
+|     glen[153].core_i |     0.017 |
+|       core           |     0.014 |
+|     glen[154].core_i |     0.006 |
+|       core           |     0.003 |
+|     glen[155].core_i |     0.005 |
+|       core           |     0.003 |
+|     glen[156].core_i |     0.018 |
+|       core           |     0.015 |
+|     glen[157].core_i |     0.003 |
+|       core           |     0.002 |
+|     glen[158].core_i |     0.005 |
+|       core           |     0.003 |
+|     glen[159].core_i |     0.003 |
+|       core           |     0.002 |
+|     glen[15].core_i  |     0.004 |
+|       core           |     0.002 |
+|     glen[160].core_i |     0.016 |
+|       core           |     0.013 |
+|     glen[161].core_i |     0.001 |
+|     glen[162].core_i |     0.001 |
+|     glen[163].core_i |     0.002 |
+|     glen[164].core_i |     0.002 |
+|     glen[165].core_i |     0.010 |
+|       core           |     0.008 |
+|     glen[166].core_i |     0.010 |
+|       core           |     0.008 |
+|     glen[167].core_i |     0.009 |
+|       core           |     0.007 |
+|     glen[168].core_i |     0.003 |
+|       core           |     0.002 |
+|     glen[169].core_i |     0.021 |
+|       core           |     0.019 |
+|     glen[16].core_i  |     0.006 |
+|       core           |     0.004 |
+|     glen[170].core_i |     0.003 |
+|       core           |     0.002 |
+|     glen[171].core_i |     0.003 |
+|       core           |     0.002 |
+|     glen[172].core_i |     0.005 |
+|       core           |     0.003 |
+|     glen[173].core_i |     0.011 |
+|       core           |     0.009 |
+|     glen[174].core_i |     0.005 |
+|       core           |     0.003 |
+|     glen[175].core_i |     0.004 |
+|       core           |     0.002 |
+|     glen[176].core_i |     0.003 |
+|       core           |     0.002 |
+|     glen[177].core_i |     0.004 |
+|       core           |     0.002 |
+|     glen[178].core_i |     0.004 |
+|       core           |     0.002 |
+|     glen[179].core_i |     0.004 |
+|       core           |     0.002 |
+|     glen[17].core_i  |     0.002 |
+|     glen[180].core_i |     0.009 |
+|       core           |     0.005 |
+|     glen[181].core_i |     0.014 |
+|       core           |     0.012 |
+|     glen[182].core_i |     0.002 |
+|       core           |     0.001 |
+|     glen[183].core_i |     0.038 |
+|       core           |     0.033 |
+|     glen[184].core_i |     0.003 |
+|       core           |     0.002 |
+|     glen[185].core_i |     0.002 |
+|       core           |     0.002 |
+|     glen[186].core_i |     0.002 |
+|     glen[188].core_i |     0.001 |
+|       core           |     0.001 |
+|     glen[189].core_i |     0.002 |
+|     glen[18].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[190].core_i |     0.005 |
+|       core           |     0.003 |
+|     glen[191].core_i |     0.004 |
+|       core           |     0.002 |
+|     glen[192].core_i |     0.004 |
+|       core           |     0.002 |
+|     glen[193].core_i |     0.006 |
+|       core           |     0.004 |
+|     glen[194].core_i |     0.003 |
+|       core           |     0.002 |
+|     glen[195].core_i |     0.006 |
+|       core           |     0.004 |
+|     glen[196].core_i |     0.001 |
+|     glen[197].core_i |     0.016 |
+|       core           |     0.014 |
+|     glen[198].core_i |     0.001 |
+|       core           |     0.001 |
+|     glen[199].core_i |     0.006 |
+|       core           |     0.004 |
+|     glen[19].core_i  |     0.006 |
+|       core           |     0.004 |
+|     glen[1].core_i   |     0.006 |
+|       core           |     0.004 |
+|     glen[200].core_i |     0.001 |
+|     glen[202].core_i |     0.003 |
+|       core           |     0.001 |
+|     glen[203].core_i |     0.002 |
+|       core           |     0.001 |
+|     glen[204].core_i |     0.001 |
+|     glen[205].core_i |     0.002 |
+|     glen[206].core_i |     0.007 |
+|       core           |     0.005 |
+|     glen[207].core_i |     0.035 |
+|       core           |     0.031 |
+|     glen[208].core_i |     0.004 |
+|       core           |     0.003 |
+|     glen[209].core_i |     0.001 |
+|     glen[20].core_i  |     0.001 |
+|     glen[210].core_i |     0.007 |
+|       core           |     0.005 |
+|     glen[212].core_i |     0.007 |
+|       core           |     0.005 |
+|     glen[213].core_i |     0.002 |
+|     glen[214].core_i |     0.006 |
+|       core           |     0.004 |
+|     glen[215].core_i |     0.002 |
+|     glen[216].core_i |     0.004 |
+|       core           |     0.002 |
+|     glen[217].core_i |     0.008 |
+|       core           |     0.006 |
+|     glen[218].core_i |     0.004 |
+|       core           |     0.003 |
+|     glen[219].core_i |     0.001 |
+|     glen[21].core_i  |     0.016 |
+|       core           |     0.014 |
+|     glen[220].core_i |     0.012 |
+|       core           |     0.009 |
+|     glen[221].core_i |     0.002 |
+|     glen[222].core_i |     0.009 |
+|       core           |     0.005 |
+|     glen[223].core_i |     0.003 |
+|       core           |     0.002 |
+|     glen[224].core_i |     0.002 |
+|     glen[225].core_i |     0.004 |
+|       core           |     0.002 |
+|     glen[226].core_i |     0.009 |
+|       core           |     0.008 |
+|     glen[227].core_i |     0.002 |
+|     glen[228].core_i |     0.010 |
+|       core           |     0.009 |
+|     glen[229].core_i |     0.004 |
+|       core           |     0.002 |
+|     glen[22].core_i  |     0.001 |
+|       core           |     0.001 |
+|     glen[230].core_i |     0.017 |
+|       core           |     0.014 |
+|     glen[231].core_i |     0.006 |
+|       core           |     0.003 |
+|     glen[232].core_i |     0.009 |
+|       core           |     0.006 |
+|     glen[233].core_i |     0.005 |
+|       core           |     0.003 |
+|     glen[234].core_i |     0.005 |
+|       core           |     0.003 |
+|     glen[235].core_i |     0.008 |
+|       core           |     0.006 |
+|     glen[238].core_i |     0.015 |
+|       core           |     0.012 |
+|     glen[239].core_i |     0.004 |
+|       core           |     0.003 |
+|     glen[23].core_i  |     0.007 |
+|       core           |     0.005 |
+|     glen[240].core_i |     0.008 |
+|       core           |     0.006 |
+|     glen[241].core_i |     0.007 |
+|       core           |     0.003 |
+|     glen[242].core_i |     0.009 |
+|       core           |     0.005 |
+|     glen[24].core_i  |     0.035 |
+|       core           |     0.031 |
+|     glen[25].core_i  |     0.004 |
+|       core           |     0.003 |
+|     glen[28].core_i  |     0.015 |
+|       core           |     0.012 |
+|     glen[29].core_i  |     0.004 |
+|       core           |     0.002 |
+|     glen[2].core_i   |     0.010 |
+|       core           |     0.008 |
+|     glen[30].core_i  |     0.004 |
+|       core           |     0.002 |
+|     glen[32].core_i  |     0.002 |
+|     glen[33].core_i  |     0.005 |
+|       core           |     0.004 |
+|     glen[34].core_i  |     0.012 |
+|       core           |     0.009 |
+|     glen[35].core_i  |     0.002 |
+|     glen[36].core_i  |     0.005 |
+|       core           |     0.003 |
+|     glen[37].core_i  |     0.018 |
+|       core           |     0.015 |
+|     glen[38].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[39].core_i  |     0.005 |
+|       core           |     0.003 |
+|     glen[3].core_i   |     0.010 |
+|       core           |     0.008 |
+|     glen[40].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[41].core_i  |     0.016 |
+|       core           |     0.013 |
+|     glen[42].core_i  |     0.006 |
+|       core           |     0.003 |
+|     glen[43].core_i  |     0.009 |
+|       core           |     0.005 |
+|     glen[44].core_i  |     0.004 |
+|       core           |     0.002 |
+|     glen[45].core_i  |     0.004 |
+|       core           |     0.002 |
+|     glen[46].core_i  |     0.004 |
+|       core           |     0.002 |
+|     glen[47].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[48].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[4].core_i   |     0.009 |
+|       core           |     0.007 |
+|     glen[50].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[51].core_i  |     0.005 |
+|       core           |     0.003 |
+|     glen[52].core_i  |     0.003 |
+|       core           |     0.001 |
+|     glen[53].core_i  |     0.012 |
+|       core           |     0.008 |
+|     glen[54].core_i  |     0.007 |
+|       core           |     0.005 |
+|     glen[55].core_i  |     0.001 |
+|     glen[56].core_i  |     0.007 |
+|       core           |     0.005 |
+|     glen[57].core_i  |     0.002 |
+|     glen[58].core_i  |     0.002 |
+|     glen[59].core_i  |     0.002 |
+|     glen[5].core_i   |     0.003 |
+|       core           |     0.002 |
+|     glen[60].core_i  |     0.006 |
+|       core           |     0.004 |
+|     glen[61].core_i  |     0.002 |
+|     glen[62].core_i  |     0.009 |
+|       core           |     0.008 |
+|     glen[63].core_i  |     0.009 |
+|       core           |     0.005 |
+|     glen[64].core_i  |     0.004 |
+|       core           |     0.002 |
+|     glen[65].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[66].core_i  |     0.010 |
+|       core           |     0.009 |
+|     glen[67].core_i  |     0.009 |
+|       core           |     0.006 |
+|     glen[68].core_i  |     0.004 |
+|       core           |     0.002 |
+|     glen[69].core_i  |     0.008 |
+|       core           |     0.006 |
+|     glen[6].core_i   |     0.011 |
+|       core           |     0.009 |
+|     glen[70].core_i  |     0.005 |
+|       core           |     0.003 |
+|     glen[71].core_i  |     0.017 |
+|       core           |     0.014 |
+|     glen[72].core_i  |     0.006 |
+|       core           |     0.003 |
+|     glen[73].core_i  |     0.004 |
+|       core           |     0.003 |
+|     glen[74].core_i  |     0.008 |
+|       core           |     0.006 |
+|     glen[75].core_i  |     0.001 |
+|     glen[76].core_i  |     0.009 |
+|       core           |     0.005 |
+|     glen[77].core_i  |     0.007 |
+|       core           |     0.003 |
+|     glen[78].core_i  |     0.021 |
+|       core           |     0.019 |
+|     glen[79].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[7].core_i   |     0.004 |
+|       core           |     0.002 |
+|     glen[80].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[81].core_i  |     0.005 |
+|       core           |     0.003 |
+|     glen[82].core_i  |     0.005 |
+|       core           |     0.003 |
+|     glen[83].core_i  |     0.006 |
+|       core           |     0.003 |
+|     glen[84].core_i  |     0.009 |
+|       core           |     0.005 |
+|     glen[85].core_i  |     0.021 |
+|       core           |     0.019 |
+|     glen[86].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[87].core_i  |     0.004 |
+|       core           |     0.002 |
+|     glen[88].core_i  |     0.011 |
+|       core           |     0.009 |
+|     glen[89].core_i  |     0.010 |
+|       core           |     0.008 |
+|     glen[8].core_i   |     0.009 |
+|       core           |     0.005 |
+|     glen[90].core_i  |     0.010 |
+|       core           |     0.008 |
+|     glen[91].core_i  |     0.009 |
+|       core           |     0.007 |
+|     glen[92].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[93].core_i  |     0.008 |
+|       core           |     0.006 |
+|     glen[94].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[95].core_i  |     0.005 |
+|       core           |     0.003 |
+|     glen[96].core_i  |     0.005 |
+|       core           |     0.003 |
+|     glen[97].core_i  |     0.009 |
+|       core           |     0.006 |
+|     glen[98].core_i  |     0.004 |
+|       core           |     0.002 |
+|     glen[99].core_i  |     0.009 |
+|       core           |     0.005 |
+|     glen[9].core_i   |     0.002 |
++----------------------+-----------+
+
+

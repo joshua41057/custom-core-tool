@@ -1,0 +1,35 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
+| Date         : Mon Sep 22 02:47:37 2025
+| Host         : orthanc running 64-bit Ubuntu 22.04.4 LTS
+| Command      : report_utilization -hierarchical -file /home/jyoo/custom_v_2/custom-core-tool/reports/alubase/benches/628_pop2_s/628_pop2_s_util_hier.rpt
+| Design       : top_bench__628_pop2_s
+| Device       : xcu200fsgd2104-2
+| Design State : Optimized
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++-----------------------------+------------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+|           Instance          |            Module            | Total LUTs | Logic LUTs | LUTRAMs | SRLs | FFs | RAMB36 | RAMB18 | URAM | DSP Blocks |
++-----------------------------+------------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+| top_bench__628_pop2_s       |                        (top) |          5 |          5 |       0 |    0 |  80 |      0 |      0 |    0 |          0 |
+|   (top_bench__628_pop2_s)   |                        (top) |          0 |          0 |       0 |    0 |   0 |      0 |      0 |    0 |          0 |
+|   u_628_pop2_s              |       bench_core__628_pop2_s |          5 |          5 |       0 |    0 |  80 |      0 |      0 |    0 |          0 |
+|     (u_628_pop2_s)          |       bench_core__628_pop2_s |          4 |          4 |       0 |    0 |   0 |      0 |      0 |    0 |          0 |
+|     glen[0].core_i          |               uop_block_wrap |          1 |          1 |       0 |    0 |  80 |      0 |      0 |    0 |          0 |
+|       (glen[0].core_i)      |               uop_block_wrap |          0 |          0 |       0 |    0 |  72 |      0 |      0 |    0 |          0 |
+|       core                  |                    uop_block |          1 |          1 |       0 |    0 |   8 |      0 |      0 |    0 |          0 |
+|         (core)              |                    uop_block |          1 |          1 |       0 |    0 |   0 |      0 |      0 |    0 |          0 |
+|         g[1].g_normal.alu_i | microop_unit__parameterized0 |          0 |          0 |       0 |    0 |   8 |      0 |      0 |    0 |          0 |
++-----------------------------+------------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+
+

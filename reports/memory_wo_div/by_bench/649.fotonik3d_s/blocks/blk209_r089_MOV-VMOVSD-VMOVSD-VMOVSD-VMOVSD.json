@@ -1,0 +1,172 @@
+{
+  "rank": 89,
+  "group_index": 4,
+  "execution_count": 20835,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x566cf36e600a",
+      "opcode": "mov",
+      "raw_operands": [
+        "rbx",
+        "qword ptr [rsp+0x2e8]"
+      ],
+      "in_operands": [
+        "[rsp+0x2e8]"
+      ],
+      "out_operands": [
+        "rbx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x566cf36e6061",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "xmm7",
+        "qword ptr [rbx+rsi*8]"
+      ],
+      "in_operands": [
+        "[rbx+rsi*8]"
+      ],
+      "out_operands": [
+        "xmm7"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x566cf36e6081",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "qword ptr [rsp+0x870]",
+        "xmm7"
+      ],
+      "in_operands": [
+        "xmm7"
+      ],
+      "out_operands": [
+        "[rsp+0x870]"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x566cf36e608a",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "xmm7",
+        "qword ptr [rbx+rsi*8]"
+      ],
+      "in_operands": [
+        "[rbx+rsi*8]"
+      ],
+      "out_operands": [
+        "xmm7"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x566cf36e60ba",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "qword ptr [rsp+0x868]",
+        "xmm7"
+      ],
+      "in_operands": [
+        "xmm7"
+      ],
+      "out_operands": [
+        "[rsp+0x868]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rbx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "[rbx+rsi*8]"
+      },
+      "condition": "reg vs mem: rbx"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "xmm7"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "xmm7"
+      },
+      "condition": "reg vs reg: xmm7"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rbx"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "[rbx+rsi*8]"
+      },
+      "condition": "reg vs mem: rbx"
+    },
+    {
+      "from": {
+        "instr_index": 3,
+        "operand": "xmm7"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "xmm7"
+      },
+      "condition": "reg vs reg: xmm7"
+    }
+  ],
+  "bench": "649.fotonik3d_s/1",
+  "src": "1/super_hot_regions:364",
+  "order_map": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "ff_boundaries": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "stage_count": 5,
+  "latency_cycles": 5,
+  "crit_path_sigma": 0.9797958971132712,
+  "comb_bound_hits": 3,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 4,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 1,
+    "added_war": 1,
+    "added_waw": 1,
+    "final_edges": 7
+  },
+  "pcs": [
+    "0x566cf36e600a",
+    "0x566cf36e6061",
+    "0x566cf36e6081",
+    "0x566cf36e608a",
+    "0x566cf36e60ba"
+  ],
+  "latencies": [
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x566cf36e600a"
+}

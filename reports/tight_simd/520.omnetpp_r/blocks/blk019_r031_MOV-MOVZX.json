@@ -1,0 +1,158 @@
+{
+  "rank": 31,
+  "group_index": 1,
+  "execution_count": 726342,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x6502014b878b",
+      "opcode": "mov",
+      "raw_operands": [
+        "rdi",
+        "qword ptr [rip+0xd0896]"
+      ],
+      "in_operands": [
+        "[rip+0xd0896]"
+      ],
+      "out_operands": [
+        "rdi"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x6502014b8792",
+      "opcode": "movzx",
+      "raw_operands": [
+        "eax",
+        "byte ptr [rdi+0x8]"
+      ],
+      "in_operands": [
+        "[rdi+0x8]"
+      ],
+      "out_operands": [
+        "eax"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rdi"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "[rdi+0x8]"
+      },
+      "condition": "reg vs mem: rdi"
+    }
+  ],
+  "bench": "520.omnetpp_r/1",
+  "src": "1/super_hot_regions:40",
+  "order_map": [
+    0,
+    1
+  ],
+  "cut_mask": [
+    true
+  ],
+  "ff_boundaries": [
+    0
+  ],
+  "ff_hints": [
+    0
+  ],
+  "stage_of": [
+    0,
+    1
+  ],
+  "stage_count": 2,
+  "latency_cycles": 2,
+  "crit_path_sigma": 0.5,
+  "edge_stats": {
+    "base_edges": 1,
+    "added_flag_wr": 0,
+    "added_flag_anti": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "added_mem_raw": 0,
+    "added_mem_war": 0,
+    "added_mem_waw": 0,
+    "added_mem_conservative": 0,
+    "added_mem_rar": 0,
+    "final_edges": 1
+  },
+  "nodes_meta": [
+    {
+      "idx": 0,
+      "op": "MOV",
+      "bw": 64,
+      "comb": 0,
+      "dsp": 0,
+      "lut": 2,
+      "is_load": true,
+      "is_store": false,
+      "cls": "LOAD",
+      "mem": [
+        {
+          "base": null,
+          "index": null,
+          "scale": 1,
+          "disp": 854166,
+          "space": "GEN",
+          "width": 64
+        }
+      ],
+      "precise_addr": false,
+      "flag_reads": [],
+      "flag_writes": [],
+      "is_atomic": false
+    },
+    {
+      "idx": 1,
+      "op": "MOVZX",
+      "bw": 32,
+      "comb": 1,
+      "dsp": 0,
+      "lut": 1,
+      "is_load": true,
+      "is_store": false,
+      "cls": "LOAD",
+      "mem": [
+        {
+          "base": "RDI",
+          "index": null,
+          "scale": 1,
+          "disp": 8,
+          "space": "GEN",
+          "width": 8
+        }
+      ],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [],
+      "is_atomic": false
+    }
+  ],
+  "mem_calendar": {
+    "0": {
+      "GEN:NONE": {
+        "reads": 1,
+        "writes": 0,
+        "ops": 1,
+        "max_bits": 64
+      }
+    },
+    "1": {
+      "GEN:RDI": {
+        "reads": 1,
+        "writes": 0,
+        "ops": 1,
+        "max_bits": 8
+      }
+    }
+  },
+  "dsp_need_total": 0,
+  "pc": "0x6502014b878b"
+}

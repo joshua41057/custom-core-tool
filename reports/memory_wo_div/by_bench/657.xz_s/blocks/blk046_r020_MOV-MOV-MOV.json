@@ -1,0 +1,112 @@
+{
+  "rank": 20,
+  "group_index": 2,
+  "execution_count": 376670,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x609e9ee2bf07",
+      "opcode": "mov",
+      "raw_operands": [
+        "r9",
+        "qword ptr [rbx+0x40]"
+      ],
+      "in_operands": [
+        "[rbx+0x40]"
+      ],
+      "out_operands": [
+        "r9"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x609e9ee2bf3e",
+      "opcode": "mov",
+      "raw_operands": [
+        "r10d",
+        "dword ptr [r9+r11*4]"
+      ],
+      "in_operands": [
+        "[r9+r11*4]"
+      ],
+      "out_operands": [
+        "r10d"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x609e9ee2bf54",
+      "opcode": "mov",
+      "raw_operands": [
+        "ecx",
+        "r10d"
+      ],
+      "in_operands": [
+        "r10d"
+      ],
+      "out_operands": [
+        "ecx"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "r9"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "[r9+r11*4]"
+      },
+      "condition": "reg vs mem: r9"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "r10d"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "r10d"
+      },
+      "condition": "reg vs reg: r10d"
+    }
+  ],
+  "bench": "657.xz_s/1",
+  "src": "1/super_hot_regions:49",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.9428090415820634,
+  "comb_bound_hits": 2,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 2
+  },
+  "pcs": [
+    "0x609e9ee2bf07",
+    "0x609e9ee2bf3e",
+    "0x609e9ee2bf54"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x609e9ee2bf07"
+}

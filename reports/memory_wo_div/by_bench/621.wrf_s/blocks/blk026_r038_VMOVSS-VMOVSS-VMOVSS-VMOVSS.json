@@ -1,0 +1,142 @@
+{
+  "rank": 38,
+  "group_index": 1,
+  "execution_count": 1097386,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x57d804dcc140",
+      "opcode": "vmovss",
+      "raw_operands": [
+        "xmm0",
+        "dword ptr [rax]"
+      ],
+      "in_operands": [
+        "[rax]"
+      ],
+      "out_operands": [
+        "xmm0"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x57d804dcc146",
+      "opcode": "vmovss",
+      "raw_operands": [
+        "dword ptr [rax-0x4]",
+        "xmm0"
+      ],
+      "in_operands": [
+        "xmm0"
+      ],
+      "out_operands": [
+        "[rax-0x4]"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x57d804dcc14b",
+      "opcode": "vmovss",
+      "raw_operands": [
+        "dword ptr [rax-0x8]",
+        "xmm0"
+      ],
+      "in_operands": [
+        "xmm0"
+      ],
+      "out_operands": [
+        "[rax-0x8]"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x57d804dcc150",
+      "opcode": "vmovss",
+      "raw_operands": [
+        "dword ptr [rax-0xc]",
+        "xmm0"
+      ],
+      "in_operands": [
+        "xmm0"
+      ],
+      "out_operands": [
+        "[rax-0xc]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm0"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "xmm0"
+      },
+      "condition": "reg vs reg: xmm0"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm0"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "xmm0"
+      },
+      "condition": "reg vs reg: xmm0"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm0"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "xmm0"
+      },
+      "condition": "reg vs reg: xmm0"
+    }
+  ],
+  "bench": "621.wrf_s/1",
+  "src": "1/super_hot_regions:49",
+  "order_map": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "ff_boundaries": [
+    0,
+    1,
+    2
+  ],
+  "stage_count": 4,
+  "latency_cycles": 4,
+  "crit_path_sigma": 0.8660254037844386,
+  "comb_bound_hits": 1,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 3,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 3
+  },
+  "pcs": [
+    "0x57d804dcc140",
+    "0x57d804dcc146",
+    "0x57d804dcc14b",
+    "0x57d804dcc150"
+  ],
+  "latencies": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x57d804dcc140"
+}

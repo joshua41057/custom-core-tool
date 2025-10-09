@@ -1,0 +1,112 @@
+{
+  "rank": 11,
+  "group_index": 9,
+  "execution_count": 610120,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5dbd09beadab",
+      "opcode": "lea",
+      "raw_operands": [
+        "r9",
+        "ptr [rcx+rdx*1]"
+      ],
+      "in_operands": [
+        "ptr [rcx+rdx*1]"
+      ],
+      "out_operands": [
+        "r9"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5dbd09beadb7",
+      "opcode": "mov",
+      "raw_operands": [
+        "qword ptr [rsp+0x1e8]",
+        "r9"
+      ],
+      "in_operands": [
+        "r9"
+      ],
+      "out_operands": [
+        "[rsp+0x1e8]"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5dbd09beae80",
+      "opcode": "mov",
+      "raw_operands": [
+        "rdx",
+        "qword ptr [rsp+0x1e8]"
+      ],
+      "in_operands": [
+        "[rsp+0x1e8]"
+      ],
+      "out_operands": [
+        "rdx"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "r9"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "r9"
+      },
+      "condition": "reg vs reg: r9"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "[rsp+0x1e8]"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "[rsp+0x1e8]"
+      },
+      "condition": "mem vs mem: [rsp+0x1e8]"
+    }
+  ],
+  "bench": "549.fotonik3d_r/1",
+  "src": "1/super_hot_regions:33",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.9428090415820634,
+  "comb_bound_hits": 1,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 2
+  },
+  "pcs": [
+    "0x5dbd09beadab",
+    "0x5dbd09beadb7",
+    "0x5dbd09beae80"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5dbd09beadab"
+}

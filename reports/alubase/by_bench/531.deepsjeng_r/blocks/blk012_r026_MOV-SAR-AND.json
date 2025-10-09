@@ -1,0 +1,113 @@
+{
+  "rank": 26,
+  "group_index": 1,
+  "execution_count": 1042896,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x6224487bdc73",
+      "opcode": "mov",
+      "raw_operands": [
+        "esi",
+        "ebx"
+      ],
+      "in_operands": [
+        "ebx"
+      ],
+      "out_operands": [
+        "esi"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x6224487bdc78",
+      "opcode": "sar",
+      "raw_operands": [
+        "esi",
+        "0x6"
+      ],
+      "in_operands": [
+        "esi",
+        "0x6"
+      ],
+      "out_operands": [
+        "esi",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x6224487bdc7e",
+      "opcode": "and",
+      "raw_operands": [
+        "esi",
+        "0x3f"
+      ],
+      "in_operands": [
+        "esi",
+        "0x3f"
+      ],
+      "out_operands": [
+        "esi",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "esi"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "esi"
+      },
+      "condition": "reg vs reg: esi"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "esi"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "esi"
+      },
+      "condition": "reg vs reg: esi"
+    }
+  ],
+  "bench": "531.deepsjeng_r/1",
+  "src": "1/super_hot_regions:34",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "comb_bound_hits": 0,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 1,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 3
+  },
+  "pcs": [
+    "0x6224487bdc73",
+    "0x6224487bdc78",
+    "0x6224487bdc7e"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x6224487bdc73"
+}

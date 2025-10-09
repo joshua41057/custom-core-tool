@@ -1,0 +1,82 @@
+{
+  "rank": 29,
+  "group_index": 1,
+  "execution_count": 1044117,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x574b6ac23e20",
+      "opcode": "mov",
+      "raw_operands": [
+        "esi",
+        "eax"
+      ],
+      "in_operands": [
+        "eax"
+      ],
+      "out_operands": [
+        "esi"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x574b6ac23e28",
+      "opcode": "and",
+      "raw_operands": [
+        "esi",
+        "0x800"
+      ],
+      "in_operands": [
+        "esi",
+        "0x800"
+      ],
+      "out_operands": [
+        "esi",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "esi"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "esi"
+      },
+      "condition": "reg vs reg: esi"
+    }
+  ],
+  "bench": "600.perlbench_s/2",
+  "src": "2/super_hot_regions:43",
+  "order_map": [
+    0,
+    1
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "comb_bound_hits": 0,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 1,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 1
+  },
+  "pcs": [
+    "0x574b6ac23e20",
+    "0x574b6ac23e28"
+  ],
+  "latencies": [
+    1,
+    1
+  ],
+  "pc": "0x574b6ac23e20"
+}

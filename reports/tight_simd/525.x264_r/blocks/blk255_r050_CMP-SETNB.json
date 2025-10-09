@@ -1,0 +1,128 @@
+{
+  "rank": 50,
+  "group_index": 1,
+  "execution_count": 230608,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x56c83e9b24fd",
+      "opcode": "cmp",
+      "raw_operands": [
+        "rcx",
+        "r15"
+      ],
+      "in_operands": [
+        "rcx",
+        "r15"
+      ],
+      "out_operands": [
+        "flag"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x56c83e9b2500",
+      "opcode": "setnb",
+      "raw_operands": [
+        "dil"
+      ],
+      "in_operands": [
+        "flag"
+      ],
+      "out_operands": [
+        "dil"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "flag"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "flag"
+      },
+      "condition": "flag vs flag"
+    }
+  ],
+  "bench": "525.x264_r/3",
+  "src": "3/super_hot_regions:99",
+  "order_map": [
+    0,
+    1
+  ],
+  "cut_mask": [
+    false
+  ],
+  "ff_boundaries": [],
+  "ff_hints": [],
+  "stage_of": [
+    0,
+    0
+  ],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "edge_stats": {
+    "base_edges": 1,
+    "added_flag_wr": 0,
+    "added_flag_anti": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "added_mem_raw": 0,
+    "added_mem_war": 0,
+    "added_mem_waw": 0,
+    "added_mem_conservative": 0,
+    "added_mem_rar": 0,
+    "final_edges": 1
+  },
+  "nodes_meta": [
+    {
+      "idx": 0,
+      "op": "CMP",
+      "bw": 64,
+      "comb": 1,
+      "dsp": 0,
+      "lut": 2,
+      "is_load": false,
+      "is_store": false,
+      "cls": "CMP",
+      "mem": [],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [
+        "AF",
+        "CF",
+        "OF",
+        "PF",
+        "SF",
+        "ZF"
+      ],
+      "is_atomic": false
+    },
+    {
+      "idx": 1,
+      "op": "SETNB",
+      "bw": 8,
+      "comb": 1,
+      "dsp": 0,
+      "lut": 1,
+      "is_load": false,
+      "is_store": false,
+      "cls": "SETNB",
+      "mem": [],
+      "precise_addr": true,
+      "flag_reads": [
+        "CF"
+      ],
+      "flag_writes": [],
+      "is_atomic": false
+    }
+  ],
+  "mem_calendar": {},
+  "dsp_need_total": 0,
+  "pc": "0x56c83e9b24fd"
+}

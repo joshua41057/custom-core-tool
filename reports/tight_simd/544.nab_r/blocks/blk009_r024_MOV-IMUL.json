@@ -1,0 +1,123 @@
+{
+  "rank": 24,
+  "group_index": 1,
+  "execution_count": 3336342,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x62424f815744",
+      "opcode": "mov",
+      "raw_operands": [
+        "edx",
+        "eax"
+      ],
+      "in_operands": [
+        "eax"
+      ],
+      "out_operands": [
+        "edx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x62424f815746",
+      "opcode": "imul",
+      "raw_operands": [
+        "edx",
+        "ecx"
+      ],
+      "in_operands": [
+        "edx",
+        "ecx"
+      ],
+      "out_operands": [
+        "edx"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "edx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "edx"
+      },
+      "condition": "reg vs reg: edx"
+    }
+  ],
+  "bench": "544.nab_r/1",
+  "src": "1/super_hot_regions:29",
+  "order_map": [
+    0,
+    1
+  ],
+  "cut_mask": [
+    false
+  ],
+  "ff_boundaries": [],
+  "ff_hints": [],
+  "stage_of": [
+    0,
+    0
+  ],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "edge_stats": {
+    "base_edges": 1,
+    "added_flag_wr": 0,
+    "added_flag_anti": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "added_mem_raw": 0,
+    "added_mem_war": 0,
+    "added_mem_waw": 0,
+    "added_mem_conservative": 0,
+    "added_mem_rar": 0,
+    "final_edges": 1
+  },
+  "nodes_meta": [
+    {
+      "idx": 0,
+      "op": "MOV",
+      "bw": 32,
+      "comb": 0,
+      "dsp": 0,
+      "lut": 1,
+      "is_load": false,
+      "is_store": false,
+      "cls": "MOV",
+      "mem": [],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [],
+      "is_atomic": false
+    },
+    {
+      "idx": 1,
+      "op": "IMUL",
+      "bw": 32,
+      "comb": 2,
+      "dsp": 4,
+      "lut": 1,
+      "is_load": false,
+      "is_store": false,
+      "cls": "IMUL",
+      "mem": [],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [
+        "CF",
+        "OF"
+      ],
+      "is_atomic": false
+    }
+  ],
+  "mem_calendar": {},
+  "dsp_need_total": 4,
+  "pc": "0x62424f815744"
+}

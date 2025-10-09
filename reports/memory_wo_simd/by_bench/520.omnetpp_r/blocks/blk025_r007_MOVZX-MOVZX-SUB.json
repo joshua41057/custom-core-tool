@@ -1,0 +1,114 @@
+{
+  "rank": 7,
+  "group_index": 1,
+  "execution_count": 2470574,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x7640dc19897a",
+      "opcode": "movzx",
+      "raw_operands": [
+        "eax",
+        "byte ptr [rdi+rdx*1]"
+      ],
+      "in_operands": [
+        "[rdi+rdx*1]"
+      ],
+      "out_operands": [
+        "eax"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x7640dc19897e",
+      "opcode": "movzx",
+      "raw_operands": [
+        "edx",
+        "byte ptr [rsi+rdx*1]"
+      ],
+      "in_operands": [
+        "[rsi+rdx*1]"
+      ],
+      "out_operands": [
+        "edx"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x7640dc198982",
+      "opcode": "sub",
+      "raw_operands": [
+        "eax",
+        "edx"
+      ],
+      "in_operands": [
+        "eax",
+        "edx"
+      ],
+      "out_operands": [
+        "eax",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "edx"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "edx"
+      },
+      "condition": "reg vs reg: edx"
+    }
+  ],
+  "bench": "520.omnetpp_r/1",
+  "src": "1/super_hot_regions:8",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.9428090415820634,
+  "comb_bound_hits": 2,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 2
+  },
+  "pcs": [
+    "0x7640dc19897a",
+    "0x7640dc19897e",
+    "0x7640dc198982"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x7640dc19897a"
+}

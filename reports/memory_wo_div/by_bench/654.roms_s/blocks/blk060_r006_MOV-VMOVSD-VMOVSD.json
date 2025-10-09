@@ -1,0 +1,112 @@
+{
+  "rank": 6,
+  "group_index": 1,
+  "execution_count": 3087471,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5c4526bb5298",
+      "opcode": "mov",
+      "raw_operands": [
+        "rax",
+        "qword ptr [rbp-0x180]"
+      ],
+      "in_operands": [
+        "[rbp-0x180]"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5c4526bb52a3",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "xmm3",
+        "qword ptr [rax]"
+      ],
+      "in_operands": [
+        "[rax]"
+      ],
+      "out_operands": [
+        "xmm3"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5c4526bb52b4",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "qword ptr [rbp-0x240]",
+        "xmm3"
+      ],
+      "in_operands": [
+        "xmm3"
+      ],
+      "out_operands": [
+        "[rbp-0x240]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "[rax]"
+      },
+      "condition": "reg vs mem: rax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "xmm3"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "xmm3"
+      },
+      "condition": "reg vs reg: xmm3"
+    }
+  ],
+  "bench": "654.roms_s/1",
+  "src": "1/super_hot_regions:7",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.9428090415820634,
+  "comb_bound_hits": 2,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 2
+  },
+  "pcs": [
+    "0x5c4526bb5298",
+    "0x5c4526bb52a3",
+    "0x5c4526bb52b4"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5c4526bb5298"
+}

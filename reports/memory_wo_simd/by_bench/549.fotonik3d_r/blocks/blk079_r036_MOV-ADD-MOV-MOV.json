@@ -1,0 +1,143 @@
+{
+  "rank": 36,
+  "group_index": 12,
+  "execution_count": 399338,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5dbd09bee06d",
+      "opcode": "mov",
+      "raw_operands": [
+        "r8",
+        "qword ptr [rsp+0x3a8]"
+      ],
+      "in_operands": [
+        "[rsp+0x3a8]"
+      ],
+      "out_operands": [
+        "r8"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5dbd09bee078",
+      "opcode": "add",
+      "raw_operands": [
+        "r8",
+        "rax"
+      ],
+      "in_operands": [
+        "r8",
+        "rax"
+      ],
+      "out_operands": [
+        "r8",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5dbd09bee07b",
+      "opcode": "mov",
+      "raw_operands": [
+        "qword ptr [rsp+0x400]",
+        "r8"
+      ],
+      "in_operands": [
+        "r8"
+      ],
+      "out_operands": [
+        "[rsp+0x400]"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x5dbd09bee1f2",
+      "opcode": "mov",
+      "raw_operands": [
+        "rdi",
+        "qword ptr [rsp+0x400]"
+      ],
+      "in_operands": [
+        "[rsp+0x400]"
+      ],
+      "out_operands": [
+        "rdi"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "r8"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "r8"
+      },
+      "condition": "reg vs reg: r8"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "r8"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "r8"
+      },
+      "condition": "reg vs reg: r8"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "[rsp+0x400]"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "[rsp+0x400]"
+      },
+      "condition": "mem vs mem: [rsp+0x400]"
+    }
+  ],
+  "bench": "549.fotonik3d_r/1",
+  "src": "1/super_hot_regions:209",
+  "order_map": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "ff_boundaries": [
+    0,
+    2
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.4714045207910317,
+  "comb_bound_hits": 1,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 3,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 1,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 4
+  },
+  "pcs": [
+    "0x5dbd09bee06d",
+    "0x5dbd09bee078",
+    "0x5dbd09bee07b",
+    "0x5dbd09bee1f2"
+  ],
+  "latencies": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5dbd09bee06d"
+}

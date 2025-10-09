@@ -1,0 +1,112 @@
+{
+  "rank": 19,
+  "group_index": 1,
+  "execution_count": 1502248,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x7bb9aaf571c2",
+      "opcode": "subss",
+      "raw_operands": [
+        "xmm1",
+        "xmm3"
+      ],
+      "in_operands": [
+        "xmm1",
+        "xmm3"
+      ],
+      "out_operands": [
+        "xmm1"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x7bb9aaf571c6",
+      "opcode": "subss",
+      "raw_operands": [
+        "xmm1",
+        "xmm5"
+      ],
+      "in_operands": [
+        "xmm1",
+        "xmm5"
+      ],
+      "out_operands": [
+        "xmm1"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x7bb9aaf571ca",
+      "opcode": "subss",
+      "raw_operands": [
+        "xmm0",
+        "xmm1"
+      ],
+      "in_operands": [
+        "xmm0",
+        "xmm1"
+      ],
+      "out_operands": [
+        "xmm0"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm1"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "xmm1"
+      },
+      "condition": "reg vs reg: xmm1"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "xmm1"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "xmm1"
+      },
+      "condition": "reg vs reg: xmm1"
+    }
+  ],
+  "bench": "521.wrf_r/1",
+  "src": "1/super_hot_regions:21",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "comb_bound_hits": 0,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 1,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 3
+  },
+  "pcs": [
+    "0x7bb9aaf571c2",
+    "0x7bb9aaf571c6",
+    "0x7bb9aaf571ca"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x7bb9aaf571c2"
+}

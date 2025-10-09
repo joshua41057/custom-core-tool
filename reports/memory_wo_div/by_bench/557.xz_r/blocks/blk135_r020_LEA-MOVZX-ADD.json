@@ -1,0 +1,114 @@
+{
+  "rank": 20,
+  "group_index": 1,
+  "execution_count": 2698773,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5c02260f21bb",
+      "opcode": "lea",
+      "raw_operands": [
+        "rbx",
+        "ptr [rip+0x15b3e]"
+      ],
+      "in_operands": [
+        "ptr [rip+0x15b3e]"
+      ],
+      "out_operands": [
+        "rbx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5c02260f21c2",
+      "opcode": "movzx",
+      "raw_operands": [
+        "esi",
+        "byte ptr [rbx+rsi*1]"
+      ],
+      "in_operands": [
+        "[rbx+rsi*1]"
+      ],
+      "out_operands": [
+        "esi"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5c02260f21c6",
+      "opcode": "add",
+      "raw_operands": [
+        "esi",
+        "0xc"
+      ],
+      "in_operands": [
+        "esi",
+        "0xc"
+      ],
+      "out_operands": [
+        "esi",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rbx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "[rbx+rsi*1]"
+      },
+      "condition": "reg vs mem: rbx"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "esi"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "esi"
+      },
+      "condition": "reg vs reg: esi"
+    }
+  ],
+  "bench": "557.xz_r/2",
+  "src": "2/super_hot_regions:30",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.9428090415820634,
+  "comb_bound_hits": 2,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 2
+  },
+  "pcs": [
+    "0x5c02260f21bb",
+    "0x5c02260f21c2",
+    "0x5c02260f21c6"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5c02260f21bb"
+}

@@ -1,0 +1,112 @@
+{
+  "rank": 98,
+  "group_index": 4,
+  "execution_count": 126069,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x626fc4572988",
+      "opcode": "mov",
+      "raw_operands": [
+        "rax",
+        "qword ptr [rsp+0x98]"
+      ],
+      "in_operands": [
+        "[rsp+0x98]"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x626fc4572998",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "xmm4",
+        "qword ptr [rax+r15*1]"
+      ],
+      "in_operands": [
+        "[rax+r15*1]"
+      ],
+      "out_operands": [
+        "xmm4"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x626fc45729a4",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "qword ptr [rsp+0x70]",
+        "xmm4"
+      ],
+      "in_operands": [
+        "xmm4"
+      ],
+      "out_operands": [
+        "[rsp+0x70]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "[rax+r15*1]"
+      },
+      "condition": "reg vs mem: rax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "xmm4"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "xmm4"
+      },
+      "condition": "reg vs reg: xmm4"
+    }
+  ],
+  "bench": "607.cactuBSSN_s/1",
+  "src": "1/super_hot_regions:202",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.9428090415820634,
+  "comb_bound_hits": 2,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 2
+  },
+  "pcs": [
+    "0x626fc4572988",
+    "0x626fc4572998",
+    "0x626fc45729a4"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x626fc4572988"
+}

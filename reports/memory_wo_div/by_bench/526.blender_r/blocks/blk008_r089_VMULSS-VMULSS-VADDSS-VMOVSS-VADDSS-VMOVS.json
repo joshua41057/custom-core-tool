@@ -1,0 +1,210 @@
+{
+  "rank": 89,
+  "group_index": 1,
+  "execution_count": 663836,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x56d60d4740af",
+      "opcode": "vmulss",
+      "raw_operands": [
+        "xmm3",
+        "xmm3",
+        "xmm0"
+      ],
+      "in_operands": [
+        "xmm3",
+        "xmm0"
+      ],
+      "out_operands": [
+        "xmm3"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x56d60d4740d3",
+      "opcode": "vmulss",
+      "raw_operands": [
+        "xmm2",
+        "xmm3",
+        "dword ptr [r13+0x8]"
+      ],
+      "in_operands": [
+        "xmm3",
+        "[r13+0x8]"
+      ],
+      "out_operands": [
+        "xmm2"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x56d60d4740d9",
+      "opcode": "vaddss",
+      "raw_operands": [
+        "xmm3",
+        "xmm3",
+        "dword ptr [rbx+0x20]"
+      ],
+      "in_operands": [
+        "xmm3",
+        "[rbx+0x20]"
+      ],
+      "out_operands": [
+        "xmm3"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x56d60d4740de",
+      "opcode": "vmovss",
+      "raw_operands": [
+        "dword ptr [rbx+0x20]",
+        "xmm3"
+      ],
+      "in_operands": [
+        "xmm3"
+      ],
+      "out_operands": [
+        "[rbx+0x20]"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x56d60d4740e3",
+      "opcode": "vaddss",
+      "raw_operands": [
+        "xmm2",
+        "xmm2",
+        "dword ptr [rbx+0x8]"
+      ],
+      "in_operands": [
+        "xmm2",
+        "[rbx+0x8]"
+      ],
+      "out_operands": [
+        "xmm2"
+      ]
+    },
+    {
+      "index": 5,
+      "address": "0x56d60d4740e8",
+      "opcode": "vmovss",
+      "raw_operands": [
+        "dword ptr [rbx+0x8]",
+        "xmm2"
+      ],
+      "in_operands": [
+        "xmm2"
+      ],
+      "out_operands": [
+        "[rbx+0x8]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm3"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "xmm3"
+      },
+      "condition": "reg vs reg: xmm3"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm3"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "xmm3"
+      },
+      "condition": "reg vs reg: xmm3"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "xmm3"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "xmm3"
+      },
+      "condition": "reg vs reg: xmm3"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "xmm2"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "xmm2"
+      },
+      "condition": "reg vs reg: xmm2"
+    },
+    {
+      "from": {
+        "instr_index": 4,
+        "operand": "xmm2"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "xmm2"
+      },
+      "condition": "reg vs reg: xmm2"
+    }
+  ],
+  "bench": "526.blender_r/1",
+  "src": "1/super_hot_regions:120",
+  "order_map": [
+    0,
+    1,
+    2,
+    4,
+    3,
+    5
+  ],
+  "ff_boundaries": [
+    0,
+    1,
+    2,
+    4,
+    3
+  ],
+  "stage_count": 6,
+  "latency_cycles": 6,
+  "crit_path_sigma": 1.0,
+  "comb_bound_hits": 3,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 5,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 2,
+    "added_war": 1,
+    "added_waw": 0,
+    "final_edges": 8
+  },
+  "pcs": [
+    "0x56d60d4740af",
+    "0x56d60d4740d3",
+    "0x56d60d4740d9",
+    "0x56d60d4740de",
+    "0x56d60d4740e3",
+    "0x56d60d4740e8"
+  ],
+  "latencies": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x56d60d4740af"
+}

@@ -1,0 +1,289 @@
+{
+  "rank": 31,
+  "group_index": 1,
+  "execution_count": 619154,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5826d152aa38",
+      "opcode": "vsubsd",
+      "raw_operands": [
+        "xmm13",
+        "xmm2",
+        "qword ptr [rsp+0x198]"
+      ],
+      "in_operands": [
+        "xmm2",
+        "[rsp+0x198]"
+      ],
+      "out_operands": [
+        "xmm13"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5826d152aa4a",
+      "opcode": "vsubsd",
+      "raw_operands": [
+        "xmm9",
+        "xmm0",
+        "xmm9"
+      ],
+      "in_operands": [
+        "xmm0",
+        "xmm9"
+      ],
+      "out_operands": [
+        "xmm9"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5826d152aa4f",
+      "opcode": "vfmadd132sd",
+      "raw_operands": [
+        "xmm13",
+        "xmm1",
+        "xmm13"
+      ],
+      "in_operands": [
+        "xmm13",
+        "xmm1",
+        "xmm13"
+      ],
+      "out_operands": [
+        "xmm13"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x5826d152aa6c",
+      "opcode": "vfmadd132sd",
+      "raw_operands": [
+        "xmm9",
+        "xmm13",
+        "xmm9"
+      ],
+      "in_operands": [
+        "xmm9",
+        "xmm13",
+        "xmm9"
+      ],
+      "out_operands": [
+        "xmm9"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x5826d152aa71",
+      "opcode": "vsubsd",
+      "raw_operands": [
+        "xmm4",
+        "xmm10",
+        "xmm4"
+      ],
+      "in_operands": [
+        "xmm10",
+        "xmm4"
+      ],
+      "out_operands": [
+        "xmm4"
+      ]
+    },
+    {
+      "index": 5,
+      "address": "0x5826d152aa9d",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "xmm5",
+        "xmm4",
+        "xmm4"
+      ],
+      "in_operands": [
+        "xmm4",
+        "xmm4"
+      ],
+      "out_operands": [
+        "xmm5"
+      ]
+    },
+    {
+      "index": 6,
+      "address": "0x5826d152aaa5",
+      "opcode": "vfmadd132sd",
+      "raw_operands": [
+        "xmm5",
+        "xmm9",
+        "xmm4"
+      ],
+      "in_operands": [
+        "xmm5",
+        "xmm9",
+        "xmm4"
+      ],
+      "out_operands": [
+        "xmm5"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm13"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "xmm13"
+      },
+      "condition": "reg vs reg: xmm13"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm13"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "xmm13"
+      },
+      "condition": "reg vs reg: xmm13"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "xmm9"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "xmm9"
+      },
+      "condition": "reg vs reg: xmm9"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "xmm13"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "xmm13"
+      },
+      "condition": "reg vs reg: xmm13"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "xmm9"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "xmm9"
+      },
+      "condition": "reg vs reg: xmm9"
+    },
+    {
+      "from": {
+        "instr_index": 4,
+        "operand": "xmm4"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "xmm4"
+      },
+      "condition": "reg vs reg: xmm4"
+    },
+    {
+      "from": {
+        "instr_index": 4,
+        "operand": "xmm4"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "xmm4"
+      },
+      "condition": "reg vs reg: xmm4"
+    },
+    {
+      "from": {
+        "instr_index": 5,
+        "operand": "xmm5"
+      },
+      "to": {
+        "instr_index": 6,
+        "operand": "xmm5"
+      },
+      "condition": "reg vs reg: xmm5"
+    },
+    {
+      "from": {
+        "instr_index": 3,
+        "operand": "xmm9"
+      },
+      "to": {
+        "instr_index": 6,
+        "operand": "xmm9"
+      },
+      "condition": "reg vs reg: xmm9"
+    },
+    {
+      "from": {
+        "instr_index": 4,
+        "operand": "xmm4"
+      },
+      "to": {
+        "instr_index": 6,
+        "operand": "xmm4"
+      },
+      "condition": "reg vs reg: xmm4"
+    }
+  ],
+  "bench": "508.namd_r/1",
+  "src": "1/super_hot_regions:113",
+  "order_map": [
+    0,
+    1,
+    4,
+    2,
+    5,
+    3,
+    6
+  ],
+  "ff_boundaries": [
+    0,
+    2
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.0,
+  "comb_bound_hits": 2,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 10,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 2,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 9
+  },
+  "pcs": [
+    "0x5826d152aa38",
+    "0x5826d152aa4a",
+    "0x5826d152aa4f",
+    "0x5826d152aa6c",
+    "0x5826d152aa71",
+    "0x5826d152aa9d",
+    "0x5826d152aaa5"
+  ],
+  "latencies": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5826d152aa38"
+}

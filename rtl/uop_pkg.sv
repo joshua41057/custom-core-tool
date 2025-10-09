@@ -3,7 +3,7 @@ package uop_pkg;
   typedef enum logic [9:0] {
     OP_NOP        = 10'd0,
 
-    // ---- ALU / bit ----
+    // ALU / bit
     OP_ADD,              OP_SUB,              OP_AND,              OP_ANDN,
     OP_OR,               OP_XOR,              OP_NEG,              OP_NOT,
     OP_SAR,              OP_SHR,              OP_SHL,              OP_RORX,
@@ -13,40 +13,40 @@ package uop_pkg;
     OP_VCOMISD,          OP_VCOMISS,          OP_VUCOMISD,         OP_VUCOMISS,
     OP_BT,               OP_INC,              OP_DEC,
 
-    // ---- scalar sign/zero extend helpers ----
+    // scalar sign/zero extend helpers
     OP_CDQ,              OP_CDQE,             OP_CQO,
 
-    // ---- SIMD logic ----
+    // SIMD logic
     OP_ANDPD,            OP_ANDPS,            OP_VANDPD,           OP_VANDPS,
     OP_SUBSS,            OP_VORPD,            OP_VPOR,             OP_VPXOR,
     OP_VXORPD,           OP_VXORPS,           OP_VPAND,            OP_VPANDN,
 
-    // ---- mul / add / sub (no flag consume) ----
+    // mul / add / sub (no flag consume)
     OP_MUL,              OP_IMUL,             OP_MULSS,
     OP_VMULPS,           OP_VMULPD,           OP_VMULSD,           OP_VMULSS,  OP_VPMULLD,
     OP_VPADDD,           OP_VPADDQ,           OP_VPADDW,           OP_VPSUBD,  OP_VPSUBW,  OP_VPAVGB,
     OP_ADDSS,            OP_VADDSS,           OP_VADDPS,           OP_VADDPD,  OP_VADDSD,
     OP_VSUBPS,           OP_VSUBPD,           OP_VSUBSS,           OP_VSUBSD,
 
-    // ---- shifts (only) ----
+    // shifts (only)
     OP_VPSLLD,           OP_VPSLLQ,           OP_VPSLLW,
     OP_VPSRLD,           OP_VPSRLQ,           OP_VPSRAD,           OP_VPSRAW,
 
-    // ---- broadcast / blends (immediate-mask only) ----
+    // broadcast / blends (immediate-mask only)
     OP_VBROADCASTSD,     OP_VBROADCASTSS,
     OP_VPBROADCASTB,     OP_VPBROADCASTD,     OP_VPBROADCASTW,
     OP_VPBLENDD,         OP_VPBLENDW,         OP_VBLENDPD,
 
-    // ---- insert / extract / masks / misc ----
+    // insert / extract / masks / misc
     OP_VPINSRB,          OP_VPINSRD,          OP_VPINSRQ,
     OP_VPEXTRD,          OP_VPEXTRQ,
     OP_VINSERTPS,        OP_VEXTRACTI128,     OP_VEXTRACTF128,     OP_VINSERTI128, OP_VINSERTF128,
     OP_VMOVMSKPS,        OP_VPSADBW,
 
-    // ---- vector sign/zero extend (no flags) ----
+    // vector sign/zero extend (no flags)
     OP_VPMOVSXWD,        OP_VPMOVZXBW,        OP_VPMOVZXWD,
 
-    // ---- MOV / loads & stores (regular) ----
+    // MOV / loads & stores (regular)
     OP_MOV,              OP_MOVQ,             OP_MOVD,             OP_MOVDQA,  OP_MOVDQU,  OP_MOVSD,  OP_MOVSS,
     OP_MOVAPD,           OP_MOVAPS,           OP_MOVSX,            OP_MOVSXD,  OP_MOVZX,
     OP_VMOVQ,            OP_VMOVD,            OP_VMOVDQA,          OP_VMOVDQU,
@@ -54,11 +54,11 @@ package uop_pkg;
     OP_VMOVHPS,          OP_VMOVHPD,          OP_VMOVLPS,          OP_VMOVLPD, OP_VMOVLHPS,
     OP_PUNPCKLQDQ,       OP_LEA,
 
-    // ---- min/max ----
+    // min/max
     OP_VMAXPD,           OP_VMAXPS,           OP_VMAXSD,           OP_VMAXSS,
     OP_VMINPD,           OP_VMINPS,           OP_VMINSD,           OP_VMINSS,
 
-    // ---- FMA (no flags) ----
+    // FMA (no flags)
     OP_VFMADD132PS,      OP_VFMADD213PS,      OP_VFMADD231PS,
     OP_VFMADD132PD,      OP_VFMADD213PD,      OP_VFMADD231PD,
     OP_VFMADD132SS,      OP_VFMADD213SS,      OP_VFMADD231SS,
@@ -74,12 +74,50 @@ package uop_pkg;
     OP_VFNMSUB132PD,     OP_VFNMSUB231SD,     OP_VFNMSUB132SD,
 
     // compares (no flag consume)
-    OP_VCMPPD,           OP_VCMPSD,
+    OP_VCMPSD,
     OP_VPCMPEQB,         OP_VPCMPEQD,         OP_VPCMPGTD,         OP_VPCMPGTW,
     OP_VPMAXSD,          OP_VPMINUB,          OP_VPMOVMSKB,        OP_VPTEST,
 
     //  data dup / shuffles
-    OP_VMOVDDUP,         OP_VMOVSHDUP,        OP_VMOVSLDUP
+    OP_VMOVDDUP,         OP_VMOVSHDUP,        OP_VMOVSLDUP,
+
+    OP_DIV,       OP_IDIV,      OP_VDIVSD,    
+    OP_VDIVPD,    OP_VDIVSS,    OP_VDIVPS,
+    OP_VSQRTPD,
+
+    OP_VPSHUFD, OP_VUNPCKLPD, OP_VPSRLDQ, OP_VCVTSI2SD,
+
+        // add/sub with carry/borrow
+    OP_ADC, OP_SBB,
+
+    // conditional moves
+    OP_CMOVZ,  OP_CMOVNZ,
+    OP_CMOVB,  OP_CMOVNB,
+    OP_CMOVBE, OP_CMOVNBE,
+    OP_CMOVL,  OP_CMOVNL,
+    OP_CMOVLE, OP_CMOVNLE,
+    OP_CMOVS,
+
+    // setcc
+    OP_SETZ,  OP_SETNZ,
+    OP_SETB,  OP_SETNB,
+    OP_SETBE, OP_SETNBE,
+    OP_SETL,  OP_SETNL,
+    OP_SETLE, OP_SETNLE,
+    OP_SETP,  OP_SETNP,
+
+    // AVX2 shuffle/permute/unpack
+    OP_VPSHUFB,
+    OP_VPERMQ, OP_VPERMPD, OP_VPERM2I128,
+    OP_VPUNPCKLWD, OP_VPUNPCKLDQ, OP_VPUNPCKHQDQ, OP_VPUNPCKLQDQ,
+    OP_VSHUFPS, OP_VSHUFPD, OP_VUNPCKHPD, OP_VUNPCKLPS,
+    // FP converts & round
+    OP_VCVTSS2SD, OP_VCVTSD2SS, OP_VCVTSI2SS,
+    OP_VCVTTSD2SI, OP_VCVTTSS2SI,
+    OP_VROUNDSD,
+
+    // variable blend
+    OP_VBLENDVPD
 
   } op_t;
 

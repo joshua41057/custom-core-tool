@@ -1,0 +1,364 @@
+{
+  "rank": 29,
+  "group_index": 1,
+  "execution_count": 1472572,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5a98574d511d",
+      "opcode": "movsxd",
+      "raw_operands": [
+        "rdi",
+        "dword ptr [rbp+0x40]"
+      ],
+      "in_operands": [
+        "[rbp+0x40]"
+      ],
+      "out_operands": [
+        "rdi"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5a98574d5125",
+      "opcode": "mov",
+      "raw_operands": [
+        "rsi",
+        "rdi"
+      ],
+      "in_operands": [
+        "rdi"
+      ],
+      "out_operands": [
+        "rsi"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5a98574d5128",
+      "opcode": "not",
+      "raw_operands": [
+        "esi"
+      ],
+      "in_operands": [
+        "esi"
+      ],
+      "out_operands": [
+        "esi"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x5a98574d512a",
+      "opcode": "add",
+      "raw_operands": [
+        "rdx",
+        "rdi"
+      ],
+      "in_operands": [
+        "rdx",
+        "rdi"
+      ],
+      "out_operands": [
+        "rdx",
+        "flag"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x5a98574d512d",
+      "opcode": "movsxd",
+      "raw_operands": [
+        "rsi",
+        "esi"
+      ],
+      "in_operands": [
+        "esi"
+      ],
+      "out_operands": [
+        "rsi"
+      ]
+    },
+    {
+      "index": 5,
+      "address": "0x5a98574d5130",
+      "opcode": "and",
+      "raw_operands": [
+        "rdx",
+        "rsi"
+      ],
+      "in_operands": [
+        "rdx",
+        "rsi"
+      ],
+      "out_operands": [
+        "rdx",
+        "flag"
+      ]
+    },
+    {
+      "index": 6,
+      "address": "0x5a98574d5133",
+      "opcode": "cmp",
+      "raw_operands": [
+        "rcx",
+        "rdx"
+      ],
+      "in_operands": [
+        "rcx",
+        "rdx"
+      ],
+      "out_operands": [
+        "flag"
+      ]
+    },
+    {
+      "index": 7,
+      "address": "0x5a98574d5136",
+      "opcode": "cmovbe",
+      "raw_operands": [
+        "rdx",
+        "rcx"
+      ],
+      "in_operands": [
+        "rcx",
+        "flag"
+      ],
+      "out_operands": [
+        "rdx"
+      ]
+    },
+    {
+      "index": 8,
+      "address": "0x5a98574d513a",
+      "opcode": "vmovq",
+      "raw_operands": [
+        "xmm0",
+        "rdx"
+      ],
+      "in_operands": [
+        "rdx"
+      ],
+      "out_operands": [
+        "xmm0"
+      ]
+    },
+    {
+      "index": 9,
+      "address": "0x5a98574d513f",
+      "opcode": "vpunpcklqdq",
+      "raw_operands": [
+        "xmm0",
+        "xmm0",
+        "xmm0"
+      ],
+      "in_operands": [
+        "xmm0",
+        "xmm0"
+      ],
+      "out_operands": [
+        "xmm0"
+      ]
+    },
+    {
+      "index": 10,
+      "address": "0x5a98574d5143",
+      "opcode": "vmovdqu",
+      "raw_operands": [
+        "xmmword ptr [rbp+0x20]",
+        "xmm0"
+      ],
+      "in_operands": [
+        "xmm0"
+      ],
+      "out_operands": [
+        "xmmword ptr [rbp+0x20]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rdi"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rdi"
+      },
+      "condition": "reg vs reg: rdi"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rdi"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "rdi"
+      },
+      "condition": "reg vs reg: rdi"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "esi"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "esi"
+      },
+      "condition": "reg vs reg: esi"
+    },
+    {
+      "from": {
+        "instr_index": 3,
+        "operand": "rdx"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "rdx"
+      },
+      "condition": "reg vs reg: rdx"
+    },
+    {
+      "from": {
+        "instr_index": 4,
+        "operand": "rsi"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "rsi"
+      },
+      "condition": "reg vs reg: rsi"
+    },
+    {
+      "from": {
+        "instr_index": 5,
+        "operand": "rdx"
+      },
+      "to": {
+        "instr_index": 6,
+        "operand": "rdx"
+      },
+      "condition": "reg vs reg: rdx"
+    },
+    {
+      "from": {
+        "instr_index": 6,
+        "operand": "flag"
+      },
+      "to": {
+        "instr_index": 7,
+        "operand": "flag"
+      },
+      "condition": "flag vs flag"
+    },
+    {
+      "from": {
+        "instr_index": 7,
+        "operand": "rdx"
+      },
+      "to": {
+        "instr_index": 8,
+        "operand": "rdx"
+      },
+      "condition": "reg vs reg: rdx"
+    },
+    {
+      "from": {
+        "instr_index": 8,
+        "operand": "xmm0"
+      },
+      "to": {
+        "instr_index": 9,
+        "operand": "xmm0"
+      },
+      "condition": "reg vs reg: xmm0"
+    },
+    {
+      "from": {
+        "instr_index": 8,
+        "operand": "xmm0"
+      },
+      "to": {
+        "instr_index": 9,
+        "operand": "xmm0"
+      },
+      "condition": "reg vs reg: xmm0"
+    },
+    {
+      "from": {
+        "instr_index": 9,
+        "operand": "xmm0"
+      },
+      "to": {
+        "instr_index": 10,
+        "operand": "xmm0"
+      },
+      "condition": "reg vs reg: xmm0"
+    }
+  ],
+  "bench": "602.gcc_s/1",
+  "src": "1/super_hot_regions:33",
+  "order_map": [
+    0,
+    3,
+    1,
+    2,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "ff_boundaries": [
+    0,
+    2,
+    6,
+    9
+  ],
+  "stage_count": 5,
+  "latency_cycles": 5,
+  "crit_path_sigma": 0.8,
+  "comb_bound_hits": 4,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 11,
+    "added_flag_wr": 2,
+    "added_flag_waw": 1,
+    "added_raw": 7,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 20
+  },
+  "pcs": [
+    "0x5a98574d511d",
+    "0x5a98574d5125",
+    "0x5a98574d5128",
+    "0x5a98574d512a",
+    "0x5a98574d512d",
+    "0x5a98574d5130",
+    "0x5a98574d5133",
+    "0x5a98574d5136",
+    "0x5a98574d513a",
+    "0x5a98574d513f",
+    "0x5a98574d5143"
+  ],
+  "latencies": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5a98574d511d"
+}

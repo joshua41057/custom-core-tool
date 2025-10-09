@@ -1,0 +1,111 @@
+{
+  "rank": 25,
+  "group_index": 1,
+  "execution_count": 5934158,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x61d4948ed4a0",
+      "opcode": "mov",
+      "raw_operands": [
+        "eax",
+        "dword ptr [rdx]"
+      ],
+      "in_operands": [
+        "[rdx]"
+      ],
+      "out_operands": [
+        "eax"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x61d4948ed4a2",
+      "opcode": "cmp",
+      "raw_operands": [
+        "dword ptr [rcx]",
+        "eax"
+      ],
+      "in_operands": [
+        "[rcx]",
+        "eax"
+      ],
+      "out_operands": [
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x61d4948ed4a4",
+      "opcode": "setnl",
+      "raw_operands": [
+        "al"
+      ],
+      "in_operands": [
+        "flag"
+      ],
+      "out_operands": [
+        "al"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "flag"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "flag"
+      },
+      "condition": "flag vs flag"
+    }
+  ],
+  "bench": "505.mcf_r/1",
+  "src": "1/super_hot_regions:33",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0
+  ],
+  "stage_count": 2,
+  "latency_cycles": 2,
+  "crit_path_sigma": 0.5,
+  "comb_bound_hits": 1,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 1,
+    "final_edges": 3
+  },
+  "pcs": [
+    "0x61d4948ed4a0",
+    "0x61d4948ed4a2",
+    "0x61d4948ed4a4"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x61d4948ed4a0"
+}

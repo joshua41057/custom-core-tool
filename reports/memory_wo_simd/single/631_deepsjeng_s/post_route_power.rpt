@@ -1,0 +1,272 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version     : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
+| Date             : Fri Oct  3 11:55:49 2025
+| Host             : orthanc running 64-bit Ubuntu 22.04.4 LTS
+| Command          : report_power -file /home/jyoo/custom_v_2/custom-core-tool/reports/memory_wo_simd/single/631_deepsjeng_s/post_route_power.rpt
+| Design           : top_multi_len
+| Device           : xcu200-fsgd2104-2-e
+| Design State     : routed
+| Grade            : extended
+| Process          : typical
+| Characterization : Production
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Power Report
+
+Table of Contents
+-----------------
+1. Summary
+1.1 On-Chip Components
+1.2 Power Supply Summary
+1.3 Confidence Level
+2. Settings
+2.1 Environment
+2.2 Clock Constraints
+3. Detailed Reports
+3.1 By Hierarchy
+
+1. Summary
+----------
+
++--------------------------+--------------+
+| Total On-Chip Power (W)  | 2.861        |
+| Design Power Budget (W)  | Unspecified* |
+| Power Budget Margin (W)  | NA           |
+| Dynamic (W)              | 0.387        |
+| Device Static (W)        | 2.474        |
+| Effective TJA (C/W)      | 0.5          |
+| Max Ambient (C)          | 98.5         |
+| Junction Temperature (C) | 26.5         |
+| Confidence Level         | Low          |
+| Setting File             | ---          |
+| Simulation Activity File | ---          |
+| Design Nets Matched      | NA           |
++--------------------------+--------------+
+* Specify Design Power Budget using, set_operating_conditions -design_power_budget <value in Watts>
+
+
+1.1 On-Chip Components
+----------------------
+
++-------------------------+-----------+----------+-----------+-----------------+
+| On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
++-------------------------+-----------+----------+-----------+-----------------+
+| Clocks                  |     0.161 |        3 |       --- |             --- |
+| CLB Logic               |     0.048 |    38293 |       --- |             --- |
+|   LUT as Logic          |     0.038 |    10040 |   1182240 |            0.85 |
+|   Register              |     0.005 |    23183 |   2364480 |            0.98 |
+|   LUT as Shift Register |     0.003 |      876 |    591840 |            0.15 |
+|   CARRY8                |    <0.001 |      296 |    147780 |            0.20 |
+|   Others                |     0.000 |     1100 |       --- |             --- |
+|   F7/F8 Muxes           |     0.000 |      110 |   1182240 |           <0.01 |
+| Signals                 |     0.079 |    19735 |       --- |             --- |
+| Block RAM               |     0.052 |        8 |      2160 |            0.37 |
+| DSPs                    |     0.026 |       64 |      6840 |            0.94 |
+| I/O                     |     0.021 |      138 |       676 |           20.41 |
+| Static Power            |     2.474 |          |           |                 |
+| Total                   |     2.861 |          |           |                 |
++-------------------------+-----------+----------+-----------+-----------------+
+
+
+1.2 Power Supply Summary
+------------------------
+
++------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
+| Source     | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
++------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
+| Vccint     |       0.850 |     1.240 |       0.428 |      0.813 |       NA    | Unspecified | NA         |
+| Vccint_io  |       0.850 |     0.264 |       0.001 |      0.262 |       NA    | Unspecified | NA         |
+| Vccbram    |       0.850 |     0.019 |       0.003 |      0.015 |       NA    | Unspecified | NA         |
+| Vccaux     |       1.800 |     0.651 |       0.000 |      0.651 |       NA    | Unspecified | NA         |
+| Vccaux_io  |       1.800 |     0.195 |       0.011 |      0.185 |       NA    | Unspecified | NA         |
+| Vcco33     |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco25     |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco18     |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco15     |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco135    |       1.350 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco12     |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco10     |       1.000 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vccadc     |       1.800 |     0.024 |       0.000 |      0.024 |       NA    | Unspecified | NA         |
+| MGTYAVcc   |       0.900 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| MGTYAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| MGTYVccaux |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
++------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
+
+
+1.3 Confidence Level
+--------------------
+
++-----------------------------+------------+--------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| User Input Data             | Confidence | Details                                                | Action                                                                                                     |
++-----------------------------+------------+--------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| Design implementation state | High       | Design is routed                                       |                                                                                                            |
+| Clock nodes activity        | High       | User specified more than 95% of clocks                 |                                                                                                            |
+| I/O nodes activity          | Low        | More than 75% of inputs are missing user specification | Provide missing input activity with simulation results or by editing the "By Resource Type -> I/Os" view   |
+| Internal nodes activity     | Medium     | User specified less than 25% of internal nodes         | Provide missing internal nodes activity with simulation results or by editing the "By Resource Type" views |
+| Device models               | High       | Device models are Production                           |                                                                                                            |
+|                             |            |                                                        |                                                                                                            |
+| Overall confidence level    | Low        |                                                        |                                                                                                            |
++-----------------------------+------------+--------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+
+
+2. Settings
+-----------
+
+2.1 Environment
+---------------
+
++-----------------------+--------------------------+
+| Ambient Temp (C)      | 25.0                     |
+| ThetaJA (C/W)         | 0.5                      |
+| Airflow (LFM)         | 250                      |
+| Heat Sink             | medium (Medium Profile)  |
+| ThetaSA (C/W)         | 0.7                      |
+| Board Selection       | medium (10"x10")         |
+| # of Board Layers     | 12to15 (12 to 15 Layers) |
+| Board Temperature (C) | 25.0                     |
++-----------------------+--------------------------+
+
+
+2.2 Clock Constraints
+---------------------
+
++----------+--------+-----------------+
+| Clock    | Domain | Constraint (ns) |
++----------+--------+-----------------+
+| host_clk | clk    |             3.3 |
++----------+--------+-----------------+
+
+
+3. Detailed Reports
+-------------------
+
+3.1 By Hierarchy
+----------------
+
++--------------------------------+-----------+
+| Name                           | Power (W) |
++--------------------------------+-----------+
+| top_multi_len                  |     0.387 |
+|   g_has_mem.glen_mem[0].blk_i  |     0.004 |
+|     core                       |     0.001 |
+|   g_has_mem.glen_mem[11].blk_i |     0.018 |
+|     core                       |     0.016 |
+|       g[1].g_normal.alu_i      |     0.001 |
+|       g[4].g_normal.alu_i      |     0.014 |
+|   g_has_mem.glen_mem[12].blk_i |     0.004 |
+|     core                       |     0.003 |
+|       g[2].g_normal.alu_i      |     0.001 |
+|   g_has_mem.glen_mem[13].blk_i |     0.001 |
+|   g_has_mem.glen_mem[14].blk_i |     0.002 |
+|   g_has_mem.glen_mem[15].blk_i |     0.001 |
+|   g_has_mem.glen_mem[16].blk_i |     0.001 |
+|   g_has_mem.glen_mem[17].blk_i |     0.003 |
+|     core                       |     0.003 |
+|   g_has_mem.glen_mem[18].blk_i |     0.002 |
+|     core                       |     0.002 |
+|   g_has_mem.glen_mem[20].blk_i |     0.001 |
+|   g_has_mem.glen_mem[21].blk_i |     0.002 |
+|     core                       |     0.002 |
+|   g_has_mem.glen_mem[22].blk_i |     0.004 |
+|     core                       |     0.004 |
+|   g_has_mem.glen_mem[24].blk_i |     0.035 |
+|     core                       |     0.034 |
+|       g[12].g_normal.alu_i     |     0.014 |
+|       g[9].g_normal.alu_i      |     0.014 |
+|   g_has_mem.glen_mem[26].blk_i |     0.003 |
+|     core                       |     0.002 |
+|   g_has_mem.glen_mem[27].blk_i |     0.002 |
+|     core                       |     0.002 |
+|   g_has_mem.glen_mem[28].blk_i |     0.001 |
+|   g_has_mem.glen_mem[29].blk_i |     0.002 |
+|     core                       |     0.002 |
+|   g_has_mem.glen_mem[30].blk_i |     0.005 |
+|     core                       |     0.004 |
+|   g_has_mem.glen_mem[33].blk_i |     0.001 |
+|   g_has_mem.glen_mem[34].blk_i |     0.002 |
+|   g_has_mem.glen_mem[35].blk_i |     0.002 |
+|     core                       |     0.002 |
+|   g_has_mem.glen_mem[36].blk_i |     0.002 |
+|     core                       |     0.002 |
+|   g_has_mem.glen_mem[37].blk_i |     0.005 |
+|     core                       |     0.004 |
+|   g_has_mem.glen_mem[38].blk_i |     0.002 |
+|   g_has_mem.glen_mem[3].blk_i  |     0.025 |
+|     core                       |     0.022 |
+|       g[10].g_normal.alu_i     |     0.001 |
+|       g[2].g_normal.alu_i      |     0.001 |
+|       g[5].g_normal.alu_i      |     0.001 |
+|       g[7].g_normal.alu_i      |     0.001 |
+|       g[8].g_normal.alu_i      |     0.014 |
+|   g_has_mem.glen_mem[41].blk_i |     0.001 |
+|   g_has_mem.glen_mem[42].blk_i |     0.002 |
+|     core                       |     0.001 |
+|   g_has_mem.glen_mem[43].blk_i |     0.003 |
+|     core                       |     0.003 |
+|   g_has_mem.glen_mem[44].blk_i |     0.002 |
+|     core                       |     0.001 |
+|   g_has_mem.glen_mem[45].blk_i |     0.005 |
+|     core                       |     0.004 |
+|   g_has_mem.glen_mem[46].blk_i |     0.002 |
+|     core                       |     0.001 |
+|   g_has_mem.glen_mem[47].blk_i |     0.003 |
+|     core                       |     0.002 |
+|   g_has_mem.glen_mem[48].blk_i |     0.001 |
+|   g_has_mem.glen_mem[4].blk_i  |     0.003 |
+|     core                       |     0.002 |
+|   g_has_mem.glen_mem[50].blk_i |     0.002 |
+|     core                       |     0.001 |
+|   g_has_mem.glen_mem[51].blk_i |     0.002 |
+|     core                       |     0.001 |
+|   g_has_mem.glen_mem[55].blk_i |     0.002 |
+|   g_has_mem.glen_mem[57].blk_i |     0.001 |
+|   g_has_mem.glen_mem[58].blk_i |     0.001 |
+|   g_has_mem.glen_mem[59].blk_i |     0.001 |
+|   g_has_mem.glen_mem[5].blk_i  |     0.004 |
+|     core                       |     0.003 |
+|   g_has_mem.glen_mem[60].blk_i |     0.002 |
+|     core                       |     0.001 |
+|   g_has_mem.glen_mem[61].blk_i |     0.003 |
+|     core                       |     0.002 |
+|   g_has_mem.glen_mem[62].blk_i |     0.003 |
+|     core                       |     0.002 |
+|   g_has_mem.glen_mem[65].blk_i |     0.001 |
+|   g_has_mem.glen_mem[67].blk_i |     0.003 |
+|     core                       |     0.002 |
+|   g_has_mem.glen_mem[6].blk_i  |     0.003 |
+|     core                       |     0.002 |
+|   g_has_mem.glen_mem[70].blk_i |     0.002 |
+|     core                       |     0.002 |
+|   g_has_mem.glen_mem[71].blk_i |     0.004 |
+|     core                       |     0.003 |
+|   g_has_mem.glen_mem[72].blk_i |     0.002 |
+|     core                       |     0.002 |
+|   g_has_mem.glen_mem[73].blk_i |     0.002 |
+|     core                       |     0.001 |
+|   g_has_mem.glen_mem[74].blk_i |     0.002 |
+|     core                       |     0.001 |
+|   g_has_mem.glen_mem[7].blk_i  |     0.002 |
+|     core                       |     0.001 |
+|   g_has_mem.glen_mem[8].blk_i  |     0.002 |
+|     core                       |     0.002 |
+|   g_has_mem.u_pool             |     0.124 |
+|     g_banks.gb[0].u_bank64     |     0.007 |
+|       u_mem                    |     0.007 |
+|     g_banks.gb[1].u_bank64     |     0.007 |
+|       u_mem                    |     0.007 |
+|     g_banks.gb[2].u_bank64     |     0.007 |
+|       u_mem                    |     0.007 |
+|     g_banks.gb[3].u_bank64     |     0.007 |
+|       u_mem                    |     0.006 |
+|     g_banks.gb[4].u_bank64     |     0.007 |
+|       u_mem                    |     0.007 |
+|     g_banks.gb[5].u_bank64     |     0.006 |
+|       u_mem                    |     0.006 |
+|     g_banks.gb[6].u_bank64     |     0.006 |
+|       u_mem                    |     0.006 |
+|     g_banks.gb[7].u_bank64     |     0.006 |
+|       u_mem                    |     0.006 |
++--------------------------------+-----------+
+
+

@@ -1,0 +1,114 @@
+{
+  "rank": 78,
+  "group_index": 1,
+  "execution_count": 678181,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5fac5e1396cf",
+      "opcode": "vmovq",
+      "raw_operands": [
+        "xmm15",
+        "rcx"
+      ],
+      "in_operands": [
+        "rcx"
+      ],
+      "out_operands": [
+        "xmm15"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5fac5e1396d4",
+      "opcode": "vaddsd",
+      "raw_operands": [
+        "xmm9",
+        "xmm15",
+        "qword ptr [rsp+0x18]"
+      ],
+      "in_operands": [
+        "xmm15",
+        "[rsp+0x18]"
+      ],
+      "out_operands": [
+        "xmm9"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5fac5e1396da",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "qword ptr [rsp+0x18]",
+        "xmm9"
+      ],
+      "in_operands": [
+        "xmm9"
+      ],
+      "out_operands": [
+        "[rsp+0x18]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm15"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "xmm15"
+      },
+      "condition": "reg vs reg: xmm15"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "xmm9"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "xmm9"
+      },
+      "condition": "reg vs reg: xmm9"
+    }
+  ],
+  "bench": "644.nab_s/1",
+  "src": "1/super_hot_regions:115",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.9428090415820634,
+  "comb_bound_hits": 1,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 2
+  },
+  "pcs": [
+    "0x5fac5e1396cf",
+    "0x5fac5e1396d4",
+    "0x5fac5e1396da"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5fac5e1396cf"
+}

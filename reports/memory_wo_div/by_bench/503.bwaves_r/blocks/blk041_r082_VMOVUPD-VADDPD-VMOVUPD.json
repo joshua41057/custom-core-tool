@@ -1,0 +1,114 @@
+{
+  "rank": 82,
+  "group_index": 3,
+  "execution_count": 56448,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5e2ee9745421",
+      "opcode": "vmovupd",
+      "raw_operands": [
+        "ymm4",
+        "ymmword ptr [rcx]"
+      ],
+      "in_operands": [
+        "ymmword ptr [rcx]"
+      ],
+      "out_operands": [
+        "ymm4"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5e2ee974542a",
+      "opcode": "vaddpd",
+      "raw_operands": [
+        "ymm4",
+        "ymm4",
+        "ymmword ptr [rax]"
+      ],
+      "in_operands": [
+        "ymm4",
+        "ymmword ptr [rax]"
+      ],
+      "out_operands": [
+        "ymm4"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5e2ee9745438",
+      "opcode": "vmovupd",
+      "raw_operands": [
+        "ymmword ptr [rax]",
+        "ymm4"
+      ],
+      "in_operands": [
+        "ymm4"
+      ],
+      "out_operands": [
+        "ymmword ptr [rax]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "ymm4"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "ymm4"
+      },
+      "condition": "reg vs reg: ymm4"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "ymm4"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "ymm4"
+      },
+      "condition": "reg vs reg: ymm4"
+    }
+  ],
+  "bench": "503.bwaves_r/1",
+  "src": "1/super_hot_regions:162",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.9428090415820634,
+  "comb_bound_hits": 2,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 1,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 3
+  },
+  "pcs": [
+    "0x5e2ee9745421",
+    "0x5e2ee974542a",
+    "0x5e2ee9745438"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5e2ee9745421"
+}

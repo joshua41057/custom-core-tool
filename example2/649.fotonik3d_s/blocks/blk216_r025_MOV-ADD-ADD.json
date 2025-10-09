@@ -1,0 +1,116 @@
+{
+  "rank": 25,
+  "group_index": 11,
+  "execution_count": 404018,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x566cf36b8d26",
+      "opcode": "mov",
+      "raw_operands": [
+        "rsi",
+        "qword ptr [rsp+0xd60]"
+      ],
+      "in_operands": [
+        "[rsp+0xd60]"
+      ],
+      "out_operands": [
+        "rsi"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x566cf36b8dc9",
+      "opcode": "add",
+      "raw_operands": [
+        "qword ptr [rsp+0x820]",
+        "rsi"
+      ],
+      "in_operands": [
+        "[rsp+0x820]",
+        "rsi"
+      ],
+      "out_operands": [
+        "[rsp+0x820]",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x566cf36b8e31",
+      "opcode": "add",
+      "raw_operands": [
+        "qword ptr [rsp+0xa48]",
+        "rsi"
+      ],
+      "in_operands": [
+        "[rsp+0xa48]",
+        "rsi"
+      ],
+      "out_operands": [
+        "[rsp+0xa48]",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rsi"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rsi"
+      },
+      "condition": "reg vs reg: rsi"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rsi"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "rsi"
+      },
+      "condition": "reg vs reg: rsi"
+    }
+  ],
+  "bench": "649.fotonik3d_s/1",
+  "src": "1/super_hot_regions:80",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.9428090415820634,
+  "comb_bound_hits": 1,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 1,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 3
+  },
+  "pcs": [
+    "0x566cf36b8d26",
+    "0x566cf36b8dc9",
+    "0x566cf36b8e31"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x566cf36b8d26"
+}

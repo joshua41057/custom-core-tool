@@ -1,0 +1,331 @@
+{
+  "rank": 91,
+  "group_index": 1,
+  "execution_count": 592659,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5d9dc6ebb502",
+      "opcode": "vmovupd",
+      "raw_operands": [
+        "ymm0",
+        "ymmword ptr [r15+rax*1]"
+      ],
+      "in_operands": [
+        "ymmword ptr [r15+rax*1]"
+      ],
+      "out_operands": [
+        "ymm0"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5d9dc6ebb508",
+      "opcode": "vmovupd",
+      "raw_operands": [
+        "ymm1",
+        "ymmword ptr [r14+rax*1]"
+      ],
+      "in_operands": [
+        "ymmword ptr [r14+rax*1]"
+      ],
+      "out_operands": [
+        "ymm1"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5d9dc6ebb50e",
+      "opcode": "vmovupd",
+      "raw_operands": [
+        "ymm6",
+        "ymmword ptr [r9+rax*1]"
+      ],
+      "in_operands": [
+        "ymmword ptr [r9+rax*1]"
+      ],
+      "out_operands": [
+        "ymm6"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x5d9dc6ebb514",
+      "opcode": "vfnmadd213pd",
+      "raw_operands": [
+        "ymm1",
+        "ymm0",
+        "ymmword ptr [rbx+rax*1]"
+      ],
+      "in_operands": [
+        "ymm1",
+        "ymm0",
+        "ymmword ptr [rbx+rax*1]"
+      ],
+      "out_operands": [
+        "ymm1"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x5d9dc6ebb51a",
+      "opcode": "vmovupd",
+      "raw_operands": [
+        "ymmword ptr [rbx+rax*1]",
+        "ymm1"
+      ],
+      "in_operands": [
+        "ymm1"
+      ],
+      "out_operands": [
+        "ymmword ptr [rbx+rax*1]"
+      ]
+    },
+    {
+      "index": 5,
+      "address": "0x5d9dc6ebb51f",
+      "opcode": "vmovupd",
+      "raw_operands": [
+        "ymm1",
+        "ymmword ptr [r13+rax*1]"
+      ],
+      "in_operands": [
+        "ymmword ptr [r13+rax*1]"
+      ],
+      "out_operands": [
+        "ymm1"
+      ]
+    },
+    {
+      "index": 6,
+      "address": "0x5d9dc6ebb526",
+      "opcode": "vfnmadd213pd",
+      "raw_operands": [
+        "ymm1",
+        "ymm0",
+        "ymmword ptr [r11+rax*1]"
+      ],
+      "in_operands": [
+        "ymm1",
+        "ymm0",
+        "ymmword ptr [r11+rax*1]"
+      ],
+      "out_operands": [
+        "ymm1"
+      ]
+    },
+    {
+      "index": 7,
+      "address": "0x5d9dc6ebb52c",
+      "opcode": "vfnmadd132pd",
+      "raw_operands": [
+        "ymm0",
+        "ymm6",
+        "ymmword ptr [r12+rax*1]"
+      ],
+      "in_operands": [
+        "ymm0",
+        "ymm6",
+        "ymmword ptr [r12+rax*1]"
+      ],
+      "out_operands": [
+        "ymm0"
+      ]
+    },
+    {
+      "index": 8,
+      "address": "0x5d9dc6ebb532",
+      "opcode": "vmovupd",
+      "raw_operands": [
+        "ymmword ptr [r11+rax*1]",
+        "ymm1"
+      ],
+      "in_operands": [
+        "ymm1"
+      ],
+      "out_operands": [
+        "ymmword ptr [r11+rax*1]"
+      ]
+    },
+    {
+      "index": 9,
+      "address": "0x5d9dc6ebb538",
+      "opcode": "vmovupd",
+      "raw_operands": [
+        "ymmword ptr [r9+rax*1]",
+        "ymm0"
+      ],
+      "in_operands": [
+        "ymm0"
+      ],
+      "out_operands": [
+        "ymmword ptr [r9+rax*1]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "ymm1"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "ymm1"
+      },
+      "condition": "reg vs reg: ymm1"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "ymm0"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "ymm0"
+      },
+      "condition": "reg vs reg: ymm0"
+    },
+    {
+      "from": {
+        "instr_index": 3,
+        "operand": "ymm1"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "ymm1"
+      },
+      "condition": "reg vs reg: ymm1"
+    },
+    {
+      "from": {
+        "instr_index": 5,
+        "operand": "ymm1"
+      },
+      "to": {
+        "instr_index": 6,
+        "operand": "ymm1"
+      },
+      "condition": "reg vs reg: ymm1"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "ymm0"
+      },
+      "to": {
+        "instr_index": 6,
+        "operand": "ymm0"
+      },
+      "condition": "reg vs reg: ymm0"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "ymm0"
+      },
+      "to": {
+        "instr_index": 7,
+        "operand": "ymm0"
+      },
+      "condition": "reg vs reg: ymm0"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "ymm6"
+      },
+      "to": {
+        "instr_index": 7,
+        "operand": "ymm6"
+      },
+      "condition": "reg vs reg: ymm6"
+    },
+    {
+      "from": {
+        "instr_index": 6,
+        "operand": "ymm1"
+      },
+      "to": {
+        "instr_index": 8,
+        "operand": "ymm1"
+      },
+      "condition": "reg vs reg: ymm1"
+    },
+    {
+      "from": {
+        "instr_index": 7,
+        "operand": "ymm0"
+      },
+      "to": {
+        "instr_index": 9,
+        "operand": "ymm0"
+      },
+      "condition": "reg vs reg: ymm0"
+    }
+  ],
+  "bench": "554.roms_r/1",
+  "src": "1/super_hot_regions:171",
+  "order_map": [
+    1,
+    0,
+    3,
+    2,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "ff_boundaries": [
+    1,
+    0,
+    3,
+    2,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "stage_count": 10,
+  "latency_cycles": 10,
+  "crit_path_sigma": 0.916515138991168,
+  "comb_bound_hits": 7,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 9,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 7,
+    "added_war": 5,
+    "added_waw": 1,
+    "final_edges": 22
+  },
+  "pcs": [
+    "0x5d9dc6ebb502",
+    "0x5d9dc6ebb508",
+    "0x5d9dc6ebb50e",
+    "0x5d9dc6ebb514",
+    "0x5d9dc6ebb51a",
+    "0x5d9dc6ebb51f",
+    "0x5d9dc6ebb526",
+    "0x5d9dc6ebb52c",
+    "0x5d9dc6ebb532",
+    "0x5d9dc6ebb538"
+  ],
+  "latencies": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5d9dc6ebb502"
+}

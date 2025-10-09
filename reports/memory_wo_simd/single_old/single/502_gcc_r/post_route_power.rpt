@@ -1,0 +1,301 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+----------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version     : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
+| Date             : Mon Sep 22 19:02:35 2025
+| Host             : orthanc running 64-bit Ubuntu 22.04.4 LTS
+| Command          : report_power -file /home/jyoo/custom_v_2/custom-core-tool/reports/memory_wo_simd/single/502_gcc_r/post_route_power.rpt
+| Design           : top_bench__502_gcc_r
+| Device           : xcu200-fsgd2104-2-e
+| Design State     : routed
+| Grade            : extended
+| Process          : typical
+| Characterization : Production
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Power Report
+
+Table of Contents
+-----------------
+1. Summary
+1.1 On-Chip Components
+1.2 Power Supply Summary
+1.3 Confidence Level
+2. Settings
+2.1 Environment
+2.2 Clock Constraints
+3. Detailed Reports
+3.1 By Hierarchy
+
+1. Summary
+----------
+
++--------------------------+--------------+
+| Total On-Chip Power (W)  | 3.254        |
+| Design Power Budget (W)  | Unspecified* |
+| Power Budget Margin (W)  | NA           |
+| Dynamic (W)              | 0.775        |
+| Device Static (W)        | 2.479        |
+| Effective TJA (C/W)      | 0.5          |
+| Max Ambient (C)          | 98.3         |
+| Junction Temperature (C) | 26.7         |
+| Confidence Level         | Low          |
+| Setting File             | ---          |
+| Simulation Activity File | ---          |
+| Design Nets Matched      | NA           |
++--------------------------+--------------+
+* Specify Design Power Budget using, set_operating_conditions -design_power_budget <value in Watts>
+
+
+1.1 On-Chip Components
+----------------------
+
++-------------------------+-----------+----------+-----------+-----------------+
+| On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
++-------------------------+-----------+----------+-----------+-----------------+
+| Clocks                  |     0.164 |        3 |       --- |             --- |
+| CLB Logic               |     0.093 |    30948 |       --- |             --- |
+|   LUT as Logic          |     0.061 |     4399 |   1182240 |            0.37 |
+|   Register              |     0.029 |    25187 |   2364480 |            1.07 |
+|   CARRY8                |     0.002 |      136 |    147780 |            0.09 |
+|   LUT as Shift Register |    <0.001 |        8 |    591840 |           <0.01 |
+|   Others                |     0.000 |     1093 |       --- |             --- |
+| Signals                 |     0.178 |    27599 |       --- |             --- |
+| DSPs                    |     0.006 |        5 |      6840 |            0.07 |
+| I/O                     |     0.334 |      135 |       676 |           19.97 |
+| Static Power            |     2.479 |          |           |                 |
+| Total                   |     3.254 |          |           |                 |
++-------------------------+-----------+----------+-----------+-----------------+
+
+
+1.2 Power Supply Summary
+------------------------
+
++------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
+| Source     | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
++------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
+| Vccint     |       0.850 |     1.339 |       0.519 |      0.820 |       NA    | Unspecified | NA         |
+| Vccint_io  |       0.850 |     0.278 |       0.015 |      0.263 |       NA    | Unspecified | NA         |
+| Vccbram    |       0.850 |     0.015 |       0.000 |      0.015 |       NA    | Unspecified | NA         |
+| Vccaux     |       1.800 |     0.650 |       0.000 |      0.650 |       NA    | Unspecified | NA         |
+| Vccaux_io  |       1.800 |     0.232 |       0.047 |      0.185 |       NA    | Unspecified | NA         |
+| Vcco33     |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco25     |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco18     |       1.800 |     0.131 |       0.131 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco15     |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco135    |       1.350 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco12     |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco10     |       1.000 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vccadc     |       1.800 |     0.024 |       0.000 |      0.024 |       NA    | Unspecified | NA         |
+| MGTYAVcc   |       0.900 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| MGTYAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| MGTYVccaux |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
++------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
+
+
+1.3 Confidence Level
+--------------------
+
++-----------------------------+------------+--------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| User Input Data             | Confidence | Details                                                | Action                                                                                                     |
++-----------------------------+------------+--------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| Design implementation state | High       | Design is routed                                       |                                                                                                            |
+| Clock nodes activity        | High       | User specified more than 95% of clocks                 |                                                                                                            |
+| I/O nodes activity          | Low        | More than 75% of inputs are missing user specification | Provide missing input activity with simulation results or by editing the "By Resource Type -> I/Os" view   |
+| Internal nodes activity     | Medium     | User specified less than 25% of internal nodes         | Provide missing internal nodes activity with simulation results or by editing the "By Resource Type" views |
+| Device models               | High       | Device models are Production                           |                                                                                                            |
+|                             |            |                                                        |                                                                                                            |
+| Overall confidence level    | Low        |                                                        |                                                                                                            |
++-----------------------------+------------+--------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+
+
+2. Settings
+-----------
+
+2.1 Environment
+---------------
+
++-----------------------+--------------------------+
+| Ambient Temp (C)      | 25.0                     |
+| ThetaJA (C/W)         | 0.5                      |
+| Airflow (LFM)         | 250                      |
+| Heat Sink             | medium (Medium Profile)  |
+| ThetaSA (C/W)         | 0.7                      |
+| Board Selection       | medium (10"x10")         |
+| # of Board Layers     | 12to15 (12 to 15 Layers) |
+| Board Temperature (C) | 25.0                     |
++-----------------------+--------------------------+
+
+
+2.2 Clock Constraints
+---------------------
+
++----------+--------+-----------------+
+| Clock    | Domain | Constraint (ns) |
++----------+--------+-----------------+
+| host_clk | clk    |             3.3 |
++----------+--------+-----------------+
+
+
+3. Detailed Reports
+-------------------
+
+3.1 By Hierarchy
+----------------
+
++----------------------+-----------+
+| Name                 | Power (W) |
++----------------------+-----------+
+| top_bench__502_gcc_r |     0.775 |
+|   u_502_gcc_r        |     0.424 |
+|     glen[0].core_i   |     0.005 |
+|       core           |     0.004 |
+|     glen[100].core_i |     0.007 |
+|       core           |     0.004 |
+|     glen[101].core_i |     0.001 |
+|     glen[102].core_i |     0.001 |
+|     glen[103].core_i |     0.001 |
+|     glen[104].core_i |     0.002 |
+|     glen[107].core_i |     0.002 |
+|       core           |     0.001 |
+|     glen[108].core_i |     0.001 |
+|     glen[109].core_i |     0.001 |
+|     glen[110].core_i |     0.001 |
+|     glen[111].core_i |     0.001 |
+|     glen[112].core_i |     0.004 |
+|       core           |     0.003 |
+|     glen[113].core_i |     0.003 |
+|       core           |     0.002 |
+|     glen[114].core_i |     0.002 |
+|     glen[116].core_i |     0.003 |
+|       core           |     0.002 |
+|     glen[117].core_i |     0.004 |
+|       core           |     0.002 |
+|     glen[118].core_i |     0.004 |
+|       core           |     0.003 |
+|     glen[11].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[122].core_i |     0.010 |
+|       core           |     0.007 |
+|     glen[12].core_i  |     0.002 |
+|     glen[13].core_i  |     0.004 |
+|       core           |     0.003 |
+|     glen[15].core_i  |     0.002 |
+|     glen[16].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[17].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[18].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[1].core_i   |     0.007 |
+|       core           |     0.005 |
+|     glen[20].core_i  |     0.003 |
+|       core           |     0.001 |
+|     glen[21].core_i  |     0.007 |
+|       core           |     0.004 |
+|     glen[23].core_i  |     0.003 |
+|       core           |     0.001 |
+|     glen[24].core_i  |     0.006 |
+|       core           |     0.004 |
+|     glen[26].core_i  |     0.002 |
+|     glen[27].core_i  |     0.004 |
+|       core           |     0.002 |
+|     glen[29].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[2].core_i   |     0.006 |
+|       core           |     0.004 |
+|     glen[30].core_i  |     0.002 |
+|       core           |     0.001 |
+|     glen[35].core_i  |     0.010 |
+|       core           |     0.007 |
+|     glen[38].core_i  |     0.005 |
+|       core           |     0.003 |
+|     glen[40].core_i  |     0.004 |
+|       core           |     0.003 |
+|     glen[41].core_i  |     0.003 |
+|       core           |     0.001 |
+|     glen[42].core_i  |     0.003 |
+|       core           |     0.001 |
+|     glen[43].core_i  |     0.006 |
+|       core           |     0.004 |
+|     glen[45].core_i  |     0.004 |
+|       core           |     0.003 |
+|     glen[46].core_i  |     0.002 |
+|     glen[47].core_i  |     0.002 |
+|     glen[48].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[50].core_i  |     0.002 |
+|     glen[51].core_i  |     0.004 |
+|       core           |     0.002 |
+|     glen[52].core_i  |     0.004 |
+|       core           |     0.002 |
+|     glen[53].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[55].core_i  |     0.001 |
+|     glen[56].core_i  |     0.004 |
+|       core           |     0.003 |
+|     glen[59].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[5].core_i   |     0.003 |
+|       core           |     0.002 |
+|     glen[60].core_i  |     0.002 |
+|       core           |     0.001 |
+|     glen[61].core_i  |     0.002 |
+|       core           |     0.001 |
+|     glen[62].core_i  |     0.002 |
+|     glen[64].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[66].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[67].core_i  |     0.003 |
+|       core           |     0.001 |
+|     glen[68].core_i  |     0.003 |
+|       core           |     0.001 |
+|     glen[69].core_i  |     0.006 |
+|       core           |     0.004 |
+|     glen[71].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[72].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[73].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[74].core_i  |     0.004 |
+|       core           |     0.002 |
+|     glen[75].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[78].core_i  |     0.009 |
+|       core           |     0.007 |
+|     glen[7].core_i   |     0.010 |
+|       core           |     0.007 |
+|     glen[81].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[83].core_i  |     0.003 |
+|       core           |     0.001 |
+|     glen[84].core_i  |     0.007 |
+|       core           |     0.004 |
+|     glen[85].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[86].core_i  |     0.004 |
+|       core           |     0.003 |
+|     glen[87].core_i  |     0.002 |
+|     glen[88].core_i  |     0.002 |
+|     glen[89].core_i  |     0.004 |
+|       core           |     0.002 |
+|     glen[90].core_i  |     0.004 |
+|       core           |     0.002 |
+|     glen[91].core_i  |     0.006 |
+|       core           |     0.004 |
+|     glen[93].core_i  |     0.005 |
+|       core           |     0.004 |
+|     glen[94].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[95].core_i  |     0.006 |
+|       core           |     0.004 |
+|     glen[96].core_i  |     0.003 |
+|       core           |     0.002 |
+|     glen[97].core_i  |     0.002 |
+|       core           |     0.002 |
+|     glen[99].core_i  |     0.003 |
+|       core           |     0.002 |
++----------------------+-----------+
+
+

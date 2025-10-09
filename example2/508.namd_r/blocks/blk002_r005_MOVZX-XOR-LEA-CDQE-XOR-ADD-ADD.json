@@ -1,0 +1,256 @@
+{
+  "rank": 5,
+  "group_index": 5,
+  "execution_count": 1846446,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5826d152c73e",
+      "opcode": "movzx",
+      "raw_operands": [
+        "edx",
+        "word ptr [rcx]"
+      ],
+      "in_operands": [
+        "[rcx]"
+      ],
+      "out_operands": [
+        "edx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5826d152c782",
+      "opcode": "xor",
+      "raw_operands": [
+        "edx",
+        "edx"
+      ],
+      "in_operands": [
+        "edx",
+        "edx"
+      ],
+      "out_operands": [
+        "edx",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5826d152c7a7",
+      "opcode": "lea",
+      "raw_operands": [
+        "eax",
+        "ptr [rdx+rsi*1]"
+      ],
+      "in_operands": [
+        "ptr [rdx+rsi*1]"
+      ],
+      "out_operands": [
+        "eax"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x5826d152c7aa",
+      "opcode": "cdqe",
+      "raw_operands": [],
+      "in_operands": [
+        "eax"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x5826d152c7b1",
+      "opcode": "xor",
+      "raw_operands": [
+        "eax",
+        "eax"
+      ],
+      "in_operands": [
+        "eax",
+        "eax"
+      ],
+      "out_operands": [
+        "eax",
+        "flag"
+      ]
+    },
+    {
+      "index": 5,
+      "address": "0x5826d152c7ba",
+      "opcode": "add",
+      "raw_operands": [
+        "eax",
+        "edx"
+      ],
+      "in_operands": [
+        "eax",
+        "edx"
+      ],
+      "out_operands": [
+        "eax",
+        "flag"
+      ]
+    },
+    {
+      "index": 6,
+      "address": "0x5826d152c7c0",
+      "opcode": "add",
+      "raw_operands": [
+        "esi",
+        "eax"
+      ],
+      "in_operands": [
+        "esi",
+        "eax"
+      ],
+      "out_operands": [
+        "esi",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "edx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "edx"
+      },
+      "condition": "reg vs reg: edx"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "edx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "edx"
+      },
+      "condition": "reg vs reg: edx"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 4,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "edx"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "edx"
+      },
+      "condition": "reg vs reg: edx"
+    },
+    {
+      "from": {
+        "instr_index": 5,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 6,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    }
+  ],
+  "bench": "508.namd_r/1",
+  "src": "1/super_hot_regions:11",
+  "order_map": [
+    2,
+    0,
+    3,
+    1,
+    4,
+    5,
+    6
+  ],
+  "ff_boundaries": [
+    2,
+    0,
+    4
+  ],
+  "stage_count": 4,
+  "latency_cycles": 4,
+  "crit_path_sigma": 0.4330127018922193,
+  "comb_bound_hits": 3,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 8,
+    "added_flag_wr": 0,
+    "added_flag_waw": 3,
+    "added_raw": 6,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 15
+  },
+  "pcs": [
+    "0x5826d152c73e",
+    "0x5826d152c782",
+    "0x5826d152c7a7",
+    "0x5826d152c7aa",
+    "0x5826d152c7b1",
+    "0x5826d152c7ba",
+    "0x5826d152c7c0"
+  ],
+  "latencies": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5826d152c73e"
+}

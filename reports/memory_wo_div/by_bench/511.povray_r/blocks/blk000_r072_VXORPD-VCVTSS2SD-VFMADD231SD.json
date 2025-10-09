@@ -1,0 +1,119 @@
+{
+  "rank": 72,
+  "group_index": 1,
+  "execution_count": 1194829,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x622355aa73da",
+      "opcode": "vxorpd",
+      "raw_operands": [
+        "xmm7",
+        "xmm7",
+        "xmm7"
+      ],
+      "in_operands": [
+        "xmm7",
+        "xmm7"
+      ],
+      "out_operands": [
+        "xmm7"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x622355aa73e2",
+      "opcode": "vcvtss2sd",
+      "raw_operands": [
+        "xmm1",
+        "xmm7",
+        "dword ptr [r12+0x10]"
+      ],
+      "in_operands": [
+        "xmm7",
+        "[r12+0x10]"
+      ],
+      "out_operands": [
+        "xmm1"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x622355aa73e9",
+      "opcode": "vfmadd231sd",
+      "raw_operands": [
+        "xmm0",
+        "xmm1",
+        "xmm3"
+      ],
+      "in_operands": [
+        "xmm0",
+        "xmm1",
+        "xmm3"
+      ],
+      "out_operands": [
+        "xmm0"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm7"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "xmm7"
+      },
+      "condition": "reg vs reg: xmm7"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "xmm1"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "xmm1"
+      },
+      "condition": "reg vs reg: xmm1"
+    }
+  ],
+  "bench": "511.povray_r/1",
+  "src": "1/super_hot_regions:100",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.9428090415820634,
+  "comb_bound_hits": 1,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 2
+  },
+  "pcs": [
+    "0x622355aa73da",
+    "0x622355aa73e2",
+    "0x622355aa73e9"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x622355aa73da"
+}

@@ -1,0 +1,205 @@
+{
+  "rank": 58,
+  "group_index": 4,
+  "execution_count": 435613,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5826d1567876",
+      "opcode": "shl",
+      "raw_operands": [
+        "rcx",
+        "0x5"
+      ],
+      "in_operands": [
+        "rcx",
+        "0x5"
+      ],
+      "out_operands": [
+        "rcx",
+        "flag"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5826d156787a",
+      "opcode": "add",
+      "raw_operands": [
+        "rcx",
+        "r15"
+      ],
+      "in_operands": [
+        "rcx",
+        "r15"
+      ],
+      "out_operands": [
+        "rcx",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5826d15678a9",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "xmm6",
+        "qword ptr [rcx+0x10]"
+      ],
+      "in_operands": [
+        "[rcx+0x10]"
+      ],
+      "out_operands": [
+        "xmm6"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x5826d15678d9",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "xmm14",
+        "qword ptr [rcx]"
+      ],
+      "in_operands": [
+        "[rcx]"
+      ],
+      "out_operands": [
+        "xmm14"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x5826d15678dd",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "xmm11",
+        "qword ptr [rcx+0x8]"
+      ],
+      "in_operands": [
+        "[rcx+0x8]"
+      ],
+      "out_operands": [
+        "xmm11"
+      ]
+    },
+    {
+      "index": 5,
+      "address": "0x5826d15678e2",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "qword ptr [rsp+0x1e8]",
+        "xmm6"
+      ],
+      "in_operands": [
+        "xmm6"
+      ],
+      "out_operands": [
+        "[rsp+0x1e8]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rcx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rcx"
+      },
+      "condition": "reg vs reg: rcx"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "rcx"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "[rcx+0x10]"
+      },
+      "condition": "reg vs mem: rcx"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "rcx"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "[rcx]"
+      },
+      "condition": "reg vs mem: rcx"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "rcx"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "[rcx+0x8]"
+      },
+      "condition": "reg vs mem: rcx"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "xmm6"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "xmm6"
+      },
+      "condition": "reg vs reg: xmm6"
+    }
+  ],
+  "bench": "508.namd_r/1",
+  "src": "1/super_hot_regions:206",
+  "order_map": [
+    0,
+    1,
+    2,
+    4,
+    3,
+    5
+  ],
+  "ff_boundaries": [
+    1,
+    2,
+    4,
+    3
+  ],
+  "stage_count": 5,
+  "latency_cycles": 5,
+  "crit_path_sigma": 0.8,
+  "comb_bound_hits": 3,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 5,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 5
+  },
+  "pcs": [
+    "0x5826d1567876",
+    "0x5826d156787a",
+    "0x5826d15678a9",
+    "0x5826d15678d9",
+    "0x5826d15678dd",
+    "0x5826d15678e2"
+  ],
+  "latencies": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5826d1567876"
+}

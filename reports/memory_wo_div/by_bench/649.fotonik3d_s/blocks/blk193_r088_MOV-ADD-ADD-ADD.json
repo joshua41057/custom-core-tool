@@ -1,0 +1,148 @@
+{
+  "rank": 88,
+  "group_index": 5,
+  "execution_count": 20856,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x566cf36e69b1",
+      "opcode": "mov",
+      "raw_operands": [
+        "rsi",
+        "qword ptr [rsp+0x330]"
+      ],
+      "in_operands": [
+        "[rsp+0x330]"
+      ],
+      "out_operands": [
+        "rsi"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x566cf36e69c9",
+      "opcode": "add",
+      "raw_operands": [
+        "qword ptr [rsp+0x518]",
+        "rsi"
+      ],
+      "in_operands": [
+        "[rsp+0x518]",
+        "rsi"
+      ],
+      "out_operands": [
+        "[rsp+0x518]",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x566cf36e69d1",
+      "opcode": "add",
+      "raw_operands": [
+        "qword ptr [rsp+0x858]",
+        "rsi"
+      ],
+      "in_operands": [
+        "[rsp+0x858]",
+        "rsi"
+      ],
+      "out_operands": [
+        "[rsp+0x858]",
+        "flag"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x566cf36e69e1",
+      "opcode": "add",
+      "raw_operands": [
+        "qword ptr [rsp+0x508]",
+        "rsi"
+      ],
+      "in_operands": [
+        "[rsp+0x508]",
+        "rsi"
+      ],
+      "out_operands": [
+        "[rsp+0x508]",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rsi"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rsi"
+      },
+      "condition": "reg vs reg: rsi"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rsi"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "rsi"
+      },
+      "condition": "reg vs reg: rsi"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rsi"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "rsi"
+      },
+      "condition": "reg vs reg: rsi"
+    }
+  ],
+  "bench": "649.fotonik3d_s/1",
+  "src": "1/super_hot_regions:348",
+  "order_map": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "ff_boundaries": [
+    0,
+    1,
+    2
+  ],
+  "stage_count": 4,
+  "latency_cycles": 4,
+  "crit_path_sigma": 0.8660254037844386,
+  "comb_bound_hits": 1,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 3,
+    "added_flag_wr": 0,
+    "added_flag_waw": 3,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 6
+  },
+  "pcs": [
+    "0x566cf36e69b1",
+    "0x566cf36e69c9",
+    "0x566cf36e69d1",
+    "0x566cf36e69e1"
+  ],
+  "latencies": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x566cf36e69b1"
+}

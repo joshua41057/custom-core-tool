@@ -1,0 +1,144 @@
+{
+  "rank": 9,
+  "group_index": 1,
+  "execution_count": 1235933,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5692ecfc7966",
+      "opcode": "mov",
+      "raw_operands": [
+        "edx",
+        "esi"
+      ],
+      "in_operands": [
+        "esi"
+      ],
+      "out_operands": [
+        "edx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5692ecfc7968",
+      "opcode": "shr",
+      "raw_operands": [
+        "edx",
+        "0x6"
+      ],
+      "in_operands": [
+        "edx",
+        "0x6"
+      ],
+      "out_operands": [
+        "edx",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5692ecfc796d",
+      "opcode": "and",
+      "raw_operands": [
+        "edx",
+        "0x1"
+      ],
+      "in_operands": [
+        "edx",
+        "0x1"
+      ],
+      "out_operands": [
+        "edx",
+        "flag"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x5692ecfc7970",
+      "opcode": "mov",
+      "raw_operands": [
+        "r13d",
+        "edx"
+      ],
+      "in_operands": [
+        "edx"
+      ],
+      "out_operands": [
+        "r13d"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "edx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "edx"
+      },
+      "condition": "reg vs reg: edx"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "edx"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "edx"
+      },
+      "condition": "reg vs reg: edx"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "edx"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "edx"
+      },
+      "condition": "reg vs reg: edx"
+    }
+  ],
+  "bench": "602.gcc_s/3",
+  "src": "3/super_hot_regions:11",
+  "order_map": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "ff_boundaries": [
+    2
+  ],
+  "stage_count": 2,
+  "latency_cycles": 2,
+  "crit_path_sigma": 1.0,
+  "comb_bound_hits": 1,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 3,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 3,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 6
+  },
+  "pcs": [
+    "0x5692ecfc7966",
+    "0x5692ecfc7968",
+    "0x5692ecfc796d",
+    "0x5692ecfc7970"
+  ],
+  "latencies": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5692ecfc7966"
+}

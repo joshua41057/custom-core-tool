@@ -1,0 +1,115 @@
+{
+  "rank": 87,
+  "group_index": 1,
+  "execution_count": 29016,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5dbd09bcd8ef",
+      "opcode": "mov",
+      "raw_operands": [
+        "rax",
+        "r13"
+      ],
+      "in_operands": [
+        "r13"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5dbd09bcd8f5",
+      "opcode": "sub",
+      "raw_operands": [
+        "rax",
+        "qword ptr [rip+0x9edec]"
+      ],
+      "in_operands": [
+        "rax",
+        "[rip+0x9edec]"
+      ],
+      "out_operands": [
+        "rax",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5dbd09bcd8fc",
+      "opcode": "imul",
+      "raw_operands": [
+        "rax",
+        "qword ptr [rip+0x9eddc]"
+      ],
+      "in_operands": [
+        "rax",
+        "[rip+0x9eddc]"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rax"
+      },
+      "condition": "reg vs reg: rax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "rax"
+      },
+      "condition": "reg vs reg: rax"
+    }
+  ],
+  "bench": "549.fotonik3d_r/1",
+  "src": "1/super_hot_regions:364",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 1.247219128924647,
+  "comb_bound_hits": 2,
+  "dsp_bound_hits": 1,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 1,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 3
+  },
+  "pcs": [
+    "0x5dbd09bcd8ef",
+    "0x5dbd09bcd8f5",
+    "0x5dbd09bcd8fc"
+  ],
+  "latencies": [
+    1,
+    1,
+    2
+  ],
+  "pc": "0x5dbd09bcd8ef"
+}

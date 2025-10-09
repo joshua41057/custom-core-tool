@@ -1,0 +1,116 @@
+{
+  "rank": 33,
+  "group_index": 16,
+  "execution_count": 399339,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5dbd09beeb4d",
+      "opcode": "mov",
+      "raw_operands": [
+        "rdx",
+        "qword ptr [rsp+0x1e8]"
+      ],
+      "in_operands": [
+        "[rsp+0x1e8]"
+      ],
+      "out_operands": [
+        "rdx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5dbd09beeb9d",
+      "opcode": "add",
+      "raw_operands": [
+        "qword ptr [rsp+0x4b0]",
+        "rdx"
+      ],
+      "in_operands": [
+        "[rsp+0x4b0]",
+        "rdx"
+      ],
+      "out_operands": [
+        "[rsp+0x4b0]",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5dbd09beec8c",
+      "opcode": "add",
+      "raw_operands": [
+        "qword ptr [rsp+0x338]",
+        "rdx"
+      ],
+      "in_operands": [
+        "[rsp+0x338]",
+        "rdx"
+      ],
+      "out_operands": [
+        "[rsp+0x338]",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rdx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rdx"
+      },
+      "condition": "reg vs reg: rdx"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rdx"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "rdx"
+      },
+      "condition": "reg vs reg: rdx"
+    }
+  ],
+  "bench": "549.fotonik3d_r/1",
+  "src": "1/super_hot_regions:187",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.9428090415820634,
+  "comb_bound_hits": 1,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 1,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 3
+  },
+  "pcs": [
+    "0x5dbd09beeb4d",
+    "0x5dbd09beeb9d",
+    "0x5dbd09beec8c"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5dbd09beeb4d"
+}

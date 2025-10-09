@@ -1,0 +1,407 @@
+{
+  "rank": 25,
+  "group_index": 1,
+  "execution_count": 3154203,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x65462c69111d",
+      "opcode": "lea",
+      "raw_operands": [
+        "rax",
+        "ptr [rip+0xfcb1c]"
+      ],
+      "in_operands": [
+        "ptr [rip+0xfcb1c]"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x65462c691124",
+      "opcode": "mov",
+      "raw_operands": [
+        "eax",
+        "dword ptr [rax+r10*4]"
+      ],
+      "in_operands": [
+        "[rax+r10*4]"
+      ],
+      "out_operands": [
+        "eax"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x65462c691128",
+      "opcode": "and",
+      "raw_operands": [
+        "eax",
+        "0x4001"
+      ],
+      "in_operands": [
+        "eax",
+        "0x4001"
+      ],
+      "out_operands": [
+        "eax",
+        "flag"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x65462c69112d",
+      "opcode": "cmp",
+      "raw_operands": [
+        "eax",
+        "0x4001"
+      ],
+      "in_operands": [
+        "eax",
+        "0x4001"
+      ],
+      "out_operands": [
+        "flag"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x65462c691132",
+      "opcode": "setz",
+      "raw_operands": [
+        "al"
+      ],
+      "in_operands": [
+        "flag"
+      ],
+      "out_operands": [
+        "al"
+      ]
+    },
+    {
+      "index": 5,
+      "address": "0x65462c691138",
+      "opcode": "cmp",
+      "raw_operands": [
+        "rax",
+        "rdx"
+      ],
+      "in_operands": [
+        "rax",
+        "rdx"
+      ],
+      "out_operands": [
+        "flag"
+      ]
+    },
+    {
+      "index": 6,
+      "address": "0x65462c69113b",
+      "opcode": "setz",
+      "raw_operands": [
+        "al"
+      ],
+      "in_operands": [
+        "flag"
+      ],
+      "out_operands": [
+        "al"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "[rax+r10*4]"
+      },
+      "condition": "reg vs mem: rax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 3,
+        "operand": "flag"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "flag"
+      },
+      "condition": "flag vs flag"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "rax"
+      },
+      "condition": "reg vs reg: rax"
+    },
+    {
+      "from": {
+        "instr_index": 5,
+        "operand": "flag"
+      },
+      "to": {
+        "instr_index": 6,
+        "operand": "flag"
+      },
+      "condition": "flag vs flag"
+    }
+  ],
+  "bench": "600.perlbench_s/1",
+  "src": "1/super_hot_regions:35",
+  "order_map": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "cut_mask": [
+    false,
+    true,
+    false,
+    false,
+    false,
+    false
+  ],
+  "ff_boundaries": [
+    1
+  ],
+  "ff_hints": [
+    1
+  ],
+  "stage_of": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "stage_count": 2,
+  "latency_cycles": 2,
+  "crit_path_sigma": 2.5,
+  "edge_stats": {
+    "base_edges": 6,
+    "added_flag_wr": 0,
+    "added_flag_anti": 0,
+    "added_raw": 6,
+    "added_war": 3,
+    "added_waw": 5,
+    "added_mem_raw": 0,
+    "added_mem_war": 0,
+    "added_mem_waw": 0,
+    "added_mem_conservative": 0,
+    "added_mem_rar": 0,
+    "final_edges": 20
+  },
+  "nodes_meta": [
+    {
+      "idx": 0,
+      "op": "LEA",
+      "bw": 64,
+      "comb": 0,
+      "dsp": 0,
+      "lut": 2,
+      "is_load": false,
+      "is_store": false,
+      "cls": "LEA",
+      "mem": [
+        {
+          "base": null,
+          "index": null,
+          "scale": 1,
+          "disp": 1035036,
+          "space": "GEN",
+          "width": 64
+        }
+      ],
+      "precise_addr": false,
+      "flag_reads": [],
+      "flag_writes": [],
+      "is_atomic": false
+    },
+    {
+      "idx": 1,
+      "op": "MOV",
+      "bw": 32,
+      "comb": 0,
+      "dsp": 0,
+      "lut": 1,
+      "is_load": true,
+      "is_store": false,
+      "cls": "LOAD",
+      "mem": [
+        {
+          "base": "RAX",
+          "index": "R10",
+          "scale": 4,
+          "disp": 0,
+          "space": "GEN",
+          "width": 32
+        }
+      ],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [],
+      "is_atomic": false
+    },
+    {
+      "idx": 2,
+      "op": "AND",
+      "bw": 32,
+      "comb": 1,
+      "dsp": 0,
+      "lut": 1,
+      "is_load": false,
+      "is_store": false,
+      "cls": "AND",
+      "mem": [],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [
+        "CF",
+        "OF",
+        "PF",
+        "SF",
+        "ZF"
+      ],
+      "is_atomic": false
+    },
+    {
+      "idx": 3,
+      "op": "CMP",
+      "bw": 32,
+      "comb": 1,
+      "dsp": 0,
+      "lut": 1,
+      "is_load": false,
+      "is_store": false,
+      "cls": "CMP",
+      "mem": [],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [
+        "AF",
+        "CF",
+        "OF",
+        "PF",
+        "SF",
+        "ZF"
+      ],
+      "is_atomic": false
+    },
+    {
+      "idx": 4,
+      "op": "SETZ",
+      "bw": 8,
+      "comb": 1,
+      "dsp": 0,
+      "lut": 1,
+      "is_load": false,
+      "is_store": false,
+      "cls": "SETZ",
+      "mem": [],
+      "precise_addr": true,
+      "flag_reads": [
+        "ZF"
+      ],
+      "flag_writes": [],
+      "is_atomic": false
+    },
+    {
+      "idx": 5,
+      "op": "CMP",
+      "bw": 64,
+      "comb": 1,
+      "dsp": 0,
+      "lut": 2,
+      "is_load": false,
+      "is_store": false,
+      "cls": "CMP",
+      "mem": [],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [
+        "AF",
+        "CF",
+        "OF",
+        "PF",
+        "SF",
+        "ZF"
+      ],
+      "is_atomic": false
+    },
+    {
+      "idx": 6,
+      "op": "SETZ",
+      "bw": 8,
+      "comb": 1,
+      "dsp": 0,
+      "lut": 1,
+      "is_load": false,
+      "is_store": false,
+      "cls": "SETZ",
+      "mem": [],
+      "precise_addr": true,
+      "flag_reads": [
+        "ZF"
+      ],
+      "flag_writes": [],
+      "is_atomic": false
+    }
+  ],
+  "mem_calendar": {
+    "0": {
+      "GEN:NONE": {
+        "reads": 0,
+        "writes": 0,
+        "ops": 0,
+        "max_bits": 64
+      },
+      "GEN:RAX": {
+        "reads": 1,
+        "writes": 0,
+        "ops": 1,
+        "max_bits": 32
+      }
+    }
+  },
+  "dsp_need_total": 0,
+  "pc": "0x65462c69111d"
+}

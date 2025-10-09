@@ -1,0 +1,277 @@
+{
+  "rank": 81,
+  "group_index": 6,
+  "execution_count": 131712,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x577f79d898f2",
+      "opcode": "movzx",
+      "raw_operands": [
+        "ecx",
+        "byte ptr [rdx+0x5]"
+      ],
+      "in_operands": [
+        "[rdx+0x5]"
+      ],
+      "out_operands": [
+        "ecx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x577f79d898f6",
+      "opcode": "imul",
+      "raw_operands": [
+        "ecx",
+        "dword ptr [r8+0x24]"
+      ],
+      "in_operands": [
+        "ecx",
+        "[r8+0x24]"
+      ],
+      "out_operands": [
+        "ecx"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x577f79d898fb",
+      "opcode": "add",
+      "raw_operands": [
+        "ecx",
+        "dword ptr [r8+0x28]"
+      ],
+      "in_operands": [
+        "ecx",
+        "[r8+0x28]"
+      ],
+      "out_operands": [
+        "ecx",
+        "flag"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x577f79d898ff",
+      "opcode": "mov",
+      "raw_operands": [
+        "r11d",
+        "ecx"
+      ],
+      "in_operands": [
+        "ecx"
+      ],
+      "out_operands": [
+        "r11d"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x577f79d89902",
+      "opcode": "neg",
+      "raw_operands": [
+        "r11d"
+      ],
+      "in_operands": [
+        "r11d"
+      ],
+      "out_operands": [
+        "r11d",
+        "flag"
+      ]
+    },
+    {
+      "index": 5,
+      "address": "0x577f79d89905",
+      "opcode": "sar",
+      "raw_operands": [
+        "r11d",
+        "0x1f"
+      ],
+      "in_operands": [
+        "r11d",
+        "0x1f"
+      ],
+      "out_operands": [
+        "r11d",
+        "flag"
+      ]
+    },
+    {
+      "index": 6,
+      "address": "0x577f79d89909",
+      "opcode": "test",
+      "raw_operands": [
+        "ecx",
+        "0xffffff00"
+      ],
+      "in_operands": [
+        "ecx",
+        "0xffffff00"
+      ],
+      "out_operands": [
+        "flag"
+      ]
+    },
+    {
+      "index": 7,
+      "address": "0x577f79d8990f",
+      "opcode": "cmovnz",
+      "raw_operands": [
+        "ecx",
+        "r11d"
+      ],
+      "in_operands": [
+        "r11d",
+        "flag"
+      ],
+      "out_operands": [
+        "ecx"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "ecx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "ecx"
+      },
+      "condition": "reg vs reg: ecx"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "ecx"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "ecx"
+      },
+      "condition": "reg vs reg: ecx"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "ecx"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "ecx"
+      },
+      "condition": "reg vs reg: ecx"
+    },
+    {
+      "from": {
+        "instr_index": 3,
+        "operand": "r11d"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "r11d"
+      },
+      "condition": "reg vs reg: r11d"
+    },
+    {
+      "from": {
+        "instr_index": 4,
+        "operand": "r11d"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "r11d"
+      },
+      "condition": "reg vs reg: r11d"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "ecx"
+      },
+      "to": {
+        "instr_index": 6,
+        "operand": "ecx"
+      },
+      "condition": "reg vs reg: ecx"
+    },
+    {
+      "from": {
+        "instr_index": 5,
+        "operand": "r11d"
+      },
+      "to": {
+        "instr_index": 7,
+        "operand": "r11d"
+      },
+      "condition": "reg vs reg: r11d"
+    },
+    {
+      "from": {
+        "instr_index": 6,
+        "operand": "flag"
+      },
+      "to": {
+        "instr_index": 7,
+        "operand": "flag"
+      },
+      "condition": "flag vs flag"
+    }
+  ],
+  "bench": "625.x264_s/2",
+  "src": "2/super_hot_regions:187",
+  "order_map": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "ff_boundaries": [
+    0,
+    1,
+    2,
+    5
+  ],
+  "stage_count": 5,
+  "latency_cycles": 5,
+  "crit_path_sigma": 0.6324555320336759,
+  "comb_bound_hits": 4,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 8,
+    "added_flag_wr": 2,
+    "added_flag_waw": 4,
+    "added_raw": 7,
+    "added_war": 1,
+    "added_waw": 1,
+    "final_edges": 23
+  },
+  "pcs": [
+    "0x577f79d898f2",
+    "0x577f79d898f6",
+    "0x577f79d898fb",
+    "0x577f79d898ff",
+    "0x577f79d89902",
+    "0x577f79d89905",
+    "0x577f79d89909",
+    "0x577f79d8990f"
+  ],
+  "latencies": [
+    1,
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x577f79d898f2"
+}

@@ -1,0 +1,113 @@
+{
+  "rank": 83,
+  "group_index": 1,
+  "execution_count": 600204,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5ebda5d667ad",
+      "opcode": "vmovq",
+      "raw_operands": [
+        "xmm2",
+        "rax"
+      ],
+      "in_operands": [
+        "rax"
+      ],
+      "out_operands": [
+        "xmm2"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5ebda5d667b9",
+      "opcode": "vpinsrq",
+      "raw_operands": [
+        "xmm0",
+        "xmm2",
+        "r15",
+        "0x1"
+      ],
+      "in_operands": [
+        "xmm2",
+        "r15",
+        "0x1"
+      ],
+      "out_operands": [
+        "xmm0"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5ebda5d667eb",
+      "opcode": "vmovdqu",
+      "raw_operands": [
+        "xmmword ptr [rbx+0x30]",
+        "xmm0"
+      ],
+      "in_operands": [
+        "xmm0"
+      ],
+      "out_operands": [
+        "xmmword ptr [rbx+0x30]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm2"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "xmm2"
+      },
+      "condition": "reg vs reg: xmm2"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "xmm0"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "xmm0"
+      },
+      "condition": "reg vs reg: xmm0"
+    }
+  ],
+  "bench": "500.perlbench_r/1",
+  "src": "1/super_hot_regions:113",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "comb_bound_hits": 0,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 2
+  },
+  "pcs": [
+    "0x5ebda5d667ad",
+    "0x5ebda5d667b9",
+    "0x5ebda5d667eb"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x5ebda5d667ad"
+}

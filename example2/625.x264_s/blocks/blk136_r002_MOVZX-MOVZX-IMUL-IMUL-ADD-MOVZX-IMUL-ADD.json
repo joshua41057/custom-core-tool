@@ -1,0 +1,267 @@
+{
+  "rank": 2,
+  "group_index": 1,
+  "execution_count": 12563458,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x577f79d88760",
+      "opcode": "movzx",
+      "raw_operands": [
+        "esi",
+        "byte ptr [rdx+rcx*1]"
+      ],
+      "in_operands": [
+        "[rdx+rcx*1]"
+      ],
+      "out_operands": [
+        "esi"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x577f79d88764",
+      "opcode": "movzx",
+      "raw_operands": [
+        "r15d",
+        "byte ptr [rdx+rcx*1+0x1]"
+      ],
+      "in_operands": [
+        "[rdx+rcx*1+0x1]"
+      ],
+      "out_operands": [
+        "r15d"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x577f79d8876a",
+      "opcode": "imul",
+      "raw_operands": [
+        "esi",
+        "r9d"
+      ],
+      "in_operands": [
+        "esi",
+        "r9d"
+      ],
+      "out_operands": [
+        "esi"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x577f79d8876e",
+      "opcode": "imul",
+      "raw_operands": [
+        "r15d",
+        "r10d"
+      ],
+      "in_operands": [
+        "r15d",
+        "r10d"
+      ],
+      "out_operands": [
+        "r15d"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x577f79d88772",
+      "opcode": "add",
+      "raw_operands": [
+        "esi",
+        "r15d"
+      ],
+      "in_operands": [
+        "esi",
+        "r15d"
+      ],
+      "out_operands": [
+        "esi",
+        "flag"
+      ]
+    },
+    {
+      "index": 5,
+      "address": "0x577f79d88775",
+      "opcode": "movzx",
+      "raw_operands": [
+        "r15d",
+        "byte ptr [rax+rcx*1]"
+      ],
+      "in_operands": [
+        "[rax+rcx*1]"
+      ],
+      "out_operands": [
+        "r15d"
+      ]
+    },
+    {
+      "index": 6,
+      "address": "0x577f79d8877a",
+      "opcode": "imul",
+      "raw_operands": [
+        "r15d",
+        "r8d"
+      ],
+      "in_operands": [
+        "r15d",
+        "r8d"
+      ],
+      "out_operands": [
+        "r15d"
+      ]
+    },
+    {
+      "index": 7,
+      "address": "0x577f79d8877e",
+      "opcode": "add",
+      "raw_operands": [
+        "esi",
+        "r15d"
+      ],
+      "in_operands": [
+        "esi",
+        "r15d"
+      ],
+      "out_operands": [
+        "esi",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "esi"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "esi"
+      },
+      "condition": "reg vs reg: esi"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "r15d"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "r15d"
+      },
+      "condition": "reg vs reg: r15d"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "esi"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "esi"
+      },
+      "condition": "reg vs reg: esi"
+    },
+    {
+      "from": {
+        "instr_index": 3,
+        "operand": "r15d"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "r15d"
+      },
+      "condition": "reg vs reg: r15d"
+    },
+    {
+      "from": {
+        "instr_index": 5,
+        "operand": "r15d"
+      },
+      "to": {
+        "instr_index": 6,
+        "operand": "r15d"
+      },
+      "condition": "reg vs reg: r15d"
+    },
+    {
+      "from": {
+        "instr_index": 4,
+        "operand": "esi"
+      },
+      "to": {
+        "instr_index": 7,
+        "operand": "esi"
+      },
+      "condition": "reg vs reg: esi"
+    },
+    {
+      "from": {
+        "instr_index": 6,
+        "operand": "r15d"
+      },
+      "to": {
+        "instr_index": 7,
+        "operand": "r15d"
+      },
+      "condition": "reg vs reg: r15d"
+    }
+  ],
+  "bench": "625.x264_s/2",
+  "src": "2/super_hot_regions:2",
+  "order_map": [
+    1,
+    0,
+    3,
+    2,
+    4,
+    5,
+    6,
+    7
+  ],
+  "ff_boundaries": [
+    1,
+    0,
+    3,
+    4,
+    5
+  ],
+  "stage_count": 6,
+  "latency_cycles": 6,
+  "crit_path_sigma": 0.37267799624996495,
+  "comb_bound_hits": 4,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 7,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 9,
+    "added_war": 3,
+    "added_waw": 1,
+    "final_edges": 20
+  },
+  "pcs": [
+    "0x577f79d88760",
+    "0x577f79d88764",
+    "0x577f79d8876a",
+    "0x577f79d8876e",
+    "0x577f79d88772",
+    "0x577f79d88775",
+    "0x577f79d8877a",
+    "0x577f79d8877e"
+  ],
+  "latencies": [
+    1,
+    1,
+    2,
+    2,
+    1,
+    1,
+    2,
+    1
+  ],
+  "pc": "0x577f79d88760"
+}

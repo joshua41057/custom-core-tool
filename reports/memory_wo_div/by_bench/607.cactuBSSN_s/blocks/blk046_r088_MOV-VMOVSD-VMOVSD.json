@@ -1,0 +1,112 @@
+{
+  "rank": 88,
+  "group_index": 5,
+  "execution_count": 129449,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x626fc4568646",
+      "opcode": "mov",
+      "raw_operands": [
+        "rax",
+        "qword ptr [rsp+0x170]"
+      ],
+      "in_operands": [
+        "[rsp+0x170]"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x626fc4568659",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "xmm5",
+        "qword ptr [rax+r14*1]"
+      ],
+      "in_operands": [
+        "[rax+r14*1]"
+      ],
+      "out_operands": [
+        "xmm5"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x626fc456869e",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "qword ptr [rsp+0x2d8]",
+        "xmm5"
+      ],
+      "in_operands": [
+        "xmm5"
+      ],
+      "out_operands": [
+        "[rsp+0x2d8]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "[rax+r14*1]"
+      },
+      "condition": "reg vs mem: rax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "xmm5"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "xmm5"
+      },
+      "condition": "reg vs reg: xmm5"
+    }
+  ],
+  "bench": "607.cactuBSSN_s/1",
+  "src": "1/super_hot_regions:182",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.9428090415820634,
+  "comb_bound_hits": 2,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 2
+  },
+  "pcs": [
+    "0x626fc4568646",
+    "0x626fc4568659",
+    "0x626fc456869e"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x626fc4568646"
+}

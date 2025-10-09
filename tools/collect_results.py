@@ -1,237 +1,139 @@
+#!/usr/bin/env python3
+
 from __future__ import annotations
-import argparse, csv, datetime as dt, json, re, sys
+
+import argparse
+import csv
+import re
+import sys
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
-ap0 = argparse.ArgumentParser(add_help=False)
-ap0.add_argument("-d", "--dir", default=".",
-                 help="bench dir (default: cur dir)")
-args0, _rest = ap0.parse_known_args()
-
-WORKDIR    = Path(args0.dir).resolve()
-RPT_DIR    = WORKDIR
-LEN_PKG    = WORKDIR / "rtl" / "len_table_pkg.sv"
-TIMING_RPT = WORKDIR / "post_route_timing.rpt"
-POWER_RPT  = WORKDIR / "post_route_power.rpt"
-
-CLK_TARGET_MHZ = 300.0  # target clock (MHz) – adjust if constraint changes
-TARGET_T_NS    = 1000.0 / CLK_TARGET_MHZ
-
-# Utility: load text safely
+CLK_TARGET_MHZ = 300.0
+TARGET_T_NS = 1000.0 / CLK_TARGET_MHZ
 
 def text(p: Path) -> str:
-    """Read *p* as text, return empty string if file missing."""
     return p.read_text(errors="ignore") if p.is_file() else ""
 
-# Timing report parsing (post_route_timing.rpt)
-
-WNS_ROW_RE = re.compile(r"Design Timing Summary.*?\n\s*([-+]?[0-9.]+)", re.S | re.I)
-
-
-def parse_timing() -> tuple[float | None, float | None]:
-    """Return (WNS ns, effective Fmax MHz)."""
-    txt = text(TIMING_RPT)
-    if not txt:
+def parse_timing(timing_rpt_path: Path) -> Tuple[Optional[float], Optional[float]]:
+    content = text(timing_rpt_path)
+    if not content:
         return None, None
 
-    m   = WNS_ROW_RE.search(txt)
+    m = re.search(r"WNS\(ns\)\s+.*\n\s*-+\s+.*\n\s*([\d.-]+)", content, re.M | re.I)
     wns = float(m.group(1)) if m else None
 
     fmax = None
     if wns is not None:
-        eff_period = TARGET_T_NS - wns  # ns
-        if eff_period > 0:
-            fmax = 1000.0 / eff_period  # MHz
-    return wns, fmax
+        effective_period = TARGET_T_NS - wns
+        if effective_period > 0:
+            fmax = round(1000.0 / effective_period, 3)
 
-# Utilization report parsing (utilization_pblock_*.rpt)
+    return (round(wns, 3) if wns is not None else None), fmax
 
-def _parse_row_usage_available(tag: str, rpt_txt: str) -> tuple[int | None, int | None]:
-    """Extract (used, available) from a utilization row whose first cell matches *tag*."""
-    # Row example:
-    # | DSPs | 76 | 0 | 0 | 76 | 0 | 0 | 144 | 52.78 |
-    pattern = rf"^\|\s*{re.escape(tag)}\s*\|(?P<cells>[^\n]*)$"
-    m = re.search(pattern, rpt_txt, flags=re.M)
-    if not m:
-        return None, None
-    nums = [int(n.replace(",", "")) for n in re.findall(r"\d+", m.group("cells"))]
-    if len(nums) < 7:
-        return None, None
-    used, avail = nums[3], nums[6]
-    return used, avail
+def parse_util(util_rpt_path: Path) -> Dict[str, Optional[Any]]:
+    content = text(util_rpt_path)
 
+    def get_resource_stats(tag: str) -> Optional[int]:
+        pattern = re.compile(
+            rf"^\s*\|\s*{re.escape(tag)}\s*\|"
+            r"\s*[\d,]+\s*\|"  # Parent
+            r"\s*[\d,]+\s*\|"  # Child
+            r"\s*[\d,]+\s*\|"  # Non-Assigned
+            r"\s*([\d,]+)\s*\|"  # Used (group 1)
+            r"\s*[\d,]+\s*\|"  # Fixed
+            r"\s*[\d,]+\s*\|"  # Available
+            r"\s*[^|]+\s*\|",  # Util% (ignored)
+            re.M | re.I
+        )
+        match = pattern.search(content)
+        if match:
+            used_str = match.group(1)
+            return int(used_str.replace(",", "")) if used_str else 0
+        return 0  # Default if no match
 
-def parse_util(rpt: Path) -> dict[str, Any]:
-    u_txt = text(rpt)
-    dsp_used, dsp_tot = _parse_row_usage_available("DSPs", u_txt)
-    clb_used, clb_tot = _parse_row_usage_available("CLB",  u_txt)
+    clb_used = get_resource_stats("CLB")
+    dsp_used = get_resource_stats("DSPs")
+    bram_used = get_resource_stats("Block RAM Tile")
+
     return {
-        "pblock_clb_total": clb_tot,
-        "pblock_clb_used":  clb_used,
-        "pblock_dsp_total": dsp_tot,
-        "pblock_dsp_used":  dsp_used,
+        "CLB_Used": clb_used,
+        "DSP_Used": dsp_used,
+        "BRAM_Used": bram_used,
     }
 
-# Power report parsing (post_route_power.rpt)
+def parse_power(power_rpt_path: Path) -> Dict[str, Optional[float]]:
+    content = text(power_rpt_path)
+    m = re.search(r"^\s*\|\s*Dynamic\s*\(W\)\s*\|\s*(\d+\.\d+)", content, re.M | re.I)
+    dynamic_w = float(m.group(1)) if m else None
 
-def _grab_power(label: str, txt: str) -> float | None:
-    m = re.search(rf"{re.escape(label)}\s*\(W\)\s*\|\s*([0-9.]+)", txt)
-    return float(m.group(1)) if m else None
+    return {"Dynamic_Power_W": (round(dynamic_w, 4) if dynamic_w is not None else None)}
 
-
-def parse_power() -> dict[str, Any]:
-    txt = text(POWER_RPT)
-    if not txt:
-        return {
-            "total_on_chip_power_w": None,
-            "dynamic_power_w":       None,
-            "device_static_power_w": None,
-        }
-    return {
-        "total_on_chip_power_w": _grab_power("Total On-Chip Power", txt),
-        "dynamic_power_w":       _grab_power("Dynamic", txt),
-        "device_static_power_w": _grab_power("Device Static", txt),
-    }
-
-# len_table_pkg.sv helper – stage / µ‑op extraction
-
-def parse_len_pkg() -> tuple[str, str]:
-    src = text(LEN_PKG)
-    stages = re.findall(r"STAGE_LUT\s*\[N_CASE\].+?\{\s*([^}]+)\}", src, re.S)
-    if stages:
-        nums = [int(x) for x in stages[0].replace("\n", " ").split(",") if x.strip()]
-        stage_expr = "+".join(str(n) for n in nums)
+def main(work_dir: Path):
+    all_results: List[Dict[str, Any]] = []
+    
+    case_paths = []
+    if (work_dir / "single").is_dir():
+        case_paths = [work_dir]
     else:
-        stage_expr = "?"
+        case_paths = [p for p in work_dir.iterdir() if (p / "single").is_dir()]
 
-    muops_match = re.search(r"OPS_LUT.+?=\s*'\{(.+?)\};", src, re.S)
-    rows = re.findall(r"\{\s*([^}]+)\}", muops_match.group(1)) if muops_match else []
-    muops = ", ".join(
-        "-".join(tok.strip().replace("OP_", "") for tok in row.split(",") if tok.strip() != "OP_NOP")
-        for row in rows
-    )
-    return stage_expr, muops
+    if not case_paths:
+        print(f"Error: No subdirectories containing a 'single' folder found in {work_dir}", file=sys.stderr)
+        return
 
-# Main collection pipeline
-def collect(tag: str) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]], List[Dict[str, Any]]]:
-    wns, fmax            = parse_timing()
-    stage_expr, muops    = parse_len_pkg()
-    power_dict           = parse_power()
+    for case_path in case_paths:
+        single_path = case_path / "single"
+        case_name = case_path.name
+        
+        for bench_path in sorted(single_path.iterdir()):
+            if not bench_path.is_dir():
+                continue
 
-    impl_rows:   List[Dict[str, Any]] = []
-    block_rows:  List[Dict[str, Any]] = []
-    sniper_rows: List[Dict[str, Any]] = []
+            bench_name = bench_path.name
+            
+            timing_rpt = bench_path / "post_route_timing.rpt"
+            util_rpt = bench_path / "pblock_util.rpt"
+            power_rpt = bench_path / "post_route_power.rpt"
 
-    pcs_all:  list[str] = []
-    lats_all: list[str] = []
+            if not (timing_rpt.is_file() and util_rpt.is_file() and power_rpt.is_file()):
+                continue
 
-    # Block‑level JSONs ( *_alu_result_augmented.json or blocks/blk*.json )
-    blk_groups: List[dict] = []
-    for fp in WORKDIR.glob("*_alu_result_augmented.json"):
-        blk_groups = json.loads(fp.read_text())
-        break
-    if not blk_groups:
-        blk_groups = [json.loads(p.read_text()) for p in (WORKDIR / "blocks").glob("blk*.json")]
+            wns, fmax = parse_timing(timing_rpt)
+            util_data = parse_util(util_rpt)
+            power_data = parse_power(power_rpt)
 
-    for g in blk_groups:
-        bench = g.get("bench", "?")
-        src   = g.get("src",   "?")
-        pcs   = [ins["address"] for ins in g.get("instructions", [])]
-        if not pcs:
-            continue
+            result_row = {
+                "Case": case_name,
+                "Benchmark": bench_name,
+                "WNS_ns": wns,
+                "Fmax_MHz": fmax,
+                "Dynamic_Power_W": power_data["Dynamic_Power_W"],
+                **util_data,
+            }
+            all_results.append(result_row)
 
-        first_lat = str(g.get("latency_cycles", g.get("stage_count", 1)))
-        sniper_rows.append({"bench": bench, "src": src, "pc": pcs[0], "latency": first_lat})
-        sniper_rows.extend({"bench": bench, "src": src, "pc": p, "latency": "0"} for p in pcs[1:])
+    if not all_results:
+        print("No results found. Check report files inside 'single' subdirectories.", file=sys.stderr)
+        return
 
-        lat_list = [first_lat] + ["0"] * (len(pcs) - 1)
-        pcs_all.extend(pcs)
-        lats_all.extend(lat_list)
-
-        block_rows.append({
-            "bench":       bench,
-            "src":         src,
-            "pcs":         ",".join(pcs),
-            "latencies":   ",".join(lat_list),
-            "stage_count": g.get("stage_count", 1),
-            "muops":       "-".join(op["opcode"].upper() for op in g["instructions"]),
-        })
-
-    # Utilization per pblock
-    for util_rpt in sorted(RPT_DIR.glob("utilization_pblock_*.rpt")):
-        pb_name = util_rpt.stem.replace("utilization_", "")
-        util    = parse_util(util_rpt)
-
-        impl_rows.append({
-            "run_tag":        tag,
-            "timestamp_utc":  dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "pblock":         pb_name,
-            **util,
-            **power_dict,
-            "fmax_mhz":       round(fmax, 3) if fmax else None,
-            "wns_ns":         round(wns, 3) if wns else None,
-            "stage_count":    stage_expr,
-            "muops":          muops,
-            "pcs":            ",".join(pcs_all),
-            "latencies":      ",".join(lats_all),
-        })
-
-    return impl_rows, block_rows, sniper_rows
-
-# ----------------------------------------------------------------------------------------------
-# Dump helpers
-# ----------------------------------------------------------------------------------------------
-
-def dump(rows, block_rows, sniper_rows, tag):
-    base = WORKDIR / f"impl_summary_{tag}"
-
-    # Main summary JSON/CSV
-    base.with_suffix(".json").write_text(json.dumps(rows, indent=2))
-    with base.with_suffix(".csv").open("w", newline="") as f:
-        w = csv.DictWriter(f, rows[0].keys())
-        w.writeheader()
-        w.writerows(rows)
-    print(f"Done, {base.name}.json / .csv written")
-
-    # Sniper CSV
-    if sniper_rows:
-        seen, uniq = set(), []
-        for r in sniper_rows:
-            key = (r["bench"], r["src"], r["pc"])
-            if key not in seen:
-                seen.add(key)
-                uniq.append(r)
-        sfile = RPT_DIR / f"sniper_{tag}.csv"
-        with sfile.open("w", newline="") as f:
-            w = csv.DictWriter(f, ["bench", "src", "pc", "latency"])
-            w.writeheader()
-            w.writerows(uniq)
-        print(f"Done, {sfile.name} (for Sniper cfg)")
-
-    # Block summary JSON/CSV
-    if block_rows:
-        bfile = RPT_DIR / f"block_summary_{tag}.json"
-        bfile.write_text(json.dumps(block_rows, indent=2))
-        with bfile.with_suffix(".csv").open("w", newline="") as f:
-            w = csv.DictWriter(f, block_rows[0].keys())
-            w.writeheader()
-            w.writerows(block_rows)
-        print(f"Done, {bfile.name} / .csv written")
-
-# ----------------------------------------------------------------------------------------------
-# CLI
-# ----------------------------------------------------------------------------------------------
+    output_csv_path = work_dir / "summary_pnr_results.csv"
+    try:
+        with open(output_csv_path, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=all_results[0].keys())
+            writer.writeheader()
+            writer.writerows(all_results)
+        print(f"Analysis complete. Results saved to: {output_csv_path}")
+    except (IOError, IndexError) as e:
+        print(f"Error writing to file: {e}", file=sys.stderr)
 
 if __name__ == "__main__":
-    ap = argparse.ArgumentParser(description="Parse Vivado reports and summarise implementation results.")
-    ap.add_argument("run_tag", help="Unique tag identifying this synthesis run (e.g. 527.cam4_s)")
-    args = ap.parse_args()
-
-    if not TIMING_RPT.exists():
-        sys.exit("ERROR: post_route_timing.rpt missing")
-
-    rows, block_rows, sniper_rows = collect(args.run_tag)
-    if not rows:
-        sys.exit("ERROR: no utilization_pblock_*.rpt found")
-
-    dump(rows, block_rows, sniper_rows, args.run_tag)
+    parser = argparse.ArgumentParser(
+        description="Parse Vivado post-P&R results from 'single' directories."
+    )
+    parser.add_argument(
+        "-d", "--dir", type=str, default=".",
+        help="Root directory. Can be a single case folder (e.g., 'alubase') or a parent folder containing multiple cases."
+    )
+    args = parser.parse_args()
+    main(Path(args.dir).resolve())

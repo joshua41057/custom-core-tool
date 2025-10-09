@@ -1,0 +1,112 @@
+{
+  "rank": 49,
+  "group_index": 5,
+  "execution_count": 1090909,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x626fc456372d",
+      "opcode": "mov",
+      "raw_operands": [
+        "rax",
+        "qword ptr [rsp+0xa8]"
+      ],
+      "in_operands": [
+        "[rsp+0xa8]"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x626fc456373b",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "xmm4",
+        "qword ptr [rax+rbp*1]"
+      ],
+      "in_operands": [
+        "[rax+rbp*1]"
+      ],
+      "out_operands": [
+        "xmm4"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x626fc4563779",
+      "opcode": "vmovsd",
+      "raw_operands": [
+        "qword ptr [rsp+0x38]",
+        "xmm4"
+      ],
+      "in_operands": [
+        "xmm4"
+      ],
+      "out_operands": [
+        "[rsp+0x38]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "[rax+rbp*1]"
+      },
+      "condition": "reg vs mem: rax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "xmm4"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "xmm4"
+      },
+      "condition": "reg vs reg: xmm4"
+    }
+  ],
+  "bench": "607.cactuBSSN_s/1",
+  "src": "1/super_hot_regions:101",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.9428090415820634,
+  "comb_bound_hits": 2,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 2
+  },
+  "pcs": [
+    "0x626fc456372d",
+    "0x626fc456373b",
+    "0x626fc4563779"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x626fc456372d"
+}

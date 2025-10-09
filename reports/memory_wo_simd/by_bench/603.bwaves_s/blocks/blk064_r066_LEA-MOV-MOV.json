@@ -1,0 +1,112 @@
+{
+  "rank": 66,
+  "group_index": 12,
+  "execution_count": 270149,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x55c2daab3c54",
+      "opcode": "lea",
+      "raw_operands": [
+        "rax",
+        "ptr [rax+rax*4]"
+      ],
+      "in_operands": [
+        "ptr [rax+rax*4]"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x55c2daab3c58",
+      "opcode": "mov",
+      "raw_operands": [
+        "qword ptr [rbp-0x338]",
+        "rax"
+      ],
+      "in_operands": [
+        "rax"
+      ],
+      "out_operands": [
+        "[rbp-0x338]"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x55c2daab405c",
+      "opcode": "mov",
+      "raw_operands": [
+        "r9",
+        "qword ptr [rbp-0x338]"
+      ],
+      "in_operands": [
+        "[rbp-0x338]"
+      ],
+      "out_operands": [
+        "r9"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rax"
+      },
+      "condition": "reg vs reg: rax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "[rbp-0x338]"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "[rbp-0x338]"
+      },
+      "condition": "mem vs mem: [rbp-0x338]"
+    }
+  ],
+  "bench": "603.bwaves_s/2",
+  "src": "2/super_hot_regions:117",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.9428090415820634,
+  "comb_bound_hits": 1,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 2
+  },
+  "pcs": [
+    "0x55c2daab3c54",
+    "0x55c2daab3c58",
+    "0x55c2daab405c"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x55c2daab3c54"
+}

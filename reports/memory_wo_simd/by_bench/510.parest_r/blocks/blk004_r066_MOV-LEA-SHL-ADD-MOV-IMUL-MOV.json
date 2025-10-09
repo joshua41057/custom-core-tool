@@ -1,0 +1,237 @@
+{
+  "rank": 66,
+  "group_index": 2,
+  "execution_count": 707201,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x61e49a7bcbd4",
+      "opcode": "mov",
+      "raw_operands": [
+        "rcx",
+        "qword ptr [rsp+0x20]"
+      ],
+      "in_operands": [
+        "[rsp+0x20]"
+      ],
+      "out_operands": [
+        "rcx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x61e49a7bcbd9",
+      "opcode": "lea",
+      "raw_operands": [
+        "rdx",
+        "ptr [rdx+rdx*2]"
+      ],
+      "in_operands": [
+        "ptr [rdx+rdx*2]"
+      ],
+      "out_operands": [
+        "rdx"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x61e49a7bcbdd",
+      "opcode": "shl",
+      "raw_operands": [
+        "rdx",
+        "0x5"
+      ],
+      "in_operands": [
+        "rdx",
+        "0x5"
+      ],
+      "out_operands": [
+        "rdx",
+        "flag"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x61e49a7bcbe1",
+      "opcode": "add",
+      "raw_operands": [
+        "rdx",
+        "qword ptr [rsi+rcx*1]"
+      ],
+      "in_operands": [
+        "rdx",
+        "[rsi+rcx*1]"
+      ],
+      "out_operands": [
+        "rdx",
+        "flag"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x61e49a7bcbfe",
+      "opcode": "mov",
+      "raw_operands": [
+        "eax",
+        "dword ptr [rsp+0xc]"
+      ],
+      "in_operands": [
+        "[rsp+0xc]"
+      ],
+      "out_operands": [
+        "eax"
+      ]
+    },
+    {
+      "index": 5,
+      "address": "0x61e49a7bcc02",
+      "opcode": "imul",
+      "raw_operands": [
+        "eax",
+        "dword ptr [rdx+0x58]"
+      ],
+      "in_operands": [
+        "eax",
+        "[rdx+0x58]"
+      ],
+      "out_operands": [
+        "eax"
+      ]
+    },
+    {
+      "index": 6,
+      "address": "0x61e49a7bcc09",
+      "opcode": "mov",
+      "raw_operands": [
+        "rax",
+        "qword ptr [rdx+0x48]"
+      ],
+      "in_operands": [
+        "[rdx+0x48]"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "rdx"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "rdx"
+      },
+      "condition": "reg vs reg: rdx"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "rdx"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "rdx"
+      },
+      "condition": "reg vs reg: rdx"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rcx"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "[rsi+rcx*1]"
+      },
+      "condition": "reg vs mem: rcx"
+    },
+    {
+      "from": {
+        "instr_index": 4,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 3,
+        "operand": "rdx"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "[rdx+0x58]"
+      },
+      "condition": "reg vs mem: rdx"
+    },
+    {
+      "from": {
+        "instr_index": 3,
+        "operand": "rdx"
+      },
+      "to": {
+        "instr_index": 6,
+        "operand": "[rdx+0x48]"
+      },
+      "condition": "reg vs mem: rdx"
+    }
+  ],
+  "bench": "510.parest_r/1",
+  "src": "1/super_hot_regions:104",
+  "order_map": [
+    1,
+    4,
+    0,
+    2,
+    3,
+    5,
+    6
+  ],
+  "ff_boundaries": [
+    1,
+    4,
+    0,
+    2,
+    3,
+    5
+  ],
+  "stage_count": 7,
+  "latency_cycles": 7,
+  "crit_path_sigma": 0.8329931278350429,
+  "comb_bound_hits": 5,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 6,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 1,
+    "added_war": 1,
+    "added_waw": 1,
+    "final_edges": 9
+  },
+  "pcs": [
+    "0x61e49a7bcbd4",
+    "0x61e49a7bcbd9",
+    "0x61e49a7bcbdd",
+    "0x61e49a7bcbe1",
+    "0x61e49a7bcbfe",
+    "0x61e49a7bcc02",
+    "0x61e49a7bcc09"
+  ],
+  "latencies": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    1
+  ],
+  "pc": "0x61e49a7bcbd4"
+}

@@ -1,0 +1,47 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
+| Date         : Sun Sep 21 18:43:00 2025
+| Host         : orthanc running 64-bit Ubuntu 22.04.4 LTS
+| Command      : report_utilization -hierarchical -file /home/jyoo/custom_v_2/custom-core-tool/reports/wo_simd_div/benches/627_cam4_s/627_cam4_s_util_hier.rpt
+| Design       : top_bench__627_cam4_s
+| Device       : xcu200fsgd2104-2
+| Design State : Optimized
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++-----------------------------+---------------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+|           Instance          |              Module             | Total LUTs | Logic LUTs | LUTRAMs | SRLs | FFs | RAMB36 | RAMB18 | URAM | DSP Blocks |
++-----------------------------+---------------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+| top_bench__627_cam4_s       |                           (top) |         63 |         63 |       0 |    0 | 464 |      0 |      0 |    0 |          0 |
+|   (top_bench__627_cam4_s)   |                           (top) |          0 |          0 |       0 |    0 |   0 |      0 |      0 |    0 |          0 |
+|   u_627_cam4_s              |          bench_core__627_cam4_s |         63 |         63 |       0 |    0 | 464 |      0 |      0 |    0 |          0 |
+|     (u_627_cam4_s)          |          bench_core__627_cam4_s |         60 |         60 |       0 |    0 |   0 |      0 |      0 |    0 |          0 |
+|     glen[0].core_i          |                  uop_block_wrap |          1 |          1 |       0 |    0 | 244 |      0 |      0 |    0 |          0 |
+|       (glen[0].core_i)      |                  uop_block_wrap |          0 |          0 |       0 |    0 | 124 |      0 |      0 |    0 |          0 |
+|       core                  |                       uop_block |          1 |          1 |       0 |    0 | 120 |      0 |      0 |    0 |          0 |
+|         (core)              |                       uop_block |          1 |          1 |       0 |    0 |  60 |      0 |      0 |    0 |          0 |
+|         g[0].g_normal.alu_i |                    microop_unit |          0 |          0 |       0 |    0 |  60 |      0 |      0 |    0 |          0 |
+|     glen[1].core_i          |  uop_block_wrap__parameterized0 |          1 |          1 |       0 |    0 | 192 |      0 |      0 |    0 |          0 |
+|       (glen[1].core_i)      |  uop_block_wrap__parameterized0 |          0 |          0 |       0 |    0 |  96 |      0 |      0 |    0 |          0 |
+|       core                  |       uop_block__parameterized0 |          1 |          1 |       0 |    0 |  96 |      0 |      0 |    0 |          0 |
+|         (core)              |       uop_block__parameterized0 |          1 |          1 |       0 |    0 |  32 |      0 |      0 |    0 |          0 |
+|         g[0].g_normal.alu_i |    microop_unit__parameterized0 |          0 |          0 |       0 |    0 |  32 |      0 |      0 |    0 |          0 |
+|         g[1].g_normal.alu_i |    microop_unit__parameterized1 |          0 |          0 |       0 |    0 |  32 |      0 |      0 |    0 |          0 |
+|     glen[2].core_i          |  uop_block_wrap__parameterized1 |          1 |          1 |       0 |    0 |  28 |      0 |      0 |    0 |          0 |
+|       (glen[2].core_i)      |  uop_block_wrap__parameterized1 |          0 |          0 |       0 |    0 |  14 |      0 |      0 |    0 |          0 |
+|       core                  |       uop_block__parameterized1 |          1 |          1 |       0 |    0 |  14 |      0 |      0 |    0 |          0 |
+|         (core)              |       uop_block__parameterized1 |          1 |          1 |       0 |    0 |   0 |      0 |      0 |    0 |          0 |
+|         g[0].g_normal.alu_i | microop_unit__parameterized2__1 |          0 |          0 |       0 |    0 |   7 |      0 |      0 |    0 |          0 |
+|         g[1].g_normal.alu_i |    microop_unit__parameterized2 |          0 |          0 |       0 |    0 |   7 |      0 |      0 |    0 |          0 |
++-----------------------------+---------------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+
+

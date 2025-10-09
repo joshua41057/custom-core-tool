@@ -1,0 +1,114 @@
+{
+  "rank": 64,
+  "group_index": 2,
+  "execution_count": 167074,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x57ee1503781c",
+      "opcode": "mov",
+      "raw_operands": [
+        "rax",
+        "qword ptr [rsp]"
+      ],
+      "in_operands": [
+        "[rsp]"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x57ee15037822",
+      "opcode": "lea",
+      "raw_operands": [
+        "rdi",
+        "ptr [rip+0xa8f7]"
+      ],
+      "in_operands": [
+        "ptr [rip+0xa8f7]"
+      ],
+      "out_operands": [
+        "rdi"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x57ee1503782b",
+      "opcode": "and",
+      "raw_operands": [
+        "rax",
+        "qword ptr [rdi+r13*8]"
+      ],
+      "in_operands": [
+        "rax",
+        "[rdi+r13*8]"
+      ],
+      "out_operands": [
+        "rax",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "rax"
+      },
+      "condition": "reg vs reg: rax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "rdi"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "[rdi+r13*8]"
+      },
+      "condition": "reg vs mem: rdi"
+    }
+  ],
+  "bench": "631.deepsjeng_s/1",
+  "src": "1/super_hot_regions:121",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.0,
+  "comb_bound_hits": 2,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 2
+  },
+  "pcs": [
+    "0x57ee1503781c",
+    "0x57ee15037822",
+    "0x57ee1503782b"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x57ee1503781c"
+}

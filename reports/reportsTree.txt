@@ -1,0 +1,2185 @@
+.
+├── alu4.base.json
+├── alubase
+│   ├── alu4.base_augmented.json
+│   ├── alu4.base_sniper.csv
+│   ├── alu4.base_summary.csv
+│   ├── benches
+│   │   ├── 500_perlbench_r
+│   │   │   ├── 500_perlbench_r_power.rpt
+│   │   │   ├── 500_perlbench_r_timing.rpt
+│   │   │   ├── 500_perlbench_r_util_hier.rpt
+│   │   │   ├── 500_perlbench_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 502_gcc_r
+│   │   │   ├── 502_gcc_r_power.rpt
+│   │   │   ├── 502_gcc_r_timing.rpt
+│   │   │   ├── 502_gcc_r_util_hier.rpt
+│   │   │   ├── 502_gcc_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 503_bwaves_r
+│   │   │   ├── 503_bwaves_r_power.rpt
+│   │   │   ├── 503_bwaves_r_timing.rpt
+│   │   │   ├── 503_bwaves_r_util_hier.rpt
+│   │   │   ├── 503_bwaves_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 505_mcf_r
+│   │   │   ├── 505_mcf_r_power.rpt
+│   │   │   ├── 505_mcf_r_timing.rpt
+│   │   │   ├── 505_mcf_r_util_hier.rpt
+│   │   │   ├── 505_mcf_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 507_cactuBSSN_r
+│   │   │   ├── 507_cactuBSSN_r_power.rpt
+│   │   │   ├── 507_cactuBSSN_r_timing.rpt
+│   │   │   ├── 507_cactuBSSN_r_util_hier.rpt
+│   │   │   ├── 507_cactuBSSN_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 508_namd_r
+│   │   │   ├── 508_namd_r_power.rpt
+│   │   │   ├── 508_namd_r_timing.rpt
+│   │   │   ├── 508_namd_r_util_hier.rpt
+│   │   │   ├── 508_namd_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 510_parest_r
+│   │   │   ├── 510_parest_r_power.rpt
+│   │   │   ├── 510_parest_r_timing.rpt
+│   │   │   ├── 510_parest_r_util_hier.rpt
+│   │   │   ├── 510_parest_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 511_povray_r
+│   │   │   ├── 511_povray_r_power.rpt
+│   │   │   ├── 511_povray_r_timing.rpt
+│   │   │   ├── 511_povray_r_util_hier.rpt
+│   │   │   ├── 511_povray_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 519_lbm_r
+│   │   │   ├── 519_lbm_r_power.rpt
+│   │   │   ├── 519_lbm_r_timing.rpt
+│   │   │   ├── 519_lbm_r_util_hier.rpt
+│   │   │   ├── 519_lbm_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 520_omnetpp_r
+│   │   │   ├── 520_omnetpp_r_power.rpt
+│   │   │   ├── 520_omnetpp_r_timing.rpt
+│   │   │   ├── 520_omnetpp_r_util_hier.rpt
+│   │   │   ├── 520_omnetpp_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 521_wrf_r
+│   │   │   ├── 521_wrf_r_power.rpt
+│   │   │   ├── 521_wrf_r_timing.rpt
+│   │   │   ├── 521_wrf_r_util_hier.rpt
+│   │   │   ├── 521_wrf_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 523_xalancbmk_r
+│   │   │   ├── 523_xalancbmk_r_power.rpt
+│   │   │   ├── 523_xalancbmk_r_timing.rpt
+│   │   │   ├── 523_xalancbmk_r_util_hier.rpt
+│   │   │   ├── 523_xalancbmk_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 525_x264_r
+│   │   │   ├── 525_x264_r_power.rpt
+│   │   │   ├── 525_x264_r_timing.rpt
+│   │   │   ├── 525_x264_r_util_hier.rpt
+│   │   │   ├── 525_x264_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 526_blender_r
+│   │   │   ├── 526_blender_r_power.rpt
+│   │   │   ├── 526_blender_r_timing.rpt
+│   │   │   ├── 526_blender_r_util_hier.rpt
+│   │   │   ├── 526_blender_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 527_cam4_r
+│   │   │   ├── 527_cam4_r_power.rpt
+│   │   │   ├── 527_cam4_r_timing.rpt
+│   │   │   ├── 527_cam4_r_util_hier.rpt
+│   │   │   ├── 527_cam4_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 531_deepsjeng_r
+│   │   │   ├── 531_deepsjeng_r_power.rpt
+│   │   │   ├── 531_deepsjeng_r_timing.rpt
+│   │   │   ├── 531_deepsjeng_r_util_hier.rpt
+│   │   │   ├── 531_deepsjeng_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 538_imagick_r
+│   │   │   ├── 538_imagick_r_power.rpt
+│   │   │   ├── 538_imagick_r_timing.rpt
+│   │   │   ├── 538_imagick_r_util_hier.rpt
+│   │   │   ├── 538_imagick_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 541_leela_r
+│   │   │   ├── 541_leela_r_power.rpt
+│   │   │   ├── 541_leela_r_timing.rpt
+│   │   │   ├── 541_leela_r_util_hier.rpt
+│   │   │   ├── 541_leela_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 544_nab_r
+│   │   │   ├── 544_nab_r_power.rpt
+│   │   │   ├── 544_nab_r_timing.rpt
+│   │   │   ├── 544_nab_r_util_hier.rpt
+│   │   │   ├── 544_nab_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 548_exchange2_r
+│   │   │   ├── 548_exchange2_r_power.rpt
+│   │   │   ├── 548_exchange2_r_timing.rpt
+│   │   │   ├── 548_exchange2_r_util_hier.rpt
+│   │   │   ├── 548_exchange2_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 549_fotonik3d_r
+│   │   │   ├── 549_fotonik3d_r_power.rpt
+│   │   │   ├── 549_fotonik3d_r_timing.rpt
+│   │   │   ├── 549_fotonik3d_r_util_hier.rpt
+│   │   │   ├── 549_fotonik3d_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 554_roms_r
+│   │   │   ├── 554_roms_r_power.rpt
+│   │   │   ├── 554_roms_r_timing.rpt
+│   │   │   ├── 554_roms_r_util_hier.rpt
+│   │   │   ├── 554_roms_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 557_xz_r
+│   │   │   ├── 557_xz_r_power.rpt
+│   │   │   ├── 557_xz_r_timing.rpt
+│   │   │   ├── 557_xz_r_util_hier.rpt
+│   │   │   ├── 557_xz_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 600_perlbench_s
+│   │   │   ├── 600_perlbench_s_power.rpt
+│   │   │   ├── 600_perlbench_s_timing.rpt
+│   │   │   ├── 600_perlbench_s_util_hier.rpt
+│   │   │   ├── 600_perlbench_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 602_gcc_s
+│   │   │   ├── 602_gcc_s_power.rpt
+│   │   │   ├── 602_gcc_s_timing.rpt
+│   │   │   ├── 602_gcc_s_util_hier.rpt
+│   │   │   ├── 602_gcc_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 603_bwaves_s
+│   │   │   ├── 603_bwaves_s_power.rpt
+│   │   │   ├── 603_bwaves_s_timing.rpt
+│   │   │   ├── 603_bwaves_s_util_hier.rpt
+│   │   │   ├── 603_bwaves_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 605_mcf_s
+│   │   │   ├── 605_mcf_s_power.rpt
+│   │   │   ├── 605_mcf_s_timing.rpt
+│   │   │   ├── 605_mcf_s_util_hier.rpt
+│   │   │   ├── 605_mcf_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 607_cactuBSSN_s
+│   │   │   ├── 607_cactuBSSN_s_power.rpt
+│   │   │   ├── 607_cactuBSSN_s_timing.rpt
+│   │   │   ├── 607_cactuBSSN_s_util_hier.rpt
+│   │   │   ├── 607_cactuBSSN_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 619_lbm_s
+│   │   │   ├── 619_lbm_s_power.rpt
+│   │   │   ├── 619_lbm_s_timing.rpt
+│   │   │   ├── 619_lbm_s_util_hier.rpt
+│   │   │   ├── 619_lbm_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 620_omnetpp_s
+│   │   │   ├── 620_omnetpp_s_power.rpt
+│   │   │   ├── 620_omnetpp_s_timing.rpt
+│   │   │   ├── 620_omnetpp_s_util_hier.rpt
+│   │   │   ├── 620_omnetpp_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 621_wrf_s
+│   │   │   ├── 621_wrf_s_power.rpt
+│   │   │   ├── 621_wrf_s_timing.rpt
+│   │   │   ├── 621_wrf_s_util_hier.rpt
+│   │   │   ├── 621_wrf_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 623_xalancbmk_s
+│   │   │   ├── 623_xalancbmk_s_power.rpt
+│   │   │   ├── 623_xalancbmk_s_timing.rpt
+│   │   │   ├── 623_xalancbmk_s_util_hier.rpt
+│   │   │   ├── 623_xalancbmk_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 625_x264_s
+│   │   │   ├── 625_x264_s_power.rpt
+│   │   │   ├── 625_x264_s_timing.rpt
+│   │   │   ├── 625_x264_s_util_hier.rpt
+│   │   │   ├── 625_x264_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 627_cam4_s
+│   │   │   ├── 627_cam4_s_power.rpt
+│   │   │   ├── 627_cam4_s_timing.rpt
+│   │   │   ├── 627_cam4_s_util_hier.rpt
+│   │   │   ├── 627_cam4_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 628_pop2_s
+│   │   │   ├── 628_pop2_s_power.rpt
+│   │   │   ├── 628_pop2_s_timing.rpt
+│   │   │   ├── 628_pop2_s_util_hier.rpt
+│   │   │   ├── 628_pop2_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 631_deepsjeng_s
+│   │   │   ├── 631_deepsjeng_s_power.rpt
+│   │   │   ├── 631_deepsjeng_s_timing.rpt
+│   │   │   ├── 631_deepsjeng_s_util_hier.rpt
+│   │   │   ├── 631_deepsjeng_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 641_leela_s
+│   │   │   ├── 641_leela_s_power.rpt
+│   │   │   ├── 641_leela_s_timing.rpt
+│   │   │   ├── 641_leela_s_util_hier.rpt
+│   │   │   ├── 641_leela_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 644_nab_s
+│   │   │   ├── 644_nab_s_power.rpt
+│   │   │   ├── 644_nab_s_timing.rpt
+│   │   │   ├── 644_nab_s_util_hier.rpt
+│   │   │   ├── 644_nab_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 648_exchange2_s
+│   │   │   ├── 648_exchange2_s_power.rpt
+│   │   │   ├── 648_exchange2_s_timing.rpt
+│   │   │   ├── 648_exchange2_s_util_hier.rpt
+│   │   │   ├── 648_exchange2_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 649_fotonik3d_s
+│   │   │   ├── 649_fotonik3d_s_power.rpt
+│   │   │   ├── 649_fotonik3d_s_timing.rpt
+│   │   │   ├── 649_fotonik3d_s_util_hier.rpt
+│   │   │   ├── 649_fotonik3d_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 654_roms_s
+│   │   │   ├── 654_roms_s_power.rpt
+│   │   │   ├── 654_roms_s_timing.rpt
+│   │   │   ├── 654_roms_s_util_hier.rpt
+│   │   │   ├── 654_roms_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   └── 657_xz_s
+│   │       ├── 657_xz_s_power.rpt
+│   │       ├── 657_xz_s_timing.rpt
+│   │       ├── 657_xz_s_util_hier.rpt
+│   │       ├── 657_xz_s_util.rpt
+│   │       └── post_synth.dcp
+│   ├── by_bench
+│   │   ├── 500.perlbench_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 502.gcc_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 503.bwaves_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 505.mcf_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 507.cactuBSSN_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 508.namd_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 510.parest_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 511.povray_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 519.lbm_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 520.omnetpp_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 521.wrf_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 523.xalancbmk_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 525.x264_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 526.blender_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 527.cam4_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 531.deepsjeng_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 538.imagick_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 541.leela_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 544.nab_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 548.exchange2_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 549.fotonik3d_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 554.roms_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 557.xz_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 600.perlbench_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 602.gcc_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 603.bwaves_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 605.mcf_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 607.cactuBSSN_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 619.lbm_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 620.omnetpp_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 621.wrf_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 623.xalancbmk_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 625.x264_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 627.cam4_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 628.pop2_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 631.deepsjeng_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 641.leela_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 644.nab_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 648.exchange2_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 649.fotonik3d_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 654.roms_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 657.xz_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── vivado.jou
+│   │   └── vivado.log
+│   ├── elem_widths_debug.csv
+│   ├── multi
+│   ├── single
+│   │   ├── 502_gcc_r
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 505_mcf_r
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 507_cactuBSSN_r
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 510_parest_r
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 511_povray_r
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 519_lbm_r
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 520_omnetpp_r
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 521_wrf_r
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 525_x264_r
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 527_cam4_r
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 538_imagick_r
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 541_leela_r
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 548_exchange2_r
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 549_fotonik3d_r
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 557_xz_r
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 600_perlbench_s
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 602_gcc_s
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 605_mcf_s
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 607_cactuBSSN_s
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 619_lbm_s
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 620_omnetpp_s
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 621_wrf_s
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 623_xalancbmk_s
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 625_x264_s
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 627_cam4_s
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 628_pop2_s
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 631_deepsjeng_s
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 641_leela_s
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 644_nab_s
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 648_exchange2_s
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 649_fotonik3d_s
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   ├── 654_roms_s
+│   │   │   ├── auto_pblock_gen.tcl
+│   │   │   ├── bench_list_single.txt
+│   │   │   ├── pblock_util.rpt
+│   │   │   ├── post_place.dcp
+│   │   │   ├── post_route_clocks.rpt
+│   │   │   ├── post_route.dcp
+│   │   │   ├── post_route_power.rpt
+│   │   │   ├── post_route_timing.rpt
+│   │   │   └── post_route_util.rpt
+│   │   └── 657_xz_s
+│   │       ├── auto_pblock_gen.tcl
+│   │       ├── bench_list_single.txt
+│   │       ├── pblock_util.rpt
+│   │       ├── post_place.dcp
+│   │       ├── post_route_clocks.rpt
+│   │       ├── post_route.dcp
+│   │       ├── post_route_power.rpt
+│   │       ├── post_route_timing.rpt
+│   │       └── post_route_util.rpt
+│   ├── vivado.jou
+│   └── vivado.log
+├── alu_wo_simd_augmented.json
+├── alu_wo_simd.csv
+├── alu_wo_simd_div
+│   ├── benches
+│   │   ├── 500_perlbench_r
+│   │   │   ├── 500_perlbench_r_power.rpt
+│   │   │   ├── 500_perlbench_r_timing.rpt
+│   │   │   ├── 500_perlbench_r_util_hier.rpt
+│   │   │   ├── 500_perlbench_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 502_gcc_r
+│   │   │   ├── 502_gcc_r_power.rpt
+│   │   │   ├── 502_gcc_r_timing.rpt
+│   │   │   ├── 502_gcc_r_util_hier.rpt
+│   │   │   ├── 502_gcc_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 503_bwaves_r
+│   │   │   ├── 503_bwaves_r_power.rpt
+│   │   │   ├── 503_bwaves_r_timing.rpt
+│   │   │   ├── 503_bwaves_r_util_hier.rpt
+│   │   │   ├── 503_bwaves_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 505_mcf_r
+│   │   │   ├── 505_mcf_r_power.rpt
+│   │   │   ├── 505_mcf_r_timing.rpt
+│   │   │   ├── 505_mcf_r_util_hier.rpt
+│   │   │   ├── 505_mcf_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 507_cactuBSSN_r
+│   │   │   ├── 507_cactuBSSN_r_power.rpt
+│   │   │   ├── 507_cactuBSSN_r_timing.rpt
+│   │   │   ├── 507_cactuBSSN_r_util_hier.rpt
+│   │   │   ├── 507_cactuBSSN_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 508_namd_r
+│   │   │   ├── 508_namd_r_power.rpt
+│   │   │   ├── 508_namd_r_timing.rpt
+│   │   │   ├── 508_namd_r_util_hier.rpt
+│   │   │   ├── 508_namd_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 510_parest_r
+│   │   │   ├── 510_parest_r_power.rpt
+│   │   │   ├── 510_parest_r_timing.rpt
+│   │   │   ├── 510_parest_r_util_hier.rpt
+│   │   │   ├── 510_parest_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 511_povray_r
+│   │   │   ├── 511_povray_r_power.rpt
+│   │   │   ├── 511_povray_r_timing.rpt
+│   │   │   ├── 511_povray_r_util_hier.rpt
+│   │   │   ├── 511_povray_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 519_lbm_r
+│   │   │   ├── 519_lbm_r_power.rpt
+│   │   │   ├── 519_lbm_r_timing.rpt
+│   │   │   ├── 519_lbm_r_util_hier.rpt
+│   │   │   ├── 519_lbm_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 520_omnetpp_r
+│   │   │   ├── 520_omnetpp_r_power.rpt
+│   │   │   ├── 520_omnetpp_r_timing.rpt
+│   │   │   ├── 520_omnetpp_r_util_hier.rpt
+│   │   │   ├── 520_omnetpp_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 521_wrf_r
+│   │   │   ├── 521_wrf_r_power.rpt
+│   │   │   ├── 521_wrf_r_timing.rpt
+│   │   │   ├── 521_wrf_r_util_hier.rpt
+│   │   │   ├── 521_wrf_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 523_xalancbmk_r
+│   │   │   ├── 523_xalancbmk_r_power.rpt
+│   │   │   ├── 523_xalancbmk_r_timing.rpt
+│   │   │   ├── 523_xalancbmk_r_util_hier.rpt
+│   │   │   ├── 523_xalancbmk_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 525_x264_r
+│   │   │   ├── 525_x264_r_power.rpt
+│   │   │   ├── 525_x264_r_timing.rpt
+│   │   │   ├── 525_x264_r_util_hier.rpt
+│   │   │   ├── 525_x264_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 526_blender_r
+│   │   │   ├── 526_blender_r_power.rpt
+│   │   │   ├── 526_blender_r_timing.rpt
+│   │   │   ├── 526_blender_r_util_hier.rpt
+│   │   │   ├── 526_blender_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 527_cam4_r
+│   │   │   ├── 527_cam4_r_power.rpt
+│   │   │   ├── 527_cam4_r_timing.rpt
+│   │   │   ├── 527_cam4_r_util_hier.rpt
+│   │   │   ├── 527_cam4_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 531_deepsjeng_r
+│   │   │   ├── 531_deepsjeng_r_power.rpt
+│   │   │   ├── 531_deepsjeng_r_timing.rpt
+│   │   │   ├── 531_deepsjeng_r_util_hier.rpt
+│   │   │   ├── 531_deepsjeng_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 538_imagick_r
+│   │   │   ├── 538_imagick_r_power.rpt
+│   │   │   ├── 538_imagick_r_timing.rpt
+│   │   │   ├── 538_imagick_r_util_hier.rpt
+│   │   │   ├── 538_imagick_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 541_leela_r
+│   │   │   ├── 541_leela_r_power.rpt
+│   │   │   ├── 541_leela_r_timing.rpt
+│   │   │   ├── 541_leela_r_util_hier.rpt
+│   │   │   ├── 541_leela_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 544_nab_r
+│   │   │   ├── 544_nab_r_power.rpt
+│   │   │   ├── 544_nab_r_timing.rpt
+│   │   │   ├── 544_nab_r_util_hier.rpt
+│   │   │   ├── 544_nab_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 548_exchange2_r
+│   │   │   ├── 548_exchange2_r_power.rpt
+│   │   │   ├── 548_exchange2_r_timing.rpt
+│   │   │   ├── 548_exchange2_r_util_hier.rpt
+│   │   │   ├── 548_exchange2_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 549_fotonik3d_r
+│   │   │   ├── 549_fotonik3d_r_power.rpt
+│   │   │   ├── 549_fotonik3d_r_timing.rpt
+│   │   │   ├── 549_fotonik3d_r_util_hier.rpt
+│   │   │   ├── 549_fotonik3d_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 554_roms_r
+│   │   │   ├── 554_roms_r_power.rpt
+│   │   │   ├── 554_roms_r_timing.rpt
+│   │   │   ├── 554_roms_r_util_hier.rpt
+│   │   │   ├── 554_roms_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 557_xz_r
+│   │   │   ├── 557_xz_r_power.rpt
+│   │   │   ├── 557_xz_r_timing.rpt
+│   │   │   ├── 557_xz_r_util_hier.rpt
+│   │   │   ├── 557_xz_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 600_perlbench_s
+│   │   │   ├── 600_perlbench_s_power.rpt
+│   │   │   ├── 600_perlbench_s_timing.rpt
+│   │   │   ├── 600_perlbench_s_util_hier.rpt
+│   │   │   ├── 600_perlbench_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 602_gcc_s
+│   │   │   ├── 602_gcc_s_power.rpt
+│   │   │   ├── 602_gcc_s_timing.rpt
+│   │   │   ├── 602_gcc_s_util_hier.rpt
+│   │   │   ├── 602_gcc_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 603_bwaves_s
+│   │   │   ├── 603_bwaves_s_power.rpt
+│   │   │   ├── 603_bwaves_s_timing.rpt
+│   │   │   ├── 603_bwaves_s_util_hier.rpt
+│   │   │   ├── 603_bwaves_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 605_mcf_s
+│   │   │   ├── 605_mcf_s_power.rpt
+│   │   │   ├── 605_mcf_s_timing.rpt
+│   │   │   ├── 605_mcf_s_util_hier.rpt
+│   │   │   ├── 605_mcf_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 607_cactuBSSN_s
+│   │   │   ├── 607_cactuBSSN_s_power.rpt
+│   │   │   ├── 607_cactuBSSN_s_timing.rpt
+│   │   │   ├── 607_cactuBSSN_s_util_hier.rpt
+│   │   │   ├── 607_cactuBSSN_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 619_lbm_s
+│   │   │   ├── 619_lbm_s_power.rpt
+│   │   │   ├── 619_lbm_s_timing.rpt
+│   │   │   ├── 619_lbm_s_util_hier.rpt
+│   │   │   ├── 619_lbm_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 620_omnetpp_s
+│   │   │   ├── 620_omnetpp_s_power.rpt
+│   │   │   ├── 620_omnetpp_s_timing.rpt
+│   │   │   ├── 620_omnetpp_s_util_hier.rpt
+│   │   │   ├── 620_omnetpp_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 621_wrf_s
+│   │   │   ├── 621_wrf_s_power.rpt
+│   │   │   ├── 621_wrf_s_timing.rpt
+│   │   │   ├── 621_wrf_s_util_hier.rpt
+│   │   │   ├── 621_wrf_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 623_xalancbmk_s
+│   │   │   ├── 623_xalancbmk_s_power.rpt
+│   │   │   ├── 623_xalancbmk_s_timing.rpt
+│   │   │   ├── 623_xalancbmk_s_util_hier.rpt
+│   │   │   ├── 623_xalancbmk_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 625_x264_s
+│   │   │   ├── 625_x264_s_power.rpt
+│   │   │   ├── 625_x264_s_timing.rpt
+│   │   │   ├── 625_x264_s_util_hier.rpt
+│   │   │   ├── 625_x264_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 627_cam4_s
+│   │   │   ├── 627_cam4_s_power.rpt
+│   │   │   ├── 627_cam4_s_timing.rpt
+│   │   │   ├── 627_cam4_s_util_hier.rpt
+│   │   │   ├── 627_cam4_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 631_deepsjeng_s
+│   │   │   ├── 631_deepsjeng_s_power.rpt
+│   │   │   ├── 631_deepsjeng_s_timing.rpt
+│   │   │   ├── 631_deepsjeng_s_util_hier.rpt
+│   │   │   ├── 631_deepsjeng_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 641_leela_s
+│   │   │   ├── 641_leela_s_power.rpt
+│   │   │   ├── 641_leela_s_timing.rpt
+│   │   │   ├── 641_leela_s_util_hier.rpt
+│   │   │   ├── 641_leela_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 644_nab_s
+│   │   │   ├── 644_nab_s_power.rpt
+│   │   │   ├── 644_nab_s_timing.rpt
+│   │   │   ├── 644_nab_s_util_hier.rpt
+│   │   │   ├── 644_nab_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 648_exchange2_s
+│   │   │   ├── 648_exchange2_s_power.rpt
+│   │   │   ├── 648_exchange2_s_timing.rpt
+│   │   │   ├── 648_exchange2_s_util_hier.rpt
+│   │   │   ├── 648_exchange2_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 649_fotonik3d_s
+│   │   │   ├── 649_fotonik3d_s_power.rpt
+│   │   │   ├── 649_fotonik3d_s_timing.rpt
+│   │   │   ├── 649_fotonik3d_s_util_hier.rpt
+│   │   │   ├── 649_fotonik3d_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 654_roms_s
+│   │   │   ├── 654_roms_s_power.rpt
+│   │   │   ├── 654_roms_s_timing.rpt
+│   │   │   ├── 654_roms_s_util_hier.rpt
+│   │   │   ├── 654_roms_s_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   └── 657_xz_s
+│   │       ├── 657_xz_s_power.rpt
+│   │       ├── 657_xz_s_timing.rpt
+│   │       ├── 657_xz_s_util_hier.rpt
+│   │       ├── 657_xz_s_util.rpt
+│   │       └── post_synth.dcp
+│   ├── multi
+│   └── single
+│       ├── 500_perlbench_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 502_gcc_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 503_bwaves_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 505_mcf_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 507_cactuBSSN_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 508_namd_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 510_parest_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 511_povray_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 519_lbm_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 520_omnetpp_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 521_wrf_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 523_xalancbmk_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 525_x264_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 526_blender_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 527_cam4_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 531_deepsjeng_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 538_imagick_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 541_leela_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 544_nab_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 548_exchange2_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 549_fotonik3d_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 554_roms_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 557_xz_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 600_perlbench_s
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 602_gcc_s
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 603_bwaves_s
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 605_mcf_s
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 607_cactuBSSN_s
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 619_lbm_s
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 620_omnetpp_s
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 621_wrf_s
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 623_xalancbmk_s
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 625_x264_s
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 627_cam4_s
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 631_deepsjeng_s
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 641_leela_s
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 644_nab_s
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 648_exchange2_s
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 649_fotonik3d_s
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       ├── 654_roms_s
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   └── post_route_util.rpt
+│       └── 657_xz_s
+│           ├── auto_pblock_gen.tcl
+│           ├── bench_list_single.txt
+│           ├── pblock_util.rpt
+│           ├── post_place.dcp
+│           ├── post_route_clocks.rpt
+│           ├── post_route.dcp
+│           ├── post_route_power.rpt
+│           ├── post_route_timing.rpt
+│           └── post_route_util.rpt
+├── alu_wo_simd_summary.csv
+├── compile_order_sources_1.rpt
+├── final_sim_augmented.json
+├── final_sim.csv
+├── final_sim_summary.csv
+├── keep_benches.xdc
+├── memory_wo_div
+│   ├── benches
+│   │   ├── 500_perlbench_r
+│   │   │   ├── 500_perlbench_r_power.rpt
+│   │   │   ├── 500_perlbench_r_timing.rpt
+│   │   │   ├── 500_perlbench_r_util_hier.rpt
+│   │   │   ├── 500_perlbench_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 502_gcc_r
+│   │   │   ├── 502_gcc_r_power.rpt
+│   │   │   ├── 502_gcc_r_timing.rpt
+│   │   │   ├── 502_gcc_r_util_hier.rpt
+│   │   │   ├── 502_gcc_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   └── 503_bwaves_r
+│   ├── by_bench
+│   │   ├── 500.perlbench_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 502.gcc_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 503.bwaves_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 505.mcf_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 507.cactuBSSN_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 508.namd_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 510.parest_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 511.povray_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 519.lbm_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 520.omnetpp_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 521.wrf_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 523.xalancbmk_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 525.x264_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 526.blender_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 527.cam4_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 531.deepsjeng_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 538.imagick_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 541.leela_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 544.nab_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 548.exchange2_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 549.fotonik3d_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 554.roms_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 557.xz_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 600.perlbench_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 602.gcc_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 603.bwaves_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 605.mcf_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 607.cactuBSSN_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 619.lbm_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 620.omnetpp_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 621.wrf_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 623.xalancbmk_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 625.x264_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 627.cam4_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 628.pop2_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 631.deepsjeng_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 641.leela_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 644.nab_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 648.exchange2_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 649.fotonik3d_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 654.roms_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   └── 657.xz_s
+│   │       ├── bench_blocks.json
+│   │       └── len_table_pkg.sv
+│   ├── elem_widths_debug.csv
+│   ├── memory_wo_div_augmented.json
+│   ├── memory_wo_div.csv
+│   ├── memory_wo_div_summary.csv
+│   ├── multi
+│   └── single
+├── memory_wo_simd
+│   ├── benches
+│   │   ├── 500_perlbench_r
+│   │   │   ├── 500_perlbench_r_power.rpt
+│   │   │   ├── 500_perlbench_r_timing.rpt
+│   │   │   ├── 500_perlbench_r_util_hier.rpt
+│   │   │   ├── 500_perlbench_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 502_gcc_r
+│   │   │   ├── 502_gcc_r_power.rpt
+│   │   │   ├── 502_gcc_r_timing.rpt
+│   │   │   ├── 502_gcc_r_util_hier.rpt
+│   │   │   ├── 502_gcc_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 503_bwaves_r
+│   │   │   ├── 503_bwaves_r_power.rpt
+│   │   │   ├── 503_bwaves_r_timing.rpt
+│   │   │   ├── 503_bwaves_r_util_hier.rpt
+│   │   │   ├── 503_bwaves_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 505_mcf_r
+│   │   │   ├── 505_mcf_r_power.rpt
+│   │   │   ├── 505_mcf_r_timing.rpt
+│   │   │   ├── 505_mcf_r_util_hier.rpt
+│   │   │   ├── 505_mcf_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 507_cactuBSSN_r
+│   │   │   ├── 507_cactuBSSN_r_power.rpt
+│   │   │   ├── 507_cactuBSSN_r_timing.rpt
+│   │   │   ├── 507_cactuBSSN_r_util_hier.rpt
+│   │   │   ├── 507_cactuBSSN_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 508_namd_r
+│   │   │   ├── 508_namd_r_power.rpt
+│   │   │   ├── 508_namd_r_timing.rpt
+│   │   │   ├── 508_namd_r_util_hier.rpt
+│   │   │   ├── 508_namd_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 510_parest_r
+│   │   │   ├── 510_parest_r_power.rpt
+│   │   │   ├── 510_parest_r_timing.rpt
+│   │   │   ├── 510_parest_r_util_hier.rpt
+│   │   │   ├── 510_parest_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 511_povray_r
+│   │   │   ├── 511_povray_r_power.rpt
+│   │   │   ├── 511_povray_r_timing.rpt
+│   │   │   ├── 511_povray_r_util_hier.rpt
+│   │   │   ├── 511_povray_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 519_lbm_r
+│   │   │   ├── 519_lbm_r_power.rpt
+│   │   │   ├── 519_lbm_r_timing.rpt
+│   │   │   ├── 519_lbm_r_util_hier.rpt
+│   │   │   ├── 519_lbm_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 520_omnetpp_r
+│   │   │   ├── 520_omnetpp_r_power.rpt
+│   │   │   ├── 520_omnetpp_r_timing.rpt
+│   │   │   ├── 520_omnetpp_r_util_hier.rpt
+│   │   │   ├── 520_omnetpp_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 521_wrf_r
+│   │   │   ├── 521_wrf_r_power.rpt
+│   │   │   ├── 521_wrf_r_timing.rpt
+│   │   │   ├── 521_wrf_r_util_hier.rpt
+│   │   │   ├── 521_wrf_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 523_xalancbmk_r
+│   │   │   ├── 523_xalancbmk_r_power.rpt
+│   │   │   ├── 523_xalancbmk_r_timing.rpt
+│   │   │   ├── 523_xalancbmk_r_util_hier.rpt
+│   │   │   ├── 523_xalancbmk_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   └── 525_x264_r
+│   ├── by_bench
+│   │   ├── 500.perlbench_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 502.gcc_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 503.bwaves_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 505.mcf_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 507.cactuBSSN_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 508.namd_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 510.parest_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 511.povray_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 519.lbm_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 520.omnetpp_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 521.wrf_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 523.xalancbmk_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 525.x264_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 526.blender_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 527.cam4_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 531.deepsjeng_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 538.imagick_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 541.leela_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 544.nab_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 548.exchange2_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 549.fotonik3d_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 554.roms_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 557.xz_r
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 600.perlbench_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 602.gcc_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 603.bwaves_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 605.mcf_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 607.cactuBSSN_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 619.lbm_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 620.omnetpp_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 621.wrf_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 623.xalancbmk_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 625.x264_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 627.cam4_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 628.pop2_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 631.deepsjeng_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 641.leela_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 644.nab_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 648.exchange2_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 649.fotonik3d_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   ├── 654.roms_s
+│   │   │   ├── bench_blocks.json
+│   │   │   └── len_table_pkg.sv
+│   │   └── 657.xz_s
+│   │       ├── bench_blocks.json
+│   │       └── len_table_pkg.sv
+│   ├── elem_widths_debug.csv
+│   ├── memory_wo_simd_augmented.json
+│   ├── memory_wo_simd.csv
+│   ├── memory_wo_simd_summary.csv
+│   ├── multi
+│   └── single
+├── reportsTree.txt
+├── smoke
+│   ├── benches
+│   │   ├── 500_perlbench_r
+│   │   │   ├── 500_perlbench_r_post_synth.dcp
+│   │   │   ├── 500_perlbench_r_power.rpt
+│   │   │   ├── 500_perlbench_r_timing.rpt
+│   │   │   ├── 500_perlbench_r_util_hier.rpt
+│   │   │   ├── 500_perlbench_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 502_gcc_r
+│   │   │   ├── 502_gcc_r_post_synth.dcp
+│   │   │   ├── 502_gcc_r_power.rpt
+│   │   │   ├── 502_gcc_r_timing.rpt
+│   │   │   ├── 502_gcc_r_util_hier.rpt
+│   │   │   ├── 502_gcc_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 503_bwaves_r
+│   │   │   ├── 503_bwaves_r_post_synth.dcp
+│   │   │   ├── 503_bwaves_r_power.rpt
+│   │   │   ├── 503_bwaves_r_timing.rpt
+│   │   │   ├── 503_bwaves_r_util_hier.rpt
+│   │   │   ├── 503_bwaves_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 505_mcf_r
+│   │   │   ├── 505_mcf_r_post_synth.dcp
+│   │   │   ├── 505_mcf_r_power.rpt
+│   │   │   ├── 505_mcf_r_timing.rpt
+│   │   │   ├── 505_mcf_r_util_hier.rpt
+│   │   │   ├── 505_mcf_r_util.rpt
+│   │   │   └── post_synth.dcp
+│   │   ├── 507_cactuBSSN_r
+│   │   │   ├── 507_cactuBSSN_r_post_synth.dcp
+│   │   │   ├── 507_cactuBSSN_r_power.rpt
+│   │   │   ├── 507_cactuBSSN_r_timing.rpt
+│   │   │   ├── 507_cactuBSSN_r_util_hier.rpt
+│   │   │   └── 507_cactuBSSN_r_util.rpt
+│   │   ├── 508_namd_r
+│   │   │   ├── 508_namd_r_post_synth.dcp
+│   │   │   ├── 508_namd_r_power.rpt
+│   │   │   ├── 508_namd_r_timing.rpt
+│   │   │   ├── 508_namd_r_util_hier.rpt
+│   │   │   └── 508_namd_r_util.rpt
+│   │   ├── 510_parest_r
+│   │   │   ├── 510_parest_r_post_synth.dcp
+│   │   │   ├── 510_parest_r_power.rpt
+│   │   │   ├── 510_parest_r_timing.rpt
+│   │   │   ├── 510_parest_r_util_hier.rpt
+│   │   │   └── 510_parest_r_util.rpt
+│   │   ├── 511_povray_r
+│   │   │   ├── 511_povray_r_post_synth.dcp
+│   │   │   ├── 511_povray_r_power.rpt
+│   │   │   ├── 511_povray_r_timing.rpt
+│   │   │   ├── 511_povray_r_util_hier.rpt
+│   │   │   └── 511_povray_r_util.rpt
+│   │   ├── 519_lbm_r
+│   │   │   ├── 519_lbm_r_post_synth.dcp
+│   │   │   ├── 519_lbm_r_power.rpt
+│   │   │   ├── 519_lbm_r_timing.rpt
+│   │   │   ├── 519_lbm_r_util_hier.rpt
+│   │   │   └── 519_lbm_r_util.rpt
+│   │   ├── 520_omnetpp_r
+│   │   │   ├── 520_omnetpp_r_post_synth.dcp
+│   │   │   ├── 520_omnetpp_r_power.rpt
+│   │   │   ├── 520_omnetpp_r_timing.rpt
+│   │   │   ├── 520_omnetpp_r_util_hier.rpt
+│   │   │   └── 520_omnetpp_r_util.rpt
+│   │   ├── 521_wrf_r
+│   │   │   ├── 521_wrf_r_post_synth.dcp
+│   │   │   ├── 521_wrf_r_power.rpt
+│   │   │   ├── 521_wrf_r_timing.rpt
+│   │   │   ├── 521_wrf_r_util_hier.rpt
+│   │   │   └── 521_wrf_r_util.rpt
+│   │   ├── 523_xalancbmk_r
+│   │   │   ├── 523_xalancbmk_r_post_synth.dcp
+│   │   │   ├── 523_xalancbmk_r_power.rpt
+│   │   │   ├── 523_xalancbmk_r_timing.rpt
+│   │   │   ├── 523_xalancbmk_r_util_hier.rpt
+│   │   │   └── 523_xalancbmk_r_util.rpt
+│   │   ├── 525_x264_r
+│   │   │   ├── 525_x264_r_post_synth.dcp
+│   │   │   ├── 525_x264_r_power.rpt
+│   │   │   ├── 525_x264_r_timing.rpt
+│   │   │   ├── 525_x264_r_util_hier.rpt
+│   │   │   └── 525_x264_r_util.rpt
+│   │   ├── 526_blender_r
+│   │   │   ├── 526_blender_r_post_synth.dcp
+│   │   │   ├── 526_blender_r_power.rpt
+│   │   │   ├── 526_blender_r_timing.rpt
+│   │   │   ├── 526_blender_r_util_hier.rpt
+│   │   │   └── 526_blender_r_util.rpt
+│   │   ├── 527_cam4_r
+│   │   │   ├── 527_cam4_r_post_synth.dcp
+│   │   │   ├── 527_cam4_r_power.rpt
+│   │   │   ├── 527_cam4_r_timing.rpt
+│   │   │   ├── 527_cam4_r_util_hier.rpt
+│   │   │   └── 527_cam4_r_util.rpt
+│   │   ├── 531_deepsjeng_r
+│   │   │   ├── 531_deepsjeng_r_post_synth.dcp
+│   │   │   ├── 531_deepsjeng_r_power.rpt
+│   │   │   ├── 531_deepsjeng_r_timing.rpt
+│   │   │   ├── 531_deepsjeng_r_util_hier.rpt
+│   │   │   └── 531_deepsjeng_r_util.rpt
+│   │   ├── 538_imagick_r
+│   │   │   ├── 538_imagick_r_post_synth.dcp
+│   │   │   ├── 538_imagick_r_power.rpt
+│   │   │   ├── 538_imagick_r_timing.rpt
+│   │   │   ├── 538_imagick_r_util_hier.rpt
+│   │   │   └── 538_imagick_r_util.rpt
+│   │   ├── 541_leela_r
+│   │   │   ├── 541_leela_r_post_synth.dcp
+│   │   │   ├── 541_leela_r_power.rpt
+│   │   │   ├── 541_leela_r_timing.rpt
+│   │   │   ├── 541_leela_r_util_hier.rpt
+│   │   │   └── 541_leela_r_util.rpt
+│   │   ├── 544_nab_r
+│   │   │   ├── 544_nab_r_post_synth.dcp
+│   │   │   ├── 544_nab_r_power.rpt
+│   │   │   ├── 544_nab_r_timing.rpt
+│   │   │   ├── 544_nab_r_util_hier.rpt
+│   │   │   └── 544_nab_r_util.rpt
+│   │   ├── 548_exchange2_r
+│   │   │   ├── 548_exchange2_r_post_synth.dcp
+│   │   │   ├── 548_exchange2_r_power.rpt
+│   │   │   ├── 548_exchange2_r_timing.rpt
+│   │   │   ├── 548_exchange2_r_util_hier.rpt
+│   │   │   └── 548_exchange2_r_util.rpt
+│   │   ├── 549_fotonik3d_r
+│   │   │   ├── 549_fotonik3d_r_post_synth.dcp
+│   │   │   ├── 549_fotonik3d_r_power.rpt
+│   │   │   ├── 549_fotonik3d_r_timing.rpt
+│   │   │   ├── 549_fotonik3d_r_util_hier.rpt
+│   │   │   └── 549_fotonik3d_r_util.rpt
+│   │   ├── 554_roms_r
+│   │   │   ├── 554_roms_r_post_synth.dcp
+│   │   │   ├── 554_roms_r_power.rpt
+│   │   │   ├── 554_roms_r_timing.rpt
+│   │   │   ├── 554_roms_r_util_hier.rpt
+│   │   │   └── 554_roms_r_util.rpt
+│   │   ├── 557_xz_r
+│   │   │   ├── 557_xz_r_post_synth.dcp
+│   │   │   ├── 557_xz_r_power.rpt
+│   │   │   ├── 557_xz_r_timing.rpt
+│   │   │   ├── 557_xz_r_util_hier.rpt
+│   │   │   └── 557_xz_r_util.rpt
+│   │   ├── 600_perlbench_s
+│   │   │   ├── 600_perlbench_s_post_synth.dcp
+│   │   │   ├── 600_perlbench_s_power.rpt
+│   │   │   ├── 600_perlbench_s_timing.rpt
+│   │   │   ├── 600_perlbench_s_util_hier.rpt
+│   │   │   └── 600_perlbench_s_util.rpt
+│   │   ├── 602_gcc_s
+│   │   │   ├── 602_gcc_s_post_synth.dcp
+│   │   │   ├── 602_gcc_s_power.rpt
+│   │   │   ├── 602_gcc_s_timing.rpt
+│   │   │   ├── 602_gcc_s_util_hier.rpt
+│   │   │   └── 602_gcc_s_util.rpt
+│   │   ├── 603_bwaves_s
+│   │   │   ├── 603_bwaves_s_post_synth.dcp
+│   │   │   ├── 603_bwaves_s_power.rpt
+│   │   │   ├── 603_bwaves_s_timing.rpt
+│   │   │   ├── 603_bwaves_s_util_hier.rpt
+│   │   │   └── 603_bwaves_s_util.rpt
+│   │   ├── 605_mcf_s
+│   │   │   ├── 605_mcf_s_post_synth.dcp
+│   │   │   ├── 605_mcf_s_power.rpt
+│   │   │   ├── 605_mcf_s_timing.rpt
+│   │   │   ├── 605_mcf_s_util_hier.rpt
+│   │   │   └── 605_mcf_s_util.rpt
+│   │   ├── 607_cactuBSSN_s
+│   │   │   ├── 607_cactuBSSN_s_post_synth.dcp
+│   │   │   ├── 607_cactuBSSN_s_power.rpt
+│   │   │   ├── 607_cactuBSSN_s_timing.rpt
+│   │   │   ├── 607_cactuBSSN_s_util_hier.rpt
+│   │   │   └── 607_cactuBSSN_s_util.rpt
+│   │   ├── 619_lbm_s
+│   │   │   ├── 619_lbm_s_post_synth.dcp
+│   │   │   ├── 619_lbm_s_power.rpt
+│   │   │   ├── 619_lbm_s_timing.rpt
+│   │   │   ├── 619_lbm_s_util_hier.rpt
+│   │   │   └── 619_lbm_s_util.rpt
+│   │   ├── 620_omnetpp_s
+│   │   │   ├── 620_omnetpp_s_post_synth.dcp
+│   │   │   ├── 620_omnetpp_s_power.rpt
+│   │   │   ├── 620_omnetpp_s_timing.rpt
+│   │   │   ├── 620_omnetpp_s_util_hier.rpt
+│   │   │   └── 620_omnetpp_s_util.rpt
+│   │   ├── 621_wrf_s
+│   │   │   ├── 621_wrf_s_post_synth.dcp
+│   │   │   ├── 621_wrf_s_power.rpt
+│   │   │   ├── 621_wrf_s_timing.rpt
+│   │   │   ├── 621_wrf_s_util_hier.rpt
+│   │   │   └── 621_wrf_s_util.rpt
+│   │   ├── 623_xalancbmk_s
+│   │   │   ├── 623_xalancbmk_s_post_synth.dcp
+│   │   │   ├── 623_xalancbmk_s_power.rpt
+│   │   │   ├── 623_xalancbmk_s_timing.rpt
+│   │   │   ├── 623_xalancbmk_s_util_hier.rpt
+│   │   │   └── 623_xalancbmk_s_util.rpt
+│   │   ├── 625_x264_s
+│   │   │   ├── 625_x264_s_post_synth.dcp
+│   │   │   ├── 625_x264_s_power.rpt
+│   │   │   ├── 625_x264_s_timing.rpt
+│   │   │   ├── 625_x264_s_util_hier.rpt
+│   │   │   └── 625_x264_s_util.rpt
+│   │   ├── 627_cam4_s
+│   │   │   ├── 627_cam4_s_post_synth.dcp
+│   │   │   ├── 627_cam4_s_power.rpt
+│   │   │   ├── 627_cam4_s_timing.rpt
+│   │   │   ├── 627_cam4_s_util_hier.rpt
+│   │   │   └── 627_cam4_s_util.rpt
+│   │   ├── 631_deepsjeng_s
+│   │   │   ├── 631_deepsjeng_s_post_synth.dcp
+│   │   │   ├── 631_deepsjeng_s_power.rpt
+│   │   │   ├── 631_deepsjeng_s_timing.rpt
+│   │   │   ├── 631_deepsjeng_s_util_hier.rpt
+│   │   │   └── 631_deepsjeng_s_util.rpt
+│   │   ├── 641_leela_s
+│   │   │   ├── 641_leela_s_post_synth.dcp
+│   │   │   ├── 641_leela_s_power.rpt
+│   │   │   ├── 641_leela_s_timing.rpt
+│   │   │   ├── 641_leela_s_util_hier.rpt
+│   │   │   └── 641_leela_s_util.rpt
+│   │   ├── 644_nab_s
+│   │   │   ├── 644_nab_s_post_synth.dcp
+│   │   │   ├── 644_nab_s_power.rpt
+│   │   │   ├── 644_nab_s_timing.rpt
+│   │   │   ├── 644_nab_s_util_hier.rpt
+│   │   │   └── 644_nab_s_util.rpt
+│   │   ├── 648_exchange2_s
+│   │   │   ├── 648_exchange2_s_post_synth.dcp
+│   │   │   ├── 648_exchange2_s_power.rpt
+│   │   │   ├── 648_exchange2_s_timing.rpt
+│   │   │   ├── 648_exchange2_s_util_hier.rpt
+│   │   │   └── 648_exchange2_s_util.rpt
+│   │   ├── 649_fotonik3d_s
+│   │   │   ├── 649_fotonik3d_s_post_synth.dcp
+│   │   │   ├── 649_fotonik3d_s_power.rpt
+│   │   │   ├── 649_fotonik3d_s_timing.rpt
+│   │   │   ├── 649_fotonik3d_s_util_hier.rpt
+│   │   │   └── 649_fotonik3d_s_util.rpt
+│   │   ├── 654_roms_s
+│   │   │   ├── 654_roms_s_post_synth.dcp
+│   │   │   ├── 654_roms_s_power.rpt
+│   │   │   ├── 654_roms_s_timing.rpt
+│   │   │   ├── 654_roms_s_util_hier.rpt
+│   │   │   └── 654_roms_s_util.rpt
+│   │   └── 657_xz_s
+│   │       ├── 657_xz_s_post_synth.dcp
+│   │       ├── 657_xz_s_power.rpt
+│   │       ├── 657_xz_s_timing.rpt
+│   │       ├── 657_xz_s_util_hier.rpt
+│   │       └── 657_xz_s_util.rpt
+│   ├── multi
+│   │   ├── auto_pblock_gen.tcl
+│   │   ├── auto_pblock.tcl
+│   │   ├── derived_grid_with_slicem.txt
+│   │   ├── derived_grid_with_topology.txt
+│   │   ├── pblocks
+│   │   │   ├── pblock_u_500_perlbench_r_timing.rpt
+│   │   │   ├── pblock_u_500_perlbench_r_util_hier.rpt
+│   │   │   ├── pblock_u_500_perlbench_r_util.rpt
+│   │   │   ├── pblock_u_502_gcc_r_timing.rpt
+│   │   │   ├── pblock_u_502_gcc_r_util_hier.rpt
+│   │   │   ├── pblock_u_502_gcc_r_util.rpt
+│   │   │   ├── pblock_u_503_bwaves_r_timing.rpt
+│   │   │   ├── pblock_u_503_bwaves_r_util_hier.rpt
+│   │   │   ├── pblock_u_503_bwaves_r_util.rpt
+│   │   │   ├── pblock_u_505_mcf_r_timing.rpt
+│   │   │   ├── pblock_u_505_mcf_r_util_hier.rpt
+│   │   │   ├── pblock_u_505_mcf_r_util.rpt
+│   │   │   ├── pblock_u_507_cactuBSSN_r_timing.rpt
+│   │   │   ├── pblock_u_507_cactuBSSN_r_util_hier.rpt
+│   │   │   ├── pblock_u_507_cactuBSSN_r_util.rpt
+│   │   │   ├── pblock_u_508_namd_r_timing.rpt
+│   │   │   ├── pblock_u_508_namd_r_util_hier.rpt
+│   │   │   ├── pblock_u_508_namd_r_util.rpt
+│   │   │   ├── pblock_u_510_parest_r_timing.rpt
+│   │   │   ├── pblock_u_510_parest_r_util_hier.rpt
+│   │   │   ├── pblock_u_510_parest_r_util.rpt
+│   │   │   ├── pblock_u_511_povray_r_timing.rpt
+│   │   │   ├── pblock_u_511_povray_r_util_hier.rpt
+│   │   │   ├── pblock_u_511_povray_r_util.rpt
+│   │   │   ├── pblock_u_519_lbm_r_timing.rpt
+│   │   │   ├── pblock_u_519_lbm_r_util_hier.rpt
+│   │   │   ├── pblock_u_519_lbm_r_util.rpt
+│   │   │   ├── pblock_u_520_omnetpp_r_timing.rpt
+│   │   │   ├── pblock_u_520_omnetpp_r_util_hier.rpt
+│   │   │   ├── pblock_u_520_omnetpp_r_util.rpt
+│   │   │   ├── pblock_u_521_wrf_r_timing.rpt
+│   │   │   ├── pblock_u_521_wrf_r_util_hier.rpt
+│   │   │   ├── pblock_u_521_wrf_r_util.rpt
+│   │   │   ├── pblock_u_523_xalancbmk_r_timing.rpt
+│   │   │   ├── pblock_u_523_xalancbmk_r_util_hier.rpt
+│   │   │   ├── pblock_u_523_xalancbmk_r_util.rpt
+│   │   │   ├── pblock_u_525_x264_r_timing.rpt
+│   │   │   ├── pblock_u_525_x264_r_util_hier.rpt
+│   │   │   ├── pblock_u_525_x264_r_util.rpt
+│   │   │   ├── pblock_u_526_blender_r_timing.rpt
+│   │   │   ├── pblock_u_526_blender_r_util_hier.rpt
+│   │   │   ├── pblock_u_526_blender_r_util.rpt
+│   │   │   ├── pblock_u_527_cam4_r_timing.rpt
+│   │   │   ├── pblock_u_527_cam4_r_util_hier.rpt
+│   │   │   ├── pblock_u_527_cam4_r_util.rpt
+│   │   │   ├── pblock_u_531_deepsjeng_r_timing.rpt
+│   │   │   ├── pblock_u_531_deepsjeng_r_util_hier.rpt
+│   │   │   ├── pblock_u_531_deepsjeng_r_util.rpt
+│   │   │   ├── pblock_u_538_imagick_r_timing.rpt
+│   │   │   ├── pblock_u_538_imagick_r_util_hier.rpt
+│   │   │   ├── pblock_u_538_imagick_r_util.rpt
+│   │   │   ├── pblock_u_541_leela_r_timing.rpt
+│   │   │   ├── pblock_u_541_leela_r_util_hier.rpt
+│   │   │   ├── pblock_u_541_leela_r_util.rpt
+│   │   │   ├── pblock_u_544_nab_r_timing.rpt
+│   │   │   ├── pblock_u_544_nab_r_util_hier.rpt
+│   │   │   ├── pblock_u_544_nab_r_util.rpt
+│   │   │   ├── pblock_u_548_exchange2_r_timing.rpt
+│   │   │   ├── pblock_u_548_exchange2_r_util_hier.rpt
+│   │   │   ├── pblock_u_548_exchange2_r_util.rpt
+│   │   │   ├── pblock_u_549_fotonik3d_r_timing.rpt
+│   │   │   ├── pblock_u_549_fotonik3d_r_util_hier.rpt
+│   │   │   ├── pblock_u_549_fotonik3d_r_util.rpt
+│   │   │   ├── pblock_u_554_roms_r_timing.rpt
+│   │   │   ├── pblock_u_554_roms_r_util_hier.rpt
+│   │   │   ├── pblock_u_554_roms_r_util.rpt
+│   │   │   ├── pblock_u_557_xz_r_timing.rpt
+│   │   │   ├── pblock_u_557_xz_r_util_hier.rpt
+│   │   │   ├── pblock_u_557_xz_r_util.rpt
+│   │   │   ├── pblock_u_600_perlbench_s_timing.rpt
+│   │   │   ├── pblock_u_600_perlbench_s_util_hier.rpt
+│   │   │   ├── pblock_u_600_perlbench_s_util.rpt
+│   │   │   ├── pblock_u_602_gcc_s_timing.rpt
+│   │   │   ├── pblock_u_602_gcc_s_util_hier.rpt
+│   │   │   ├── pblock_u_602_gcc_s_util.rpt
+│   │   │   ├── pblock_u_603_bwaves_s_timing.rpt
+│   │   │   ├── pblock_u_603_bwaves_s_util_hier.rpt
+│   │   │   ├── pblock_u_603_bwaves_s_util.rpt
+│   │   │   ├── pblock_u_605_mcf_s_timing.rpt
+│   │   │   ├── pblock_u_605_mcf_s_util_hier.rpt
+│   │   │   ├── pblock_u_605_mcf_s_util.rpt
+│   │   │   ├── pblock_u_607_cactuBSSN_s_timing.rpt
+│   │   │   ├── pblock_u_607_cactuBSSN_s_util_hier.rpt
+│   │   │   ├── pblock_u_607_cactuBSSN_s_util.rpt
+│   │   │   ├── pblock_u_619_lbm_s_timing.rpt
+│   │   │   ├── pblock_u_619_lbm_s_util_hier.rpt
+│   │   │   ├── pblock_u_619_lbm_s_util.rpt
+│   │   │   ├── pblock_u_620_omnetpp_s_timing.rpt
+│   │   │   ├── pblock_u_620_omnetpp_s_util_hier.rpt
+│   │   │   ├── pblock_u_620_omnetpp_s_util.rpt
+│   │   │   ├── pblock_u_621_wrf_s_timing.rpt
+│   │   │   ├── pblock_u_621_wrf_s_util_hier.rpt
+│   │   │   ├── pblock_u_621_wrf_s_util.rpt
+│   │   │   ├── pblock_u_623_xalancbmk_s_timing.rpt
+│   │   │   ├── pblock_u_623_xalancbmk_s_util_hier.rpt
+│   │   │   ├── pblock_u_623_xalancbmk_s_util.rpt
+│   │   │   ├── pblock_u_625_x264_s_timing.rpt
+│   │   │   ├── pblock_u_625_x264_s_util_hier.rpt
+│   │   │   ├── pblock_u_625_x264_s_util.rpt
+│   │   │   ├── pblock_u_627_cam4_s_timing.rpt
+│   │   │   ├── pblock_u_627_cam4_s_util_hier.rpt
+│   │   │   ├── pblock_u_627_cam4_s_util.rpt
+│   │   │   ├── pblock_u_631_deepsjeng_s_timing.rpt
+│   │   │   ├── pblock_u_631_deepsjeng_s_util_hier.rpt
+│   │   │   ├── pblock_u_631_deepsjeng_s_util.rpt
+│   │   │   ├── pblock_u_641_leela_s_timing.rpt
+│   │   │   ├── pblock_u_641_leela_s_util_hier.rpt
+│   │   │   ├── pblock_u_641_leela_s_util.rpt
+│   │   │   ├── pblock_u_644_nab_s_timing.rpt
+│   │   │   ├── pblock_u_644_nab_s_util_hier.rpt
+│   │   │   ├── pblock_u_644_nab_s_util.rpt
+│   │   │   ├── pblock_u_648_exchange2_s_timing.rpt
+│   │   │   ├── pblock_u_648_exchange2_s_util_hier.rpt
+│   │   │   ├── pblock_u_648_exchange2_s_util.rpt
+│   │   │   ├── pblock_u_649_fotonik3d_s_timing.rpt
+│   │   │   ├── pblock_u_649_fotonik3d_s_util_hier.rpt
+│   │   │   ├── pblock_u_649_fotonik3d_s_util.rpt
+│   │   │   ├── pblock_u_654_roms_s_timing.rpt
+│   │   │   ├── pblock_u_654_roms_s_util_hier.rpt
+│   │   │   ├── pblock_u_654_roms_s_util.rpt
+│   │   │   ├── pblock_u_657_xz_s_timing.rpt
+│   │   │   ├── pblock_u_657_xz_s_util_hier.rpt
+│   │   │   └── pblock_u_657_xz_s_util.rpt
+│   │   ├── pblocks_summary.csv
+│   │   ├── pblock_summary.txt
+│   │   ├── post_opt_nopblock.dcp
+│   │   ├── post_place.dcp
+│   │   ├── post_route_clocks.rpt
+│   │   ├── post_route_power.rpt
+│   │   ├── post_route_timing.rpt
+│   │   └── post_route_util.rpt
+│   └── single
+│       ├── 500_perlbench_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── derived_grid_with_topology.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   ├── post_route_util.rpt
+│       │   ├── pre_impl_timing.rpt
+│       │   └── pre_impl_util.rpt
+│       ├── 502_gcc_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── derived_grid_with_topology.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   ├── post_route_util.rpt
+│       │   ├── pre_impl_timing.rpt
+│       │   └── pre_impl_util.rpt
+│       ├── 503_bwaves_r
+│       │   ├── auto_pblock_gen.tcl
+│       │   ├── bench_list_single.txt
+│       │   ├── derived_grid_with_topology.txt
+│       │   ├── pblock_util.rpt
+│       │   ├── post_place.dcp
+│       │   ├── post_route_clocks.rpt
+│       │   ├── post_route.dcp
+│       │   ├── post_route_power.rpt
+│       │   ├── post_route_timing.rpt
+│       │   ├── post_route_util.rpt
+│       │   ├── pre_impl_timing.rpt
+│       │   └── pre_impl_util.rpt
+│       └── 505_mcf_r
+│           ├── bench_list_single.txt
+│           ├── derived_grid_with_topology.txt
+│           ├── pre_impl_timing.rpt
+│           └── pre_impl_util.rpt
+├── u200_memflags.no_div.json
+├── u200_memflags.no_div_no_simd.json
+├── vivado.jou
+└── vivado.log
+
+368 directories, 1814 files

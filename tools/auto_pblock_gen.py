@@ -1,309 +1,359 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-auto_pblock_gen.py
-- Read post-synth hierarchical utilization (ASCII)
-- Read device grid ranges (constraints/grid_ranges.txt)
-- Compute vertical band pblocks sized for ~TARGET_FILL using actual usage
-- Greedily assign top-level child instances into pblocks to balance resource use
-- Emit a Tcl file that creates pblocks, resizes, and add_cells_to_pblock
-
-Usage:
-  python3 tools/auto_pblock_gen.py --util post_synth_util_hier.rpt \
-      --grid constraints/grid_ranges.txt --npblocks 8 --target-fill 0.8 \
-      --bench 527.cam4_r --out reports/527.cam4_r/auto_pblock.tcl
-"""
-import re, sys, json, argparse, math
+import argparse
+import math
+import re
+import csv
 from pathlib import Path
-from collections import defaultdict, namedtuple
+from dataclasses import dataclass
+from typing import Dict, Tuple, List, Optional, Set
 
-RES_KEYS = ["LUT", "FF", "DSP", "BRAM18", "BRAM36", "URAM"]
 
-def parse_grid_ranges(txt: str):
-    type_xs = {"SLICE": set(), "DSP48E2": set(), "RAMB18": set(), "RAMB36": set(), "URAM288": set()}
-    type_ymin = {"SLICE":  1<<30, "DSP48E2": 1<<30, "RAMB18": 1<<30, "RAMB36": 1<<30, "URAM288": 1<<30}
-    type_ymax = {"SLICE": -(1<<30), "DSP48E2": -(1<<30), "RAMB18": -(1<<30), "RAMB36": -(1<<30), "URAM288": -(1<<30)}
-    lines = [l.strip() for l in txt.splitlines() if l.strip()]
-    grid_line = None
-    for l in lines:
-        if l.startswith("GRID_RANGES"):
-            grid_line = l.split("GRID_RANGES",1)[1].strip()
+def _toi(x):
+    try:
+        return int(str(x).replace(',', '').strip())
+    except Exception:
+        return 0
+
+
+def sanitize(s: str) -> str:
+    import re
+    return re.sub(r'[^A-Za-z0-9_]+', '_', s)
+
+
+HDR = {
+    "inst": ["Instance", "Hierarchical Cell", "Cell"],
+    "lut_total": ["Total LUTs", "LUT", "CLB LUTs", "CLB LUTs*"],
+    "lut_logic": ["Logic LUTs", "LUT as Logic"],
+    "lut_mem": ["LUT as Memory", "LUTRAM", "LUTRAMs"],
+    "lut_srl": ["SRL", "SRLs", "LUT as Shift Register"],
+    "ff": ["FF", "FFs", "Registers", "CLB Registers"],
+    "bram18": ["BRAM_18K", "RAMB18", "RAMB18E1", "RAMB18E2", "BRAM18/FIFO", "RAMB18/FIFO"],
+    "bram36": ["RAMB36", "RAMB36E1", "RAMB36E2", "RAMB36/FIFO", "RAMB36/FIFO*"],
+    "uram": ["URAM", "URAM288", "URAM288E2", "UltraRAM"],
+    "dsp": ["DSP Blocks", "DSP", "DSPs", "DSP48", "DSP48E1", "DSP48E2"],
+    "carry": ["CARRY8", "CARRY4"]
+}
+
+
+def _split(line):
+    return [t.strip() for t in line.strip().split('|') if t.strip()]
+
+
+def _find(h, k):
+    for ali in HDR[k]:
+        for i, t in enumerate(h):
+            if t == ali or ali in t:
+                return i
+    return -1
+
+
+@dataclass
+class Util:
+    inst: str
+    lut: int
+    ff: int
+    carry: int
+    dsp: int
+    b18: int
+    b36: int
+    uram: int
+    lut_mem: int = 0
+    lut_srl: int = 0
+
+
+def parse_util_hier_ascii(text: str) -> Util:
+    lines = text.splitlines()
+    hi = -1
+    hdr = None
+    for i, ln in enumerate(lines):
+        if '|' not in ln:
+            continue
+        toks = _split(ln)
+        if toks and any('Instance' in t for t in toks):
+            hi = i
+            hdr = toks
             break
-        if l.startswith("DERIVED_RANGES"):
-            grid_line = l.split("DERIVED_RANGES",1)[1].strip()
-    if not grid_line:
-        raise ValueError("No GRID_RANGES/DERIVED_RANGES line found in grid file")
+    if hi < 0:
+        raise SystemExit("util header not found")
 
-    parts = [p.strip() for p in grid_line.split(",")]
-    rng_re = re.compile(r'(?P<typ>SLICE|DSP48E2|RAMB18|RAMB36|URAM288)_X(?P<x0>\d+)Y(?P<y0>-?\d+):\w+_X(?P<x1>\d+)Y(?P<y1>-?\d+)')
-    for p in parts:
-        m = rng_re.search(p)
-        if not m: 
-            continue
-        typ = m.group("typ")
-        x0, x1 = int(m.group("x0")), int(m.group("x1"))
-        y0, y1 = int(m.group("y0")), int(m.group("y1"))
-        for x in range(min(x0,x1), max(x0,x1)+1):
-            type_xs[typ].add(x)
-        lo_y, hi_y = (y0, y1) if y0 <= y1 else (y1, y0)
-        type_ymin[typ] = min(type_ymin[typ], lo_y)
-        type_ymax[typ] = max(type_ymax[typ], hi_y)
-    # Sort
-    type_xs = {k: sorted(v) for k,v in type_xs.items()}
-    for k in list(type_ymin.keys()):
-        if type_ymin[k] > type_ymax[k]:
-            type_ymin[k], type_ymax[k] = 0, -1
-    return type_xs, (type_ymin, type_ymax)
+    idx = {k: _find(hdr, k) for k in ["inst", "lut_total", "lut_logic", "lut_mem",
+                                       "lut_srl", "ff", "bram18", "bram36", "uram", "dsp", "carry"]}
 
-def parse_util_hier_ascii(rpt_text: str):
-    lines = rpt_text.splitlines()
-    hdr_idx = None
-    for i,l in enumerate(lines):
-        if re.search(r'\bLUT\b', l) and re.search(r'\bFF\b', l) and re.search(r'\bDSP\b', l):
-            hdr_idx = i
-            break
-    if hdr_idx is None:
-        raise ValueError("Cannot find header with LUT/FF/DSP in utilization report")
-    header = lines[hdr_idx]
-    Entry = namedtuple("Entry", "name depth LUT FF DSP BRAM18 BRAM36 URAM")
-    entries = []
-    totals = dict((k,0) for k in RES_KEYS)
+    def _get_num(tk, i):
+        return _toi(tk[i]) if (0 <= i < len(tk)) else 0
 
-    for l in lines[hdr_idx+1:]:
-        if '|' not in l: 
-            continue
-        cols = [c.strip() for c in l.split('|')]
-        if len(cols) < 3:
-            continue
-        name_field = cols[0]
-        nums = [c for c in cols[1:] if re.search(r'\d', c)]
-        if len(nums) < 3:
-            continue
-        raw = name_field
-        cname = raw.replace('+', '').replace('-', '').replace('─','').replace('└','').replace('├','').replace('│','').strip()
-        depth = len(raw) - len(raw.lstrip())
-        def find_num(key):
-            m = re.search(rf'{key}\s*\:\s*([0-9]+)', l) 
-            if m:
-                return int(m.group(1))
-            return None
-
-        ints = [int(x) for x in re.findall(r'\b\d+\b', l)]
-        LUT=FF=DSP=BRAM18=BRAM36=URAM=0
-        if len(ints)>=6:
-            LUT = ints[-6]
-            FF  = ints[-5]
-            BRAM18 = ints[-4]
-            URAM = ints[-3]
-            DSP = ints[-1]
-            BRAM36 = BRAM18//2
-        entries.append(Entry(cname, depth, LUT, FF, DSP, BRAM18, BRAM36, URAM))
-
+    best = None
     top = None
-    for e in entries:
-        if e.depth == 0 and e.name:
-            top = e.name
-            break
-    top_children = []
-    for e in entries:
-        if e.depth == 2:  
-            top_children.append(e)
+    for ln in lines[hi + 1:]:
+        if '|' not in ln:
+            continue
+        tk = _split(ln)
+        if not tk:
+            continue
+        name = tk[idx["inst"]] if (0 <= idx["inst"] < len(tk)) else ""
+        if any(x in name for x in ("Instance", "Total", "Totals", "----", "====", "+")):
+            continue
 
-    if not top_children:
-        top_children = [e for e in entries[:50] if e.name]
-    tot = dict((k,0) for k in RES_KEYS)
-    for e in top_children:
-        tot["LUT"] += e.LUT
-        tot["FF"]  += e.FF
-        tot["DSP"] += e.DSP
-        tot["BRAM18"] += e.BRAM18
-        tot["BRAM36"] += e.BRAM36
-        tot["URAM"] += e.URAM
-
-    return tot, top_children
-
-def split_columns(xs, k, weights):
-    """
-    Split sorted column indices xs into k contiguous bands, proportionally to 'weights' (sum to 1).
-    Returns list of (x_lo, x_hi).
-    """
-    n = len(xs)
-    if n == 0:
-        return [(0, -1)] * k
-    target = [w * n for w in weights]
-    bands = []
-    start = 0
-    acc = 0.0
-    for i, t in enumerate(target):
-        width = int(round(t))
-        if i == k-1:
-            end = n
+        if 0 <= idx["lut_total"] < len(tk):
+            lut = _get_num(tk, idx["lut_total"])
         else:
-            end = min(n, start + width)
-        if end <= start and i < k-1:
-            end = start + 1
-        bands.append( (xs[start], xs[end-1]) )
-        start = end
-    if bands and bands[-1][1] != xs[-1]:
-        bands[-1] = (bands[-1][0], xs[-1])
-    return bands
+            lut = _get_num(tk, idx["lut_logic"]) + _get_num(tk, idx["lut_mem"]) + _get_num(tk, idx["lut_srl"])
 
-def greedy_pack(children, capacities, k):
-    bins = [dict((rk,0) for rk in RES_KEYS) for _ in range(k)]
-    groups = [[] for _ in range(k)]
-    def score(e):
-        return e.LUT + e.FF/2 + 200*e.DSP + 20*(e.BRAM18 + 2*e.BRAM36) + 300*e.URAM
-    order = sorted(children, key=score, reverse=True)
+        rec = Util(
+            inst=name,
+            lut=lut,
+            ff=_get_num(tk, idx["ff"]),
+            carry=_get_num(tk, idx["carry"]),
+            dsp=_get_num(tk, idx["dsp"]),
+            b18=_get_num(tk, idx["bram18"]),
+            b36=_get_num(tk, idx["bram36"]),
+            uram=_get_num(tk, idx["uram"]),
+            lut_mem=_get_num(tk, idx["lut_mem"]),
+            lut_srl=_get_num(tk, idx["lut_srl"]),
+        )
+        if rec.inst == "top_multi_len":
+            top = rec
+        score = rec.lut + rec.ff / 2 + 2000 * rec.dsp + 1500 * (rec.b36 + rec.b18) + 3000 * rec.uram
+        if (best is None) or (score > best[0]):
+            best = (score, rec)
 
-    def dist(bin_load, i):
-        d = 0.0
-        for rk in RES_KEYS:
-            cap = capacities[rk][i] if i < len(capacities[rk]) else 0.0
-            cap = max(cap, 1e-6)
-            d += (bin_load[rk]/cap)**2
-        return d
+    if top:
+        return top
+    if best:
+        return best[1]
+    raise SystemExit("no data row found under header")
 
-    for e in order:
-        best_i, best_val = 0, float('inf')
-        for i in range(k):
-            tmp = bins[i].copy()
-            tmp["LUT"] += e.LUT
-            tmp["FF"]  += e.FF
-            tmp["DSP"] += e.DSP
-            tmp["BRAM18"] += e.BRAM18
-            tmp["BRAM36"] += e.BRAM36
-            tmp["URAM"] += e.URAM
-            val = dist(tmp, i)
-            if val < best_val:
-                best_val, best_i = val, i
-        # assign
-        bins[best_i]["LUT"] += e.LUT
-        bins[best_i]["FF"]  += e.FF
-        bins[best_i]["DSP"] += e.DSP
-        bins[best_i]["BRAM18"] += e.BRAM18
-        bins[best_i]["BRAM36"] += e.BRAM36
-        bins[best_i]["URAM"] += e.URAM
-        groups[best_i].append(e.name)
-    return groups
+
+@dataclass
+class CR:
+    x: int
+    y: int
+    slice: int
+    dsp: int
+    ramb18: int
+    ramb36: int
+
+
+def parse_cr_summary_csv(path: Path) -> Tuple[Dict[Tuple[int, int], CR], int, int]:
+    crs: Dict[Tuple[int, int], CR] = {}
+    xmax = -1
+    ymax = -1
+    with path.open(newline='', encoding='utf-8', errors='ignore') as f:
+        r = csv.DictReader(f)
+        for row in r:
+            name = row.get('clock_region') or row.get('CLOCK_REGION') or row.get('cr') or ''
+            m = re.match(r'X(\d+)Y(\d+)', name.strip(), re.I)
+            if not m:
+                continue
+            x, y = int(m.group(1)), int(m.group(2))
+            crs[(x, y)] = CR(
+                x, y,
+                _toi(row.get('SLICE', 0)),
+                _toi(row.get('DSP', 0)),
+                _toi(row.get('RAMB18', 0)),
+                _toi(row.get('RAMB36', 0))
+            )
+            xmax = max(xmax, x)
+            ymax = max(ymax, y)
+    if not crs:
+        raise SystemExit(f"no rows parsed from {path}")
+    return crs, xmax, ymax
+
+
+def slices_needed(lut: int, ff: int, carry: int, slice_lut: int = 4, slice_ff: int = 8) -> int:
+    return max(1, math.ceil(lut / float(slice_lut)), math.ceil(ff / float(slice_ff)), carry)
+
+
+@dataclass
+class Box:
+    x0: int
+    y0: int
+    x1: int
+    y1: int
+    sum_slice: int
+    sum_slicem: int
+
+
+def choose_cr_box_from_origin(
+    crs: Dict[Tuple[int, int], CR],
+    xmax: int,
+    ymax: int,
+    need_slices: int,
+    need_slicem: int = 0,
+    origin_x: int = 0,
+    origin_y: int = 0,
+    target_aspect: float = 0.90,
+    aspect_tol: float = 0.25
+) -> Box:
+    def box_sum(x1, y1):
+        s = 0
+        m = 0
+        for x in range(origin_x, x1 + 1):
+            for y in range(origin_y, y1 + 1):
+                c = crs.get((x, y))
+                if c:
+                    s += c.slice
+                    m += int(round(c.slice * 0.5))
+        return s, m
+
+    best: Optional[Tuple[int, int, int, float, int, int]] = None
+    best_box: Optional[Box] = None
+
+    for y1 in range(origin_y, ymax + 1):
+        for x1 in range(origin_x, xmax + 1):
+            w = (x1 - origin_x + 1)
+            h = (y1 - origin_y + 1)
+            aspect = w / float(h)
+            if abs(aspect - target_aspect) > aspect_tol:
+                continue
+            s, m = box_sum(x1, y1)
+            if s < need_slices:
+                continue
+            if need_slicem and m < need_slicem:
+                continue
+            area = w * h
+            over = s - need_slices
+            key = (area, over, abs(aspect - target_aspect), x1, y1)
+            if (best is None) or (key < best):
+                best = key
+                best_box = Box(origin_x, origin_y, x1, y1, s, m)
+
+    if not best_box:
+        for y1 in range(origin_y, ymax + 1):
+            for x1 in range(origin_x, xmax + 1):
+                s, m = box_sum(x1, y1)
+                if s >= need_slices and (not need_slicem or m >= need_slicem):
+                    return Box(origin_x, origin_y, x1, y1, s, m)
+        raise SystemExit("cannot find any CR rectangle to satisfy slice/SLICEM requirement")
+    return best_box
+
+
+def emit_pblock_tcl(pbname: str, inst: str, box: Box) -> List[str]:
+    tcl = []
+    tcl.append(
+        f"# pblock for {inst}  CR: X{box.x0}Y{box.y0} .. X{box.x1}Y{box.y1}  "
+        f"(sumSLICE={box.sum_slice}, sumSLICEM~{box.sum_slicem})"
+    )
+    tcl.append(f'if {{[llength [get_pblocks -quiet {{{pbname}}}]]}} {{ delete_pblocks [get_pblocks -quiet {{{pbname}}}] }}')
+    tcl.append(f"create_pblock {pbname}")
+    tcl.append(f"set pblk [get_pblocks -quiet {{{pbname}}}]")
+    tcl.append("set_property SNAPPING_MODE ON $pblk")
+    tcl.append("set_property IS_SOFT false $pblk")
+    tcl.append("set_property EXCLUDE_PLACEMENT false $pblk")
+    tcl.append("set_property CONTAIN_ROUTING   false $pblk")
+
+    cr_list_pref = []
+    cr_list_nop  = []
+    for x in range(box.x0, box.x1 + 1):
+        for y in range(box.y0, box.y1 + 1):
+            cr_list_pref.append(f"CLOCKREGION_X{x}Y{y}")
+            cr_list_nop.append(f"X{x}Y{y}")
+    crs_pref = " ".join(cr_list_pref)
+    crs_nop  = " ".join(cr_list_nop)
+
+    tcl += [
+        f"set _cr_list {{{crs_nop}}}",  
+        "set _cr [get_clock_regions -quiet $_cr_list]",
+        "if {![llength $_cr]} { puts \"ERROR: No matching CLOCK_REGION objects for requested CR box.\"; exit 1 }",
+        "set _sites [get_sites -quiet -of_objects $_cr "
+        "  -filter { SITE_TYPE =~ SLIC* || SITE_TYPE =~ DSP* || NAME =~ RAMB18_* || NAME =~ RAMB36_* || SITE_TYPE =~ URAM* }]",
+        "resize_pblock $pblk -add $_sites",
+    ]
+
+    tcl += [
+        f'set inst_path {{{inst}}}',
+        'set tgt {}',
+        'set pats [list "$inst_path/*" "$inst_path"]',
+        'foreach pat $pats {',
+        '  set c [get_cells -quiet -hier * -filter "NAME =~ $pat"]',
+        '  if {[llength $c]} { set tgt $c; break }',
+        '}',
+        'if {![llength $tgt]} {',
+        '  set top [get_cells -quiet top_multi_len]',
+        '  if {[llength $top]} { set tgt $top }',
+        '}',
+        'set hc {}',
+        'if {[llength $tgt]} {',
+        '  set hc [get_cells -quiet -hier -of_objects $tgt -filter { IS_PRIMITIVE == 1 && PRIMITIVE_GROUP != "IO" && PRIMITIVE_GROUP != "CLOCK" }]',
+        '}',
+        'if {![llength $hc]} {',
+        '  puts "WARN: pattern $inst_path matched no cells. Falling back to whole design primitives."',
+        '  set hc [get_cells -quiet -hier * -filter { IS_PRIMITIVE == 1 && PRIMITIVE_GROUP != "IO" && PRIMITIVE_GROUP != "CLOCK" }]',
+        '}',
+        'puts "INFO: add [llength $hc] cells to $pblk"',
+        'if {[llength $hc] == 0} { puts "ERROR: No cells found to add into pblock"; exit 1 }',
+        'add_cells_to_pblock $pblk $hc -clear_locs',
+        'set NS  [llength [get_sites -quiet -of_objects $pblk -filter {SITE_TYPE =~ SLIC*}]]',
+        'set ND  [llength [get_sites -quiet -of_objects $pblk -filter {SITE_TYPE =~ DSP*}]]',
+        'set NB36 [llength [get_sites -quiet -of_objects $pblk -filter {NAME =~ RAMB36_*}]]',
+        'set NB18 [llength [get_sites -quiet -of_objects $pblk -filter {NAME =~ RAMB18_*}]]',
+        'set NU  [llength [get_sites -quiet -of_objects $pblk -filter {SITE_TYPE =~ URAM*}]]',
+        'puts "INFO: pblock coverage SLICE=$NS DSP=$ND RAMB36=$NB36 RAMB18=$NB18 URAM=$NU"',
+        ''
+    ]
+    return tcl
+
 
 def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--util", required=True)
-    ap.add_argument("--grid", required=True)
-    ap.add_argument("--npblocks", type=int, default=8)
-    ap.add_argument("--target-fill", type=float, default=0.80)
-    ap.add_argument("--bench", required=True)
-    ap.add_argument("--out", required=True)
+    ap = argparse.ArgumentParser(
+        description="Generate pblocks by CLOCK_REGION rectangles, growing from X0Y0 like dragging."
+    )
+    ap.add_argument("--bench-list", required=True, help="list of hierarchical paths (one per line)")
+    ap.add_argument("--bench-rpt-root", required=True, help="dir containing util_hier reports per bench")
+    ap.add_argument("--cr-summary", required=True, help="CSV with per-CR counts (clock_region,SLICE,DSP,RAMB18,RAMB36)")
+    ap.add_argument("--out", required=True, help="output Tcl file")
+    ap.add_argument("--target-fill", type=float, default=0.65, help="slice fill target inside pblock")
+    ap.add_argument("--min-slices", type=int, default=1200)
+    ap.add_argument("--origin-crx", type=int, default=0)
+    ap.add_argument("--origin-cry", type=int, default=0)
+    ap.add_argument("--target-aspect", type=float, default=0.90, help="W/H aimed aspect")
+    ap.add_argument("--aspect-tol", type=float, default=0.25, help="acceptable |W/H - target|")
     args = ap.parse_args()
-    
-    safe_bench = re.sub(r'[^A-Za-z0-9_]', '_', args.bench)
 
-    grid_txt = Path(args.grid).read_text(encoding="utf-8", errors="ignore")
-    type_xs, (type_ymin, type_ymax) = parse_grid_ranges(grid_txt)
+    benches = [
+        ln.strip()
+        for ln in Path(args.bench_list).read_text(encoding="utf-8", errors="ignore").splitlines()
+        if ln.strip()
+    ]
+    crs, xmax, ymax = parse_cr_summary_csv(Path(args.cr_summary))
 
-    rpt_txt  = Path(args.util).read_text(encoding="utf-8", errors="ignore")
-    totals, children = parse_util_hier_ascii(rpt_txt)
+    tcl_all: List[str] = []
+    for inst in benches:
+        safe = sanitize(inst.split('/')[-1] if '/' in inst else inst)
+        cand_reports = [
+            Path(args.bench_rpt_root) / safe / "pre_impl_util_hier.rpt",
+            Path(args.bench_rpt_root) / safe / f"{safe}_util_hier.rpt",
+        ]
+        rpt = next((p for p in cand_reports if p.exists()), None)
+        if rpt is None:
+            raise SystemExit(f"util report missing under {Path(args.bench_rpt_root) / safe}")
 
-    # Device column counts
-    n_slice = len(type_xs["SLICE"])
-    n_dsp   = len(type_xs["DSP48E2"])
-    n_b18   = len(type_xs["RAMB18"])
-    n_b36   = len(type_xs["RAMB36"])
-    n_uram  = len(type_xs["URAM288"])
+        ut = parse_util_hier_ascii(rpt.read_text(encoding="utf-8", errors="ignore"))
 
-    k = max(1, int(args.npblocks))
+        sneed_raw = slices_needed(ut.lut, ut.ff, ut.carry, slice_lut=4, slice_ff=8)
+        sneed = max(args.min_slices, math.ceil(sneed_raw / max(1e-6, args.target_fill)))
 
-    weights = [1.0/k for _ in range(k)]
+        mem_like = ut.lut_mem + ut.lut_srl
+        need_slicem = 0 if mem_like == 0 else math.ceil((mem_like / 4.0) / max(1e-6, args.target_fill))
 
-    slice_xs   = type_xs["SLICE"]
-    slice_bands = split_columns(slice_xs, k, weights)
-    def band_capacity(xs, bands):
-        cap = []
-        for lo,hi in bands:
-            cnt = len([x for x in xs if lo <= x <= hi])
-            cap.append(float(cnt))
-        return cap
+        box = choose_cr_box_from_origin(
+            crs=crs,
+            xmax=xmax,
+            ymax=ymax,
+            need_slices=sneed,
+            need_slicem=need_slicem,
+            origin_x=args.origin_crx,
+            origin_y=args.origin_cry,
+            target_aspect=args.target_aspect,
+            aspect_tol=args.aspect_tol
+        )
 
-    caps = {
-        "LUT": band_capacity(type_xs["SLICE"], slice_bands),
-        "FF":  band_capacity(type_xs["SLICE"], slice_bands),
-        "DSP": band_capacity(type_xs["DSP48E2"], slice_bands),
-        "BRAM18": band_capacity(type_xs["RAMB18"], slice_bands),
-        "BRAM36": band_capacity(type_xs["RAMB36"], slice_bands),
-        "URAM": band_capacity(type_xs["URAM288"], slice_bands),
-    }
+        pbname = f"pblock_{safe}"
+        tcl_all += emit_pblock_tcl(pbname, inst, box)
 
-    groups = greedy_pack(children, caps, k)
-
-    def map_band_to_res(xs_res, band):
-        if not xs_res:
-            return None
-        xlo, xhi = band
-        # positions in SLICE ordered list
-        try:
-            pos_lo = slice_xs.index(xlo)
-            pos_hi = slice_xs.index(xhi)
-        except ValueError:
-            return None
-        if pos_lo > pos_hi:
-            pos_lo, pos_hi = pos_hi, pos_lo
-        nS = max(1, len(slice_xs) - 1)
-        nR = max(1, len(xs_res)  - 1)
-        r_lo = int(round((pos_lo / nS) * nR))
-        r_hi = int(round((pos_hi / nS) * nR))
-        if r_hi < r_lo:
-            r_hi = r_lo
-        return xs_res[r_lo], xs_res[r_hi]
-    # Emit Tcl
-    out = []
-    out.append(f"# Auto-generated pblocks for bench {args.bench}")
-    out.append("set_param place.enableMBBB true")
-    out.append("set_param place.enableClockRegionRepacking true")
-    out.append("")
-    for i, (xlo,xhi) in enumerate(slice_bands):
-        pb = f"pblock_{safe_bench}_{i}"
-        out.append(f"if {{[llength [get_pblocks {pb}]]}} {{ delete_pblocks [get_pblocks {pb}] }}")
-        out.append(f"create_pblock {pb}")
-        set_ylo = type_ymin["SLICE"]; set_yhi = type_ymax["SLICE"]
-        out.append(f"resize_pblock [get_pblocks {pb}] -add {{SLICE_X{xlo}Y{set_ylo}:SLICE_X{xhi}Y{set_yhi}}}")
-        
-
-        dsp_band = map_band_to_res(type_xs["DSP48E2"], (xlo,xhi))
-        if dsp_band and n_dsp>0:
-            dx0, dx1 = dsp_band
-            out.append(f"resize_pblock [get_pblocks {pb}] -add {{DSP48E2_X{dx0}Y{type_ymin['DSP48E2']}:DSP48E2_X{dx1}Y{type_ymax['DSP48E2']}}}")
-        b18_band = map_band_to_res(type_xs["RAMB18"], (xlo,xhi))
-        if b18_band and n_b18>0:
-            bx0, bx1 = b18_band
-            out.append(f"resize_pblock [get_pblocks {pb}] -add {{RAMB18_X{bx0}Y{type_ymin['RAMB18']}:RAMB18_X{bx1}Y{type_ymax['RAMB18']}}}")
-        b36_band = map_band_to_res(type_xs["RAMB36"], (xlo,xhi))
-        if b36_band and n_b36>0:
-            cx0, cx1 = b36_band
-            out.append(f"resize_pblock [get_pblocks {pb}] -add {{RAMB36_X{cx0}Y{type_ymin['RAMB36']}:RAMB36_X{cx1}Y{type_ymax['RAMB36']}}}")
-        ur_band = map_band_to_res(type_xs["URAM288"], (xlo,xhi))
-        if ur_band and n_uram>0:
-            ux0, ux1 = ur_band
-            out.append(f"resize_pblock [get_pblocks {pb}] -add {{URAM288_X{ux0}Y{type_ymin['URAM288']}:URAM288_X{ux1}Y{type_ymax['URAM288']}}}")
-
-        out.append(f"set_property SNAPPING_MODE ON [get_pblocks {pb}]")
-        out.append(f"set_property EXCLUDE_PLACEMENT false [get_pblocks {pb}]")
-        out.append(f"set_property EXCLUDE_ROUTING   false [get_pblocks {pb}]")
-        # Assign cells (hierarchical groups greedily packed)
-
-        names = groups[i]
-        if names:
-            out.append("set sel_cells {}")
-            pats = " ".join([f"*{n}*" for n in names])
-            out.append(f"set _patterns {{{pats}}}")
-            out.append("foreach p $_patterns {")
-            out.append("  set c [get_cells -hier -quiet -filter \"NAME =~ $p\"]")
-            out.append("  if {[llength $c]} { lappend sel_cells $c }")
-            out.append("}")
-            out.append(f"if {{[llength $sel_cells]}} {{ add_cells_to_pblock [get_pblocks {pb}] $sel_cells }}")
-        out.append("")
-    # Write out
-    Path(args.out).write_text("\n".join(out), encoding="utf-8")
+    Path(args.out).parent.mkdir(parents=True, exist_ok=True)
+    Path(args.out).write_text("\n".join(tcl_all), encoding="utf-8")
     print(f"Wrote {args.out}")
+
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,111 @@
+{
+  "rank": 18,
+  "group_index": 2,
+  "execution_count": 755466,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x577f79d8dd00",
+      "opcode": "and",
+      "raw_operands": [
+        "r9d",
+        "0x3"
+      ],
+      "in_operands": [
+        "r9d",
+        "0x3"
+      ],
+      "out_operands": [
+        "r9d",
+        "flag"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x577f79d8dd0c",
+      "opcode": "cmp",
+      "raw_operands": [
+        "r9d",
+        "0x3"
+      ],
+      "in_operands": [
+        "r9d",
+        "0x3"
+      ],
+      "out_operands": [
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x577f79d8dd10",
+      "opcode": "setz",
+      "raw_operands": [
+        "r8b"
+      ],
+      "in_operands": [
+        "flag"
+      ],
+      "out_operands": [
+        "r8b"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "r9d"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "r9d"
+      },
+      "condition": "reg vs reg: r9d"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "flag"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "flag"
+      },
+      "condition": "flag vs flag"
+    }
+  ],
+  "bench": "625.x264_s/2",
+  "src": "2/super_hot_regions:32",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "comb_bound_hits": 0,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 1,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 3
+  },
+  "pcs": [
+    "0x577f79d8dd00",
+    "0x577f79d8dd0c",
+    "0x577f79d8dd10"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x577f79d8dd00"
+}

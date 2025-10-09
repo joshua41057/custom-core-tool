@@ -1,0 +1,110 @@
+{
+  "rank": 51,
+  "group_index": 2,
+  "execution_count": 707088,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x621bfa9499f8",
+      "opcode": "mov",
+      "raw_operands": [
+        "edx",
+        "eax"
+      ],
+      "in_operands": [
+        "eax"
+      ],
+      "out_operands": [
+        "edx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x621bfa9499fa",
+      "opcode": "and",
+      "raw_operands": [
+        "edx",
+        "0x20000000"
+      ],
+      "in_operands": [
+        "edx",
+        "0x20000000"
+      ],
+      "out_operands": [
+        "edx",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x621bfa949a00",
+      "opcode": "setnz",
+      "raw_operands": [
+        "sil"
+      ],
+      "in_operands": [
+        "flag"
+      ],
+      "out_operands": [
+        "sil"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "edx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "edx"
+      },
+      "condition": "reg vs reg: edx"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "flag"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "flag"
+      },
+      "condition": "flag vs flag"
+    }
+  ],
+  "bench": "500.perlbench_r/3",
+  "src": "3/super_hot_regions:78",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "comb_bound_hits": 0,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 2
+  },
+  "pcs": [
+    "0x621bfa9499f8",
+    "0x621bfa9499fa",
+    "0x621bfa949a00"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x621bfa9499f8"
+}

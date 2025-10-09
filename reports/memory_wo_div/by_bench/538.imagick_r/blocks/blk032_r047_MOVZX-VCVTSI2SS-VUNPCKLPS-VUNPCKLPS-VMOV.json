@@ -1,0 +1,240 @@
+{
+  "rank": 47,
+  "group_index": 3,
+  "execution_count": 747938,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x633a6b3658dd",
+      "opcode": "movzx",
+      "raw_operands": [
+        "edx",
+        "word ptr [rsp+0x11e]"
+      ],
+      "in_operands": [
+        "[rsp+0x11e]"
+      ],
+      "out_operands": [
+        "edx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x633a6b3658ee",
+      "opcode": "vcvtsi2ss",
+      "raw_operands": [
+        "xmm0",
+        "xmm6",
+        "edx"
+      ],
+      "in_operands": [
+        "xmm6",
+        "edx"
+      ],
+      "out_operands": [
+        "xmm0"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x633a6b365904",
+      "opcode": "vunpcklps",
+      "raw_operands": [
+        "xmm3",
+        "xmm3",
+        "xmm8"
+      ],
+      "in_operands": [
+        "xmm3",
+        "xmm8"
+      ],
+      "out_operands": [
+        "xmm3"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x633a6b365909",
+      "opcode": "vunpcklps",
+      "raw_operands": [
+        "xmm7",
+        "xmm7",
+        "xmm0"
+      ],
+      "in_operands": [
+        "xmm7",
+        "xmm0"
+      ],
+      "out_operands": [
+        "xmm7"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x633a6b36590d",
+      "opcode": "vmovlhps",
+      "raw_operands": [
+        "xmm3",
+        "xmm3",
+        "xmm7"
+      ],
+      "in_operands": [
+        "xmm3",
+        "xmm7"
+      ],
+      "out_operands": [
+        "xmm3"
+      ]
+    },
+    {
+      "index": 5,
+      "address": "0x633a6b365911",
+      "opcode": "vaddps",
+      "raw_operands": [
+        "xmm3",
+        "xmm3",
+        "xmmword ptr [rsp+0x180]"
+      ],
+      "in_operands": [
+        "xmm3",
+        "xmmword ptr [rsp+0x180]"
+      ],
+      "out_operands": [
+        "xmm3"
+      ]
+    },
+    {
+      "index": 6,
+      "address": "0x633a6b365940",
+      "opcode": "vmovaps",
+      "raw_operands": [
+        "xmmword ptr [rsp+0x180]",
+        "xmm3"
+      ],
+      "in_operands": [
+        "xmm3"
+      ],
+      "out_operands": [
+        "xmmword ptr [rsp+0x180]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "edx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "edx"
+      },
+      "condition": "reg vs reg: edx"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "xmm0"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "xmm0"
+      },
+      "condition": "reg vs reg: xmm0"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "xmm3"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "xmm3"
+      },
+      "condition": "reg vs reg: xmm3"
+    },
+    {
+      "from": {
+        "instr_index": 3,
+        "operand": "xmm7"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "xmm7"
+      },
+      "condition": "reg vs reg: xmm7"
+    },
+    {
+      "from": {
+        "instr_index": 4,
+        "operand": "xmm3"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "xmm3"
+      },
+      "condition": "reg vs reg: xmm3"
+    },
+    {
+      "from": {
+        "instr_index": 5,
+        "operand": "xmm3"
+      },
+      "to": {
+        "instr_index": 6,
+        "operand": "xmm3"
+      },
+      "condition": "reg vs reg: xmm3"
+    }
+  ],
+  "bench": "538.imagick_r/1",
+  "src": "1/super_hot_regions:66",
+  "order_map": [
+    0,
+    2,
+    1,
+    3,
+    4,
+    5,
+    6
+  ],
+  "ff_boundaries": [
+    0,
+    3,
+    4,
+    5
+  ],
+  "stage_count": 5,
+  "latency_cycles": 5,
+  "crit_path_sigma": 0.9797958971132712,
+  "comb_bound_hits": 3,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 6,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 3,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 9
+  },
+  "pcs": [
+    "0x633a6b3658dd",
+    "0x633a6b3658ee",
+    "0x633a6b365904",
+    "0x633a6b365909",
+    "0x633a6b36590d",
+    "0x633a6b365911",
+    "0x633a6b365940"
+  ],
+  "latencies": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x633a6b3658dd"
+}

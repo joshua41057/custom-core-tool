@@ -1,0 +1,116 @@
+{
+  "rank": 41,
+  "group_index": 1,
+  "execution_count": 2290134,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5f7fdf5f0eb1",
+      "opcode": "movsxd",
+      "raw_operands": [
+        "r10",
+        "ebp"
+      ],
+      "in_operands": [
+        "ebp"
+      ],
+      "out_operands": [
+        "r10"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5f7fdf5f0eb4",
+      "opcode": "imul",
+      "raw_operands": [
+        "r10",
+        "r10",
+        "0x51eb851f"
+      ],
+      "in_operands": [
+        "r10",
+        "0x51eb851f"
+      ],
+      "out_operands": [
+        "r10"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5f7fdf5f0ec0",
+      "opcode": "sar",
+      "raw_operands": [
+        "r10",
+        "0x26"
+      ],
+      "in_operands": [
+        "r10",
+        "0x26"
+      ],
+      "out_operands": [
+        "r10",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "r10"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "r10"
+      },
+      "condition": "reg vs reg: r10"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "r10"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "r10"
+      },
+      "condition": "reg vs reg: r10"
+    }
+  ],
+  "bench": "541.leela_r/1",
+  "src": "1/super_hot_regions:51",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.4714045207910317,
+  "comb_bound_hits": 0,
+  "dsp_bound_hits": 1,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 1,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 3
+  },
+  "pcs": [
+    "0x5f7fdf5f0eb1",
+    "0x5f7fdf5f0eb4",
+    "0x5f7fdf5f0ec0"
+  ],
+  "latencies": [
+    1,
+    2,
+    1
+  ],
+  "pc": "0x5f7fdf5f0eb1"
+}

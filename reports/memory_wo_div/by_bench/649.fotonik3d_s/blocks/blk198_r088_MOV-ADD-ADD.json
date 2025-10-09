@@ -1,0 +1,116 @@
+{
+  "rank": 88,
+  "group_index": 10,
+  "execution_count": 20856,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x566cf36e6a11",
+      "opcode": "mov",
+      "raw_operands": [
+        "rcx",
+        "qword ptr [rsp+0x3c8]"
+      ],
+      "in_operands": [
+        "[rsp+0x3c8]"
+      ],
+      "out_operands": [
+        "rcx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x566cf36e6a79",
+      "opcode": "add",
+      "raw_operands": [
+        "qword ptr [rsp+0x7c8]",
+        "rcx"
+      ],
+      "in_operands": [
+        "[rsp+0x7c8]",
+        "rcx"
+      ],
+      "out_operands": [
+        "[rsp+0x7c8]",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x566cf36e6a91",
+      "opcode": "add",
+      "raw_operands": [
+        "qword ptr [rsp+0x560]",
+        "rcx"
+      ],
+      "in_operands": [
+        "[rsp+0x560]",
+        "rcx"
+      ],
+      "out_operands": [
+        "[rsp+0x560]",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rcx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rcx"
+      },
+      "condition": "reg vs reg: rcx"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rcx"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "rcx"
+      },
+      "condition": "reg vs reg: rcx"
+    }
+  ],
+  "bench": "649.fotonik3d_s/1",
+  "src": "1/super_hot_regions:353",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.9428090415820634,
+  "comb_bound_hits": 1,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 1,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 3
+  },
+  "pcs": [
+    "0x566cf36e6a11",
+    "0x566cf36e6a79",
+    "0x566cf36e6a91"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x566cf36e6a11"
+}

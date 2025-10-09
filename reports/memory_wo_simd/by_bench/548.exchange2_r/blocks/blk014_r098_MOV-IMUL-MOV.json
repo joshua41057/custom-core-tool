@@ -1,0 +1,113 @@
+{
+  "rank": 98,
+  "group_index": 2,
+  "execution_count": 403374,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x78f0e2261fc5",
+      "opcode": "mov",
+      "raw_operands": [
+        "rax",
+        "qword ptr [r12+rsi*1]"
+      ],
+      "in_operands": [
+        "[r12+rsi*1]"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x78f0e2261fc9",
+      "opcode": "imul",
+      "raw_operands": [
+        "rax",
+        "r11"
+      ],
+      "in_operands": [
+        "rax",
+        "r11"
+      ],
+      "out_operands": [
+        "rax"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x78f0e2261fcd",
+      "opcode": "mov",
+      "raw_operands": [
+        "qword ptr [r10+rcx*8]",
+        "rax"
+      ],
+      "in_operands": [
+        "rax"
+      ],
+      "out_operands": [
+        "[r10+rcx*8]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rax"
+      },
+      "condition": "reg vs reg: rax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "rax"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "rax"
+      },
+      "condition": "reg vs reg: rax"
+    }
+  ],
+  "bench": "548.exchange2_r/1",
+  "src": "1/super_hot_regions:133",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.816496580927726,
+  "comb_bound_hits": 1,
+  "dsp_bound_hits": 1,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 1,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 3
+  },
+  "pcs": [
+    "0x78f0e2261fc5",
+    "0x78f0e2261fc9",
+    "0x78f0e2261fcd"
+  ],
+  "latencies": [
+    1,
+    2,
+    1
+  ],
+  "pc": "0x78f0e2261fc5"
+}

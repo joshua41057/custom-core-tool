@@ -1,0 +1,114 @@
+{
+  "rank": 98,
+  "group_index": 1,
+  "execution_count": 369421,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x63beba65d0d2",
+      "opcode": "mov",
+      "raw_operands": [
+        "eax",
+        "dword ptr [rsp+0x60]"
+      ],
+      "in_operands": [
+        "[rsp+0x60]"
+      ],
+      "out_operands": [
+        "eax"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x63beba65d0d9",
+      "opcode": "sub",
+      "raw_operands": [
+        "eax",
+        "dword ptr [rsp+0x5c]"
+      ],
+      "in_operands": [
+        "eax",
+        "[rsp+0x5c]"
+      ],
+      "out_operands": [
+        "eax",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x63beba65d0dd",
+      "opcode": "mov",
+      "raw_operands": [
+        "dword ptr [rsp+0x30]",
+        "eax"
+      ],
+      "in_operands": [
+        "eax"
+      ],
+      "out_operands": [
+        "[rsp+0x30]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    }
+  ],
+  "bench": "648.exchange2_s/1",
+  "src": "1/super_hot_regions:130",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.9428090415820634,
+  "comb_bound_hits": 2,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 1,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 3
+  },
+  "pcs": [
+    "0x63beba65d0d2",
+    "0x63beba65d0d9",
+    "0x63beba65d0dd"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x63beba65d0d2"
+}

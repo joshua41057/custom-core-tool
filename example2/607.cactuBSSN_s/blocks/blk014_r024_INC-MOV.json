@@ -1,0 +1,80 @@
+{
+  "rank": 24,
+  "group_index": 1,
+  "execution_count": 2320094,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x626fc43776ab",
+      "opcode": "inc",
+      "raw_operands": [
+        "r9d"
+      ],
+      "in_operands": [
+        "r9d"
+      ],
+      "out_operands": [
+        "r9d",
+        "flag"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x626fc43776ae",
+      "opcode": "mov",
+      "raw_operands": [
+        "dword ptr [rdi]",
+        "r9d"
+      ],
+      "in_operands": [
+        "r9d"
+      ],
+      "out_operands": [
+        "[rdi]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "r9d"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "r9d"
+      },
+      "condition": "reg vs reg: r9d"
+    }
+  ],
+  "bench": "607.cactuBSSN_s/1",
+  "src": "1/super_hot_regions:55",
+  "order_map": [
+    0,
+    1
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "comb_bound_hits": 0,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 1,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 1
+  },
+  "pcs": [
+    "0x626fc43776ab",
+    "0x626fc43776ae"
+  ],
+  "latencies": [
+    1,
+    1
+  ],
+  "pc": "0x626fc43776ab"
+}

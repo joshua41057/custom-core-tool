@@ -1,0 +1,215 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
+| Date         : Tue Sep 23 00:00:15 2025
+| Host         : orthanc running 64-bit Ubuntu 22.04.4 LTS
+| Command      : report_utilization -hierarchical -file /home/jyoo/custom_v_2/custom-core-tool/reports/memory_wo_simd/benches/520_omnetpp_r/pre_impl_util_hier.rpt
+| Design       : top_multi_len
+| Device       : xcu200fsgd2104-2
+| Design State : Optimized
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++--------------------------------------------+-----------------------------------------------+------------+------------+---------+------+------+--------+--------+------+------------+
+|                  Instance                  |                     Module                    | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | URAM | DSP Blocks |
++--------------------------------------------+-----------------------------------------------+------------+------------+---------+------+------+--------+--------+------+------------+
+| top_multi_len                              |                                         (top) |       2104 |       2104 |       0 |    0 | 9260 |     10 |      0 |    0 |          0 |
+|   (top_multi_len)                          |                                         (top) |        448 |        448 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|   glen[0].blk_i                            |                                uop_block_wrap |          1 |          1 |       0 |    0 |  228 |      0 |      0 |    0 |          0 |
+|     (glen[0].blk_i)                        |                                uop_block_wrap |          0 |          0 |       0 |    0 |  196 |      0 |      0 |    0 |          0 |
+|     core                                   |                                     uop_block |          1 |          1 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
+|       (core)                               |                                     uop_block |          1 |          1 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |                               microop_unit__1 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
+|   glen[10].blk_i                           |             uop_block_wrap__parameterized7__2 |         34 |         34 |       0 |    0 |  391 |      1 |      0 |    0 |          0 |
+|     (glen[10].blk_i)                       |             uop_block_wrap__parameterized7__2 |          0 |          0 |       0 |    0 |  198 |      1 |      0 |    0 |          0 |
+|     core                                   |                  uop_block__parameterized7__2 |         34 |         34 |       0 |    0 |  193 |      0 |      0 |    0 |          0 |
+|       (core)                               |                  uop_block__parameterized7__2 |         34 |         34 |       0 |    0 |   65 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |              microop_unit__parameterized1__30 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[1].g_normal.alu_i                  |              microop_unit__parameterized1__29 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|   glen[11].blk_i                           |                uop_block_wrap__parameterized7 |         34 |         34 |       0 |    0 |  391 |      1 |      0 |    0 |          0 |
+|     (glen[11].blk_i)                       |                uop_block_wrap__parameterized7 |          0 |          0 |       0 |    0 |  198 |      1 |      0 |    0 |          0 |
+|     core                                   |                     uop_block__parameterized7 |         34 |         34 |       0 |    0 |  193 |      0 |      0 |    0 |          0 |
+|       (core)                               |                     uop_block__parameterized7 |         34 |         34 |       0 |    0 |   65 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |               microop_unit__parameterized1__9 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[1].g_normal.alu_i                  |              microop_unit__parameterized1__10 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|   glen[12].blk_i                           |                uop_block_wrap__parameterized9 |         33 |         33 |       0 |    0 |  165 |      0 |      0 |    0 |          0 |
+|     (glen[12].blk_i)                       |                uop_block_wrap__parameterized9 |          0 |          0 |       0 |    0 |  101 |      0 |      0 |    0 |          0 |
+|     core                                   |                     uop_block__parameterized9 |         33 |         33 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       (core)                               |                     uop_block__parameterized9 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |               microop_unit__parameterized3__4 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
+|       g[2].g_normal.alu_i                  |               microop_unit__parameterized9__1 |         32 |         32 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
+|   glen[13].blk_i                           |               uop_block_wrap__parameterized10 |         65 |         65 |       0 |    0 |  326 |      0 |      0 |    0 |          0 |
+|     (glen[13].blk_i)                       |               uop_block_wrap__parameterized10 |          0 |          0 |       0 |    0 |  198 |      0 |      0 |    0 |          0 |
+|     core                                   |                    uop_block__parameterized10 |         65 |         65 |       0 |    0 |  128 |      0 |      0 |    0 |          0 |
+|       (core)                               |                    uop_block__parameterized10 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |              microop_unit__parameterized1__12 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[1].g_normal.alu_i                  |               microop_unit__parameterized2__2 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|   glen[14].blk_i                           |               uop_block_wrap__parameterized11 |        129 |        129 |       0 |    0 |  506 |      0 |      0 |    0 |          0 |
+|     (glen[14].blk_i)                       |               uop_block_wrap__parameterized11 |          0 |          0 |       0 |    0 |  198 |      0 |      0 |    0 |          0 |
+|     core                                   |                    uop_block__parameterized11 |        129 |        129 |       0 |    0 |  308 |      0 |      0 |    0 |          0 |
+|       (core)                               |                    uop_block__parameterized11 |          1 |          1 |       0 |    0 |   52 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |               microop_unit__parameterized0__4 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[1].g_normal.alu_i                  |              microop_unit__parameterized1__13 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[3].g_normal.alu_i                  |              microop_unit__parameterized1__14 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[4].g_normal.alu_i                  |                  microop_unit__parameterized6 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|   glen[15].blk_i                           |               uop_block_wrap__parameterized12 |        129 |        129 |       0 |    0 |  518 |      0 |      0 |    0 |          0 |
+|     (glen[15].blk_i)                       |               uop_block_wrap__parameterized12 |          0 |          0 |       0 |    0 |  198 |      0 |      0 |    0 |          0 |
+|     core                                   |                    uop_block__parameterized12 |        129 |        129 |       0 |    0 |  320 |      0 |      0 |    0 |          0 |
+|       (core)                               |                    uop_block__parameterized12 |          1 |          1 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |               microop_unit__parameterized0__5 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[1].g_normal.alu_i                  |              microop_unit__parameterized1__15 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[2].g_normal.alu_i                  |              microop_unit__parameterized1__16 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[3].g_normal.alu_i                  |                  microop_unit__parameterized2 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|   glen[16].blk_i                           |               uop_block_wrap__parameterized13 |        130 |        130 |       0 |    0 |  392 |      1 |      0 |    0 |          0 |
+|     (glen[16].blk_i)                       |               uop_block_wrap__parameterized13 |          0 |          0 |       0 |    0 |  198 |      1 |      0 |    0 |          0 |
+|     core                                   |                    uop_block__parameterized13 |        130 |        130 |       0 |    0 |  194 |      0 |      0 |    0 |          0 |
+|       (core)                               |                    uop_block__parameterized13 |         66 |         66 |       0 |    0 |    2 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |              microop_unit__parameterized1__17 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[1].g_normal.alu_i                  |                 microop_unit__parameterized10 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[2].g_normal.alu_i                  |              microop_unit__parameterized1__18 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|   glen[17].blk_i                           |                uop_block_wrap__parameterized5 |          9 |          9 |       0 |    0 |  140 |      0 |      0 |    0 |          0 |
+|     (glen[17].blk_i)                       |                uop_block_wrap__parameterized5 |          0 |          0 |       0 |    0 |  131 |      0 |      0 |    0 |          0 |
+|     core                                   |                     uop_block__parameterized5 |          9 |          9 |       0 |    0 |    9 |      0 |      0 |    0 |          0 |
+|       (core)                               |                     uop_block__parameterized5 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |                  microop_unit__parameterized7 |          8 |          8 |       0 |    0 |    8 |      0 |      0 |    0 |          0 |
+|       g[1].g_normal.alu_i                  |                  microop_unit__parameterized8 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |    0 |          0 |
+|   glen[18].blk_i                           |               uop_block_wrap__parameterized14 |          1 |          1 |       0 |    0 |  174 |      0 |      0 |    0 |          0 |
+|     (glen[18].blk_i)                       |               uop_block_wrap__parameterized14 |          0 |          0 |       0 |    0 |  102 |      0 |      0 |    0 |          0 |
+|     core                                   |                    uop_block__parameterized14 |          1 |          1 |       0 |    0 |   72 |      0 |      0 |    0 |          0 |
+|       (core)                               |                    uop_block__parameterized14 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |              microop_unit__parameterized1__19 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[1].g_normal.alu_i                  |              microop_unit__parameterized11__1 |          0 |          0 |       0 |    0 |    8 |      0 |      0 |    0 |          0 |
+|   glen[19].blk_i                           |               uop_block_wrap__parameterized15 |        129 |        129 |       0 |    0 |  486 |      0 |      0 |    0 |          0 |
+|     (glen[19].blk_i)                       |               uop_block_wrap__parameterized15 |          0 |          0 |       0 |    0 |  198 |      0 |      0 |    0 |          0 |
+|     core                                   |                    uop_block__parameterized15 |        129 |        129 |       0 |    0 |  288 |      0 |      0 |    0 |          0 |
+|       (core)                               |                    uop_block__parameterized15 |          1 |          1 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |               microop_unit__parameterized0__6 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[1].g_normal.alu_i                  |                                  microop_unit |          0 |          0 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
+|       g[2].g_normal.alu_i                  |                 microop_unit__parameterized12 |         64 |         64 |       0 |    0 |  128 |      0 |      0 |    0 |          0 |
+|         (g[2].g_normal.alu_i)              |                 microop_unit__parameterized12 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|         g_iadd.use_ip.u_addsub             |                                integer_addsub |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|           (g_iadd.use_ip.u_addsub)         |                                integer_addsub |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|           U0                               |               integer_addsubc_addsub_v12_0_14 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|             (U0)                           |               integer_addsubc_addsub_v12_0_14 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|             xst_addsub                     |           integer_addsubc_addsub_v12_0_14_viv |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|               (xst_addsub)                 |           integer_addsubc_addsub_v12_0_14_viv |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|               i_baseblox.i_baseblox_addsub |        integer_addsubc_addsub_v12_0_14_legacy |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|                 no_pipelining.the_addsub   | integer_addsubc_addsub_v12_0_14_fabric_legacy |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|                   i_lut6.i_lut6_addsub     |   integer_addsubc_addsub_v12_0_14_lut6_legacy |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|                     (i_lut6.i_lut6_addsub) |   integer_addsubc_addsub_v12_0_14_lut6_legacy |         64 |         64 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|                     i_q.i_simple.qreg      |            integer_addsubc_reg_fd_v12_0_6_viv |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|   glen[1].blk_i                            |                uop_block_wrap__parameterized0 |         65 |         65 |       0 |    0 |  390 |      0 |      0 |    0 |          0 |
+|     (glen[1].blk_i)                        |                uop_block_wrap__parameterized0 |          0 |          0 |       0 |    0 |  198 |      0 |      0 |    0 |          0 |
+|     core                                   |                     uop_block__parameterized0 |         65 |         65 |       0 |    0 |  192 |      0 |      0 |    0 |          0 |
+|       (core)                               |                     uop_block__parameterized0 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |               microop_unit__parameterized0__1 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[1].g_normal.alu_i                  |               microop_unit__parameterized1__1 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[2].g_normal.alu_i                  |               microop_unit__parameterized1__2 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|   glen[20].blk_i                           |               uop_block_wrap__parameterized16 |         34 |         34 |       0 |    0 |  327 |      1 |      0 |    0 |          0 |
+|     (glen[20].blk_i)                       |               uop_block_wrap__parameterized16 |          0 |          0 |       0 |    0 |  198 |      1 |      0 |    0 |          0 |
+|     core                                   |                    uop_block__parameterized16 |         34 |         34 |       0 |    0 |  129 |      0 |      0 |    0 |          0 |
+|       (core)                               |                    uop_block__parameterized16 |         34 |         34 |       0 |    0 |    1 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |              microop_unit__parameterized1__20 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[1].g_normal.alu_i                  |              microop_unit__parameterized1__21 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|   glen[21].blk_i                           |            uop_block_wrap__parameterized17__1 |          1 |          1 |       0 |    0 |  326 |      0 |      0 |    0 |          0 |
+|     (glen[21].blk_i)                       |            uop_block_wrap__parameterized17__1 |          0 |          0 |       0 |    0 |  198 |      0 |      0 |    0 |          0 |
+|     core                                   |                 uop_block__parameterized17__1 |          1 |          1 |       0 |    0 |  128 |      0 |      0 |    0 |          0 |
+|       (core)                               |                 uop_block__parameterized17__1 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |              microop_unit__parameterized1__26 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[1].g_normal.alu_i                  |              microop_unit__parameterized1__25 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|   glen[22].blk_i                           |               uop_block_wrap__parameterized17 |          1 |          1 |       0 |    0 |  326 |      0 |      0 |    0 |          0 |
+|     (glen[22].blk_i)                       |               uop_block_wrap__parameterized17 |          0 |          0 |       0 |    0 |  198 |      0 |      0 |    0 |          0 |
+|     core                                   |                    uop_block__parameterized17 |          1 |          1 |       0 |    0 |  128 |      0 |      0 |    0 |          0 |
+|       (core)                               |                    uop_block__parameterized17 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |              microop_unit__parameterized1__22 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[1].g_normal.alu_i                  |              microop_unit__parameterized1__23 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|   glen[23].blk_i                           |               uop_block_wrap__parameterized18 |         66 |         66 |       0 |    0 |  258 |      1 |      0 |    0 |          0 |
+|     (glen[23].blk_i)                       |               uop_block_wrap__parameterized18 |          0 |          0 |       0 |    0 |  161 |      1 |      0 |    0 |          0 |
+|     core                                   |                    uop_block__parameterized18 |         66 |         66 |       0 |    0 |   97 |      0 |      0 |    0 |          0 |
+|       (core)                               |                    uop_block__parameterized18 |         34 |         34 |       0 |    0 |   33 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |                 microop_unit__parameterized13 |         32 |         32 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
+|       g[1].g_normal.alu_i                  |                  microop_unit__parameterized3 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
+|   glen[24].blk_i                           |               uop_block_wrap__parameterized19 |         33 |         33 |       0 |    0 |  149 |      0 |      0 |    0 |          0 |
+|     (glen[24].blk_i)                       |               uop_block_wrap__parameterized19 |          0 |          0 |       0 |    0 |   69 |      0 |      0 |    0 |          0 |
+|     core                                   |                    uop_block__parameterized19 |         33 |         33 |       0 |    0 |   80 |      0 |      0 |    0 |          0 |
+|       (core)                               |                    uop_block__parameterized19 |          1 |          1 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |              microop_unit__parameterized11__2 |          0 |          0 |       0 |    0 |    8 |      0 |      0 |    0 |          0 |
+|       g[1].g_normal.alu_i                  |                 microop_unit__parameterized11 |          0 |          0 |       0 |    0 |    8 |      0 |      0 |    0 |          0 |
+|       g[2].g_normal.alu_i                  |                  microop_unit__parameterized9 |         32 |         32 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
+|   glen[25].blk_i                           |               uop_block_wrap__parameterized20 |         97 |         97 |       0 |    0 |  518 |      0 |      0 |    0 |          0 |
+|     (glen[25].blk_i)                       |               uop_block_wrap__parameterized20 |          0 |          0 |       0 |    0 |  198 |      0 |      0 |    0 |          0 |
+|     core                                   |                    uop_block__parameterized20 |         97 |         97 |       0 |    0 |  320 |      0 |      0 |    0 |          0 |
+|       (core)                               |                    uop_block__parameterized20 |          1 |          1 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |                 microop_unit__parameterized14 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[1].g_normal.alu_i                  |                 microop_unit__parameterized15 |         32 |         32 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[2].g_normal.alu_i                  |              microop_unit__parameterized1__24 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[3].g_normal.alu_i                  |                  microop_unit__parameterized1 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|   glen[26].blk_i                           |               uop_block_wrap__parameterized21 |         65 |         65 |       0 |    0 |  318 |      0 |      0 |    0 |          0 |
+|     (glen[26].blk_i)                       |               uop_block_wrap__parameterized21 |          0 |          0 |       0 |    0 |  194 |      0 |      0 |    0 |          0 |
+|     core                                   |                    uop_block__parameterized21 |         65 |         65 |       0 |    0 |  124 |      0 |      0 |    0 |          0 |
+|       (core)                               |                    uop_block__parameterized21 |          1 |          1 |       0 |    0 |   60 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |                  microop_unit__parameterized0 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|   glen[2].blk_i                            |                uop_block_wrap__parameterized1 |         98 |         98 |       0 |    0 |  327 |      1 |      0 |    0 |          0 |
+|     (glen[2].blk_i)                        |                uop_block_wrap__parameterized1 |          0 |          0 |       0 |    0 |  198 |      1 |      0 |    0 |          0 |
+|     core                                   |                     uop_block__parameterized1 |         98 |         98 |       0 |    0 |  129 |      0 |      0 |    0 |          0 |
+|       (core)                               |                     uop_block__parameterized1 |         34 |         34 |       0 |    0 |    1 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |               microop_unit__parameterized2__1 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[1].g_normal.alu_i                  |               microop_unit__parameterized1__3 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|   glen[3].blk_i                            |                uop_block_wrap__parameterized2 |        165 |        165 |       0 |    0 |  618 |      1 |      0 |    0 |          0 |
+|     (glen[3].blk_i)                        |                uop_block_wrap__parameterized2 |          0 |          0 |       0 |    0 |  198 |      1 |      0 |    0 |          0 |
+|     core                                   |                     uop_block__parameterized2 |        165 |        165 |       0 |    0 |  420 |      0 |      0 |    0 |          0 |
+|       (core)                               |                     uop_block__parameterized2 |        133 |        133 |       0 |    0 |  164 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |               microop_unit__parameterized3__1 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
+|       g[1].g_normal.alu_i                  |                  microop_unit__parameterized4 |         32 |         32 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
+|       g[2].g_normal.alu_i                  |               microop_unit__parameterized3__2 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
+|       g[3].g_normal.alu_i                  |                  microop_unit__parameterized5 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
+|       g[4].g_normal.alu_i                  |               microop_unit__parameterized1__4 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[5].g_normal.alu_i                  |               microop_unit__parameterized1__5 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|   glen[4].blk_i                            |                uop_block_wrap__parameterized3 |         65 |         65 |       0 |    0 |  326 |      0 |      0 |    0 |          0 |
+|     (glen[4].blk_i)                        |                uop_block_wrap__parameterized3 |          0 |          0 |       0 |    0 |  198 |      0 |      0 |    0 |          0 |
+|     core                                   |                     uop_block__parameterized3 |         65 |         65 |       0 |    0 |  128 |      0 |      0 |    0 |          0 |
+|       (core)                               |                     uop_block__parameterized3 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |               microop_unit__parameterized0__2 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[1].g_normal.alu_i                  |               microop_unit__parameterized1__6 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|   glen[5].blk_i                            |                uop_block_wrap__parameterized4 |        130 |        130 |       0 |    0 |  508 |      1 |      0 |    0 |          0 |
+|     (glen[5].blk_i)                        |                uop_block_wrap__parameterized4 |          0 |          0 |       0 |    0 |  198 |      1 |      0 |    0 |          0 |
+|     core                                   |                     uop_block__parameterized4 |        130 |        130 |       0 |    0 |  310 |      0 |      0 |    0 |          0 |
+|       (core)                               |                     uop_block__parameterized4 |         66 |         66 |       0 |    0 |  118 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |               microop_unit__parameterized1__7 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[2].g_normal.alu_i                  |               microop_unit__parameterized6__1 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[3].g_normal.alu_i                  |               microop_unit__parameterized1__8 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|   glen[6].blk_i                            |             uop_block_wrap__parameterized5__1 |          9 |          9 |       0 |    0 |  140 |      0 |      0 |    0 |          0 |
+|     (glen[6].blk_i)                        |             uop_block_wrap__parameterized5__1 |          0 |          0 |       0 |    0 |  131 |      0 |      0 |    0 |          0 |
+|     core                                   |                  uop_block__parameterized5__1 |          9 |          9 |       0 |    0 |    9 |      0 |      0 |    0 |          0 |
+|       (core)                               |                  uop_block__parameterized5__1 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |               microop_unit__parameterized7__1 |          8 |          8 |       0 |    0 |    8 |      0 |      0 |    0 |          0 |
+|       g[1].g_normal.alu_i                  |               microop_unit__parameterized8__1 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |    0 |          0 |
+|   glen[7].blk_i                            |                uop_block_wrap__parameterized6 |          1 |          1 |       0 |    0 |  230 |      0 |      0 |    0 |          0 |
+|     (glen[7].blk_i)                        |                uop_block_wrap__parameterized6 |          0 |          0 |       0 |    0 |  166 |      0 |      0 |    0 |          0 |
+|     core                                   |                     uop_block__parameterized6 |          1 |          1 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       (core)                               |                     uop_block__parameterized6 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |               microop_unit__parameterized3__3 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
+|       g[2].g_normal.alu_i                  |                               microop_unit__2 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |    0 |          0 |
+|   glen[8].blk_i                            |             uop_block_wrap__parameterized7__1 |         34 |         34 |       0 |    0 |  391 |      1 |      0 |    0 |          0 |
+|     (glen[8].blk_i)                        |             uop_block_wrap__parameterized7__1 |          0 |          0 |       0 |    0 |  198 |      1 |      0 |    0 |          0 |
+|     core                                   |                  uop_block__parameterized7__1 |         34 |         34 |       0 |    0 |  193 |      0 |      0 |    0 |          0 |
+|       (core)                               |                  uop_block__parameterized7__1 |         34 |         34 |       0 |    0 |   65 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |              microop_unit__parameterized1__28 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[1].g_normal.alu_i                  |              microop_unit__parameterized1__27 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|   glen[9].blk_i                            |                uop_block_wrap__parameterized8 |         98 |         98 |       0 |    0 |  391 |      1 |      0 |    0 |          0 |
+|     (glen[9].blk_i)                        |                uop_block_wrap__parameterized8 |          0 |          0 |       0 |    0 |  198 |      1 |      0 |    0 |          0 |
+|     core                                   |                     uop_block__parameterized8 |         98 |         98 |       0 |    0 |  193 |      0 |      0 |    0 |          0 |
+|       (core)                               |                     uop_block__parameterized8 |         34 |         34 |       0 |    0 |   65 |      0 |      0 |    0 |          0 |
+|       g[0].g_normal.alu_i                  |               microop_unit__parameterized0__3 |         64 |         64 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|       g[1].g_normal.alu_i                  |              microop_unit__parameterized1__11 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
++--------------------------------------------+-----------------------------------------------+------------+------------+---------+------+------+--------+--------+------+------------+
+
+

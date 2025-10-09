@@ -1,0 +1,172 @@
+{
+  "rank": 94,
+  "group_index": 1,
+  "execution_count": 543061,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x574b6ac11669",
+      "opcode": "mov",
+      "raw_operands": [
+        "rcx",
+        "qword ptr [rsp+0x30]"
+      ],
+      "in_operands": [
+        "[rsp+0x30]"
+      ],
+      "out_operands": [
+        "rcx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x574b6ac11675",
+      "opcode": "mov",
+      "raw_operands": [
+        "eax",
+        "dword ptr [rcx+0x70]"
+      ],
+      "in_operands": [
+        "[rcx+0x70]"
+      ],
+      "out_operands": [
+        "eax"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x574b6ac1167c",
+      "opcode": "mov",
+      "raw_operands": [
+        "dword ptr [rbx+0x18]",
+        "eax"
+      ],
+      "in_operands": [
+        "eax"
+      ],
+      "out_operands": [
+        "[rbx+0x18]"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x574b6ac11685",
+      "opcode": "mov",
+      "raw_operands": [
+        "eax",
+        "dword ptr [rcx+0x74]"
+      ],
+      "in_operands": [
+        "[rcx+0x74]"
+      ],
+      "out_operands": [
+        "eax"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x574b6ac1168c",
+      "opcode": "mov",
+      "raw_operands": [
+        "dword ptr [rbx+0x1c]",
+        "eax"
+      ],
+      "in_operands": [
+        "eax"
+      ],
+      "out_operands": [
+        "[rbx+0x1c]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rcx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "[rcx+0x70]"
+      },
+      "condition": "reg vs mem: rcx"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rcx"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "[rcx+0x74]"
+      },
+      "condition": "reg vs mem: rcx"
+    },
+    {
+      "from": {
+        "instr_index": 3,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    }
+  ],
+  "bench": "600.perlbench_s/2",
+  "src": "2/super_hot_regions:125",
+  "order_map": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "ff_boundaries": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "stage_count": 5,
+  "latency_cycles": 5,
+  "crit_path_sigma": 0.9797958971132712,
+  "comb_bound_hits": 3,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 4,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 1,
+    "added_war": 1,
+    "added_waw": 1,
+    "final_edges": 7
+  },
+  "pcs": [
+    "0x574b6ac11669",
+    "0x574b6ac11675",
+    "0x574b6ac1167c",
+    "0x574b6ac11685",
+    "0x574b6ac1168c"
+  ],
+  "latencies": [
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "pc": "0x574b6ac11669"
+}

@@ -1,0 +1,63 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
+| Date         : Thu Sep 18 19:17:24 2025
+| Host         : orthanc running 64-bit Ubuntu 22.04.4 LTS
+| Command      : report_utilization -hierarchical -cells [get_cells -quiet -of_objects pblock_u_619_lbm_s] -file /home/jyoo/custom_v_2/custom-core-tool/reports/multi/pblocks/pblock_u_619_lbm_s_util_hier.rpt
+| Design       : top_multi_bench
+| Device       : xcu200fsgd2104-2
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++----------------------------------------------+------------------------------------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+|                   Instance                   |                        Module                        | Total LUTs | Logic LUTs | LUTRAMs | SRLs | FFs | RAMB36 | RAMB18 | URAM | DSP Blocks |
++----------------------------------------------+------------------------------------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+| u_619_lbm_s                                  |                                bench_core__619_lbm_s |        100 |        100 |       0 |    0 | 560 |      0 |      0 |    0 |          0 |
+|   u_619_lbm_s                                |                                bench_core__619_lbm_s |        100 |        100 |       0 |    0 | 560 |      0 |      0 |    0 |          0 |
+|     (u_619_lbm_s)                            |                                bench_core__619_lbm_s |         32 |         32 |       0 |    0 |   0 |      0 |      0 |    0 |          0 |
+|     glen[0].core_i                           |                      uop_block_wrap__parameterized26 |         65 |         65 |       0 |    0 | 320 |      0 |      0 |    0 |          0 |
+|       (glen[0].core_i)                       |                      uop_block_wrap__parameterized26 |          0 |          0 |       0 |    0 | 128 |      0 |      0 |    0 |          0 |
+|       core                                   |                           uop_block__parameterized26 |         65 |         65 |       0 |    0 | 192 |      0 |      0 |    0 |          0 |
+|         (core)                               |                           uop_block__parameterized26 |          1 |          1 |       0 |    0 |   0 |      0 |      0 |    0 |          0 |
+|         g[0].g_normal.alu_i                  |                     microop_unit__parameterized5__67 |          0 |          0 |       0 |    0 |  64 |      0 |      0 |    0 |          0 |
+|         g[1].g_normal.alu_i                  |             microop_unit__parameterized7__xdcDup__20 |         64 |         64 |       0 |    0 | 128 |      0 |      0 |    0 |          0 |
+|           (g[1].g_normal.alu_i)              |             microop_unit__parameterized7__xdcDup__20 |          0 |          0 |       0 |    0 |  64 |      0 |      0 |    0 |          0 |
+|           g_iadd.use_ip.int_addsub_i         |                                integer_addsub_HD2630 |         64 |         64 |       0 |    0 |  64 |      0 |      0 |    0 |          0 |
+|             U0                               |               integer_addsubc_addsub_v12_0_14_HD2631 |         64 |         64 |       0 |    0 |  64 |      0 |      0 |    0 |          0 |
+|               xst_addsub                     |           integer_addsubc_addsub_v12_0_14_viv_HD2632 |         64 |         64 |       0 |    0 |  64 |      0 |      0 |    0 |          0 |
+|                 i_baseblox.i_baseblox_addsub |        integer_addsubc_addsub_v12_0_14_legacy_HD2633 |         64 |         64 |       0 |    0 |  64 |      0 |      0 |    0 |          0 |
+|                   no_pipelining.the_addsub   | integer_addsubc_addsub_v12_0_14_fabric_legacy_HD2634 |         64 |         64 |       0 |    0 |  64 |      0 |      0 |    0 |          0 |
+|                     i_lut6.i_lut6_addsub     |   integer_addsubc_addsub_v12_0_14_lut6_legacy_HD2635 |         64 |         64 |       0 |    0 |  64 |      0 |      0 |    0 |          0 |
+|                       (i_lut6.i_lut6_addsub) |   integer_addsubc_addsub_v12_0_14_lut6_legacy_HD2635 |         64 |         64 |       0 |    0 |   0 |      0 |      0 |    0 |          0 |
+|                       i_q.i_simple.qreg      |            integer_addsubc_reg_fd_v12_0_6_viv_HD2636 |          0 |          0 |       0 |    0 |  64 |      0 |      0 |    0 |          0 |
+|     glen[1].core_i                           |                   uop_block_wrap__parameterized21__2 |          1 |          1 |       0 |    0 |  80 |      0 |      0 |    0 |          0 |
+|       (glen[1].core_i)                       |                   uop_block_wrap__parameterized21__2 |          0 |          0 |       0 |    0 |  40 |      0 |      0 |    0 |          0 |
+|       core                                   |                        uop_block__parameterized21__2 |          1 |          1 |       0 |    0 |  40 |      0 |      0 |    0 |          0 |
+|         (core)                               |                        uop_block__parameterized21__2 |          1 |          1 |       0 |    0 |   0 |      0 |      0 |    0 |          0 |
+|         g[0].g_normal.alu_i                  |                     microop_unit__parameterized17__2 |          0 |          0 |       0 |    0 |   8 |      0 |      0 |    0 |          0 |
+|         g[1].g_normal.alu_i                  |                     microop_unit__parameterized1__49 |          0 |          0 |       0 |    0 |  32 |      0 |      0 |    0 |          0 |
+|     glen[2].core_i                           |                   uop_block_wrap__parameterized21__3 |          1 |          1 |       0 |    0 |  80 |      0 |      0 |    0 |          0 |
+|       (glen[2].core_i)                       |                   uop_block_wrap__parameterized21__3 |          0 |          0 |       0 |    0 |  40 |      0 |      0 |    0 |          0 |
+|       core                                   |                        uop_block__parameterized21__3 |          1 |          1 |       0 |    0 |  40 |      0 |      0 |    0 |          0 |
+|         (core)                               |                        uop_block__parameterized21__3 |          1 |          1 |       0 |    0 |   0 |      0 |      0 |    0 |          0 |
+|         g[0].g_normal.alu_i                  |                     microop_unit__parameterized17__3 |          0 |          0 |       0 |    0 |   8 |      0 |      0 |    0 |          0 |
+|         g[1].g_normal.alu_i                  |                     microop_unit__parameterized1__50 |          0 |          0 |       0 |    0 |  32 |      0 |      0 |    0 |          0 |
+|     glen[3].core_i                           |                   uop_block_wrap__parameterized21__4 |          1 |          1 |       0 |    0 |  80 |      0 |      0 |    0 |          0 |
+|       (glen[3].core_i)                       |                   uop_block_wrap__parameterized21__4 |          0 |          0 |       0 |    0 |  40 |      0 |      0 |    0 |          0 |
+|       core                                   |                        uop_block__parameterized21__4 |          1 |          1 |       0 |    0 |  40 |      0 |      0 |    0 |          0 |
+|         (core)                               |                        uop_block__parameterized21__4 |          1 |          1 |       0 |    0 |   0 |      0 |      0 |    0 |          0 |
+|         g[0].g_normal.alu_i                  |                     microop_unit__parameterized17__4 |          0 |          0 |       0 |    0 |   8 |      0 |      0 |    0 |          0 |
+|         g[1].g_normal.alu_i                  |                     microop_unit__parameterized1__44 |          0 |          0 |       0 |    0 |  32 |      0 |      0 |    0 |          0 |
++----------------------------------------------+------------------------------------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+

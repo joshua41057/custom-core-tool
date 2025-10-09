@@ -1,0 +1,632 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version     : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
+| Date             : Fri Oct  3 11:55:02 2025
+| Host             : orthanc running 64-bit Ubuntu 22.04.4 LTS
+| Command          : report_power -file /home/jyoo/custom_v_2/custom-core-tool/reports/memory_wo_simd/single/625_x264_s/post_route_power.rpt
+| Design           : top_multi_len
+| Device           : xcu200-fsgd2104-2-e
+| Design State     : routed
+| Grade            : extended
+| Process          : typical
+| Characterization : Production
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Power Report
+
+Table of Contents
+-----------------
+1. Summary
+1.1 On-Chip Components
+1.2 Power Supply Summary
+1.3 Confidence Level
+2. Settings
+2.1 Environment
+2.2 Clock Constraints
+3. Detailed Reports
+3.1 By Hierarchy
+
+1. Summary
+----------
+
++--------------------------+--------------+
+| Total On-Chip Power (W)  | 3.386        |
+| Design Power Budget (W)  | Unspecified* |
+| Power Budget Margin (W)  | NA           |
+| Dynamic (W)              | 0.905        |
+| Device Static (W)        | 2.481        |
+| Effective TJA (C/W)      | 0.5          |
+| Max Ambient (C)          | 98.2         |
+| Junction Temperature (C) | 26.8         |
+| Confidence Level         | Low          |
+| Setting File             | ---          |
+| Simulation Activity File | ---          |
+| Design Nets Matched      | NA           |
++--------------------------+--------------+
+* Specify Design Power Budget using, set_operating_conditions -design_power_budget <value in Watts>
+
+
+1.1 On-Chip Components
+----------------------
+
++-------------------------+-----------+----------+-----------+-----------------+
+| On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
++-------------------------+-----------+----------+-----------+-----------------+
+| Clocks                  |     0.438 |        3 |       --- |             --- |
+| CLB Logic               |     0.116 |   109559 |       --- |             --- |
+|   LUT as Logic          |     0.084 |    27401 |   1182240 |            2.32 |
+|   Register              |     0.024 |    65517 |   2364480 |            2.77 |
+|   CARRY8                |     0.007 |     2522 |    147780 |            1.71 |
+|   LUT as Shift Register |    <0.001 |      219 |    591840 |            0.04 |
+|   Others                |     0.000 |     4309 |       --- |             --- |
+|   F7/F8 Muxes           |     0.000 |     1430 |   1182240 |            0.12 |
+| Signals                 |     0.184 |    52390 |       --- |             --- |
+| Block RAM               |     0.051 |        8 |      2160 |            0.37 |
+| DSPs                    |     0.095 |      247 |      6840 |            3.61 |
+| I/O                     |     0.021 |      138 |       676 |           20.41 |
+| Static Power            |     2.481 |          |           |                 |
+| Total                   |     3.386 |          |           |                 |
++-------------------------+-----------+----------+-----------+-----------------+
+
+
+1.2 Power Supply Summary
+------------------------
+
++------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
+| Source     | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
++------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
+| Vccint     |       0.850 |     1.859 |       1.037 |      0.822 |       NA    | Unspecified | NA         |
+| Vccint_io  |       0.850 |     0.264 |       0.001 |      0.263 |       NA    | Unspecified | NA         |
+| Vccbram    |       0.850 |     0.019 |       0.003 |      0.015 |       NA    | Unspecified | NA         |
+| Vccaux     |       1.800 |     0.650 |       0.000 |      0.650 |       NA    | Unspecified | NA         |
+| Vccaux_io  |       1.800 |     0.195 |       0.011 |      0.185 |       NA    | Unspecified | NA         |
+| Vcco33     |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco25     |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco18     |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco15     |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco135    |       1.350 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco12     |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco10     |       1.000 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vccadc     |       1.800 |     0.024 |       0.000 |      0.024 |       NA    | Unspecified | NA         |
+| MGTYAVcc   |       0.900 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| MGTYAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| MGTYVccaux |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
++------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
+
+
+1.3 Confidence Level
+--------------------
+
++-----------------------------+------------+--------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| User Input Data             | Confidence | Details                                                | Action                                                                                                     |
++-----------------------------+------------+--------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| Design implementation state | High       | Design is routed                                       |                                                                                                            |
+| Clock nodes activity        | High       | User specified more than 95% of clocks                 |                                                                                                            |
+| I/O nodes activity          | Low        | More than 75% of inputs are missing user specification | Provide missing input activity with simulation results or by editing the "By Resource Type -> I/Os" view   |
+| Internal nodes activity     | Medium     | User specified less than 25% of internal nodes         | Provide missing internal nodes activity with simulation results or by editing the "By Resource Type" views |
+| Device models               | High       | Device models are Production                           |                                                                                                            |
+|                             |            |                                                        |                                                                                                            |
+| Overall confidence level    | Low        |                                                        |                                                                                                            |
++-----------------------------+------------+--------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+
+
+2. Settings
+-----------
+
+2.1 Environment
+---------------
+
++-----------------------+--------------------------+
+| Ambient Temp (C)      | 25.0                     |
+| ThetaJA (C/W)         | 0.5                      |
+| Airflow (LFM)         | 250                      |
+| Heat Sink             | medium (Medium Profile)  |
+| ThetaSA (C/W)         | 0.7                      |
+| Board Selection       | medium (10"x10")         |
+| # of Board Layers     | 12to15 (12 to 15 Layers) |
+| Board Temperature (C) | 25.0                     |
++-----------------------+--------------------------+
+
+
+2.2 Clock Constraints
+---------------------
+
++----------+--------+-----------------+
+| Clock    | Domain | Constraint (ns) |
++----------+--------+-----------------+
+| host_clk | clk    |             3.3 |
++----------+--------+-----------------+
+
+
+3. Detailed Reports
+-------------------
+
+3.1 By Hierarchy
+----------------
+
++---------------------------------+-----------+
+| Name                            | Power (W) |
++---------------------------------+-----------+
+| top_multi_len                   |     0.905 |
+|   g_has_mem.glen_mem[100].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[101].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[10].blk_i  |     0.005 |
+|     core                        |     0.004 |
+|       g[2].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[110].blk_i |     0.001 |
+|   g_has_mem.glen_mem[111].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[112].blk_i |     0.003 |
+|     core                        |     0.002 |
+|   g_has_mem.glen_mem[113].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[114].blk_i |     0.003 |
+|     core                        |     0.003 |
+|   g_has_mem.glen_mem[115].blk_i |     0.001 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[116].blk_i |     0.001 |
+|   g_has_mem.glen_mem[117].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[119].blk_i |     0.003 |
+|     core                        |     0.003 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[11].blk_i  |     0.005 |
+|     core                        |     0.004 |
+|       g[3].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[120].blk_i |     0.003 |
+|     core                        |     0.003 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[121].blk_i |     0.003 |
+|     core                        |     0.003 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[122].blk_i |     0.003 |
+|     core                        |     0.003 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[123].blk_i |     0.003 |
+|     core                        |     0.003 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[124].blk_i |     0.003 |
+|     core                        |     0.003 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[125].blk_i |     0.003 |
+|     core                        |     0.003 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[126].blk_i |     0.003 |
+|     core                        |     0.003 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[128].blk_i |     0.003 |
+|     core                        |     0.003 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[129].blk_i |     0.003 |
+|     core                        |     0.003 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[12].blk_i  |     0.004 |
+|     core                        |     0.004 |
+|       g[3].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[130].blk_i |     0.003 |
+|     core                        |     0.003 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[131].blk_i |     0.003 |
+|     core                        |     0.003 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[132].blk_i |     0.003 |
+|     core                        |     0.003 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[133].blk_i |     0.003 |
+|     core                        |     0.003 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[134].blk_i |     0.003 |
+|     core                        |     0.003 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[135].blk_i |     0.005 |
+|     core                        |     0.005 |
+|       g[2].g_normal.alu_i       |     0.001 |
+|       g[3].g_normal.alu_i       |     0.001 |
+|       g[6].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[136].blk_i |     0.001 |
+|   g_has_mem.glen_mem[137].blk_i |     0.016 |
+|     core                        |     0.016 |
+|       g[1].g_normal.alu_i       |     0.014 |
+|   g_has_mem.glen_mem[138].blk_i |     0.006 |
+|     core                        |     0.005 |
+|   g_has_mem.glen_mem[13].blk_i  |     0.004 |
+|     core                        |     0.004 |
+|       g[3].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[141].blk_i |     0.004 |
+|     core                        |     0.003 |
+|   g_has_mem.glen_mem[144].blk_i |     0.003 |
+|     core                        |     0.002 |
+|   g_has_mem.glen_mem[146].blk_i |     0.002 |
+|     core                        |     0.001 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[148].blk_i |     0.006 |
+|     core                        |     0.006 |
+|       g[3].g_normal.alu_i       |     0.001 |
+|       g[6].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[149].blk_i |     0.002 |
+|   g_has_mem.glen_mem[14].blk_i  |     0.003 |
+|     core                        |     0.003 |
+|       g[2].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[152].blk_i |     0.004 |
+|     core                        |     0.003 |
+|   g_has_mem.glen_mem[154].blk_i |     0.010 |
+|     core                        |     0.003 |
+|   g_has_mem.glen_mem[155].blk_i |     0.001 |
+|   g_has_mem.glen_mem[156].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[158].blk_i |     0.002 |
+|     core                        |     0.002 |
+|   g_has_mem.glen_mem[159].blk_i |     0.003 |
+|     core                        |     0.002 |
+|       g[0].g_normal.alu_i       |     0.002 |
+|   g_has_mem.glen_mem[15].blk_i  |     0.003 |
+|     core                        |     0.003 |
+|   g_has_mem.glen_mem[161].blk_i |     0.007 |
+|     core                        |     0.006 |
+|   g_has_mem.glen_mem[162].blk_i |     0.001 |
+|   g_has_mem.glen_mem[163].blk_i |     0.015 |
+|     core                        |     0.015 |
+|       g[10].g_normal.alu_i      |     0.001 |
+|       g[13].g_normal.alu_i      |     0.001 |
+|       g[28].g_normal.alu_i      |     0.001 |
+|       g[30].g_normal.alu_i      |     0.001 |
+|       g[32].g_normal.alu_i      |     0.001 |
+|       g[34].g_normal.alu_i      |     0.001 |
+|       g[37].g_normal.alu_i      |     0.001 |
+|       g[41].g_normal.alu_i      |     0.001 |
+|   g_has_mem.glen_mem[164].blk_i |     0.004 |
+|     core                        |     0.003 |
+|   g_has_mem.glen_mem[165].blk_i |     0.007 |
+|     core                        |     0.006 |
+|       g[10].g_normal.alu_i      |     0.001 |
+|       g[11].g_normal.alu_i      |     0.001 |
+|       g[12].g_normal.alu_i      |     0.001 |
+|       g[9].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[166].blk_i |     0.005 |
+|     core                        |     0.005 |
+|       g[3].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[167].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[168].blk_i |     0.006 |
+|     core                        |     0.005 |
+|   g_has_mem.glen_mem[170].blk_i |     0.001 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[171].blk_i |     0.002 |
+|     core                        |     0.002 |
+|   g_has_mem.glen_mem[172].blk_i |     0.003 |
+|     core                        |     0.002 |
+|       g[0].g_normal.alu_i       |     0.002 |
+|   g_has_mem.glen_mem[173].blk_i |     0.004 |
+|     core                        |     0.003 |
+|   g_has_mem.glen_mem[174].blk_i |     0.001 |
+|   g_has_mem.glen_mem[176].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[178].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[17].blk_i  |     0.003 |
+|     core                        |     0.003 |
+|   g_has_mem.glen_mem[187].blk_i |     0.001 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[188].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[189].blk_i |     0.001 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[18].blk_i  |     0.001 |
+|   g_has_mem.glen_mem[190].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[191].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[192].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[193].blk_i |     0.001 |
+|   g_has_mem.glen_mem[195].blk_i |     0.004 |
+|     core                        |     0.003 |
+|   g_has_mem.glen_mem[196].blk_i |     0.003 |
+|     core                        |     0.003 |
+|   g_has_mem.glen_mem[197].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[198].blk_i |     0.002 |
+|     core                        |     0.002 |
+|   g_has_mem.glen_mem[199].blk_i |     0.002 |
+|     core                        |     0.002 |
+|   g_has_mem.glen_mem[19].blk_i  |     0.006 |
+|     core                        |     0.005 |
+|   g_has_mem.glen_mem[1].blk_i   |     0.001 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[200].blk_i |     0.001 |
+|   g_has_mem.glen_mem[201].blk_i |     0.001 |
+|   g_has_mem.glen_mem[202].blk_i |     0.001 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[203].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[204].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[205].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[207].blk_i |     0.001 |
+|   g_has_mem.glen_mem[208].blk_i |     0.001 |
+|   g_has_mem.glen_mem[209].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[20].blk_i  |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[210].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[211].blk_i |     0.003 |
+|     core                        |     0.003 |
+|   g_has_mem.glen_mem[212].blk_i |     0.003 |
+|     core                        |     0.002 |
+|   g_has_mem.glen_mem[213].blk_i |     0.003 |
+|     core                        |     0.002 |
+|   g_has_mem.glen_mem[214].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[215].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[216].blk_i |     0.001 |
+|   g_has_mem.glen_mem[217].blk_i |     0.005 |
+|     core                        |     0.005 |
+|       g[2].g_normal.alu_i       |     0.001 |
+|       g[3].g_normal.alu_i       |     0.001 |
+|       g[6].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[218].blk_i |     0.003 |
+|     core                        |     0.002 |
+|   g_has_mem.glen_mem[219].blk_i |     0.002 |
+|     core                        |     0.002 |
+|   g_has_mem.glen_mem[21].blk_i  |     0.001 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[220].blk_i |     0.003 |
+|     core                        |     0.003 |
+|   g_has_mem.glen_mem[222].blk_i |     0.002 |
+|     core                        |     0.002 |
+|   g_has_mem.glen_mem[223].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[224].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[226].blk_i |     0.001 |
+|   g_has_mem.glen_mem[228].blk_i |     0.002 |
+|     core                        |     0.001 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[22].blk_i  |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[230].blk_i |     0.006 |
+|     core                        |     0.006 |
+|       g[3].g_normal.alu_i       |     0.001 |
+|       g[6].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[231].blk_i |     0.001 |
+|   g_has_mem.glen_mem[232].blk_i |     0.001 |
+|   g_has_mem.glen_mem[234].blk_i |     0.001 |
+|   g_has_mem.glen_mem[236].blk_i |     0.003 |
+|     core                        |     0.003 |
+|   g_has_mem.glen_mem[237].blk_i |     0.001 |
+|   g_has_mem.glen_mem[238].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[23].blk_i  |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[240].blk_i |     0.002 |
+|     core                        |     0.002 |
+|   g_has_mem.glen_mem[241].blk_i |     0.003 |
+|     core                        |     0.002 |
+|       g[0].g_normal.alu_i       |     0.002 |
+|   g_has_mem.glen_mem[243].blk_i |     0.007 |
+|     core                        |     0.006 |
+|   g_has_mem.glen_mem[244].blk_i |     0.002 |
+|   g_has_mem.glen_mem[246].blk_i |     0.015 |
+|     core                        |     0.015 |
+|       g[10].g_normal.alu_i      |     0.001 |
+|       g[13].g_normal.alu_i      |     0.001 |
+|       g[28].g_normal.alu_i      |     0.001 |
+|       g[30].g_normal.alu_i      |     0.001 |
+|       g[32].g_normal.alu_i      |     0.001 |
+|       g[34].g_normal.alu_i      |     0.001 |
+|       g[37].g_normal.alu_i      |     0.001 |
+|       g[41].g_normal.alu_i      |     0.001 |
+|   g_has_mem.glen_mem[247].blk_i |     0.004 |
+|     core                        |     0.003 |
+|   g_has_mem.glen_mem[248].blk_i |     0.007 |
+|     core                        |     0.006 |
+|       g[10].g_normal.alu_i      |     0.001 |
+|       g[11].g_normal.alu_i      |     0.001 |
+|       g[12].g_normal.alu_i      |     0.001 |
+|       g[9].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[249].blk_i |     0.005 |
+|     core                        |     0.005 |
+|       g[3].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[24].blk_i  |     0.005 |
+|     core                        |     0.004 |
+|       g[2].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[250].blk_i |     0.006 |
+|     core                        |     0.005 |
+|   g_has_mem.glen_mem[251].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[253].blk_i |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[254].blk_i |     0.002 |
+|     core                        |     0.002 |
+|   g_has_mem.glen_mem[255].blk_i |     0.003 |
+|     core                        |     0.002 |
+|       g[0].g_normal.alu_i       |     0.002 |
+|   g_has_mem.glen_mem[256].blk_i |     0.004 |
+|     core                        |     0.003 |
+|   g_has_mem.glen_mem[257].blk_i |     0.001 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[258].blk_i |     0.003 |
+|     core                        |     0.002 |
+|       g[0].g_normal.alu_i       |     0.002 |
+|   g_has_mem.glen_mem[25].blk_i  |     0.005 |
+|     core                        |     0.004 |
+|       g[3].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[26].blk_i  |     0.004 |
+|     core                        |     0.004 |
+|       g[3].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[27].blk_i  |     0.004 |
+|     core                        |     0.004 |
+|       g[3].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[28].blk_i  |     0.003 |
+|     core                        |     0.003 |
+|       g[2].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[29].blk_i  |     0.004 |
+|     core                        |     0.004 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[2].blk_i   |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[30].blk_i  |     0.001 |
+|   g_has_mem.glen_mem[31].blk_i  |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[32].blk_i  |     0.009 |
+|     core                        |     0.008 |
+|   g_has_mem.glen_mem[33].blk_i  |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[34].blk_i  |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[35].blk_i  |     0.003 |
+|     core                        |     0.003 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[36].blk_i  |     0.003 |
+|     core                        |     0.003 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[37].blk_i  |     0.003 |
+|     core                        |     0.003 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[38].blk_i  |     0.003 |
+|     core                        |     0.003 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[39].blk_i  |     0.003 |
+|     core                        |     0.003 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[3].blk_i   |     0.001 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[40].blk_i  |     0.003 |
+|     core                        |     0.003 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[41].blk_i  |     0.003 |
+|     core                        |     0.003 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[42].blk_i  |     0.001 |
+|   g_has_mem.glen_mem[45].blk_i  |     0.005 |
+|     core                        |     0.005 |
+|       g[2].g_normal.alu_i       |     0.001 |
+|       g[3].g_normal.alu_i       |     0.001 |
+|       g[6].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[47].blk_i  |     0.006 |
+|     core                        |     0.006 |
+|       g[3].g_normal.alu_i       |     0.001 |
+|       g[6].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[48].blk_i  |     0.002 |
+|     core                        |     0.001 |
+|       g[1].g_normal.alu_i       |     0.001 |
+|   g_has_mem.glen_mem[49].blk_i  |     0.001 |
+|   g_has_mem.glen_mem[4].blk_i   |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[50].blk_i  |     0.001 |
+|   g_has_mem.glen_mem[51].blk_i  |     0.003 |
+|     core                        |     0.003 |
+|   g_has_mem.glen_mem[5].blk_i   |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[61].blk_i  |     0.003 |
+|     core                        |     0.002 |
+|   g_has_mem.glen_mem[63].blk_i  |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[65].blk_i  |     0.003 |
+|     core                        |     0.003 |
+|   g_has_mem.glen_mem[66].blk_i  |     0.001 |
+|   g_has_mem.glen_mem[67].blk_i  |     0.003 |
+|     core                        |     0.002 |
+|   g_has_mem.glen_mem[69].blk_i  |     0.002 |
+|     core                        |     0.002 |
+|   g_has_mem.glen_mem[6].blk_i   |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[70].blk_i  |     0.003 |
+|     core                        |     0.002 |
+|       g[0].g_normal.alu_i       |     0.002 |
+|   g_has_mem.glen_mem[72].blk_i  |     0.007 |
+|     core                        |     0.006 |
+|   g_has_mem.glen_mem[74].blk_i  |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[75].blk_i  |     0.002 |
+|     core                        |     0.002 |
+|   g_has_mem.glen_mem[76].blk_i  |     0.002 |
+|     core                        |     0.002 |
+|   g_has_mem.glen_mem[77].blk_i  |     0.001 |
+|   g_has_mem.glen_mem[79].blk_i  |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[7].blk_i   |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[80].blk_i  |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[82].blk_i  |     0.001 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[83].blk_i  |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[84].blk_i  |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[86].blk_i  |     0.001 |
+|   g_has_mem.glen_mem[87].blk_i  |     0.001 |
+|   g_has_mem.glen_mem[88].blk_i  |     0.003 |
+|     core                        |     0.002 |
+|       g[0].g_normal.alu_i       |     0.002 |
+|   g_has_mem.glen_mem[89].blk_i  |     0.002 |
+|     core                        |     0.002 |
+|   g_has_mem.glen_mem[8].blk_i   |     0.003 |
+|     core                        |     0.002 |
+|   g_has_mem.glen_mem[90].blk_i  |     0.002 |
+|     core                        |     0.002 |
+|   g_has_mem.glen_mem[91].blk_i  |     0.003 |
+|     core                        |     0.002 |
+|   g_has_mem.glen_mem[92].blk_i  |     0.003 |
+|     core                        |     0.002 |
+|   g_has_mem.glen_mem[94].blk_i  |     0.001 |
+|   g_has_mem.glen_mem[95].blk_i  |     0.001 |
+|   g_has_mem.glen_mem[96].blk_i  |     0.001 |
+|   g_has_mem.glen_mem[97].blk_i  |     0.001 |
+|   g_has_mem.glen_mem[98].blk_i  |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[99].blk_i  |     0.002 |
+|     core                        |     0.001 |
+|   g_has_mem.glen_mem[9].blk_i   |     0.002 |
+|     core                        |     0.002 |
+|   g_has_mem.u_pool              |     0.183 |
+|     g_banks.gb[0].u_bank64      |     0.006 |
+|       u_mem                     |     0.006 |
+|     g_banks.gb[1].u_bank64      |     0.006 |
+|       u_mem                     |     0.006 |
+|     g_banks.gb[2].u_bank64      |     0.006 |
+|       u_mem                     |     0.006 |
+|     g_banks.gb[3].u_bank64      |     0.006 |
+|       u_mem                     |     0.006 |
+|     g_banks.gb[4].u_bank64      |     0.006 |
+|       u_mem                     |     0.006 |
+|     g_banks.gb[5].u_bank64      |     0.006 |
+|       u_mem                     |     0.006 |
+|     g_banks.gb[6].u_bank64      |     0.006 |
+|       u_mem                     |     0.006 |
+|     g_banks.gb[7].u_bank64      |     0.006 |
+|       u_mem                     |     0.006 |
+|   src_val_IBUF[10]_inst         |     0.001 |
+|   src_val_IBUF[11]_inst         |     0.001 |
+|   src_val_IBUF[12]_inst         |     0.001 |
+|   src_val_IBUF[13]_inst         |     0.001 |
+|   src_val_IBUF[14]_inst         |     0.001 |
+|   src_val_IBUF[15]_inst         |     0.001 |
+|   src_val_IBUF[16]_inst         |     0.001 |
+|   src_val_IBUF[17]_inst         |     0.001 |
+|   src_val_IBUF[18]_inst         |     0.001 |
+|   src_val_IBUF[19]_inst         |     0.001 |
+|   src_val_IBUF[1]_inst          |     0.001 |
+|   src_val_IBUF[20]_inst         |     0.001 |
+|   src_val_IBUF[21]_inst         |     0.001 |
+|   src_val_IBUF[24]_inst         |     0.001 |
+|   src_val_IBUF[25]_inst         |     0.001 |
+|   src_val_IBUF[26]_inst         |     0.001 |
+|   src_val_IBUF[27]_inst         |     0.001 |
+|   src_val_IBUF[28]_inst         |     0.001 |
+|   src_val_IBUF[2]_inst          |     0.001 |
+|   src_val_IBUF[30]_inst         |     0.001 |
+|   src_val_IBUF[31]_inst         |     0.001 |
+|   src_val_IBUF[3]_inst          |     0.001 |
+|   src_val_IBUF[4]_inst          |     0.001 |
+|   src_val_IBUF[8]_inst          |     0.001 |
+|   src_val_IBUF[9]_inst          |     0.001 |
++---------------------------------+-----------+
+
+

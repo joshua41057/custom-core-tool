@@ -1,0 +1,113 @@
+{
+  "rank": 41,
+  "group_index": 10,
+  "execution_count": 176854,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x57ee1502dc2d",
+      "opcode": "vmovdqu",
+      "raw_operands": [
+        "xmm0",
+        "xmmword ptr [rax+0x1e0]"
+      ],
+      "in_operands": [
+        "xmmword ptr [rax+0x1e0]"
+      ],
+      "out_operands": [
+        "xmm0"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x57ee1502dc3f",
+      "opcode": "vmovq",
+      "raw_operands": [
+        "r12",
+        "xmm0"
+      ],
+      "in_operands": [
+        "xmm0"
+      ],
+      "out_operands": [
+        "r12"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x57ee1502dc44",
+      "opcode": "vpextrq",
+      "raw_operands": [
+        "qword ptr [rsp-0x10]",
+        "xmm0",
+        "0x1"
+      ],
+      "in_operands": [
+        "xmm0",
+        "0x1"
+      ],
+      "out_operands": [
+        "[rsp-0x10]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm0"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "xmm0"
+      },
+      "condition": "reg vs reg: xmm0"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "xmm0"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "xmm0"
+      },
+      "condition": "reg vs reg: xmm0"
+    }
+  ],
+  "bench": "631.deepsjeng_s/1",
+  "src": "1/super_hot_regions:80",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0
+  ],
+  "stage_count": 2,
+  "latency_cycles": 2,
+  "crit_path_sigma": 0.5,
+  "comb_bound_hits": 1,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 2
+  },
+  "pcs": [
+    "0x57ee1502dc2d",
+    "0x57ee1502dc3f",
+    "0x57ee1502dc44"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x57ee1502dc2d"
+}

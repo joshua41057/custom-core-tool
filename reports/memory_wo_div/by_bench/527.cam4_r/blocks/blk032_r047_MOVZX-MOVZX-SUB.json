@@ -1,0 +1,114 @@
+{
+  "rank": 47,
+  "group_index": 1,
+  "execution_count": 759667,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x748d4dd99b64",
+      "opcode": "movzx",
+      "raw_operands": [
+        "ecx",
+        "byte ptr [rsi+rax*1]"
+      ],
+      "in_operands": [
+        "[rsi+rax*1]"
+      ],
+      "out_operands": [
+        "ecx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x748d4dd99b68",
+      "opcode": "movzx",
+      "raw_operands": [
+        "eax",
+        "byte ptr [rdi+rax*1]"
+      ],
+      "in_operands": [
+        "[rdi+rax*1]"
+      ],
+      "out_operands": [
+        "eax"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x748d4dd99b6c",
+      "opcode": "sub",
+      "raw_operands": [
+        "eax",
+        "ecx"
+      ],
+      "in_operands": [
+        "eax",
+        "ecx"
+      ],
+      "out_operands": [
+        "eax",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "ecx"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "ecx"
+      },
+      "condition": "reg vs reg: ecx"
+    }
+  ],
+  "bench": "527.cam4_r/1",
+  "src": "1/super_hot_regions:66",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.9428090415820634,
+  "comb_bound_hits": 2,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 2
+  },
+  "pcs": [
+    "0x748d4dd99b64",
+    "0x748d4dd99b68",
+    "0x748d4dd99b6c"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x748d4dd99b64"
+}

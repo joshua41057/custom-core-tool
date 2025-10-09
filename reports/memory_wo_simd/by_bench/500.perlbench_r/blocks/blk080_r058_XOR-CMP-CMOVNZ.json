@@ -1,0 +1,113 @@
+{
+  "rank": 58,
+  "group_index": 1,
+  "execution_count": 843386,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x62585e556cb5",
+      "opcode": "xor",
+      "raw_operands": [
+        "eax",
+        "eax"
+      ],
+      "in_operands": [
+        "eax",
+        "eax"
+      ],
+      "out_operands": [
+        "eax",
+        "flag"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x62585e556cba",
+      "opcode": "cmp",
+      "raw_operands": [
+        "byte ptr [rsp+0x98]",
+        "0x0"
+      ],
+      "in_operands": [
+        "[rsp+0x98]",
+        "0x0"
+      ],
+      "out_operands": [
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x62585e556cc2",
+      "opcode": "cmovnz",
+      "raw_operands": [
+        "ecx",
+        "eax"
+      ],
+      "in_operands": [
+        "eax",
+        "flag"
+      ],
+      "out_operands": [
+        "ecx"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "flag"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "flag"
+      },
+      "condition": "flag vs flag"
+    }
+  ],
+  "bench": "500.perlbench_r/2",
+  "src": "2/super_hot_regions:81",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "ff_boundaries": [],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "comb_bound_hits": 0,
+  "dsp_bound_hits": 0,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_waw": 1,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "final_edges": 3
+  },
+  "pcs": [
+    "0x62585e556cb5",
+    "0x62585e556cba",
+    "0x62585e556cc2"
+  ],
+  "latencies": [
+    1,
+    1,
+    1
+  ],
+  "pc": "0x62585e556cb5"
+}
