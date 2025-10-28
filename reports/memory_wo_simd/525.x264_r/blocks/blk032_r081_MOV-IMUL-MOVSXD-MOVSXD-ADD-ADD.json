@@ -1,0 +1,339 @@
+{
+  "rank": 81,
+  "group_index": 1,
+  "execution_count": 142399,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x560e964d4cc1",
+      "opcode": "mov",
+      "raw_operands": [
+        "edi",
+        "r12d"
+      ],
+      "in_operands": [
+        "r12d"
+      ],
+      "out_operands": [
+        "edi"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x560e964d4cc4",
+      "opcode": "imul",
+      "raw_operands": [
+        "edi",
+        "r9d"
+      ],
+      "in_operands": [
+        "edi",
+        "r9d"
+      ],
+      "out_operands": [
+        "edi"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x560e964d4cc8",
+      "opcode": "movsxd",
+      "raw_operands": [
+        "rdx",
+        "r13d"
+      ],
+      "in_operands": [
+        "r13d"
+      ],
+      "out_operands": [
+        "rdx"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x560e964d4cd2",
+      "opcode": "movsxd",
+      "raw_operands": [
+        "rdi",
+        "edi"
+      ],
+      "in_operands": [
+        "edi"
+      ],
+      "out_operands": [
+        "rdi"
+      ]
+    },
+    {
+      "index": 4,
+      "address": "0x560e964d4cd5",
+      "opcode": "add",
+      "raw_operands": [
+        "rdi",
+        "rdx"
+      ],
+      "in_operands": [
+        "rdi",
+        "rdx"
+      ],
+      "out_operands": [
+        "rdi",
+        "flag"
+      ]
+    },
+    {
+      "index": 5,
+      "address": "0x560e964d4cd8",
+      "opcode": "add",
+      "raw_operands": [
+        "rdi",
+        "qword ptr [rbp-0x1e0]"
+      ],
+      "in_operands": [
+        "rdi",
+        "[rbp-0x1e0]"
+      ],
+      "out_operands": [
+        "rdi",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "edi"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "edi"
+      },
+      "condition": "reg vs reg: edi"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "edi"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "edi"
+      },
+      "condition": "reg vs reg: edi"
+    },
+    {
+      "from": {
+        "instr_index": 3,
+        "operand": "rdi"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "rdi"
+      },
+      "condition": "reg vs reg: rdi"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "rdx"
+      },
+      "to": {
+        "instr_index": 4,
+        "operand": "rdx"
+      },
+      "condition": "reg vs reg: rdx"
+    },
+    {
+      "from": {
+        "instr_index": 4,
+        "operand": "rdi"
+      },
+      "to": {
+        "instr_index": 5,
+        "operand": "rdi"
+      },
+      "condition": "reg vs reg: rdi"
+    }
+  ],
+  "bench": "525.x264_r/1",
+  "src": "1/super_hot_regions:168",
+  "order_map": [
+    0,
+    2,
+    1,
+    3,
+    4,
+    5
+  ],
+  "cut_mask": [
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "ff_boundaries": [],
+  "ff_hints": [],
+  "stage_of": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "edge_stats": {
+    "base_edges": 5,
+    "added_flag_wr": 0,
+    "added_flag_anti": 0,
+    "added_raw": 6,
+    "added_war": 0,
+    "added_waw": 0,
+    "added_mem_raw": 0,
+    "added_mem_war": 0,
+    "added_mem_waw": 0,
+    "added_mem_conservative": 0,
+    "added_mem_rar": 0,
+    "final_edges": 11
+  },
+  "nodes_meta": [
+    {
+      "idx": 0,
+      "op": "MOV",
+      "bw": 32,
+      "comb": 0,
+      "dsp": 0,
+      "lut": 1,
+      "is_load": false,
+      "is_store": false,
+      "cls": "MOV",
+      "mem": [],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [],
+      "is_atomic": false
+    },
+    {
+      "idx": 1,
+      "op": "IMUL",
+      "bw": 32,
+      "comb": 1,
+      "dsp": 4,
+      "lut": 1,
+      "is_load": false,
+      "is_store": false,
+      "cls": "IMUL",
+      "mem": [],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [
+        "CF",
+        "OF"
+      ],
+      "is_atomic": false
+    },
+    {
+      "idx": 2,
+      "op": "MOVSXD",
+      "bw": 64,
+      "comb": 1,
+      "dsp": 0,
+      "lut": 2,
+      "is_load": false,
+      "is_store": false,
+      "cls": "MOVSXD",
+      "mem": [],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [],
+      "is_atomic": false
+    },
+    {
+      "idx": 3,
+      "op": "MOVSXD",
+      "bw": 64,
+      "comb": 1,
+      "dsp": 0,
+      "lut": 2,
+      "is_load": false,
+      "is_store": false,
+      "cls": "MOVSXD",
+      "mem": [],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [],
+      "is_atomic": false
+    },
+    {
+      "idx": 4,
+      "op": "ADD",
+      "bw": 64,
+      "comb": 2,
+      "dsp": 0,
+      "lut": 2,
+      "is_load": false,
+      "is_store": false,
+      "cls": "ADD",
+      "mem": [],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [
+        "AF",
+        "CF",
+        "OF",
+        "PF",
+        "SF",
+        "ZF"
+      ],
+      "is_atomic": false
+    },
+    {
+      "idx": 5,
+      "op": "ADD",
+      "bw": 64,
+      "comb": 2,
+      "dsp": 0,
+      "lut": 2,
+      "is_load": true,
+      "is_store": false,
+      "cls": "LOAD",
+      "mem": [
+        {
+          "base": "RBP",
+          "index": null,
+          "scale": 1,
+          "disp": -480,
+          "space": "STACK",
+          "width": 64
+        }
+      ],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [
+        "AF",
+        "CF",
+        "OF",
+        "PF",
+        "SF",
+        "ZF"
+      ],
+      "is_atomic": false
+    }
+  ],
+  "mem_calendar": {
+    "0": {
+      "STACK:RBP": {
+        "reads": 1,
+        "writes": 0,
+        "ops": 1,
+        "max_bits": 64
+      }
+    }
+  },
+  "dsp_need_total": 4,
+  "pc": "0x560e964d4cc1"
+}

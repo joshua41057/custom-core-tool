@@ -1,0 +1,240 @@
+{
+  "rank": 93,
+  "group_index": 1,
+  "execution_count": 36991,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5eb154a47300",
+      "opcode": "mov",
+      "raw_operands": [
+        "rcx",
+        "qword ptr [rbp-0x280]"
+      ],
+      "in_operands": [
+        "[rbp-0x280]"
+      ],
+      "out_operands": [
+        "rcx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5eb154a47307",
+      "opcode": "add",
+      "raw_operands": [
+        "qword ptr [rbp-0x270]",
+        "rcx"
+      ],
+      "in_operands": [
+        "[rbp-0x270]",
+        "rcx"
+      ],
+      "out_operands": [
+        "[rbp-0x270]",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x5eb154a47314",
+      "opcode": "add",
+      "raw_operands": [
+        "qword ptr [rbp-0x278]",
+        "rcx"
+      ],
+      "in_operands": [
+        "[rbp-0x278]",
+        "rcx"
+      ],
+      "out_operands": [
+        "[rbp-0x278]",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rcx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rcx"
+      },
+      "condition": "reg vs reg: rcx"
+    },
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rcx"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "rcx"
+      },
+      "condition": "reg vs reg: rcx"
+    }
+  ],
+  "bench": "503.bwaves_r/3",
+  "src": "3/super_hot_regions:192",
+  "order_map": [
+    0,
+    1,
+    2
+  ],
+  "cut_mask": [
+    true,
+    true
+  ],
+  "ff_boundaries": [
+    0,
+    1
+  ],
+  "ff_hints": [
+    0,
+    1
+  ],
+  "stage_of": [
+    0,
+    1,
+    2
+  ],
+  "stage_count": 3,
+  "latency_cycles": 3,
+  "crit_path_sigma": 0.9428090415820634,
+  "edge_stats": {
+    "base_edges": 2,
+    "added_flag_wr": 0,
+    "added_flag_anti": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "added_mem_raw": 0,
+    "added_mem_war": 0,
+    "added_mem_waw": 0,
+    "added_mem_conservative": 0,
+    "added_mem_rar": 0,
+    "final_edges": 2
+  },
+  "nodes_meta": [
+    {
+      "idx": 0,
+      "op": "MOV",
+      "bw": 64,
+      "comb": 0,
+      "dsp": 0,
+      "lut": 2,
+      "is_load": true,
+      "is_store": false,
+      "cls": "LOAD",
+      "mem": [
+        {
+          "base": "RBP",
+          "index": null,
+          "scale": 1,
+          "disp": -640,
+          "space": "STACK",
+          "width": 64
+        }
+      ],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [],
+      "is_atomic": false
+    },
+    {
+      "idx": 1,
+      "op": "ADD",
+      "bw": 64,
+      "comb": 2,
+      "dsp": 0,
+      "lut": 2,
+      "is_load": true,
+      "is_store": true,
+      "cls": "RMW",
+      "mem": [
+        {
+          "base": "RBP",
+          "index": null,
+          "scale": 1,
+          "disp": -624,
+          "space": "STACK",
+          "width": 64
+        }
+      ],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [
+        "AF",
+        "CF",
+        "OF",
+        "PF",
+        "SF",
+        "ZF"
+      ],
+      "is_atomic": false
+    },
+    {
+      "idx": 2,
+      "op": "ADD",
+      "bw": 64,
+      "comb": 2,
+      "dsp": 0,
+      "lut": 2,
+      "is_load": true,
+      "is_store": true,
+      "cls": "RMW",
+      "mem": [
+        {
+          "base": "RBP",
+          "index": null,
+          "scale": 1,
+          "disp": -632,
+          "space": "STACK",
+          "width": 64
+        }
+      ],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [
+        "AF",
+        "CF",
+        "OF",
+        "PF",
+        "SF",
+        "ZF"
+      ],
+      "is_atomic": false
+    }
+  ],
+  "mem_calendar": {
+    "0": {
+      "STACK:RBP": {
+        "reads": 1,
+        "writes": 0,
+        "ops": 1,
+        "max_bits": 64
+      }
+    },
+    "1": {
+      "STACK:RBP": {
+        "reads": 1,
+        "writes": 1,
+        "ops": 2,
+        "max_bits": 64
+      }
+    },
+    "2": {
+      "STACK:RBP": {
+        "reads": 1,
+        "writes": 1,
+        "ops": 2,
+        "max_bits": 64
+      }
+    }
+  },
+  "dsp_need_total": 0,
+  "pc": "0x5eb154a47300"
+}

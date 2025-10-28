@@ -1,0 +1,152 @@
+{
+  "rank": 39,
+  "group_index": 1,
+  "execution_count": 637172,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5c02260f205d",
+      "opcode": "lea",
+      "raw_operands": [
+        "eax",
+        "ptr [r11+0x4]"
+      ],
+      "in_operands": [
+        "ptr [r11+0x4]"
+      ],
+      "out_operands": [
+        "eax"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5c02260f2061",
+      "opcode": "mov",
+      "raw_operands": [
+        "dword ptr [rsi+0x10efc]",
+        "eax"
+      ],
+      "in_operands": [
+        "eax"
+      ],
+      "out_operands": [
+        "[rsi+0x10efc]"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    }
+  ],
+  "bench": "557.xz_r/2",
+  "src": "2/super_hot_regions:60",
+  "order_map": [
+    0,
+    1
+  ],
+  "cut_mask": [
+    false
+  ],
+  "ff_boundaries": [],
+  "ff_hints": [],
+  "stage_of": [
+    0,
+    0
+  ],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "edge_stats": {
+    "base_edges": 1,
+    "added_flag_wr": 0,
+    "added_flag_anti": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "added_mem_raw": 0,
+    "added_mem_war": 0,
+    "added_mem_waw": 0,
+    "added_mem_conservative": 0,
+    "added_mem_rar": 0,
+    "final_edges": 1
+  },
+  "nodes_meta": [
+    {
+      "idx": 0,
+      "op": "LEA",
+      "bw": 32,
+      "comb": 0,
+      "dsp": 0,
+      "lut": 1,
+      "is_load": false,
+      "is_store": false,
+      "cls": "LEA",
+      "mem": [
+        {
+          "base": "R11",
+          "index": null,
+          "scale": 1,
+          "disp": 4,
+          "space": "GEN",
+          "width": 32
+        }
+      ],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [],
+      "is_atomic": false
+    },
+    {
+      "idx": 1,
+      "op": "MOV",
+      "bw": 32,
+      "comb": 0,
+      "dsp": 0,
+      "lut": 1,
+      "is_load": false,
+      "is_store": true,
+      "cls": "STORE",
+      "mem": [
+        {
+          "base": "RSI",
+          "index": null,
+          "scale": 1,
+          "disp": 69372,
+          "space": "GEN",
+          "width": 32
+        }
+      ],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [],
+      "is_atomic": false
+    }
+  ],
+  "mem_calendar": {
+    "0": {
+      "GEN:R11": {
+        "reads": 0,
+        "writes": 0,
+        "ops": 0,
+        "max_bits": 32
+      },
+      "GEN:RSI": {
+        "reads": 0,
+        "writes": 1,
+        "ops": 1,
+        "max_bits": 32
+      }
+    }
+  },
+  "dsp_need_total": 0,
+  "pc": "0x5c02260f205d"
+}

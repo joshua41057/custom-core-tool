@@ -422,7 +422,10 @@ def build_dag(group: dict, strict_merge: bool):
         opc0 = (u.get("opcode") or "").upper()
         use_dsp = maps_to_dsp(opc0, bw)
         dsp  = dsp_need(opc0, bw)
-        comb = 2 if use_dsp else base
+        if use_dsp:
+            comb = 1
+        else:
+            comb = base
         if not use_dsp and opc0 in {"ADD","SUB","ADC","SBB"} and bw >= 64:
             comb = 2
         lut  = max(1, (bw + 31)//32)
@@ -591,12 +594,12 @@ def _edge_weight(prod:int, nodes:List[Node]) -> int:
 
 @dataclass
 class MemPorts:
-    rd:int=2; wr:int=2; rlat:int=2; total:int=2
+    rd:int=2; wr:int=2; rlat:int=1; total:int=2
 
 DEFAULT_PORTS = {
-    "RODATA": MemPorts(rd=2, wr=0, rlat=2, total=2),
-    "STACK":  MemPorts(rd=1, wr=1, rlat=2, total=2),
-    "GEN":    MemPorts(rd=2, wr=2, rlat=2, total=2),
+    "RODATA": MemPorts(rd=2, wr=0, rlat=1, total=2),
+    "STACK":  MemPorts(rd=1, wr=1, rlat=1, total=2),
+    "GEN":    MemPorts(rd=2, wr=2, rlat=1, total=2),
 }
 
 def _mem_key_for_calendar(ak:AddrKey)->Tuple[str,str]:
@@ -605,25 +608,25 @@ def _mem_key_for_calendar(ak:AddrKey)->Tuple[str,str]:
 ARCH = {
     "board": "Alveo U200",
     "family": "UltraScale+",
-    "target_mhz": 300,
-    "tclk_ns": 1e3/300.0,
+    "target_mhz": 350,
+    "tclk_ns": 1e3/350.0,
     "clb": {"lut": 8, "ff": 16},
     "dsp": {"type":"DSP48E2"},
-    "bram": {"type":"RAMB18/36", "rdlat": 2},
+    "bram": {"type":"RAMB18/36", "rdlat": 1},
 }
 
-COMB_BUDGET       = 5
-LUT_BUDGET        = 24
-CONG_BUDGET       = 48
-OPS_BUDGET        = 5
-CHAIN_BUDGET_64   = 2
-CHAIN_BUDGET_32   = 5
-CHAIN_BUDGET_8    = 8
-CONG_NODE_CAP     = 32
+COMB_BUDGET       = 14    
+LUT_BUDGET        = 36    
+CONG_BUDGET       = 96    
+OPS_BUDGET        = 10    
+CHAIN_BUDGET_64   = 4     
+CHAIN_BUDGET_32   = 7     
+CHAIN_BUDGET_8    = 12    
+CONG_NODE_CAP     = 24    
 ALLOW_DOMINANT_FANOUT_NODE = False
 
-DSP_BUDGET_PER_STAGE    = 64
-DSP_OPS_BUDGET_PER_STAGE= 3
+DSP_BUDGET_PER_STAGE     = 256
+DSP_OPS_BUDGET_PER_STAGE = 3
 
 def _is_alu(n:Node)->bool:
     base = n.op.split('_',1)[0]
@@ -644,6 +647,7 @@ def _would_increase_chain(u:int, s:int, preds:List[Set[int]], nodes:List[Node], 
 
 def _fanout_cost(n: Node) -> int:
     c = n.succ * max(1, n.comb)
+    c = (c + 1) // 2
     if CONG_NODE_CAP is not None:
         c = min(c, CONG_NODE_CAP)
     return c
@@ -664,6 +668,11 @@ def _fits_budget_for_node(n:Node, sm:StageMetric, chain_inc:int)->bool:
     if wc==64 and (sm.chain64 + chain_inc) > CHAIN_BUDGET_64: return False
     if wc==32 and (sm.chain32 + chain_inc) > CHAIN_BUDGET_32: return False
     if wc==8  and (sm.chain8  + chain_inc) > CHAIN_BUDGET_8:  return False
+    if wc == 64 and (sm.chain64 >= 3) and chain_inc > 0 and n.succ > 2: return False
+    if wc == 64 and (sm.chain64 >= 4) and chain_inc > 0:
+        ok_super = (n.succ <= 1) and ((sm.comb + n.comb) <= (COMB_BUDGET - 2))
+        if not ok_super:
+            return False
     return True
 
 def _accumulate_node(n:Node, sm:StageMetric, chain_inc:int)->None:
@@ -932,7 +941,7 @@ def emit_sniper_csv(groups: List[dict], out_csv: Path, add_blank_lines: bool=Tru
 
 def cli() -> argparse.Namespace:
     ap = argparse.ArgumentParser(
-        "fpga_pipeline_stage (II=1, ALWAYS-SAFE mem scheduling + per-flag + atomic, U200@300MHz)"
+        "fpga_pipeline_stage (II=1, ALWAYS-SAFE mem scheduling + per-flag + atomic, U200@350MHz aggressive minimal-depth)"
     )
     ap.add_argument("input_json", help="filtered JSON")
     ap.add_argument("-o","--out", help="output base (no extension). Default: <input>_result")

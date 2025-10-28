@@ -1,0 +1,233 @@
+{
+  "rank": 22,
+  "group_index": 2,
+  "execution_count": 592563,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x633164475ccf",
+      "opcode": "mov",
+      "raw_operands": [
+        "eax",
+        "esi"
+      ],
+      "in_operands": [
+        "esi"
+      ],
+      "out_operands": [
+        "eax"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x633164475cd1",
+      "opcode": "shr",
+      "raw_operands": [
+        "eax",
+        "0x6"
+      ],
+      "in_operands": [
+        "eax",
+        "0x6"
+      ],
+      "out_operands": [
+        "eax",
+        "flag"
+      ]
+    },
+    {
+      "index": 2,
+      "address": "0x633164475cd4",
+      "opcode": "and",
+      "raw_operands": [
+        "eax",
+        "0x1"
+      ],
+      "in_operands": [
+        "eax",
+        "0x1"
+      ],
+      "out_operands": [
+        "eax",
+        "flag"
+      ]
+    },
+    {
+      "index": 3,
+      "address": "0x633164475ce1",
+      "opcode": "and",
+      "raw_operands": [
+        "eax",
+        "0x1"
+      ],
+      "in_operands": [
+        "eax",
+        "0x1"
+      ],
+      "out_operands": [
+        "eax",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 1,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 2,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    },
+    {
+      "from": {
+        "instr_index": 2,
+        "operand": "eax"
+      },
+      "to": {
+        "instr_index": 3,
+        "operand": "eax"
+      },
+      "condition": "reg vs reg: eax"
+    }
+  ],
+  "bench": "602.gcc_s/2",
+  "src": "2/super_hot_regions:31",
+  "order_map": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "cut_mask": [
+    false,
+    false,
+    false
+  ],
+  "ff_boundaries": [],
+  "ff_hints": [],
+  "stage_of": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "edge_stats": {
+    "base_edges": 3,
+    "added_flag_wr": 0,
+    "added_flag_anti": 0,
+    "added_raw": 3,
+    "added_war": 0,
+    "added_waw": 0,
+    "added_mem_raw": 0,
+    "added_mem_war": 0,
+    "added_mem_waw": 0,
+    "added_mem_conservative": 0,
+    "added_mem_rar": 0,
+    "final_edges": 6
+  },
+  "nodes_meta": [
+    {
+      "idx": 0,
+      "op": "MOV",
+      "bw": 32,
+      "comb": 0,
+      "dsp": 0,
+      "lut": 1,
+      "is_load": false,
+      "is_store": false,
+      "cls": "MOV",
+      "mem": [],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [],
+      "is_atomic": false
+    },
+    {
+      "idx": 1,
+      "op": "SHR",
+      "bw": 32,
+      "comb": 1,
+      "dsp": 0,
+      "lut": 1,
+      "is_load": false,
+      "is_store": false,
+      "cls": "SHR",
+      "mem": [],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [
+        "CF",
+        "OF",
+        "PF",
+        "SF",
+        "ZF"
+      ],
+      "is_atomic": false
+    },
+    {
+      "idx": 2,
+      "op": "AND",
+      "bw": 32,
+      "comb": 1,
+      "dsp": 0,
+      "lut": 1,
+      "is_load": false,
+      "is_store": false,
+      "cls": "AND",
+      "mem": [],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [
+        "CF",
+        "OF",
+        "PF",
+        "SF",
+        "ZF"
+      ],
+      "is_atomic": false
+    },
+    {
+      "idx": 3,
+      "op": "AND",
+      "bw": 32,
+      "comb": 1,
+      "dsp": 0,
+      "lut": 1,
+      "is_load": false,
+      "is_store": false,
+      "cls": "AND",
+      "mem": [],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [
+        "CF",
+        "OF",
+        "PF",
+        "SF",
+        "ZF"
+      ],
+      "is_atomic": false
+    }
+  ],
+  "mem_calendar": {},
+  "dsp_need_total": 0,
+  "pc": "0x633164475ccf"
+}

@@ -1,0 +1,145 @@
+{
+  "rank": 69,
+  "group_index": 4,
+  "execution_count": 94708,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x609e9ee320b4",
+      "opcode": "lea",
+      "raw_operands": [
+        "rcx",
+        "ptr [rcx+rcx*2]"
+      ],
+      "in_operands": [
+        "ptr [rcx+rcx*2]"
+      ],
+      "out_operands": [
+        "rcx"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x609e9ee320b8",
+      "opcode": "shl",
+      "raw_operands": [
+        "rcx",
+        "0x9"
+      ],
+      "in_operands": [
+        "rcx",
+        "0x9"
+      ],
+      "out_operands": [
+        "rcx",
+        "flag"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "rcx"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "rcx"
+      },
+      "condition": "reg vs reg: rcx"
+    }
+  ],
+  "bench": "657.xz_s/1",
+  "src": "1/super_hot_regions:134",
+  "order_map": [
+    0,
+    1
+  ],
+  "cut_mask": [
+    false
+  ],
+  "ff_boundaries": [],
+  "ff_hints": [],
+  "stage_of": [
+    0,
+    0
+  ],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "edge_stats": {
+    "base_edges": 1,
+    "added_flag_wr": 0,
+    "added_flag_anti": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "added_mem_raw": 0,
+    "added_mem_war": 0,
+    "added_mem_waw": 0,
+    "added_mem_conservative": 0,
+    "added_mem_rar": 0,
+    "final_edges": 1
+  },
+  "nodes_meta": [
+    {
+      "idx": 0,
+      "op": "LEA",
+      "bw": 64,
+      "comb": 0,
+      "dsp": 0,
+      "lut": 2,
+      "is_load": false,
+      "is_store": false,
+      "cls": "LEA",
+      "mem": [
+        {
+          "base": "RCX",
+          "index": "RCX",
+          "scale": 2,
+          "disp": 0,
+          "space": "GEN",
+          "width": 64
+        }
+      ],
+      "precise_addr": false,
+      "flag_reads": [],
+      "flag_writes": [],
+      "is_atomic": false
+    },
+    {
+      "idx": 1,
+      "op": "SHL",
+      "bw": 64,
+      "comb": 1,
+      "dsp": 0,
+      "lut": 2,
+      "is_load": false,
+      "is_store": false,
+      "cls": "SHL",
+      "mem": [],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [
+        "CF",
+        "OF",
+        "PF",
+        "SF",
+        "ZF"
+      ],
+      "is_atomic": false
+    }
+  ],
+  "mem_calendar": {
+    "0": {
+      "GEN:RCX": {
+        "reads": 0,
+        "writes": 0,
+        "ops": 0,
+        "max_bits": 64
+      }
+    }
+  },
+  "dsp_need_total": 0,
+  "pc": "0x609e9ee320b4"
+}

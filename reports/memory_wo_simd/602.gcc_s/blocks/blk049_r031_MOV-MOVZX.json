@@ -1,0 +1,137 @@
+{
+  "rank": 31,
+  "group_index": 2,
+  "execution_count": 587661,
+  "instructions": [
+    {
+      "index": 0,
+      "address": "0x5692ecfbe2a8",
+      "opcode": "mov",
+      "raw_operands": [
+        "r12",
+        "rdi"
+      ],
+      "in_operands": [
+        "rdi"
+      ],
+      "out_operands": [
+        "r12"
+      ]
+    },
+    {
+      "index": 1,
+      "address": "0x5692ecfbe2af",
+      "opcode": "movzx",
+      "raw_operands": [
+        "eax",
+        "word ptr [r12]"
+      ],
+      "in_operands": [
+        "[r12]"
+      ],
+      "out_operands": [
+        "eax"
+      ]
+    }
+  ],
+  "merge_edges": [
+    {
+      "from": {
+        "instr_index": 0,
+        "operand": "r12"
+      },
+      "to": {
+        "instr_index": 1,
+        "operand": "[r12]"
+      },
+      "condition": "reg vs mem: r12"
+    }
+  ],
+  "bench": "602.gcc_s/3",
+  "src": "3/super_hot_regions:38",
+  "order_map": [
+    0,
+    1
+  ],
+  "cut_mask": [
+    false
+  ],
+  "ff_boundaries": [],
+  "ff_hints": [],
+  "stage_of": [
+    0,
+    0
+  ],
+  "stage_count": 1,
+  "latency_cycles": 1,
+  "crit_path_sigma": 0.0,
+  "edge_stats": {
+    "base_edges": 1,
+    "added_flag_wr": 0,
+    "added_flag_anti": 0,
+    "added_raw": 0,
+    "added_war": 0,
+    "added_waw": 0,
+    "added_mem_raw": 0,
+    "added_mem_war": 0,
+    "added_mem_waw": 0,
+    "added_mem_conservative": 0,
+    "added_mem_rar": 0,
+    "final_edges": 1
+  },
+  "nodes_meta": [
+    {
+      "idx": 0,
+      "op": "MOV",
+      "bw": 64,
+      "comb": 0,
+      "dsp": 0,
+      "lut": 2,
+      "is_load": false,
+      "is_store": false,
+      "cls": "MOV",
+      "mem": [],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [],
+      "is_atomic": false
+    },
+    {
+      "idx": 1,
+      "op": "MOVZX",
+      "bw": 32,
+      "comb": 1,
+      "dsp": 0,
+      "lut": 1,
+      "is_load": true,
+      "is_store": false,
+      "cls": "LOAD",
+      "mem": [
+        {
+          "base": "R12",
+          "index": null,
+          "scale": 1,
+          "disp": 0,
+          "space": "GEN",
+          "width": 16
+        }
+      ],
+      "precise_addr": true,
+      "flag_reads": [],
+      "flag_writes": [],
+      "is_atomic": false
+    }
+  ],
+  "mem_calendar": {
+    "0": {
+      "GEN:R12": {
+        "reads": 1,
+        "writes": 0,
+        "ops": 1,
+        "max_bits": 16
+      }
+    }
+  },
+  "dsp_need_total": 0,
+  "pc": "0x5692ecfbe2a8"
+}
